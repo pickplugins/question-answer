@@ -4,7 +4,7 @@
 	Tags:  Question Answer, Question, Answer
 	Requires at least: 4.1
 	Tested up to: 4.8
-	Stable tag: 1.2.10
+	Stable tag: 1.2.12
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -16,9 +16,9 @@ Built Question Answer site for your WordPress.
 
 ### Question Answer by [https://www.pickplugins.com](https://www.pickplugins.com/?ref=wordpress.org)
 
-* [Question Answer - Bundle](https://www.pickplugins.com/product/question-answer/?ref=wordpress.org)
+* [Question Answer - Bundle](https://www.pickplugins.com/item/question-answer/?ref=wordpress.org)
 * [Live Demo](http://www.pickplugins.com/demo/question-answer/?ref=wordpress.org)
-* [Documentation](http://pickplugins.com/docs/documentation/question-answer/?ref=wordpress.org)
+* [Documentation](https://www.pickplugins.com/documentation/question-answer/?ref=wordpress.org)
 
 
 <strong>Plugin Features</strong>
@@ -164,6 +164,9 @@ function qa_action_after_single_question() {
 
 == Changelog ==
 
+
+= 1.2.12 =
+* 05/11/2017 update - Single question template update.
 
 = 1.2.10 =
 * 08/10/2017 fix - Notification loading issue fixed.

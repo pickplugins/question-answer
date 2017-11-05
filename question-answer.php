@@ -3,7 +3,7 @@
 Plugin Name: Question Answer
 Plugin URI: https://www.pickplugins.com/product/question-answer/
 Description: Create Awesome Question and Answer Website in a Minute
-Version: 1.2.10
+Version: 1.2.12
 Text Domain: question-answer
 Author: pickplugins
 Author URI: http://pickplugins.com
