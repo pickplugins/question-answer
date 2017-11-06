@@ -65,25 +65,25 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	
 	<br>
 	<div class="answer-section-header">
-		<span class="fs_18"> <span itemprop="answerCount"><?php echo number_format_i18n($wp_query->found_posts); ?></span> <?php echo __('Answers', QA_TEXTDOMAIN); ?></span>
+		<span class="fs_18"> <span itemprop="answerCount"><?php echo number_format_i18n($wp_query->found_posts); ?></span> <?php echo __('Answers', 'question-answer'); ?></span>
 		
 		<?php if( $qa_show_answer_filter == 'yes' ) { ?>
 		<div class="float_right answer_header_status">
 			<form enctype="multipart/form-data" id="qa_sort_answer_form" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>" method="GET">
-				<span><?php echo __('Sort By:', QA_TEXTDOMAIN); ?></span>
+				<span><?php echo __('Sort By:', 'question-answer'); ?></span>
 				<select name="qa_sort_answer" class="qa_sort_answer">
-					<option value=""><?php echo __('All Answers', QA_TEXTDOMAIN); ?></option>
+					<option value=""><?php echo __('All Answers', 'question-answer'); ?></option>
 					
 					<?php if( isset($qa_answer_filter_options['answers_voted']) ) { ?>
-					<option <?php if( $qa_sort_answer == 'answers_voted' ) echo 'selected'; ?> value="answers_voted"><?php echo __('Voted Answers', QA_TEXTDOMAIN); ?></option> 
+					<option <?php if( $qa_sort_answer == 'answers_voted' ) echo 'selected'; ?> value="answers_voted"><?php echo __('Voted Answers', 'question-answer'); ?></option> 
 					<?php } ?>
 					
 					<?php if( isset($qa_answer_filter_options['answers_top_voted']) ) { ?>
-					<option <?php if( $qa_sort_answer == 'answers_top_voted' ) echo 'selected'; ?> value="answers_top_voted"><?php echo __('Top Voted Answers', QA_TEXTDOMAIN); ?></option>
+					<option <?php if( $qa_sort_answer == 'answers_top_voted' ) echo 'selected'; ?> value="answers_top_voted"><?php echo __('Top Voted Answers', 'question-answer'); ?></option>
 					<?php } ?>
 					
 					<?php if( isset($qa_answer_filter_options['answers_older']) ) { ?>
-					<option <?php if( $qa_sort_answer == 'answers_older' ) echo 'selected'; ?> value="answers_older"><?php echo __('Older Answers', QA_TEXTDOMAIN); ?></option>
+					<option <?php if( $qa_sort_answer == 'answers_older' ) echo 'selected'; ?> value="answers_older"><?php echo __('Older Answers', 'question-answer'); ?></option>
 					<?php } ?>
 					
 				</select>
@@ -113,7 +113,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 			?>
 			
 			<div id="single-answer-<?php echo get_the_ID(); ?>" <?php post_class("single-answer $reviewd $best_answer_class"); ?>>
-                <div class="best-answer-ribbon"><span><i class="fa fa-trophy best-answer-icon" aria-hidden="true"></i> <?php echo __('Best Answer', QA_TEXTDOMAIN); ?></span></div>
+                <div class="best-answer-ribbon"><span><i class="fa fa-trophy best-answer-icon" aria-hidden="true"></i> <?php echo __('Best Answer', 'question-answer'); ?></span></div>
                 <?php do_action('qa_action_single_answer_content'); ?>
                 <?php do_action('qa_action_single_answer_reply'); ?>
 				

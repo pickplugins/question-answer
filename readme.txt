@@ -4,7 +4,7 @@
 	Tags:  Question Answer, Question, Answer
 	Requires at least: 4.1
 	Tested up to: 4.8
-	Stable tag: 1.2.12
+	Stable tag: 1.2.13
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -21,7 +21,7 @@ Built Question Answer site for your WordPress.
 * [Documentation](https://www.pickplugins.com/documentation/question-answer/?ref=wordpress.org)
 
 
-<strong>Plugin Features</strong>
+# Plugin Features
 
 * schema.org support.
 * Archive page via shortcode.
@@ -29,7 +29,7 @@ Built Question Answer site for your WordPress.
 * Awesome account page via shortcode.
 * Ton of filter & action hook to extend.
 
-<strong>Archive page features</strong>
+# Archive page features
 
 * Responsive archive page for questions.
 * Featured question at top with highlighted background.
@@ -45,7 +45,7 @@ Built Question Answer site for your WordPress.
 * User thumbnail.
 * Pagination.
 
-<strong>Single question page features</strong>
+# Single question page features
 
 * Breadcrumb navigation & menu.
 * Admin can change post status.
@@ -65,14 +65,13 @@ Built Question Answer site for your WordPress.
 * Flag for comments to warn user.
 
 
-<strong>Question submission for features</strong>
+# Question submission for features
 
 * Based on filter hook & easy to extend for add custom input fields.
 * Default input fields are title, content, status, categories, tags.
 * reCAPTCHA on question submission.
 
-
-<strong>Add-ons</strong>
+# Add-ons
 
 * [Question Aswer - Email](https://wordpress.org/plugins/question-answer-email/)
 * [Import DW ](https://wordpress.org/plugins/question-answer-dw-import/)
@@ -81,21 +80,23 @@ Built Question Answer site for your WordPress.
 * [Related Questions ](https://wordpress.org/plugins/question-answer-related-questions/)
 
 
-<strong>QA Account</strong>
+# Shortcodes
+
+**QA dashboard**
 
 `
-[qa_myaccount]
+[qa_dashboard]
 `
 
 
-<strong>Question submission</strong>
+**Question submission**
 
 `
 [qa_add_question]
 `
 
 
-<strong>Question Archive</strong>
+**Question Archive**
 
 `
 [question_archive]
@@ -104,7 +105,7 @@ Built Question Answer site for your WordPress.
 
 
 
-<strong>Translation</strong>
+# Translation
 
 Plugin is translation ready , please find the 'en.po' for default translation file under 'languages' folder and add your own translation. you can also contribute in translation, please contact us http://www.pickplugins.com/contact/
 
@@ -118,7 +119,7 @@ Contributor
 
 = Single question page showing 404 error , how to solve ? =
 
-Pelase go "Settings > Permalink Settings" and save again to reset permalink.
+Please go "Settings > Permalink Settings" and save again to reset permalink.
 
 
 = Single question page style broken, what should i do ? =
@@ -163,6 +164,15 @@ function qa_action_after_single_question() {
 
 
 == Changelog ==
+
+
+= 1.2.13 =
+* 05/11/2017 update - [qa_dashboard] shortcode added.
+* 05/11/2017 update - [qa_myaccount] shortcode removed.
+* 05/11/2017 update - [qa_my_account] shortcode added.
+* 05/11/2017 update - [qa_edit_account] shortcode added.
+* 05/11/2017 update - [qa_my_questions] shortcode added.
+
 
 
 = 1.2.12 =

@@ -33,7 +33,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 <div class="answer-post  clearfix">
 	
 	<div class="answer-post-header" _status="0">
-		<span class="fs_18"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <?php echo __('Submit Answer', QA_TEXTDOMAIN);?></span>
+		<span class="fs_18"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <?php echo __('Submit Answer', 'question-answer');?></span>
 		<i class="fa fa-expand fs_28 float_right apost_header_status"></i>		
 	</div>
 	
@@ -45,7 +45,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 			
 
 			
-			echo sprintf( __('<form class="nodisplay">Please <a href="%s">login</a> to submit answer.</form>', QA_TEXTDOMAIN), wp_login_url($_SERVER['REQUEST_URI'])  ) ;
+			echo sprintf( __('<form class="nodisplay">Please <a href="%s">login</a> to submit answer.</form>', 'question-answer'), wp_login_url($_SERVER['REQUEST_URI'])  ) ;
 			
 			// Closing div .answer-post
 			echo '</div>';
@@ -70,7 +70,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 			
         ?>
     	<div class="quick-notes">
-        <strong><?php echo __('Quick notes', QA_TEXTDOMAIN); ?></strong>
+        <strong><?php echo __('Quick notes', 'question-answer'); ?></strong>
         <?php
 			
 			foreach($qa_options_quick_notes as $note){
@@ -147,7 +147,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 			
 			$new_answer_post = array(
 				'post_type'		=> 'answer',
-				'post_title'    => __('#Replay', QA_TEXTDOMAIN).' - '.qa_shorten_string($answer_content) .' by '. $current_user->user_login ,
+				'post_title'    => __('#Replay', 'question-answer').' - '.qa_shorten_string($answer_content) .' by '. $current_user->user_login ,
 				'post_status'   => $qa_submitted_answer_status,
 				'post_content'  => $answer_content,
 			  
@@ -165,11 +165,11 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 			
 			echo "<div class='validations'><div class='success'>";
 			
-			echo apply_filters( "qa_filter_answer_submit_success_message", "<i class='fa fa-check'></i>".__("Answer submitted", QA_TEXTDOMAIN), $new_answer_post_ID );
+			echo apply_filters( "qa_filter_answer_submit_success_message", "<i class='fa fa-check'></i>".__("Answer submitted", 'question-answer'), $new_answer_post_ID );
 			
 			echo "</div><div class='success'>";
 			
-			echo apply_filters( "qa_filter_answer_submit_status_message", "<i class='fa fa-check'></i>". __('Status', QA_TEXTDOMAIN).": $qa_submitted_answer_status", $new_answer_post_ID );
+			echo apply_filters( "qa_filter_answer_submit_status_message", "<i class='fa fa-check'></i>". __('Status', 'question-answer').": $qa_submitted_answer_status", $new_answer_post_ID );
 			
 			echo "</div></div>";
 			
@@ -217,7 +217,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 		else{
 			
 			echo '<div class="validations">';
-			echo '<div class="failed"><i class="fa fa-exclamation-circle"></i> '.__('Content is empty.', QA_TEXTDOMAIN).'</div>';
+			echo '<div class="failed"><i class="fa fa-exclamation-circle"></i> '.__('Content is empty.', 'question-answer').'</div>';
 			
 			echo '</div>';
 			
@@ -243,7 +243,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	<div class="qa_tt">
 		<label for="is_private">
 			<input id="is_private" type="checkbox" <?php echo $checked; ?> class="" value="1" name="is_private" />
-			<?php echo __('Make your answer private.', QA_TEXTDOMAIN); ?>
+			<?php echo __('Make your answer private.', 'question-answer'); ?>
 		</label>
 		
 	</div>
@@ -251,8 +251,8 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	<div class="qa_tt">
 		
         <?php wp_nonce_field( 'nonce_answer_post' ); ?>
-		<input id="is_private" type="submit" class="submit submit_answer_button" value="<?php echo __('Submit Answer',QA_TEXTDOMAIN); ?>" />
-		<span class="qa_ttt"><?php echo __('Your answer will be under review.', QA_TEXTDOMAIN); ?></span>
+		<input id="is_private" type="submit" class="submit submit_answer_button" value="<?php echo __('Submit Answer','question-answer'); ?>" />
+		<span class="qa_ttt"><?php echo __('Your answer will be under review.', 'question-answer'); ?></span>
 		
 	</div>
 	

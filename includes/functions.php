@@ -73,7 +73,7 @@ add_action( 'manage_qa_keyword_posts_custom_column' , 'qa_keyword_posts_custom_c
 			
 			if(!empty($qa_page_question_post)){
 
-				echo '<a class="add-question" href="'.$qa_page_question_post_url.'">'.__('Ask question', QA_TEXTDOMAIN).'</a>';
+				echo '<a class="add-question" href="'.$qa_page_question_post_url.'">'.__('Ask question', 'question-answer').'</a>';
 
                 global $qa_css;
 
@@ -110,8 +110,8 @@ add_action( 'manage_qa_keyword_posts_custom_column' , 'qa_keyword_posts_custom_c
 									'css_class'=>'polls',
 									'placeholder'=>'',
 									'required'=>'no',														
-									'title'=>__('Polls', QA_TEXTDOMAIN),
-									'option_details'=>__('Add your polls', QA_TEXTDOMAIN),					
+									'title'=>__('Polls', 'question-answer'),
+									'option_details'=>__('Add your polls', 'question-answer'),					
 									'input_type'=>'text_multi', // text, radio, checkbox, select,
 									'input_values'=>array(time()=>'',), // could be array
 									'field_args'=> array('dummy'=>'Dummy',),
@@ -189,27 +189,27 @@ add_action( 'manage_qa_keyword_posts_custom_column' , 'qa_keyword_posts_custom_c
 		$year = floor($diff/(86400*365));		
 		
 		if($year>0){
-			return number_format_i18n($year) .' '.__('year ago', QA_TEXTDOMAIN);
+			return number_format_i18n($year) .' '.__('year ago', 'question-answer');
 			}
 				
 		elseif($month > 0 && $day<=12 ){
-			return number_format_i18n($month) .' '.__('month ago', QA_TEXTDOMAIN);
+			return number_format_i18n($month) .' '.__('month ago', 'question-answer');
 			}
 			
 		elseif($day > 0 && $day<=30){
-			return number_format_i18n($day).' '.__('day ago', QA_TEXTDOMAIN);
+			return number_format_i18n($day).' '.__('day ago', 'question-answer');
 			}
 			
 		elseif($hour > 0 && $hour<=24){
-			return number_format_i18n($hour).' '.__('hour ago', QA_TEXTDOMAIN);
+			return number_format_i18n($hour).' '.__('hour ago', 'question-answer');
 			}		
 			
 		elseif($minute > 0 && $minute<60){
-			return number_format_i18n($minute).' '.__('minute ago', QA_TEXTDOMAIN);
+			return number_format_i18n($minute).' '.__('minute ago', 'question-answer');
 			}	
 				
 		else{
-			return $diff.' '.__('second ago', QA_TEXTDOMAIN);;
+			return $diff.' '.__('second ago', 'question-answer');;
 			}
 		
 	}	
@@ -239,27 +239,27 @@ add_action( 'manage_qa_keyword_posts_custom_column' , 'qa_keyword_posts_custom_c
 		$year = floor($diff/(86400*365));		
 		
 		if($year>0){
-			return number_format_i18n($year) .' '.__('year ago', QA_TEXTDOMAIN);
+			return number_format_i18n($year) .' '.__('year ago', 'question-answer');
 			}
 				
 		elseif($month > 0 && $day<=12 ){
-			return number_format_i18n($month) .' '.__('month ago', QA_TEXTDOMAIN);
+			return number_format_i18n($month) .' '.__('month ago', 'question-answer');
 			}
 			
 		elseif($day > 0 && $day<=30){
-			return number_format_i18n($day).' '.__('day ago', QA_TEXTDOMAIN);
+			return number_format_i18n($day).' '.__('day ago', 'question-answer');
 			}
 			
 		elseif($hour > 0 && $hour<=24){
-			return number_format_i18n($hour).' '.__('hour ago', QA_TEXTDOMAIN);
+			return number_format_i18n($hour).' '.__('hour ago', 'question-answer');
 			}		
 			
 		elseif($minute > 0 && $minute<60){
-			return number_format_i18n($minute).' '.__('minute ago', QA_TEXTDOMAIN);
+			return number_format_i18n($minute).' '.__('minute ago', 'question-answer');
 			}	
 				
 		else{
-			return $diff.' '.__('second ago', QA_TEXTDOMAIN);
+			return $diff.' '.__('second ago', 'question-answer');
 			}
 		
 	}	
@@ -657,14 +657,14 @@ function qa_ajax_best_answer() {
 		
 		if(!is_user_logged_in()){
 			
-			$response['toast'] .= '<i class="fa fa-check"></i> ' . __('Please login first.', QA_TEXTDOMAIN);
+			$response['toast'] .= '<i class="fa fa-check"></i> ' . __('Please login first.', 'question-answer');
 			echo json_encode($response);
 			die(); 
 			}		
 		
 		if($q_author != get_current_user_id()){
 			
-			$response['toast'] .= '<i class="fa fa-check"></i> ' . __('Sorry you can\'t choose best answer.', QA_TEXTDOMAIN);
+			$response['toast'] .= '<i class="fa fa-check"></i> ' . __('Sorry you can\'t choose best answer.', 'question-answer');
 			echo json_encode($response);
 			die(); 
 			}
@@ -674,7 +674,7 @@ function qa_ajax_best_answer() {
 			
 			update_post_meta( $question_id, 'qa_meta_best_answer', '' );
 			$response['status'] = 'removed';
-			$response['toast'] .= '<i class="fa fa-times"></i> ' .__('Removed Best answer', QA_TEXTDOMAIN);
+			$response['toast'] .= '<i class="fa fa-times"></i> ' .__('Removed Best answer', 'question-answer');
 
 			$userid = get_current_user_id();
 			$q_id = $question_id;
@@ -691,7 +691,7 @@ function qa_ajax_best_answer() {
 			
 			update_post_meta( $question_id, 'qa_meta_best_answer', $answer_id );
 			$response['status'] = 'updated';
-			$response['toast'] .= '<i class="fa fa-check"></i> ' . __('Marked as Best answer', QA_TEXTDOMAIN);
+			$response['toast'] .= '<i class="fa fa-check"></i> ' . __('Marked as Best answer', 'question-answer');
 			
 			$userid = get_current_user_id();
 			$q_id = $question_id;
@@ -783,13 +783,13 @@ function qa_ajax_best_answer() {
 				
 				unset($qa_featured_questions[$key]);
 				$response['featured_class'] = 'qa-featured-no';
-				$response['toast'] = '<i class="fa fa-times"></i> '.__( 'Removed from featured', QA_TEXTDOMAIN );
+				$response['toast'] = '<i class="fa fa-times"></i> '.__( 'Removed from featured', 'question-answer' );
 
 			} else {
 				
 				array_push( $qa_featured_questions, $post_id );
 				$response['featured_class'] = 'qa-featured-yes';
-				$response['toast'] = '<i class="fa fa-check"></i> '.__( 'Successfully featured', QA_TEXTDOMAIN );
+				$response['toast'] = '<i class="fa fa-check"></i> '.__( 'Successfully featured', 'question-answer' );
 
 			}
 
@@ -850,9 +850,9 @@ function qa_ajax_best_answer() {
 		
 		$count_flag = count(explode(',', $qa_flag_comment ) ) - 1;
 		if( !empty($user_id) && qa_search_user($user_id, $qa_flag_comment) ) {
-			$flag_html = __('Unflag',QA_TEXTDOMAIN).' ('.$count_flag.')<span class="qa_ttt qa_w_160"><i class="fa fa-undo"></i> '.__('Undo Report', QA_TEXTDOMAIN).'</span>';
+			$flag_html = __('Unflag','question-answer').' ('.$count_flag.')<span class="qa_ttt qa_w_160"><i class="fa fa-undo"></i> '.__('Undo Report', 'question-answer').'</span>';
 		} else {
-			$flag_html =  __('Flag',QA_TEXTDOMAIN).' ('.$count_flag.')<span class="qa_ttt qa_w_160"><i class="fa fa-thumbs-down"></i> '.__('Report this', QA_TEXTDOMAIN).'</span>';
+			$flag_html =  __('Flag','question-answer').' ('.$count_flag.')<span class="qa_ttt qa_w_160"><i class="fa fa-thumbs-down"></i> '.__('Report this', 'question-answer').'</span>';
 		}
 
 		echo $flag_html;
@@ -880,7 +880,7 @@ function qa_ajax_comment_flag(){
 
     if(!is_user_logged_in()):
         $response['is_error'] = 'yes';
-        $response['message'] = __('Please login', QA_TEXTDOMAIN);
+        $response['message'] = __('Please login', 'question-answer');
         $response['flag_count'] = $flag_count;
 
     else:
@@ -901,7 +901,7 @@ function qa_ajax_comment_flag(){
 
                     $response['flag_text'] = 'Flag';
                     $flag[$user_ID] = array('type'=>'unflag');
-                    $response['message'] = __('Report removed.', QA_TEXTDOMAIN);
+                    $response['message'] = __('Report removed.', 'question-answer');
                     $response['flag_count'] = $flag_count-1;
                     $action_type = 'comment_unflag';
 
@@ -912,7 +912,7 @@ function qa_ajax_comment_flag(){
 
                     $response['flag_text'] = 'Unflag';
                     $flag[$user_ID] = array('type'=>'flag');
-                    $response['message'] = __('Thanks for report.', QA_TEXTDOMAIN);
+                    $response['message'] = __('Thanks for report.', 'question-answer');
                     $response['flag_count'] = $flag_count;
                     $action_type = 'comment_flag';
 
@@ -925,7 +925,7 @@ function qa_ajax_comment_flag(){
                 $response['flag_text'] = 'Unflag';
 
                 $flag[$user_ID] = array('type'=>'flag');
-                $response['message'] = __('Thanks for report.', QA_TEXTDOMAIN);
+                $response['message'] = __('Thanks for report.', 'question-answer');
                 $response['flag_count'] = $flag_count+1;
 
                 $action_type = 'comment_flag';
@@ -946,7 +946,7 @@ function qa_ajax_comment_flag(){
             update_comment_meta( $comment_id, 'qa_flag_comment', $flag );
 
             $response['flag_text'] = 'Unflag';
-            $response['message'] = __('Thanks for report.', QA_TEXTDOMAIN);
+            $response['message'] = __('Thanks for report.', 'question-answer');
             $response['flag_count'] = $flag_count;
             $action_type = 'comment_flag';
 
@@ -1030,7 +1030,7 @@ function qa_ajax_comment_vote(){
 
 
         $response['is_error'] = 'yes';
-        $response['message'] = __('Please login', QA_TEXTDOMAIN);
+        $response['message'] = __('Please login', 'question-answer');
         $response['vote_count'] = $vote_count;
 
     else:
@@ -1047,7 +1047,7 @@ function qa_ajax_comment_vote(){
                 if($vote_type=='down'){
 
                     $vote[$user_ID] = array('type'=>'down');
-                    $response['message'] = __('Vote Down.', QA_TEXTDOMAIN);
+                    $response['message'] = __('Vote Down.', 'question-answer');
                     //$response['vote_count'] = $vote_count-1;
                     $action_type = 'comment_vote_down';
 
@@ -1055,7 +1055,7 @@ function qa_ajax_comment_vote(){
                 elseif($vote_type=='up'){
 
                     $vote[$user_ID] = array('type'=>'up');
-                    $response['message'] = __('Vote Up.', QA_TEXTDOMAIN);
+                    $response['message'] = __('Vote Up.', 'question-answer');
                     //$response['vote_count'] = $vote_count;
                     $action_type = 'comment_vote_up';
 
@@ -1068,7 +1068,7 @@ function qa_ajax_comment_vote(){
                 if($vote_type=='down'){
 
                     $vote[$user_ID] = array('type'=>'down');
-                    $response['message'] = __('Vote Down.', QA_TEXTDOMAIN);
+                    $response['message'] = __('Vote Down.', 'question-answer');
                     //$response['vote_count'] = $vote_count-1;
                     $action_type = 'comment_vote_down';
 
@@ -1076,7 +1076,7 @@ function qa_ajax_comment_vote(){
                 elseif($vote_type=='up'){
 
                     $vote[$user_ID] = array('type'=>'up');
-                    $response['message'] = __('Vote Up.', QA_TEXTDOMAIN);
+                    $response['message'] = __('Vote Up.', 'question-answer');
                     $response['vote_count'] = $vote_count;
                     $action_type = 'comment_vote_up';
                     //$response['vote_count'] = $vote_count+1;
@@ -1096,7 +1096,7 @@ function qa_ajax_comment_vote(){
             if($vote_type=='down'){
 
                 $vote[$user_ID] = array('type'=>'down');
-                $response['message'] = __('Vote Down.', QA_TEXTDOMAIN);
+                $response['message'] = __('Vote Down.', 'question-answer');
                 $action_type = 'comment_vote_down';
                 //$vote_count = $vote_count-1;
 
@@ -1105,7 +1105,7 @@ function qa_ajax_comment_vote(){
             else{
 
                 $vote[$user_ID] = array('type'=>'up');
-                $response['message'] = __('Vote Up.', QA_TEXTDOMAIN);
+                $response['message'] = __('Vote Up.', 'question-answer');
                 $action_type = 'comment_vote_up';
                 //$vote_count = $vote_count+1;;
             }
@@ -1198,7 +1198,7 @@ function qa_ajax_post_flag(){
 
     if(!is_user_logged_in()):
         $response['is_error'] = 'yes';
-        $response['message'] = __('Please login', QA_TEXTDOMAIN);
+        $response['message'] = __('Please login', 'question-answer');
         $response['flag_count'] = $flag_count;
     else:
 
@@ -1214,7 +1214,7 @@ function qa_ajax_post_flag(){
 
                     $response['flag_text'] = 'Flag';
                     $flag[$user_ID] = array('type'=>'unflag');
-                    $response['message'] = __('Report removed.', QA_TEXTDOMAIN);
+                    $response['message'] = __('Report removed.', 'question-answer');
                     $response['flag_count'] = $flag_count-1;
 
                     $flag_action_type = 'unflag';
@@ -1224,7 +1224,7 @@ function qa_ajax_post_flag(){
 
                     $response['flag_text'] = 'Unflag';
                     $flag[$user_ID] = array('type'=>'flag');
-                    $response['message'] = __('Thanks for report.', QA_TEXTDOMAIN);
+                    $response['message'] = __('Thanks for report.', 'question-answer');
                     $response['flag_count'] = $flag_count;
                     $flag_action_type = 'flag';
                 }
@@ -1235,7 +1235,7 @@ function qa_ajax_post_flag(){
                 $response['flag_text'] = 'Unflag';
 
                 $flag[$user_ID] = array('type'=>'flag');
-                $response['message'] = __('Thanks for report.', QA_TEXTDOMAIN);
+                $response['message'] = __('Thanks for report.', 'question-answer');
                 $response['flag_count'] = $flag_count+1;
 
                 $flag_action_type = 'flag';
@@ -1252,7 +1252,7 @@ function qa_ajax_post_flag(){
             update_post_meta($post_id, 'qa_flag', $flag);
 
             $response['flag_text'] = 'Unflag';
-            $response['message'] = __('Thanks for report.', QA_TEXTDOMAIN);
+            $response['message'] = __('Thanks for report.', 'question-answer');
             $response['flag_count'] = $flag_count;
             $flag_action_type = 'flag';
 
@@ -1393,12 +1393,12 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 				
 				</div>';
 			} else {
-				echo __('Something went wrong !', QA_TEXTDOMAIN);
+				echo __('Something went wrong !', 'question-answer');
 			}
 			
 			
 		else:
-			echo __('Please login to post comments', QA_TEXTDOMAIN);
+			echo __('Please login to post comments', 'question-answer');
 		
 		endif;
 
@@ -1437,7 +1437,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 			$total = count($poll_result);
 			$count_values = array_count_values($poll_result);		
 			//var_dump($count_values);
-			$response['html'] = '<div class="">'.__('Total:', QA_TEXTDOMAIN).' '.$total.'</div>';
+			$response['html'] = '<div class="">'.__('Total:', 'question-answer').' '.$total.'</div>';
 			//var_dump($count_values);
 			foreach($count_values as $id=>$value){
 				
@@ -1447,7 +1447,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 			
 			}
 		else{
-			$response['error'] = __('Please login.', QA_TEXTDOMAIN);
+			$response['error'] = __('Please login.', 'question-answer');
 			}
 		
 
@@ -1478,7 +1478,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 		$qa_answer_review 	= get_post_meta( $post_id, 'qa_answer_review', true );
 		
 		if( empty( $current_user->ID ) ) {
-			$response['error'] = __('Login first to Review !', QA_TEXTDOMAIN);
+			$response['error'] = __('Login first to Review !', 'question-answer');
 		} else {
 
 			$review_count = empty( $qa_answer_review['reviews'] ) ? 0 : (int)$qa_answer_review['reviews'];
@@ -1504,7 +1504,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 				do_action('qa_action_answer_vote_up', $post_id);
 				
 			
-			} else $response['error'] = __( 'Already Reviewed !', QA_TEXTDOMAIN );
+			} else $response['error'] = __( 'Already Reviewed !', 'question-answer' );
 		}
 		
 		$response['status'] = $status;
@@ -1525,7 +1525,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 		$qa_answer_review 	= get_post_meta( $post_id, 'qa_answer_review', true );
 		
 		if( empty( $current_user->ID ) ) {
-			$response['error'] = __('Login first to Review !', QA_TEXTDOMAIN);
+			$response['error'] = __('Login first to Review !', 'question-answer');
 		} else {
 
 			$review_count = empty( $qa_answer_review['reviews'] ) ? 0 : (int)$qa_answer_review['reviews'];
@@ -1551,7 +1551,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 				do_action('qa_action_answer_vote_down', $post_id);
 			
 			
-			} else $response['error'] = __( 'Already Reviewed!', QA_TEXTDOMAIN );
+			} else $response['error'] = __( 'Already Reviewed!', 'question-answer' );
 		}
 		
 		$response['status'] = $status;
@@ -1583,7 +1583,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 			
 			if(in_array($current_user->ID, $q_subscriber)){
 				
-				$html['toast'] = __('Unsubscribe from this question', QA_TEXTDOMAIN);
+				$html['toast'] = __('Unsubscribe from this question', 'question-answer');
 				$html['html'] = '<i class="fa fa-bell-slash"></i>';
 				$html['subscribe_class'] = 'not-subscribed';	
 
@@ -1597,7 +1597,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 				}
 			else{
 				
-				$html['toast'] = __('Subscribed to this question', QA_TEXTDOMAIN);
+				$html['toast'] = __('Subscribed to this question', 'question-answer');
 				$html['html'] = '<i class="fa fa-bell"></i>';
 				$html['subscribe_class'] = 'subscribed';
 				
@@ -1610,7 +1610,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 			} 
 		else{
 			
-			$html['toast'] = __('Please login first!', QA_TEXTDOMAIN);
+			$html['toast'] = __('Please login first!', 'question-answer');
 		}
 		
 		echo json_encode($html);
@@ -1637,10 +1637,10 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 				
 				update_post_meta( $post_id, 'qa_question_status', 'processing' );
 				
-				$html['toast'] 		= __('Successfully marked as unsolved', QA_TEXTDOMAIN);
-				$html['html'] 		= '<i class="fa fa-times"></i> '.__('Mark as Solved', QA_TEXTDOMAIN);
+				$html['toast'] 		= __('Successfully marked as unsolved', 'question-answer');
+				$html['html'] 		= '<i class="fa fa-times"></i> '.__('Mark as Solved', 'question-answer');
 				$html['is_solved'] 	= 'not-solved';	
-				$html['qa_ttt']		= __( 'Mark as Solved', QA_TEXTDOMAIN );
+				$html['qa_ttt']		= __( 'Mark as Solved', 'question-answer' );
 				
 				
 				$userid = get_current_user_id();
@@ -1657,10 +1657,10 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 				
 				update_post_meta( $post_id, 'qa_question_status', 'solved' );
 				
-				$html['toast'] 		= __('Successfully marked as Solved', QA_TEXTDOMAIN);
-				$html['html'] 		= '<i class="fa fa-check"></i> '.__('Solved', QA_TEXTDOMAIN);
+				$html['toast'] 		= __('Successfully marked as Solved', 'question-answer');
+				$html['html'] 		= '<i class="fa fa-check"></i> '.__('Solved', 'question-answer');
 				$html['is_solved'] 	= 'solved';
-				$html['qa_ttt']		= __( 'Mark as Unsolved', QA_TEXTDOMAIN );
+				$html['qa_ttt']		= __( 'Mark as Unsolved', 'question-answer' );
 				
 				
 				$userid = get_current_user_id();
@@ -1679,7 +1679,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 				
 			}
 		} else {
-			$html['toast'] = __('Access Denied!', QA_TEXTDOMAIN);
+			$html['toast'] = __('Access Denied!', 'question-answer');
 			
 		}
 		
@@ -1825,7 +1825,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 
 	function qa_get_categories() {
 		$args = array(
-			'show_option_none' => __( 'Select category', QA_TEXTDOMAIN),
+			'show_option_none' => __( 'Select category', 'question-answer'),
 			'hide_empty'          => 0,
 			'hierarchical'        => true,
 			'order'               => 'ASC',
@@ -1907,7 +1907,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 		$html.= '<div class="details">'.$field_data['option_details'].'</div>';
 		
 		$html .= '<select id="question_cat" name="question_cat">';
-		$html .= '<option value="">'.__('Select a Category', QA_TEXTDOMAIN).'</option>';
+		$html .= '<option value="">'.__('Select a Category', 'question-answer').'</option>';
 		$qa_categories = qa_get_categories();
 		foreach( $qa_categories as $cat_id => $cat_info ) { ksort($cat_info);
 			foreach( $cat_info as $key => $value ) {
@@ -1927,7 +1927,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 		$sections = array(
 			'question_category' => array (
 				'css_class'	=> 'question_answer',
-				'title'		=> __('Category', QA_TEXTDOMAIN),
+				'title'		=> __('Category', 'question-answer'),
 			),
 		);
 		
@@ -1960,7 +1960,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 				$arr_badwords[] = ucwords($word);
 				$arr_badwords[] = strtoupper($word);
 			}
-			return str_replace( $arr_badwords , '<span title="'.__('Word moderate.', QA_TEXTDOMAIN).'" class="bad-word">'.$badwords_replacer.'</span>', $content );
+			return str_replace( $arr_badwords , '<span title="'.__('Word moderate.', 'question-answer').'" class="bad-word">'.$badwords_replacer.'</span>', $content );
 		}
 		else return $content;
 	}
@@ -2021,8 +2021,8 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 		
 		echo '<div class="notifications">';
 		echo '<div class="title">'.
-			__('Notifications', QA_TEXTDOMAIN).' 
-			<span class="qa_breadcrumb_refresh">'.__('Refresh', QA_TEXTDOMAIN).' <i class="fa fa-refresh"></i></span>
+			__('Notifications', 'question-answer').' 
+			<span class="qa_breadcrumb_refresh">'.__('Refresh', 'question-answer').' <i class="fa fa-refresh"></i></span>
 		</div>';
 		
 		$userid = get_current_user_id();
@@ -2052,7 +2052,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 				$user_display_name = $user->display_name;
 				}
 			else{
-				$user_display_name = __('Anonymous', QA_TEXTDOMAIN);
+				$user_display_name = __('Anonymous', 'question-answer');
 				}
 		
 		
@@ -2062,7 +2062,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 		
 			if( $action == 'new_question' ) {
 	 
-				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> '.__('posted', QA_TEXTDOMAIN).' <span class="action">'.__('New Question',  QA_TEXTDOMAIN).'</span> <a href="'.get_permalink($q_id).'" class="link">'.get_the_title($q_id).'</a> ';
+				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> '.__('posted', 'question-answer').' <span class="action">'.__('New Question',  'question-answer').'</span> <a href="'.get_permalink($q_id).'" class="link">'.get_the_title($q_id).'</a> ';
 				
 				echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
 				echo '</div>';
@@ -2071,7 +2071,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 			elseif( $action == 'new_answer' ) {
 				
 				
-				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Answered', QA_TEXTDOMAIN).'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($q_id).'</a> ';
+				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Answered', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($q_id).'</a> ';
 				
 				echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
 				echo '</div>';
@@ -2080,7 +2080,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 			
 			elseif( $action == 'best_answer' ) {
 
-				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Choosed best answer', QA_TEXTDOMAIN).'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($a_id).'</a>';
+				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Choosed best answer', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($a_id).'</a>';
 				
 				echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
 				echo '</div>';
@@ -2089,7 +2089,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 			
 			elseif( $action == 'best_answer_removed' ) {
 
-				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Removed best answer', QA_TEXTDOMAIN).'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($a_id).'</a>';
+				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Removed best answer', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($a_id).'</a>';
 				
 				echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
 				echo '</div>';
@@ -2121,7 +2121,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
                     }
 
                     $q_id = get_post_meta( $a_id, 'qa_answer_question_id', true );
-                    echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Commented', QA_TEXTDOMAIN).'</span> on '.$flag_post_type.' <a href="'.get_permalink($q_id).'#comment-'.$c_id.'" class="link">'.get_the_title($a_id).'</a>';
+                    echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Commented', 'question-answer').'</span> on '.$flag_post_type.' <a href="'.get_permalink($q_id).'#comment-'.$c_id.'" class="link">'.get_the_title($a_id).'</a>';
 
                     echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
                     echo '</div>';
@@ -2154,7 +2154,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 
 
 
-                echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Flagged comment', QA_TEXTDOMAIN).'</span> <a href="'.get_permalink($q_id).'#comment-'.$c_id.'" class="link">'.get_the_title($q_id).'</a>';
+                echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Flagged comment', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#comment-'.$c_id.'" class="link">'.get_the_title($q_id).'</a>';
 
                 echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
                 echo '</div>';
@@ -2184,7 +2184,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 
 
 
-				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('comment vote up', QA_TEXTDOMAIN).'</span> <a href="'.get_permalink($q_id).'#comment-'.$c_id.'" class="link">'.get_the_title($q_id).'</a>';
+				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('comment vote up', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#comment-'.$c_id.'" class="link">'.get_the_title($q_id).'</a>';
 
 				echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
 				echo '</div>';
@@ -2213,7 +2213,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 
 
 
-				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('comment vote down', QA_TEXTDOMAIN).'</span> <a href="'.get_permalink($q_id).'#comment-'.$c_id.'" class="link">'.get_the_title($q_id).'</a>';
+				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('comment vote down', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#comment-'.$c_id.'" class="link">'.get_the_title($q_id).'</a>';
 
 				echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
 				echo '</div>';
@@ -2230,7 +2230,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 			elseif($action=='vote_up'){
 				
 				$q_id = get_post_meta( $a_id, 'qa_answer_question_id', true );
-				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Vote Up', QA_TEXTDOMAIN).'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($a_id).'</a>';
+				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Vote Up', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($a_id).'</a>';
 				
 				echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
 				echo '</div>';
@@ -2240,7 +2240,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 			elseif($action=='vote_down'){
 				
 				$q_id = get_post_meta( $a_id, 'qa_answer_question_id', true );
-				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Vote Down', QA_TEXTDOMAIN).'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($a_id).'</a>';
+				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Vote Down', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($a_id).'</a>';
 				
 				echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
 				echo '</div>';
@@ -2251,7 +2251,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 					
 			elseif($action=='q_solved'){
 	 
-				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> '.__('marked', QA_TEXTDOMAIN).' <span class="action">'.__('Solved', QA_TEXTDOMAIN).'</span> <a href="'.get_permalink($q_id).'" class="link">'.get_the_title($q_id).'</a>';
+				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> '.__('marked', 'question-answer').' <span class="action">'.__('Solved', 'question-answer').'</span> <a href="'.get_permalink($q_id).'" class="link">'.get_the_title($q_id).'</a>';
 				
 				echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
 				echo '</div>';
@@ -2260,7 +2260,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 					
 			elseif($action=='q_not_solved'){
 	 
-				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> '.__('marked', QA_TEXTDOMAIN).' <span class="action">'.__('Not Solved',QA_TEXTDOMAIN).'</span> <a href="'.get_permalink($q_id).'" class="link">'.get_the_title($q_id).'</a>';
+				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> '.__('marked', 'question-answer').' <span class="action">'.__('Not Solved','question-answer').'</span> <a href="'.get_permalink($q_id).'" class="link">'.get_the_title($q_id).'</a>';
 				
 				echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
 				echo '</div>';
@@ -2282,7 +2282,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 
 
                 $q_id = get_post_meta( $a_id, 'qa_answer_question_id', true );
-                echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> '.sprintf(__('flagged your %s', QA_TEXTDOMAIN), $flag_post_type).' <span class="name"></span> <a href="'.get_permalink($q_id).$link_extra.'" class="link">'.get_the_title($a_id).'</a>';
+                echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> '.sprintf(__('flagged your %s', 'question-answer'), $flag_post_type).' <span class="name"></span> <a href="'.get_permalink($q_id).$link_extra.'" class="link">'.get_the_title($a_id).'</a>';
 
                 echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
                 echo '</div>';
@@ -2304,7 +2304,7 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 
 
                 $q_id = get_post_meta( $a_id, 'qa_answer_question_id', true );
-                echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> '.$flag_post_type.' <span class="action">'.__('unflagged ', QA_TEXTDOMAIN).'</span> <a href="'.get_permalink($q_id).$link_extra.'" class="link">'.get_the_title($q_id).'</a>';
+                echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> '.$flag_post_type.' <span class="action">'.__('unflagged ', 'question-answer').'</span> <a href="'.get_permalink($q_id).$link_extra.'" class="link">'.get_the_title($q_id).'</a>';
 
                 echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
                 echo '</div>';

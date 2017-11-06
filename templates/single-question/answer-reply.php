@@ -79,7 +79,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 									}
 									
 								else{
-									$comment_author =  __('Anonymous', QA_TEXTDOMAIN);
+									$comment_author =  __('Anonymous', 'question-answer');
 									}
 								
 								
@@ -119,7 +119,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
                 ?>
                     <a class="qa-answer-reply" href="<?php echo wp_login_url( $_SERVER['REQUEST_URI'] ); ?> ">
                         <i class="fa fa-sign-in"></i>
-                            <span><?php echo __('Sign in to Reply', QA_TEXTDOMAIN); ?></span>
+                            <span><?php echo __('Sign in to Reply', 'question-answer'); ?></span>
                     </a>		
                 <?php
                     } else {
@@ -128,7 +128,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
                 ?>
                     <div class="qa-answer-reply" post_id="<?php echo get_the_ID(); ?>">
                         <i class="fa fa-reply"></i>
-                            <span><?php echo __('Reply on This', QA_TEXTDOMAIN); ?></span>
+                            <span><?php echo __('Reply on This', 'question-answer'); ?></span>
                     </div>
                 <?php
                     }
@@ -178,7 +178,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
         $current_user 	= wp_get_current_user();
         $user_ID		= $current_user->ID;
         $status = 1;
-        $tt_text = '<i class="fa fa-thumbs-down"></i> '.__('Report this', QA_TEXTDOMAIN);
+        $tt_text = '<i class="fa fa-thumbs-down"></i> '.__('Report this', 'question-answer');
         if( !empty($user_ID) ) {
 
 
@@ -202,7 +202,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 						}
 						
 					else{
-						$comment_author =  __('Anonymous', QA_TEXTDOMAIN);
+						$comment_author =  __('Anonymous', 'question-answer');
 						}
 
 
@@ -235,11 +235,11 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
                         if( array_key_exists($user_ID, $qa_flag_comment) && $qa_flag_comment[$user_ID]['type']=='flag'  ) {
 
-                            $flag_text = __('Unflag', QA_TEXTDOMAIN);
+                            $flag_text = __('Unflag', 'question-answer');
 
                         } else {
 
-                            $flag_text = __('Flag', QA_TEXTDOMAIN);
+                            $flag_text = __('Flag', 'question-answer');
                         }
 
                         ?>
@@ -354,7 +354,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 ?>
 	<a class="qa-answer-reply" href="<?php echo wp_login_url( $_SERVER['REQUEST_URI'] ); ?> ">
 		<i class="fa fa-sign-in"></i>
-        <span><?php echo __('Sign in to Reply', QA_TEXTDOMAIN); ?></span>
+        <span><?php echo __('Sign in to Reply', 'question-answer'); ?></span>
 	</a>		
 <?php
 	} else {
@@ -363,7 +363,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 ?>
 	<div class="qa-answer-reply" post_id="<?php echo get_the_ID(); ?>">
 		<i class="fa fa-reply"></i>
-        <span><?php echo __('Reply on This', QA_TEXTDOMAIN); ?></span>
+        <span><?php echo __('Reply on This', 'question-answer'); ?></span>
 	</div>
 <?php
 	}
@@ -378,9 +378,9 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	<div class="qa-reply-popup qa-reply-popup-<?php echo get_the_ID(); ?>">
 		<div class="qa-reply-form">
 			<span class="close"><i class="fa fa-times"></i></span>
-			<span class="qa-reply-header"><?php echo __('Replying as', QA_TEXTDOMAIN); ?> <?php echo $current_user->display_name; ?></span>
+			<span class="qa-reply-header"><?php echo __('Replying as', 'question-answer'); ?> <?php echo $current_user->display_name; ?></span>
 			<textarea rows="4" cols="40" id="qa-answer-reply-<?php echo get_the_ID(); ?>"></textarea>
-			<span class="qa-reply-form-submit" id="<?php echo get_the_ID(); ?>"><?php echo __('Submit', QA_TEXTDOMAIN); ?></span>
+			<span class="qa-reply-form-submit" id="<?php echo get_the_ID(); ?>"><?php echo __('Submit', 'question-answer'); ?></span>
 		</div>	
 	</div>
 	

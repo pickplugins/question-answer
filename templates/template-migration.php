@@ -23,12 +23,12 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 		'paged' => $paged,
 	) );
 	
-	echo '<div style="font-size: 18px;font-weight: bold;padding:10px;background:#e1e1e1;margin:10px 0;">'.__('Answers:', QA_TEXTDOMAIN).' '.$posts_per_page.'/'.$wp_query->found_posts.'</div>';
+	echo '<div style="font-size: 18px;font-weight: bold;padding:10px;background:#e1e1e1;margin:10px 0;">'.__('Answers:', 'question-answer').' '.$posts_per_page.'/'.$wp_query->found_posts.'</div>';
 	
 	
 	if( $action != 'running' ) {
 		
-		echo '<center style="margin:30px 0;"><a style="text-decoration:none;padding:10px 35px;background:#e1e1e1;" href="?action=running">'.__('Start Update', QA_TEXTDOMAIN).'</a></center>';
+		echo '<center style="margin:30px 0;"><a style="text-decoration:none;padding:10px 35px;background:#e1e1e1;" href="?action=running">'.__('Start Update', 'question-answer').'</a></center>';
 	}
 	
 	if( $action == 'running' ) {

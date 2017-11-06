@@ -12,7 +12,7 @@ class QAWidgetLatestQuestions extends WP_Widget {
 
 	function __construct() {
 		
-		parent::__construct( 'qa_widget_latest_questions', __('Question Answer - Latest Questions', QA_TEXTDOMAIN), array( 'description' => __( 'Show Latest Questions.', QA_TEXTDOMAIN ), ) );
+		parent::__construct( 'qa_widget_latest_questions', __('Question Answer - Latest Questions', 'question-answer'), array( 'description' => __( 'Show Latest Questions.', 'question-answer' ), ) );
 	}
 
 	public function widget( $args, $instance ) {
@@ -45,7 +45,7 @@ class QAWidgetLatestQuestions extends WP_Widget {
 			
 			echo '<div class="single_qs">';
 			echo  '<div class="qs_title"><a href="'.get_permalink($question['ID']).'">'.wp_trim_words(get_the_title( $question['ID'] ), $title_word_limit).'</a></div>';
-			echo  '<div class="qs_answer">'.sprintf(__('<b>%s</b> Answer(s)', QA_TEXTDOMAIN ), $wp_answer_query->found_posts).'</div>';
+			echo  '<div class="qs_answer">'.sprintf(__('<b>%s</b> Answer(s)', 'question-answer' ), $wp_answer_query->found_posts).'</div>';
 			echo '</div>';
 			wp_reset_query();
 		} 
@@ -56,7 +56,7 @@ class QAWidgetLatestQuestions extends WP_Widget {
 
 	public function form( $instance ) {
 		
-		$title = isset( $instance[ 'title' ] ) ? $title = $instance[ 'title' ] : __( 'Latest Questions', QA_TEXTDOMAIN );
+		$title = isset( $instance[ 'title' ] ) ? $title = $instance[ 'title' ] : __( 'Latest Questions', 'question-answer' );
 		$limit = isset( $instance[ 'limit' ] ) ? $limit = $instance[ 'limit' ] : 10;
 		$title_word_limit = isset( $instance[ 'title_word_limit' ] ) ? $title_word_limit = $instance[ 'title_word_limit' ] : 5;		
 		

@@ -65,7 +65,7 @@ if(current_user_can('manage_options')):
 
             }
              wp_nonce_field( 'nonce_qa_update_post_status' ); ?>
-            <input type="submit" value="<?php echo __('Update', QA_TEXTDOMAIN); ?>">
+            <input type="submit" value="<?php echo __('Update', 'question-answer'); ?>">
         </form>
 
     </div>

@@ -87,12 +87,12 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	<form class="question_serch_filter" method="GET">
 		
         <div class="form-meta">
-		<input autocomplete="off" class="ui-autocomplete-input" type="search" id="keyword" name="keywords" placeholder="<?php echo __('keywords', QA_TEXTDOMAIN); ?>" value="<?php echo $keywords; ?>" />
+		<input autocomplete="off" class="ui-autocomplete-input" type="search" id="keyword" name="keywords" placeholder="<?php echo __('keywords', 'question-answer'); ?>" value="<?php echo $keywords; ?>" />
 		</div>
         
         <div class="form-meta">
 		<select id="category" name="category">
-			<option value=""><?php echo __('Select a category', QA_TEXTDOMAIN); ?></option> <?php
+			<option value=""><?php echo __('Select a category', 'question-answer'); ?></option> <?php
 
 			foreach( qa_get_categories() as $cat_id => $cat_info ) { ksort($cat_info);
 				$this_category = get_category( $cat_id );
@@ -122,7 +122,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 <!-- 
 
         <div class="form-meta">
-		<input type="text" placeholder="<?php echo __('username', QA_TEXTDOMAIN); ?>" name="user_slug" value="<?php echo $user_slug; ?>"/>
+		<input type="text" placeholder="<?php echo __('username', 'question-answer'); ?>" name="user_slug" value="<?php echo $user_slug; ?>"/>
 		</div>
         
 -->
@@ -137,16 +137,16 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 		</div>
 		
         <div class="form-meta">
-		<input type="submit" value="<?php echo __('Search', QA_TEXTDOMAIN); ?>" />
+		<input type="submit" value="<?php echo __('Search', 'question-answer'); ?>" />
 		</div>
 	</form>
 	<?php 
 	
-	if( !empty( $keywords ) ) 	{ ?> <div class="filter"><span><?php echo __('Keyword:', QA_TEXTDOMAIN); ?> </span> <span class="value"><?php echo $keywords; ?></span></div><?php }
-	if( !empty( $date ) ) 		{ ?> <div class="filter"><span><?php echo __('Date:', QA_TEXTDOMAIN); ?> </span> <span class="value"><?php echo $date; ?></span></div><?php }
-	if( !empty( $category) ) 	{ ?> <div class="filter"><span><?php echo __('Category:', QA_TEXTDOMAIN); ?> </span><span class="value"><?php echo ucwords($category); ?></span></div><?php }
-	if( !empty( $order_by) ) 	{ ?> <div class="filter"><span><?php echo __('Sort By:', QA_TEXTDOMAIN); ?> </span><span class="value"><?php echo $order_by; ?></span></div><?php }
-	if( !empty( $user_slug) ) 		{ ?> <div class="filter"><span><?php echo __('Author:', QA_TEXTDOMAIN); ?> </span><span class="value"><?php echo $user_slug; ?></span></div><?php }
+	if( !empty( $keywords ) ) 	{ ?> <div class="filter"><span><?php echo __('Keyword:', 'question-answer'); ?> </span> <span class="value"><?php echo $keywords; ?></span></div><?php }
+	if( !empty( $date ) ) 		{ ?> <div class="filter"><span><?php echo __('Date:', 'question-answer'); ?> </span> <span class="value"><?php echo $date; ?></span></div><?php }
+	if( !empty( $category) ) 	{ ?> <div class="filter"><span><?php echo __('Category:', 'question-answer'); ?> </span><span class="value"><?php echo ucwords($category); ?></span></div><?php }
+	if( !empty( $order_by) ) 	{ ?> <div class="filter"><span><?php echo __('Sort By:', 'question-answer'); ?> </span><span class="value"><?php echo $order_by; ?></span></div><?php }
+	if( !empty( $user_slug) ) 		{ ?> <div class="filter"><span><?php echo __('Author:', 'question-answer'); ?> </span><span class="value"><?php echo $user_slug; ?></span></div><?php }
 
     $qa_featured_questions = get_option( 'qa_featured_questions', array('') );
 
@@ -187,7 +187,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	?> 
 	
 	<!-- 
-    <div class="question_found"><b><?php echo __('Total:', QA_TEXTDOMAIN); ?> <em><?php echo $wp_query->found_posts; ?> <?php echo __('Questions', QA_TEXTDOMAIN); ?></em></b></div>
+    <div class="question_found"><b><?php echo __('Total:', 'question-answer'); ?> <em><?php echo $wp_query->found_posts; ?> <?php echo __('Questions', 'question-answer'); ?></em></b></div>
     --> 
 	
 	<?php
@@ -225,7 +225,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	
 	wp_reset_query();
 			
-	else: ?><span><?php echo __('No question found', QA_TEXTDOMAIN); ?></span> <?php 
+	else: ?><span><?php echo __('No question found', 'question-answer'); ?></span> <?php
 	endif;
 
     global $qa_css;

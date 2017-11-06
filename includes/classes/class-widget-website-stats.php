@@ -12,7 +12,7 @@ class QAWidgetWebsiteStats extends WP_Widget {
 
 	function __construct() {
 		
-		parent::__construct( 'qa_widget_website_stats', __('Question Answer - Website Stats', QA_TEXTDOMAIN), array( 'description' => __( 'Website Stats.', QA_TEXTDOMAIN ), ) );
+		parent::__construct( 'qa_widget_website_stats', __('Question Answer - Website Stats', 'question-answer'), array( 'description' => __( 'Website Stats.', 'question-answer' ), ) );
 	}
 
 	public function widget( $args, $instance ) {
@@ -43,7 +43,7 @@ class QAWidgetWebsiteStats extends WP_Widget {
 		echo '<div class="item">';
 		echo '<div class="wrap">';
 		echo '<span class="count">'.$published_posts_question.'</span>';
-		echo '<span class="title">Total Question</span>';	
+		echo '<span class="title">'.__( 'Total Question', 'question-answer' ).'</span>';
 		echo '</div>';	
 		echo '</div>';
 		
@@ -51,7 +51,7 @@ class QAWidgetWebsiteStats extends WP_Widget {
 		echo '<div class="item">';
 		echo '<div class="wrap">';
 		echo '<span class="count">'.$published_posts_answer.'</span>';
-		echo '<span class="title">Total Answer</span>';	
+		echo '<span class="title">'.__( 'Total Answer', 'question-answer' ).'</span>';
 		echo '</div>';		
 		echo '</div>';		
 		
@@ -60,14 +60,14 @@ class QAWidgetWebsiteStats extends WP_Widget {
 		echo '<div class="item">';
 		echo '<div class="wrap">';
 		echo '<span class="count">'.$published_comments.'</span>';
-		echo '<span class="title">Total Comments</span>';	
+		echo '<span class="title">'.__( 'Total Comments', 'question-answer' ).'</span>';
 		echo '</div>';			
 		echo '</div>';		
 		
 		echo '<div class="item">';
 		echo '<div class="wrap">';
 		echo '<span class="count">'.$total_users.'</span>';
-		echo '<span class="title">Total user</span>';	
+		echo '<span class="title">'.__( 'Total user', 'question-answer' ).'</span>';
 		echo '</div>';	
 		echo '</div>';	
 		
@@ -81,7 +81,7 @@ class QAWidgetWebsiteStats extends WP_Widget {
 
 	public function form( $instance ) {
 		
-		$title = isset( $instance[ 'title' ] ) ? $title = $instance[ 'title' ] : __( 'Website Stats', QA_TEXTDOMAIN );
+		$title = isset( $instance[ 'title' ] ) ? $title = $instance[ 'title' ] : __( 'Website Stats', 'question-answer' );
 		$max_count = isset( $instance[ 'max_count' ] ) ? $instance[ 'max_count' ] : 10;		
 		?>
 		<p>

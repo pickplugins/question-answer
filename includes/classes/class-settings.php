@@ -18,9 +18,9 @@ class class_qa_settings  {
 	public function admin_menu() {
 		
 		add_dashboard_page( '', '', 'manage_options', 'qa-setup', '' );
-		add_submenu_page( 'edit.php?post_type=question', __( 'Settings', QA_TEXTDOMAIN ), __( 'Settings', QA_TEXTDOMAIN ), 'manage_options', 'settings', array( $this, 'settings' ) );
-		add_submenu_page( 'edit.php?post_type=question', __( 'Help', QA_TEXTDOMAIN ), __( 'Help', QA_TEXTDOMAIN ), 'manage_options', 'help', array( $this, 'help' ) );		
-		add_submenu_page( 'edit.php?post_type=question', __( 'Addons', QA_TEXTDOMAIN ), __( 'Addons', QA_TEXTDOMAIN ), 'manage_options', 'addons', array( $this, 'addons' ) );			
+		add_submenu_page( 'edit.php?post_type=question', __( 'Settings', 'question-answer' ), __( 'Settings', 'question-answer' ), 'manage_options', 'settings', array( $this, 'settings' ) );
+		add_submenu_page( 'edit.php?post_type=question', __( 'Help', 'question-answer' ), __( 'Help', 'question-answer' ), 'manage_options', 'help', array( $this, 'help' ) );		
+		add_submenu_page( 'edit.php?post_type=question', __( 'Addons', 'question-answer' ), __( 'Addons', 'question-answer' ), 'manage_options', 'addons', array( $this, 'addons' ) );			
 				
 		
 		

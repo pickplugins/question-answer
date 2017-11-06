@@ -91,7 +91,7 @@ if(!empty($_POST['qa_question_edit_hidden'])) {
 ?>
 
 <div class="question-edit pickform">
-    <h1 class="entry-title"><?php echo __('Edit:', QA_TEXTDOMAIN); ?> <?php the_title(); ?></h1>
+    <h1 class="entry-title"><?php echo __('Edit:', 'question-answer'); ?> <?php the_title(); ?></h1>
 
     <?php
 

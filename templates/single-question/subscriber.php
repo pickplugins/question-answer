@@ -12,7 +12,7 @@ $q_subscriber = get_post_meta(  get_the_ID(), 'q_subscriber', true );
 
 <div class="subscribers">
 
-<div class="title"><?php  echo count($q_subscriber).' '.__('Subscribers', QA_TEXTDOMAIN); ?></div>
+<div class="title"><?php  echo count($q_subscriber).' '.__('Subscribers', 'question-answer'); ?></div>
 <?php
 
 $max_subscriber = 10;

@@ -29,12 +29,12 @@ class class_qa_post_meta_answer{
 				<span class="meta_section_title"><i class="fa fa-question"></i> : <?php echo get_the_title( $qa_answer_question_id ); ?></span>
 				<p class="meta_section_body">
 					<?php echo wpautop( $post_content ); ?>
-					<a href="post.php?post=<?php echo $qa_answer_question_id; ?>&action=edit"><?php echo __('See more', QA_TEXTDOMAIN); ?></a> </p>
+					<a href="post.php?post=<?php echo $qa_answer_question_id; ?>&action=edit"><?php echo __('See more', 'question-answer'); ?></a> </p>
 			</div>
 			
 			<?php
 		} else {
-			echo '<span class="red">'.__('This question is not exist any more !', QA_TEXTDOMAIN).'</span> ';
+			echo '<span class="red">'.__('This question is not exist any more !', 'question-answer').'</span> ';
 		}
 		
 	}

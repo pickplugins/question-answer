@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Question Answer\n"
-"POT-Creation-Date: 2017-08-01 11:30+0600\n"
-"PO-Revision-Date: 2017-08-01 11:30+0600\n"
+"POT-Creation-Date: 2017-11-06 16:27+0600\n"
+"PO-Revision-Date: 2017-11-06 16:27+0600\n"
 "Last-Translator: \n"
 "Language-Team: pickplugins <support@pickplugins.com>\n"
 "Language: en\n"
@@ -16,81 +16,81 @@ msgstr ""
 "X-Poedit-SearchPath-0: includes\n"
 "X-Poedit-SearchPath-1: templates\n"
 
-#: includes/classes/class-admin-setup-wizard.php:40
+#: includes/classes/class-admin-setup-wizard.php:29
 msgid ""
 "<strong>Welcome to Question Answer</strong> &#8211; You did not run the "
 "setup wizard yet. You can do that now."
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:42
+#: includes/classes/class-admin-setup-wizard.php:31
 msgid "Run setup wizard"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:43
+#: includes/classes/class-admin-setup-wizard.php:32
 msgid "Skip setup"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:59
+#: includes/classes/class-admin-setup-wizard.php:48
 msgid "Introduction"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:64
-#: includes/classes/class-admin-setup-wizard.php:171
+#: includes/classes/class-admin-setup-wizard.php:53
+#: includes/classes/class-admin-setup-wizard.php:160
 msgid "Page setup"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:69
+#: includes/classes/class-admin-setup-wizard.php:58
 #: includes/classes/class-answer-column.php:31
 #: includes/classes/class-post-types.php:25 includes/menus/settings.php:133
 msgid "Question"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:74
+#: includes/classes/class-admin-setup-wizard.php:63
 #: includes/classes/class-post-types.php:140 includes/menus/settings.php:229
 #: templates/question-archive/answer-count.php:31
 msgid "Answer"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:79
+#: includes/classes/class-admin-setup-wizard.php:68
 msgid "Ready!"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:124
+#: includes/classes/class-admin-setup-wizard.php:113
 msgid "Question Answer &rsaquo; Setup sizard"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:138
+#: includes/classes/class-admin-setup-wizard.php:127
 msgid "Return to the WordPress dashboard"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:173
+#: includes/classes/class-admin-setup-wizard.php:162
 #, php-format
 msgid ""
 "Your website needs a few essential %spages%s. The following will be created "
 "automatically (if they do not already exist):"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:177
+#: includes/classes/class-admin-setup-wizard.php:166
 msgid "Page name"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:178
+#: includes/classes/class-admin-setup-wizard.php:167
 msgid "Description"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:184
+#: includes/classes/class-admin-setup-wizard.php:173
 msgid "This page will display a form where visitor can submit new question."
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:188
+#: includes/classes/class-admin-setup-wizard.php:177
 msgid "This page will show all the live questions."
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:192
+#: includes/classes/class-admin-setup-wizard.php:181
 msgid "This page will show your user account info."
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:197
+#: includes/classes/class-admin-setup-wizard.php:186
 #, php-format
 msgid ""
 "Once created, these pages can be managed from your admin dashboard on the "
@@ -98,32 +98,32 @@ msgid ""
 "via %sAppearance > Menus%s."
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:201
-#: includes/classes/class-admin-setup-wizard.php:306
-#: includes/classes/class-admin-setup-wizard.php:373
+#: includes/classes/class-admin-setup-wizard.php:190
+#: includes/classes/class-admin-setup-wizard.php:295
+#: includes/classes/class-admin-setup-wizard.php:362
 msgid "Skip this step"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:267
-#: includes/classes/class-admin-setup-wizard.php:340
+#: includes/classes/class-admin-setup-wizard.php:256
+#: includes/classes/class-admin-setup-wizard.php:329
 msgid "Question settings"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:272
-#: includes/classes/class-admin-setup-wizard.php:345
+#: includes/classes/class-admin-setup-wizard.php:261
+#: includes/classes/class-admin-setup-wizard.php:334
 msgid "Item per page"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:278
+#: includes/classes/class-admin-setup-wizard.php:267
 msgid "Excerpt length in question archive"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:284
+#: includes/classes/class-admin-setup-wizard.php:273
 msgid "Account required to submit question?"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:287
-#: includes/classes/class-admin-setup-wizard.php:354
+#: includes/classes/class-admin-setup-wizard.php:276
+#: includes/classes/class-admin-setup-wizard.php:343
 #: includes/menus/settings.php:32 includes/menus/settings.php:100
 #: includes/menus/settings.php:116 includes/menus/settings.php:126
 #: includes/menus/settings.php:149 includes/menus/settings.php:165
@@ -133,8 +133,8 @@ msgstr ""
 msgid "Yes"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:288
-#: includes/classes/class-admin-setup-wizard.php:355
+#: includes/classes/class-admin-setup-wizard.php:277
+#: includes/classes/class-admin-setup-wizard.php:344
 #: includes/menus/settings.php:32 includes/menus/settings.php:100
 #: includes/menus/settings.php:116 includes/menus/settings.php:126
 #: includes/menus/settings.php:149 includes/menus/settings.php:165
@@ -144,51 +144,51 @@ msgstr ""
 msgid "No"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:293
+#: includes/classes/class-admin-setup-wizard.php:282
 msgid "New submitted question status ?"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:296
-#: includes/classes/class-admin-setup-wizard.php:363
+#: includes/classes/class-admin-setup-wizard.php:285
+#: includes/classes/class-admin-setup-wizard.php:352
 #: includes/classes/class-answer-column.php:98
 #: includes/classes/class-question-column.php:40
 #: includes/classes/class-question-column.php:129
 #: includes/menus/settings.php:108 includes/menus/settings.php:157
-#: templates/myaccount/question-list.php:97
+#: templates/my-account/question-list.php:97
 msgid "Pending"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:297
-#: includes/classes/class-admin-setup-wizard.php:364
+#: includes/classes/class-admin-setup-wizard.php:286
+#: includes/classes/class-admin-setup-wizard.php:353
 #: includes/menus/settings.php:108 includes/menus/settings.php:157
 msgid "Draft"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:298
-#: includes/classes/class-admin-setup-wizard.php:365
+#: includes/classes/class-admin-setup-wizard.php:287
+#: includes/classes/class-admin-setup-wizard.php:354
 #: includes/menus/settings.php:108 includes/menus/settings.php:157
 msgid "Published"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:299
-#: includes/classes/class-admin-setup-wizard.php:366
+#: includes/classes/class-admin-setup-wizard.php:288
+#: includes/classes/class-admin-setup-wizard.php:355
 msgid "Privated"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:300
-#: includes/classes/class-admin-setup-wizard.php:367
+#: includes/classes/class-admin-setup-wizard.php:289
+#: includes/classes/class-admin-setup-wizard.php:356
 msgid "Trashed"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:351
+#: includes/classes/class-admin-setup-wizard.php:340
 msgid "Account required to submit answer?"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:360
+#: includes/classes/class-admin-setup-wizard.php:349
 msgid "New submitted answer status ?"
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:401
+#: includes/classes/class-admin-setup-wizard.php:390
 msgid "Your website is ready!"
 msgstr ""
 
@@ -226,7 +226,7 @@ msgstr ""
 #: includes/classes/class-answer-column.php:99
 #: includes/classes/class-question-column.php:41
 #: includes/classes/class-question-column.php:135
-#: templates/myaccount/question-list.php:102
+#: templates/my-account/question-list.php:102
 msgid "On discussion"
 msgstr ""
 
@@ -237,158 +237,171 @@ msgid "On hold"
 msgstr ""
 
 #: includes/classes/class-answer-column.php:101
-#: includes/classes/class-functions.php:204
+#: includes/classes/class-functions.php:206
 #: includes/classes/class-question-column.php:43
-#: includes/classes/class-question-column.php:141 includes/functions.php:1621
-#: templates/myaccount/question-list.php:108
+#: includes/classes/class-question-column.php:141 includes/functions.php:1661
+#: includes/functions.php:2254 templates/my-account/question-list.php:108
 #: templates/question-archive/single-question.php:66
-#: templates/single-question/meta.php:76 templates/template-breadcrumb.php:213
+#: templates/single-question/meta.php:76
 msgid "Solved"
 msgstr ""
 
-#: includes/classes/class-functions.php:28
+#: includes/classes/class-dashboard.php:51
+msgid "Account"
+msgstr ""
+
+#: includes/classes/class-dashboard.php:58
+msgid "Account Edit"
+msgstr ""
+
+#: includes/classes/class-dashboard.php:64
+msgid "My Questions"
+msgstr ""
+
+#: includes/classes/class-functions.php:30
 msgid "Core"
 msgstr ""
 
-#: includes/classes/class-functions.php:33
+#: includes/classes/class-functions.php:35
 msgid "Single question page full width issue"
 msgstr ""
 
-#: includes/classes/class-functions.php:39
+#: includes/classes/class-functions.php:41
 msgid "Question page 404 error"
 msgstr ""
 
-#: includes/classes/class-functions.php:76
+#: includes/classes/class-functions.php:78
 msgid "Facebook"
 msgstr ""
 
-#: includes/classes/class-functions.php:84
+#: includes/classes/class-functions.php:86
 msgid "Twitter"
 msgstr ""
 
-#: includes/classes/class-functions.php:91
+#: includes/classes/class-functions.php:93
 msgid "Google Plus"
 msgstr ""
 
-#: includes/classes/class-functions.php:136
+#: includes/classes/class-functions.php:138
 msgid "Ask Question"
 msgstr ""
 
-#: includes/classes/class-functions.php:141 includes/menus/settings.php:326
-msgid "My Account"
+#: includes/classes/class-functions.php:143
+msgid "Dashboard"
 msgstr ""
 
-#: includes/classes/class-functions.php:146
+#: includes/classes/class-functions.php:148
 msgid "My Question"
 msgstr ""
 
-#: includes/classes/class-functions.php:159
+#: includes/classes/class-functions.php:161
 msgid "Default Sorting"
 msgstr ""
 
-#: includes/classes/class-functions.php:160
+#: includes/classes/class-functions.php:162
 msgid "Sort by Title"
 msgstr ""
 
-#: includes/classes/class-functions.php:161
+#: includes/classes/class-functions.php:163
 msgid "Sort by Comment Count"
 msgstr ""
 
-#: includes/classes/class-functions.php:162
+#: includes/classes/class-functions.php:164
 msgid "Sort by Older Questions"
 msgstr ""
 
-#: includes/classes/class-functions.php:179
-#: includes/classes/class-functions.php:247
+#: includes/classes/class-functions.php:181
+#: includes/classes/class-functions.php:249
 msgid "Question Title"
 msgstr ""
 
-#: includes/classes/class-functions.php:183
+#: includes/classes/class-functions.php:185
+#: templates/single-question/answer-posting.php:172
 msgid "Status"
 msgstr ""
 
-#: includes/classes/class-functions.php:187
+#: includes/classes/class-functions.php:189
 msgid "Date"
 msgstr ""
 
-#: includes/classes/class-functions.php:191
+#: includes/classes/class-functions.php:193
 #: includes/classes/class-post-types.php:141
-#: templates/myaccount/question-list.php:131
+#: templates/my-account/question-list.php:131
 #: templates/single-question/answer-section.php:68
 #: templates/single-question/meta.php:58
 msgid "Answers"
 msgstr ""
 
-#: includes/classes/class-functions.php:201
+#: includes/classes/class-functions.php:203
 msgid "All"
 msgstr ""
 
-#: includes/classes/class-functions.php:202
+#: includes/classes/class-functions.php:204
 msgid "Processing"
 msgstr ""
 
-#: includes/classes/class-functions.php:203
+#: includes/classes/class-functions.php:205
 msgid "Hold"
 msgstr ""
 
-#: includes/classes/class-functions.php:209
+#: includes/classes/class-functions.php:211
 msgid "None"
 msgstr ""
 
-#: includes/classes/class-functions.php:236
+#: includes/classes/class-functions.php:238
 msgid "reCaptcha"
 msgstr ""
 
-#: includes/classes/class-functions.php:237
+#: includes/classes/class-functions.php:239
 msgid "reCaptcha test."
 msgstr ""
 
-#: includes/classes/class-functions.php:248
+#: includes/classes/class-functions.php:250
 msgid "Write question title"
 msgstr ""
 
-#: includes/classes/class-functions.php:258
+#: includes/classes/class-functions.php:260
 msgid "Question Descriptions"
 msgstr ""
 
-#: includes/classes/class-functions.php:259
+#: includes/classes/class-functions.php:261
 msgid "Write question descriptions here"
 msgstr ""
 
-#: includes/classes/class-functions.php:271
+#: includes/classes/class-functions.php:273
 #: includes/classes/class-post-meta.php:42
 msgid "Question Status"
 msgstr ""
 
-#: includes/classes/class-functions.php:272
+#: includes/classes/class-functions.php:274
 msgid "Set the question status"
 msgstr ""
 
-#: includes/classes/class-functions.php:275
+#: includes/classes/class-functions.php:277
 msgid "Default"
 msgstr ""
 
-#: includes/classes/class-functions.php:275 includes/menus/settings.php:108
+#: includes/classes/class-functions.php:277 includes/menus/settings.php:108
 #: includes/menus/settings.php:157
 #: templates/single-question/answer-content.php:135
 msgid "Private"
 msgstr ""
 
-#: includes/classes/class-functions.php:287
+#: includes/classes/class-functions.php:289
 #: includes/classes/class-post-types.php:65
 msgid "Question Category"
 msgstr ""
 
-#: includes/classes/class-functions.php:288
+#: includes/classes/class-functions.php:290
 msgid "Select question category."
 msgstr ""
 
-#: includes/classes/class-functions.php:299
+#: includes/classes/class-functions.php:301
 #: includes/classes/class-question-column.php:109
 msgid "Question tags"
 msgstr ""
 
-#: includes/classes/class-functions.php:300
+#: includes/classes/class-functions.php:302
 msgid "Choose question tags, comma separated."
 msgstr ""
 
@@ -725,200 +738,293 @@ msgstr ""
 msgid "Website Stats."
 msgstr ""
 
+#: includes/classes/class-widget-website-stats.php:46
+msgid "Total Question"
+msgstr ""
+
+#: includes/classes/class-widget-website-stats.php:54
+msgid "Total Answer"
+msgstr ""
+
+#: includes/classes/class-widget-website-stats.php:63
+msgid "Total Comments"
+msgstr ""
+
+#: includes/classes/class-widget-website-stats.php:70
+msgid "Total user"
+msgstr ""
+
 #: includes/classes/class-widget-website-stats.php:84
 msgid "Website Stats"
 msgstr ""
 
-#: includes/functions.php:13
+#: includes/functions.php:36
 msgid "Search Count"
 msgstr ""
 
-#: includes/functions.php:53
+#: includes/functions.php:76
 msgid "Ask question"
 msgstr ""
 
-#: includes/functions.php:90
+#: includes/functions.php:113
 msgid "Polls"
 msgstr ""
 
-#: includes/functions.php:91
+#: includes/functions.php:114
 msgid "Add your polls"
 msgstr ""
 
-#: includes/functions.php:169 includes/functions.php:219
+#: includes/functions.php:192 includes/functions.php:242
 msgid "year ago"
 msgstr ""
 
-#: includes/functions.php:173 includes/functions.php:223
+#: includes/functions.php:196 includes/functions.php:246
 msgid "month ago"
 msgstr ""
 
-#: includes/functions.php:177 includes/functions.php:227
+#: includes/functions.php:200 includes/functions.php:250
 msgid "day ago"
 msgstr ""
 
-#: includes/functions.php:181 includes/functions.php:231
+#: includes/functions.php:204 includes/functions.php:254
 msgid "hour ago"
 msgstr ""
 
-#: includes/functions.php:185 includes/functions.php:235
+#: includes/functions.php:208 includes/functions.php:258
 msgid "minute ago"
 msgstr ""
 
-#: includes/functions.php:189 includes/functions.php:239
+#: includes/functions.php:212 includes/functions.php:262
 msgid "second ago"
 msgstr ""
 
-#: includes/functions.php:620
+#: includes/functions.php:660
 msgid "Please login first."
 msgstr ""
 
-#: includes/functions.php:627
+#: includes/functions.php:667
 msgid "Sorry you can't choose best answer."
 msgstr ""
 
-#: includes/functions.php:637
+#: includes/functions.php:677
 msgid "Removed Best answer"
 msgstr ""
 
-#: includes/functions.php:654
+#: includes/functions.php:694
 msgid "Marked as Best answer"
 msgstr ""
 
-#: includes/functions.php:746
+#: includes/functions.php:786
 msgid "Removed from featured"
 msgstr ""
 
-#: includes/functions.php:752
+#: includes/functions.php:792
 msgid "Successfully featured"
 msgstr ""
 
-#: includes/functions.php:813 templates/single-question/answer-content.php:106
+#: includes/functions.php:853 templates/single-question/answer-content.php:106
 #: templates/single-question/answer-reply.php:238
 #: templates/single-question/content.php:105
 #: templates/single-question/content.php:255
 msgid "Unflag"
 msgstr ""
 
-#: includes/functions.php:813
+#: includes/functions.php:853
 msgid "Undo Report"
 msgstr ""
 
-#: includes/functions.php:815 templates/single-question/answer-content.php:110
+#: includes/functions.php:855 templates/single-question/answer-content.php:110
 #: templates/single-question/answer-reply.php:242
 #: templates/single-question/content.php:109
 #: templates/single-question/content.php:259
 msgid "Flag"
 msgstr ""
 
-#: includes/functions.php:815 templates/single-question/answer-content.php:35
+#: includes/functions.php:855 templates/single-question/answer-content.php:35
 #: templates/single-question/answer-reply.php:181
 #: templates/single-question/content.php:227
 msgid "Report this"
 msgstr ""
 
-#: includes/functions.php:843 includes/functions.php:993
-#: includes/functions.php:1161
+#: includes/functions.php:883 includes/functions.php:1033
+#: includes/functions.php:1201
 msgid "Please login"
 msgstr ""
 
-#: includes/functions.php:864 includes/functions.php:1177
+#: includes/functions.php:904 includes/functions.php:1217
 msgid "Report removed."
 msgstr ""
 
-#: includes/functions.php:875 includes/functions.php:888
-#: includes/functions.php:909 includes/functions.php:1187
-#: includes/functions.php:1198 includes/functions.php:1215
+#: includes/functions.php:915 includes/functions.php:928
+#: includes/functions.php:949 includes/functions.php:1227
+#: includes/functions.php:1238 includes/functions.php:1255
 msgid "Thanks for report."
 msgstr ""
 
-#: includes/functions.php:1010 includes/functions.php:1031
-#: includes/functions.php:1059
+#: includes/functions.php:1050 includes/functions.php:1071
+#: includes/functions.php:1099
 msgid "Vote Down."
 msgstr ""
 
-#: includes/functions.php:1018 includes/functions.php:1039
-#: includes/functions.php:1068
+#: includes/functions.php:1058 includes/functions.php:1079
+#: includes/functions.php:1108
 msgid "Vote Up."
 msgstr ""
 
-#: includes/functions.php:1356
+#: includes/functions.php:1396
 msgid "Something went wrong !"
 msgstr ""
 
-#: includes/functions.php:1361
+#: includes/functions.php:1401
 msgid "Please login to post comments"
 msgstr ""
 
-#: includes/functions.php:1400
+#: includes/functions.php:1440
 #: templates/question-archive/question-archive.php:190
 #: templates/single-question/content.php:159
 msgid "Total:"
 msgstr ""
 
-#: includes/functions.php:1410
+#: includes/functions.php:1450
 msgid "Please login."
 msgstr ""
 
-#: includes/functions.php:1441 includes/functions.php:1488
+#: includes/functions.php:1481 includes/functions.php:1528
 msgid "Login first to Review !"
 msgstr ""
 
-#: includes/functions.php:1467
+#: includes/functions.php:1507
 msgid "Already Reviewed !"
 msgstr ""
 
-#: includes/functions.php:1514
+#: includes/functions.php:1554
 msgid "Already Reviewed!"
 msgstr ""
 
-#: includes/functions.php:1546
+#: includes/functions.php:1586
 msgid "Unsubscribe from this question"
 msgstr ""
 
-#: includes/functions.php:1560
+#: includes/functions.php:1600
 msgid "Subscribed to this question"
 msgstr ""
 
-#: includes/functions.php:1573
+#: includes/functions.php:1613
 msgid "Please login first!"
 msgstr ""
 
-#: includes/functions.php:1600
+#: includes/functions.php:1640
 msgid "Successfully marked as unsolved"
 msgstr ""
 
-#: includes/functions.php:1601 includes/functions.php:1603
+#: includes/functions.php:1641 includes/functions.php:1643
 #: templates/single-question/meta.php:83 templates/single-question/meta.php:85
 msgid "Mark as Solved"
 msgstr ""
 
-#: includes/functions.php:1620
+#: includes/functions.php:1660
 msgid "Successfully marked as Solved"
 msgstr ""
 
-#: includes/functions.php:1623
+#: includes/functions.php:1663
 msgid "Mark as Unsolved"
 msgstr ""
 
-#: includes/functions.php:1642
+#: includes/functions.php:1682
 msgid "Access Denied!"
 msgstr ""
 
-#: includes/functions.php:1788
+#: includes/functions.php:1828
 msgid "Select category"
 msgstr ""
 
-#: includes/functions.php:1870
+#: includes/functions.php:1910
 msgid "Select a Category"
 msgstr ""
 
-#: includes/functions.php:1890
+#: includes/functions.php:1930
 msgid "Category"
 msgstr ""
 
-#: includes/functions.php:1923
+#: includes/functions.php:1963
 msgid "Word moderate."
+msgstr ""
+
+#: includes/functions.php:2024
+msgid "Notifications"
+msgstr ""
+
+#: includes/functions.php:2025
+msgid "Refresh"
+msgstr ""
+
+#: includes/functions.php:2055 templates/single-question/answer-reply.php:82
+#: templates/single-question/answer-reply.php:205
+#: templates/single-question/content.php:35
+#: templates/single-question/content.php:241
+msgid "Anonymous"
+msgstr ""
+
+#: includes/functions.php:2065
+msgid "posted"
+msgstr ""
+
+#: includes/functions.php:2065
+msgid "New Question"
+msgstr ""
+
+#: includes/functions.php:2074
+msgid "Answered"
+msgstr ""
+
+#: includes/functions.php:2083
+msgid "Choosed best answer"
+msgstr ""
+
+#: includes/functions.php:2092
+msgid "Removed best answer"
+msgstr ""
+
+#: includes/functions.php:2124
+msgid "Commented"
+msgstr ""
+
+#: includes/functions.php:2157
+msgid "Flagged comment"
+msgstr ""
+
+#: includes/functions.php:2187
+msgid "comment vote up"
+msgstr ""
+
+#: includes/functions.php:2216
+msgid "comment vote down"
+msgstr ""
+
+#: includes/functions.php:2233
+msgid "Vote Up"
+msgstr ""
+
+#: includes/functions.php:2243
+msgid "Vote Down"
+msgstr ""
+
+#: includes/functions.php:2254 includes/functions.php:2263
+msgid "marked"
+msgstr ""
+
+#: includes/functions.php:2263
+#: templates/question-archive/single-question.php:71
+msgid "Not Solved"
+msgstr ""
+
+#: includes/functions.php:2285
+#, php-format
+msgid "flagged your %s"
+msgstr ""
+
+#: includes/functions.php:2307
+msgid "unflagged "
 msgstr ""
 
 #: includes/menus/addons.php:93
@@ -1232,7 +1338,11 @@ msgid ""
 "Show register form in My Account page for logged out users. <br>Default: Yes."
 msgstr ""
 
-#: includes/menus/settings.php:332 templates/template-breadcrumb.php:301
+#: includes/menus/settings.php:326
+msgid "My Account"
+msgstr ""
+
+#: includes/menus/settings.php:332 templates/template-breadcrumb.php:43
 msgid "Question Archive"
 msgstr ""
 
@@ -1398,6 +1508,33 @@ msgstr ""
 msgid "Allowed Files"
 msgstr ""
 
+#: includes/shortcodes/class-shortcode-qa-edit-account.php:54
+#: includes/shortcodes/class-shortcode-qa-my-account.php:40
+#: templates/template-registration-form.php:58
+msgid "Email"
+msgstr ""
+
+#: includes/shortcodes/class-shortcode-qa-edit-account.php:59
+#: includes/shortcodes/class-shortcode-qa-my-account.php:45
+#: templates/my-account/profile.php:90
+msgid "Website"
+msgstr ""
+
+#: includes/shortcodes/class-shortcode-qa-edit-account.php:64
+#: includes/shortcodes/class-shortcode-qa-my-account.php:50
+#: templates/my-account/profile.php:99
+msgid "Biographical Info"
+msgstr ""
+
+#: includes/shortcodes/class-shortcode-qa-edit-account.php:69
+#: templates/single-question/admin-actions.php:68
+msgid "Update"
+msgstr ""
+
+#: includes/shortcodes/class-shortcode-qa-my-account.php:36
+msgid "Logout"
+msgstr ""
+
 #: templates/add-question/add-question.php:35
 #, php-format
 msgid "Please <a href=\"%s\">login</a> to submit question."
@@ -1433,63 +1570,83 @@ msgstr ""
 msgid "Please check these topics first."
 msgstr ""
 
-#: templates/myaccount/profile.php:54
+#: templates/my-account/my-account.php:26
+#: templates/template-registration-form.php:65
+msgid "Register"
+msgstr ""
+
+#: templates/my-account/my-account.php:65
+#: templates/my-account/my-account.php:79
+msgid "Login"
+msgstr ""
+
+#: templates/my-account/my-account.php:76
+msgid "Username or email address"
+msgstr ""
+
+#: templates/my-account/my-account.php:77
+#: templates/template-registration-form.php:52
+msgid "Password"
+msgstr ""
+
+#: templates/my-account/my-account.php:78
+msgid "Remember Me"
+msgstr ""
+
+#: templates/my-account/my-account.php:93
+#, php-format
+msgid "Please <a href=\"%s\">login</a> to access this page"
+msgstr ""
+
+#: templates/my-account/profile.php:54
 msgid "Profile Management"
 msgstr ""
 
-#: templates/myaccount/profile.php:60
+#: templates/my-account/profile.php:60
 msgid "Name"
 msgstr ""
 
-#: templates/myaccount/profile.php:61
+#: templates/my-account/profile.php:61
 msgid "Contact"
 msgstr ""
 
-#: templates/myaccount/profile.php:62
+#: templates/my-account/profile.php:62
 msgid "About Yourself"
 msgstr ""
 
-#: templates/myaccount/profile.php:73
+#: templates/my-account/profile.php:73
 msgid "First Name"
 msgstr ""
 
-#: templates/myaccount/profile.php:74
+#: templates/my-account/profile.php:74
 msgid "First name"
 msgstr ""
 
-#: templates/myaccount/profile.php:76
+#: templates/my-account/profile.php:76
 msgid "Last Name"
 msgstr ""
 
-#: templates/myaccount/profile.php:77
+#: templates/my-account/profile.php:77
 msgid "Last name"
 msgstr ""
 
-#: templates/myaccount/profile.php:87
+#: templates/my-account/profile.php:87
 msgid "Email (Required)"
 msgstr ""
 
-#: templates/myaccount/profile.php:90
-msgid "Website"
-msgstr ""
-
-#: templates/myaccount/profile.php:99
-msgid "Biographical Info"
-msgstr ""
-
-#: templates/myaccount/profile.php:100
+#: templates/my-account/profile.php:100
 msgid "Some text..."
 msgstr ""
 
-#: templates/myaccount/profile.php:108
+#: templates/my-account/profile.php:108
 msgid "Save Data"
 msgstr ""
 
-#: templates/myaccount/question-list.php:32
+#: templates/my-account/question-list.php:32
 msgid "Questions by You"
 msgstr ""
 
-#: templates/myaccount/question-list.php:105
+#: templates/my-account/question-list.php:105
 msgid "On Hold"
 msgstr ""
 
@@ -1534,15 +1691,6 @@ msgstr ""
 msgid "No question found"
 msgstr ""
 
-#: templates/question-archive/single-question.php:71
-#: templates/template-breadcrumb.php:222
-msgid "Not Solved"
-msgstr ""
-
-#: templates/single-question/admin-actions.php:68
-msgid "Update"
-msgstr ""
-
 #: templates/single-question/answer-content.php:65
 msgid "Choose best answer"
 msgstr ""
@@ -1552,7 +1700,7 @@ msgid "Answer is private, only admins or its author or questioner can read."
 msgstr ""
 
 #: templates/single-question/answer-posting.php:36
-#: templates/single-question/answer-posting.php:252
+#: templates/single-question/answer-posting.php:254
 msgid "Submit Answer"
 msgstr ""
 
@@ -1563,41 +1711,28 @@ msgid ""
 "form>"
 msgstr ""
 
-#: templates/single-question/answer-posting.php:72
+#: templates/single-question/answer-posting.php:73
 msgid "Quick notes"
 msgstr ""
 
-#: templates/single-question/answer-posting.php:159
+#: templates/single-question/answer-posting.php:150
 msgid "#Replay"
 msgstr ""
 
-#: templates/single-question/answer-posting.php:167
-msgid "Answer submitted."
-msgstr ""
-
 #: templates/single-question/answer-posting.php:168
-#, php-format
-msgid "Status: %s ."
+msgid "Answer submitted"
 msgstr ""
 
-#: templates/single-question/answer-posting.php:217
+#: templates/single-question/answer-posting.php:220
 msgid "Content is empty."
 msgstr ""
 
-#: templates/single-question/answer-posting.php:243
+#: templates/single-question/answer-posting.php:246
 msgid "Make your answer private."
 msgstr ""
 
-#: templates/single-question/answer-posting.php:253
+#: templates/single-question/answer-posting.php:255
 msgid "Your answer will be under review."
-msgstr ""
-
-#: templates/single-question/answer-reply.php:82
-#: templates/single-question/answer-reply.php:205
-#: templates/single-question/content.php:35
-#: templates/single-question/content.php:241
-#: templates/template-breadcrumb.php:69
-msgid "Anonymous"
 msgstr ""
 
 #: templates/single-question/answer-reply.php:122
@@ -1669,59 +1804,6 @@ msgstr ""
 msgid "Subscribers"
 msgstr ""
 
-#: templates/template-breadcrumb.php:41
-msgid "Notifications"
-msgstr ""
-
-#: templates/template-breadcrumb.php:79
-msgid "posted"
-msgstr ""
-
-#: templates/template-breadcrumb.php:79
-msgid "New Question"
-msgstr ""
-
-#: templates/template-breadcrumb.php:88
-msgid "Answered"
-msgstr ""
-
-#: templates/template-breadcrumb.php:97
-msgid "Choosed best answer"
-msgstr ""
-
-#: templates/template-breadcrumb.php:106
-msgid "Removed best answer"
-msgstr ""
-
-#: templates/template-breadcrumb.php:138
-msgid "Commented"
-msgstr ""
-
-#: templates/template-breadcrumb.php:175
-msgid "Flagged comment"
-msgstr ""
-
-#: templates/template-breadcrumb.php:192
-msgid "Vote Up"
-msgstr ""
-
-#: templates/template-breadcrumb.php:202
-msgid "Vote Down"
-msgstr ""
-
-#: templates/template-breadcrumb.php:213 templates/template-breadcrumb.php:222
-msgid "marked"
-msgstr ""
-
-#: templates/template-breadcrumb.php:244
-#, php-format
-msgid "flagged your %s"
-msgstr ""
-
-#: templates/template-breadcrumb.php:266
-msgid "unflagged "
-msgstr ""
-
 #: templates/template-migration.php:26
 msgid "Answers:"
 msgstr ""
@@ -1730,39 +1812,8 @@ msgstr ""
 msgid "Start Update"
 msgstr ""
 
-#: templates/template-myaccount.php:26
-#: templates/template-registration-form.php:65
-msgid "Register"
-msgstr ""
-
-#: templates/template-myaccount.php:65 templates/template-myaccount.php:79
-msgid "Login"
-msgstr ""
-
-#: templates/template-myaccount.php:76
-msgid "Username or email address"
-msgstr ""
-
-#: templates/template-myaccount.php:77
-#: templates/template-registration-form.php:52
-msgid "Password"
-msgstr ""
-
-#: templates/template-myaccount.php:78
-msgid "Remember Me"
-msgstr ""
-
-#: templates/template-myaccount.php:93
-#, php-format
-msgid "Please <a href=\"%s\">login</a> to access this page"
-msgstr ""
-
 #: templates/template-registration-form.php:46
 msgid "Username"
-msgstr ""
-
-#: templates/template-registration-form.php:58
-msgid "Email"
 msgstr ""
 
 #: templates/template-registration-form.php:83

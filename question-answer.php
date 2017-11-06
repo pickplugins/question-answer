@@ -3,7 +3,7 @@
 Plugin Name: Question Answer
 Plugin URI: https://www.pickplugins.com/product/question-answer/
 Description: Create Awesome Question and Answer Website in a Minute
-Version: 1.2.12
+Version: 1.2.13
 Text Domain: question-answer
 Author: pickplugins
 Author URI: http://pickplugins.com
@@ -48,7 +48,7 @@ class QuestionAnswer{
 		flush_rewrite_rules();
 		
 		wp_insert_term( 'General', 'question_cat', array(
-			'description'=> __('General', QA_TEXTDOMAIN),
+			'description'=> __('General', 'question-answer'),
 			'slug' => 'general',
 		) );
 				
@@ -84,7 +84,7 @@ class QuestionAnswer{
 		//load_textdomain('question-answer',WP_LANG_DIR .'/question-answer/question-answer-'. $locale .'.mo');
 		//load_plugin_textdomain( 'question-answer', false, plugin_basename( dirname( __FILE__ ) ) . '/languages/' ); 
 		
-		load_plugin_textdomain( QA_TEXTDOMAIN, false, plugin_basename( dirname( __FILE__ ) ) . '/languages/' ); 
+		load_plugin_textdomain( 'question-answer', false, plugin_basename( dirname( __FILE__ ) ) . '/languages/' );
 	}
 	
 	public function qa_loading_widgets() {
@@ -112,6 +112,8 @@ class QuestionAnswer{
 	public function qa_loading_functions() {
 		
 		require_once( QA_PLUGIN_DIR . 'includes/functions.php');
+		require_once( QA_PLUGIN_DIR . 'includes/deprecated.php');
+
 	}
 	
 	public function qa_loading_plugin() {
@@ -150,6 +152,12 @@ class QuestionAnswer{
 		require_once( QA_PLUGIN_DIR . 'includes/shortcodes/class-shortcode-registration.php');
 		//require_once( QA_PLUGIN_DIR . 'includes/shortcodes/class-shortcode-migration.php');
 		// require_once( QA_PLUGIN_DIR . 'includes/shortcodes/class-shortcode-breadcrumb.php');
+
+		require_once( QA_PLUGIN_DIR . 'includes/shortcodes/class-shortcode-qa-edit-account.php');
+		require_once( QA_PLUGIN_DIR . 'includes/shortcodes/class-shortcode-qa-my-account.php');
+		require_once( QA_PLUGIN_DIR . 'includes/shortcodes/class-shortcode-qa-my-questions.php');
+
+
 	}
 	
 	public function qa_declare_classes() {
@@ -157,7 +165,8 @@ class QuestionAnswer{
 		require_once( QA_PLUGIN_DIR . 'includes/classes/class-post-types.php');	
 		require_once( QA_PLUGIN_DIR . 'includes/classes/class-post-meta.php');	
 		require_once( QA_PLUGIN_DIR . 'includes/classes/class-post-meta-answer.php');	
-		require_once( QA_PLUGIN_DIR . 'includes/classes/class-functions.php');	
+		require_once( QA_PLUGIN_DIR . 'includes/classes/class-functions.php');
+		require_once( QA_PLUGIN_DIR . 'includes/classes/class-dashboard.php');
 		require_once( QA_PLUGIN_DIR . 'includes/classes/class-settings.php');	
 		require_once( QA_PLUGIN_DIR . 'includes/classes/class-question-column.php');	
 		require_once( QA_PLUGIN_DIR . 'includes/classes/class-answer-column.php');	
@@ -171,8 +180,8 @@ class QuestionAnswer{
 
 		$this->define('QA_PLUGIN_URL', plugins_url('/', __FILE__)  );
 		$this->define('QA_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
-		$this->define('QA_TEXTDOMAIN', 'question-answer' );
-		$this->define('QA_PLUGIN_NAME', __('Question Answer', QA_TEXTDOMAIN) );
+
+		$this->define('QA_PLUGIN_NAME', __('Question Answer', 'question-answer') );
 		$this->define('QA_PLUGIN_SUPPORT', 'http://www.pickplugins.com/questions/'  );
 		
 	}
@@ -207,7 +216,8 @@ class QuestionAnswer{
 		wp_enqueue_script('qa_front_scripts-form', plugins_url( '/assets/front/js/scripts-form.js' , __FILE__ ) , array( 'jquery' ));
 
         wp_enqueue_style('jquery-ui', QA_PLUGIN_URL.'assets/front/css/jquery-ui.css');
-		wp_enqueue_style('qa_style', QA_PLUGIN_URL.'assets/front/css/style.css');	
+		wp_enqueue_style('qa_style', QA_PLUGIN_URL.'assets/front/css/style.css');
+		wp_enqueue_style('qa_dashboard.css', QA_PLUGIN_URL.'assets/front/css/dashboard.css');
 		
 		//global
 		wp_enqueue_style('font-awesome', QA_PLUGIN_URL.'assets/global/css/font-awesome.css');

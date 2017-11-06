@@ -51,15 +51,15 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	}
 	
 	?>
-	<h2><?php echo __('Profile Management', QA_TEXTDOMAIN ); ?></h2>
+	<h2><?php echo __('Profile Management', 'question-answer' ); ?></h2>
 	
 	<div class="para-settings myaccount-profile-container">
 	
 		<ul class="tab-nav">
 			
-			<li nav="1" class="nav1 active"><i class="fa fa-folder"></i><?php echo __('Name', QA_TEXTDOMAIN ); ?></li>
-			<li nav="2" class="nav2"><i class="fa fa-envelope"></i><?php echo __('Contact', QA_TEXTDOMAIN ); ?></li>
-			<li nav="3" class="nav3"><i class="fa fa-user-secret"></i><?php echo __('About Yourself', QA_TEXTDOMAIN ); ?></li>
+			<li nav="1" class="nav1 active"><i class="fa fa-folder"></i><?php echo __('Name', 'question-answer' ); ?></li>
+			<li nav="2" class="nav2"><i class="fa fa-envelope"></i><?php echo __('Contact', 'question-answer' ); ?></li>
+			<li nav="3" class="nav3"><i class="fa fa-user-secret"></i><?php echo __('About Yourself', 'question-answer' ); ?></li>
 			
 		</ul>
 		
@@ -70,11 +70,11 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 				<div class="option-box">
 					<p class="option-title"></p>
 					
-					<p class="option-info"><?php echo __('First Name', QA_TEXTDOMAIN ); ?></p>
-					<input type="text" placeholder="<?php echo __('First name', QA_TEXTDOMAIN ); ?>" name="qa_first_name" value="<?php echo $qa_first_name; ?>" />
+					<p class="option-info"><?php echo __('First Name', 'question-answer' ); ?></p>
+					<input type="text" placeholder="<?php echo __('First name', 'question-answer' ); ?>" name="qa_first_name" value="<?php echo $qa_first_name; ?>" />
 					
-					<p class="option-info"><?php echo __('Last Name', QA_TEXTDOMAIN ); ?></p>
-					<input type="text" placeholder="<?php echo __('Last name', QA_TEXTDOMAIN ); ?>" name="qa_last_name" value="<?php echo $qa_last_name; ?>" />
+					<p class="option-info"><?php echo __('Last Name', 'question-answer' ); ?></p>
+					<input type="text" placeholder="<?php echo __('Last name', 'question-answer' ); ?>" name="qa_last_name" value="<?php echo $qa_last_name; ?>" />
 					
 				</div>	
 			</li>
@@ -84,10 +84,10 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 				<div class="option-box">
 					<p class="option-title"></p>
 
-					<p class="option-info"><?php echo __('Email (Required)', QA_TEXTDOMAIN ); ?></p>
+					<p class="option-info"><?php echo __('Email (Required)', 'question-answer' ); ?></p>
 					<input type="email" placeholder="yourname@email.com" name="qa_email" value="<?php echo $qa_email; ?>" />
 
-					<p class="option-info"><?php echo __('Website', QA_TEXTDOMAIN ); ?></p>
+					<p class="option-info"><?php echo __('Website', 'question-answer' ); ?></p>
 					<input type="text" placeholder="www.yourwebsite.com" name="qa_website" value="<?php echo $qa_website; ?>" />
 				</div>
 			</li>
@@ -96,8 +96,8 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 				<div class="option-box">
 					<p class="option-title"></p>
 
-					<p class="option-info"><?php echo __('Biographical Info', QA_TEXTDOMAIN ); ?></p>
-					<textarea placeholder="<?php echo __('Some text...', QA_TEXTDOMAIN ); ?> " name="description" rows="4" cols="50"><?php echo $description; ?></textarea>
+					<p class="option-info"><?php echo __('Biographical Info', 'question-answer' ); ?></p>
+					<textarea placeholder="<?php echo __('Some text...', 'question-answer' ); ?> " name="description" rows="4" cols="50"><?php echo $description; ?></textarea>
 					
 				</div>
 			</li>
@@ -105,7 +105,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 			
 		</ul>
 		<?php wp_nonce_field( 'qa_profile' ); ?>
-		<input type="submit" class="button qa-profile-savebutton" value="<?php echo __('Save Data', QA_TEXTDOMAIN ); ?>" />
+		<input type="submit" class="button qa-profile-savebutton" value="<?php echo __('Save Data', 'question-answer' ); ?>" />
 		</form>
 		
 	</div>

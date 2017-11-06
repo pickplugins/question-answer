@@ -12,7 +12,7 @@ class QAWidgetTags extends WP_Widget {
 
 	function __construct() {
 		
-		parent::__construct( 'qa_widget_tags', __('Question Answer - Tags', QA_TEXTDOMAIN), array( 'description' => __( 'Show Tags.', QA_TEXTDOMAIN ), ) );
+		parent::__construct( 'qa_widget_tags', __('Question Answer - Tags', 'question-answer'), array( 'description' => __( 'Show Tags.', 'question-answer' ), ) );
 	}
 
 	public function widget( $args, $instance ) {
@@ -83,7 +83,7 @@ class QAWidgetTags extends WP_Widget {
 
 	public function form( $instance ) {
 		
-		$title = isset( $instance[ 'title' ] ) ? $title = $instance[ 'title' ] : __( 'Tags', QA_TEXTDOMAIN );
+		$title = isset( $instance[ 'title' ] ) ? $title = $instance[ 'title' ] : __( 'Tags', 'question-answer' );
 		$max_count = isset( $instance[ 'max_count' ] ) ? $instance[ 'max_count' ] : 10;		
 		?>
 		<p>

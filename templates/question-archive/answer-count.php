@@ -28,5 +28,5 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	
 	?>
 	<div class="question-side-box">
-	<span class="answer-count"><?php echo $wp_answer_query->found_posts; ?></span><span class="answer-text"><?php echo __('Answer', QA_TEXTDOMAIN); ?></span>
+	<span class="answer-count"><?php echo $wp_answer_query->found_posts; ?></span><span class="answer-text"><?php echo __('Answer', 'question-answer'); ?></span>
 	</div>

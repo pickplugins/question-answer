@@ -90,18 +90,18 @@ class class_qa_addons{
 			$html.= '<div class="thumb"><a href="'.$values['item_link'].'"><img src="'.$values['thumb'].'" /></a></div>';			
 			$html.= '<div class="title"><a href="'.$values['item_link'].'">'.$values['title'].'</a></div>';
 			$html.= '<div class="content">'.$values['content'].'</div>';						
-			$html.= '<div class="meta version"><b>'.__('Version:', QA_TEXTDOMAIN).'</b> '.$values['version'].'</div>';
+			$html.= '<div class="meta version"><b>'.__('Version:', 'question-answer').'</b> '.$values['version'].'</div>';
 			
 			if($values['price']==0){
 				
-				$price = __('Free', QA_TEXTDOMAIN);
+				$price = __('Free', 'question-answer');
 				}
 			else{
 				$price = '$'.$values['price'];
 				
 				}		
-			$html.= '<div class="meta price"><b>'.__('Price:', QA_TEXTDOMAIN).'</b> '.$price.'</div>';							
-			$html.= '<div class="meta download"><a href="'.$values['item_link'].'">'.__('Download', QA_TEXTDOMAIN).'</a></div>';				
+			$html.= '<div class="meta price"><b>'.__('Price:', 'question-answer').'</b> '.$price.'</div>';							
+			$html.= '<div class="meta download"><a href="'.$values['item_link'].'">'.__('Download', 'question-answer').'</a></div>';				
 			
 			
 			
@@ -139,7 +139,7 @@ new class_qa_addons();
 
 <div class="wrap">
 
-	<div id="icon-tools" class="icon32"><br></div><?php echo "<h2>".sprintf(__('%s - Addons', QA_TEXTDOMAIN), QA_PLUGIN_NAME)."</h2>";?>
+	<div id="icon-tools" class="icon32"><br></div><?php echo "<h2>".sprintf(__('%s - Addons', 'question-answer'), QA_PLUGIN_NAME)."</h2>";?>
 
 		<div class="qa-addons">
         

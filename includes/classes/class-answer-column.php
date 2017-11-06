@@ -28,13 +28,13 @@ class class_qa_answer_column{
 		foreach ( $columns as $col_id => $col_label ) { $count++;
 
 			if ( $count == 3 )
-			$new['qa-answer-question'] = '<i class="fa fa-question"></i> ' . esc_html__( 'Question', QA_TEXTDOMAIN );
+			$new['qa-answer-question'] = '<i class="fa fa-question"></i> ' . esc_html__( 'Question', 'question-answer' );
 						
 			if( 'title' === $col_id )
-			$new[$col_id] = '<i class="fa fa-reply"></i> ' . esc_html__( 'Answer title', QA_TEXTDOMAIN );
+			$new[$col_id] = '<i class="fa fa-reply"></i> ' . esc_html__( 'Answer title', 'question-answer' );
 			
 			elseif ( 'author' === $col_id )
-			$new[$col_id] = '' . esc_html__( 'Answered by', QA_TEXTDOMAIN );
+			$new[$col_id] = '' . esc_html__( 'Answered by', 'question-answer' );
 			
 			else
 			$new[ $col_id ] = $col_label;
@@ -57,13 +57,13 @@ class class_qa_answer_column{
 				echo sprintf( '<a href="%s">%s</a>', "post.php?post=$qa_answer_question_id&action=edit", get_the_title($qa_answer_question_id) );
 				echo '<div class="row-actions">';
 				
-				echo sprintf(  '<span class="edit"><a href="%s" target="_blank" rel="permalink">'.__('Edit', QA_TEXTDOMAIN).'</a></span>', "post.php?post=$qa_answer_question_id&action=edit" );
+				echo sprintf(  '<span class="edit"><a href="%s" target="_blank" rel="permalink">'.__('Edit', 'question-answer').'</a></span>', "post.php?post=$qa_answer_question_id&action=edit" );
 				echo ' | ';
-				echo sprintf( '<span class="view"><a href="%s" target="_blank" rel="permalink">'.__('View', QA_TEXTDOMAIN).'</a></span>', get_the_permalink($qa_answer_question_id) );
+				echo sprintf( '<span class="view"><a href="%s" target="_blank" rel="permalink">'.__('View', 'question-answer').'</a></span>', get_the_permalink($qa_answer_question_id) );
 				
 				echo '</div>';
 			} else {
-				echo '<span class="red">'.__('This question is not exist any more !', QA_TEXTDOMAIN).'</span> ';
+				echo '<span class="red">'.__('This question is not exist any more !', 'question-answer').'</span> ';
 			}
 		}
 	}
@@ -94,11 +94,11 @@ class class_qa_answer_column{
 		$processing = ( ! isset( $_GET['qa_status'] ) || 'processing' === $this_sort ) ? 'selected' : '';
 		
 		$dropdown        = '<select id="qa_status" name="qa_status">';
-		$dropdown        .= "<option value='' $all>" . __( 'Any status', QA_TEXTDOMAIN ) . "</option>";
-		$dropdown        .= "<option value='pending' $pending>" . __( 'Pending', QA_TEXTDOMAIN ) . "</option>";
-		$dropdown        .= "<option value='processing' $processing>" . __( 'On discussion', QA_TEXTDOMAIN ) . "</option>";
-		$dropdown        .= "<option value='hold' $hold>" . __( 'On hold', QA_TEXTDOMAIN ) . "</option>";
-		$dropdown        .= "<option value='solved' $solved>" . __( 'Solved', QA_TEXTDOMAIN ) . "</option>";
+		$dropdown        .= "<option value='' $all>" . __( 'Any status', 'question-answer' ) . "</option>";
+		$dropdown        .= "<option value='pending' $pending>" . __( 'Pending', 'question-answer' ) . "</option>";
+		$dropdown        .= "<option value='processing' $processing>" . __( 'On discussion', 'question-answer' ) . "</option>";
+		$dropdown        .= "<option value='hold' $hold>" . __( 'On hold', 'question-answer' ) . "</option>";
+		$dropdown        .= "<option value='solved' $solved>" . __( 'Solved', 'question-answer' ) . "</option>";
 		$dropdown        .= '</select>';
 
 		echo $dropdown;

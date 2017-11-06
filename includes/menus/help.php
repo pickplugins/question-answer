@@ -18,12 +18,12 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 <div class="wrap">
 
-	<div id="icon-tools" class="icon32"><br></div><?php echo "<h2>".sprintf(__('%s Help', QA_TEXTDOMAIN), QA_PLUGIN_NAME)."</h2>";?>
+	<div id="icon-tools" class="icon32"><br></div><?php echo "<h2>".sprintf(__('%s Help', 'question-answer'), QA_PLUGIN_NAME)."</h2>";?>
 		
 	<div class="para-settings qa-admin-help">
     
         <ul class="tab-nav"> 
-            <li nav="1" class="nav1 active"><i class="fa fa-hand-o-right"></i> <?php _e('Help & Support', QA_TEXTDOMAIN); ?></li>
+            <li nav="1" class="nav1 active"><i class="fa fa-hand-o-right"></i> <?php _e('Help & Support', 'question-answer'); ?></li>
 
         </ul> <!-- tab-nav end -->      
     
@@ -33,15 +33,15 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
             
             
 				<div class="option-box">
-                    <p class="option-title"><?php _e('Need Help ?', QA_TEXTDOMAIN); ?></p>
-                    <p class="option-info"><?php _e('Feel free to contact with any issue for this plugin, Ask any question via forum', QA_TEXTDOMAIN); ?> <a href="<?php echo QA_PLUGIN_SUPPORT; ?>"><?php echo QA_PLUGIN_SUPPORT; ?></a><br />
+                    <p class="option-title"><?php _e('Need Help ?', 'question-answer'); ?></p>
+                    <p class="option-info"><?php _e('Feel free to contact with any issue for this plugin, Ask any question via forum', 'question-answer'); ?> <a href="<?php echo QA_PLUGIN_SUPPORT; ?>"><?php echo QA_PLUGIN_SUPPORT; ?></a><br />
 
                     </p>
 
                 </div>     
             
                 <div class="option-box">
-                    <p class="option-title"><?php _e('FAQ',QA_TEXTDOMAIN); ?></p>
+                    <p class="option-title"><?php _e('FAQ','question-answer'); ?></p>
                     <p class="option-info"></p>
                     
                     

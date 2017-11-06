@@ -32,7 +32,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 $user_ID		= get_current_user_id();;
 if( !empty($user_ID) ) {
     $status = 1;
-    $tt_text = '<i class="fa fa-thumbs-down"></i> '.__('Report this', QA_TEXTDOMAIN);
+    $tt_text = '<i class="fa fa-thumbs-down"></i> '.__('Report this', 'question-answer');
 }
 
 $qa_flag 	= get_post_meta( get_the_ID(), 'qa_flag', true );
@@ -62,7 +62,7 @@ $flag_count 		= sizeof($qa_flag);
 		$best_answer_id		= get_post_meta( $question_id, 'qa_meta_best_answer', true );
 		$best_answer_class 	= ( get_the_ID() == $best_answer_id ) ? 'best_answer' : ''; 
 		
-		$best_answer_html = '<div title="'.__('Choose best answer', QA_TEXTDOMAIN).'" class="qa-best-answer '.$best_answer_class.'" answer_id="'.get_the_ID().'"><i class="fa fa-check" aria-hidden="true"></i></div>';
+		$best_answer_html = '<div title="'.__('Choose best answer', 'question-answer').'" class="qa-best-answer '.$best_answer_class.'" answer_id="'.get_the_ID().'"><i class="fa fa-check" aria-hidden="true"></i></div>';
 		
 		echo apply_filters('qa_filter_answer_best_html', $best_answer_html);
 		
@@ -96,18 +96,18 @@ $flag_count 		= sizeof($qa_flag);
             if( $author_id== $current_user->ID ){ 
 			
 			echo '<span class="qa-edit-answer">';
-            echo apply_filters( 'qa_filter_single_answer_meta_edit_answer', '<a href="?answer-edit='.get_the_ID().'#single-answer-'.get_the_ID().'">'.__('Edit', QA_TEXTDOMAIN).'</a>' );
+            echo apply_filters( 'qa_filter_single_answer_meta_edit_answer', '<a href="?answer-edit='.get_the_ID().'#single-answer-'.get_the_ID().'">'.__('Edit', 'question-answer').'</a>' );
             echo '</span>';     
             }
 
 
              if( array_key_exists($user_ID, $qa_flag) && $qa_flag[$user_ID]['type']=='flag'  ) {
 
-                $flag_text = __('Unflag', QA_TEXTDOMAIN);
+                $flag_text = __('Unflag', 'question-answer');
 
              } else {
 
-                 $flag_text = __('Flag', QA_TEXTDOMAIN);
+                 $flag_text = __('Flag', 'question-answer');
              }
 
              echo '<div class="qa-flag qa-flag-action float_right" post_id="'.get_the_ID().'"><i class="fa fa-flag flag-icon"></i> <span class="flag-text">'.$flag_text.'</span><span class="flag-count">('.$flag_count.')</span> <span class="waiting"><i class="fa fa-cog fa-spin"></i></span> </div>';
@@ -132,7 +132,7 @@ $flag_count 		= sizeof($qa_flag);
             <?php if( $qa_answer_is_private == 1 ){
 				
 				echo '<span class="qa-answer-private">';
-				echo apply_filters( 'qa_filter_single_answer_meta_private', __('Private', QA_TEXTDOMAIN) );
+				echo apply_filters( 'qa_filter_single_answer_meta_private', __('Private', 'question-answer') );
 				echo '</span>';
 				}  
 				?>
@@ -161,7 +161,7 @@ $flag_count 		= sizeof($qa_flag);
 		else{
 			
 			?>
-			<div class="qa-answer-content"> <span class="qa-lock"> <i class="fa fa-lock"></i> <?php echo __('Answer is private, only admins or its author or questioner can read.',QA_TEXTDOMAIN); ?></span></div>	
+			<div class="qa-answer-content"> <span class="qa-lock"> <i class="fa fa-lock"></i> <?php echo __('Answer is private, only admins or its author or questioner can read.','question-answer'); ?></span></div>
 			<?php 
 			
 			}

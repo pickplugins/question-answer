@@ -12,13 +12,13 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	
 	if ( ! function_exists( 'qa_action_myaccount_profile_function' ) ) {
 		function qa_action_myaccount_profile_function() {
-			require_once( QA_PLUGIN_DIR .'templates/myaccount/profile.php');
+			require_once( QA_PLUGIN_DIR .'templates/my-account/profile.php');
 		}
 	}
 	
 	if ( ! function_exists( 'qa_action_myaccount_questions_function' ) ) {
 		function qa_action_myaccount_questions_function() {
-			require_once( QA_PLUGIN_DIR .'templates/myaccount/question-list.php');
+			require_once( QA_PLUGIN_DIR .'templates/my-account/question-list.php');
 		}
 	}
 	

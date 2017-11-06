@@ -29,7 +29,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	) );
 	
 	?>
-	<h2><?php echo __('Questions by You', QA_TEXTDOMAIN); ?></h2>
+	<h2><?php echo __('Questions by You', 'question-answer'); ?></h2>
     
     
     
@@ -94,18 +94,18 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 		global $post;
 		
 		if( 'pending' === get_post_status( $post->ID ) ) {
-				return '<div class="qa_queued">'.__('Pending', QA_TEXTDOMAIN).' <i class="fa fa-caret-down"></i></div>';
+				return '<div class="qa_queued">'.__('Pending', 'question-answer').' <i class="fa fa-caret-down"></i></div>';
 		} else {
 			$status_meta 	= get_post_meta( $post->ID, 'qa_question_status', true );
 			
 			if( 'processing' === $status_meta )
-				return '<div class="qa_publish">'.__('On discussion', QA_TEXTDOMAIN).' <i class="fa fa-caret-up"></i></div>';
+				return '<div class="qa_publish">'.__('On discussion', 'question-answer').' <i class="fa fa-caret-up"></i></div>';
 			
 			if( 'hold' === $status_meta )
-				return '<div class="qa_hold">'.__('On Hold', QA_TEXTDOMAIN).' <i class="fa fa-hand-paper-o"></i></div>';
+				return '<div class="qa_hold">'.__('On Hold', 'question-answer').' <i class="fa fa-hand-paper-o"></i></div>';
 			
 			if( 'solved' === $status_meta ) 
-				return '<div class="qa_solved">'.__('Solved', QA_TEXTDOMAIN).' <i class="fa fa-check"></i></div>';
+				return '<div class="qa_solved">'.__('Solved', 'question-answer').' <i class="fa fa-check"></i></div>';
 		}
 	}
 	
@@ -128,7 +128,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 			'meta_query' => $meta_query,
 		) );
 	
-		if( $wp_query_answer->found_posts > 0 )  return $wp_query_answer->found_posts. ' '.__('Answers', QA_TEXTDOMAIN);
+		if( $wp_query_answer->found_posts > 0 )  return $wp_query_answer->found_posts. ' '.__('Answers', 'question-answer');
 		
 		return '-';
 	}

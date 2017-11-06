@@ -32,5 +32,5 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	
 	?>
 	<div class="question-side-box">
-	<span class="view-count"><?php echo $qa_view_count; ?></span><span class="answer-text"><?php echo __('View', QA_TEXTDOMAIN); ?></span>
+	<span class="view-count"><?php echo $qa_view_count; ?></span><span class="answer-text"><?php echo __('View', 'question-answer'); ?></span>
 	</div>   

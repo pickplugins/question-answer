@@ -23,7 +23,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 		if( $qa_myaccount_show_register_form == 'yes' ) {
 			
 			echo '<div class="qa_register">';
-			echo '<h3>'.__('Register', QA_TEXTDOMAIN).'</h3>';	
+			echo '<h3>'.__('Register', 'question-answer').'</h3>';	
 			echo do_shortcode('[qa_registration_form]');
 			echo '</div>';
 			
@@ -62,7 +62,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 			
 			
 			echo '<div class="qa_login">';
-			echo '<h3>'.__('Login', QA_TEXTDOMAIN).'</h3>';	
+			echo '<h3>'.__('Login', 'question-answer').'</h3>';	
 			
 			$args = array(
 				'echo'           => true,
@@ -73,10 +73,10 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 				'id_password'    => 'user_pass',
 				'id_remember'    => 'rememberme',
 				'id_submit'      => 'wp-submit',
-				'label_username' => __( 'Username or email address', QA_TEXTDOMAIN ),
-				'label_password' => __( 'Password' , QA_TEXTDOMAIN),
-				'label_remember' => __( 'Remember Me', QA_TEXTDOMAIN ),
-				'label_log_in'   => __( 'Login', QA_TEXTDOMAIN ),
+				'label_username' => __( 'Username or email address', 'question-answer' ),
+				'label_password' => __( 'Password' , 'question-answer'),
+				'label_remember' => __( 'Remember Me', 'question-answer' ),
+				'label_log_in'   => __( 'Login', 'question-answer' ),
 				'value_username' => '',
 				'value_remember' => false
 			);
@@ -90,7 +90,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 			
 		if( $token == 0 )
 			
-			 echo sprintf(__('Please <a href="%s">login</a> to access this page', QA_TEXTDOMAIN), $qa_page_myaccount_url);
+			 echo sprintf(__('Please <a href="%s">login</a> to access this page', 'question-answer'), $qa_page_myaccount_url);
 	}	
 	else {
 	

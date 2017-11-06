@@ -21,7 +21,7 @@ class class_qa_post_meta_question{
 		if (in_array($post_type, $post_types)) {
 		
 			add_meta_box('question_metabox',
-				__( 'Question Data Box', QA_TEXTDOMAIN ),
+				__( 'Question Data Box', 'question-answer' ),
 				array($this, 'question_meta_box_function'),
 				$post_type,
 				'side',
@@ -39,7 +39,7 @@ class class_qa_post_meta_question{
 		$question_status 	= get_post_meta( $post -> ID, 'qa_question_status', true);
 		
 		echo '<div class="option-box">';
-		echo '<p class="option-info">'.__('Question Status',QA_TEXTDOMAIN).'</p>';
+		echo '<p class="option-info">'.__('Question Status','question-answer').'</p>';
 		echo '<select name="qa_question_status">';		
 		foreach( $class_qa_functions->qa_question_status() as $key => $value ) {			
 			$selected = ( $key == $question_status ) ? 'selected' : '';
@@ -54,10 +54,10 @@ class class_qa_post_meta_question{
 		$selected = ( in_array( $post->ID, $featured ) ) ? 'selected' : '';
 		
 		echo '<div class="option-box">';
-		echo '<p class="option-info">'.__('Featured question?', QA_TEXTDOMAIN).'</p>';
+		echo '<p class="option-info">'.__('Featured question?', 'question-answer').'</p>';
 		echo '<select name="qa_question_featured">';		
-		echo __('<option value="no">No</option>', QA_TEXTDOMAIN );
-		echo sprintf( __('<option %s value="yes">Yes</option>', QA_TEXTDOMAIN ), $selected );
+		echo __('<option value="no">No</option>', 'question-answer' );
+		echo sprintf( __('<option %s value="yes">Yes</option>', 'question-answer' ), $selected );
 		echo '</select>';
 		echo '</div>'; // option-box featured
 		

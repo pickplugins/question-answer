@@ -32,7 +32,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	} else {
 		$userid = 0;
 		if( $qa_account_required_post_question=='yes'){
-			echo sprintf (__('Please <a href="%s">login</a> to submit question.', QA_TEXTDOMAIN), $qa_page_myaccount_url ) ;
+			echo sprintf (__('Please <a href="%s">login</a> to submit question.', 'question-answer'), $qa_page_myaccount_url ) ;
 			return;
 		}
 	}
@@ -76,20 +76,20 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 		if(empty($_POST['post_title'])){
 			
 			 $validations['post_title'] = '';
-			 echo '<div class="failed"><b><i class="fa fa-exclamation-circle" aria-hidden="true"></i> '.$post_title['title'].'</b> '.__('missing', QA_TEXTDOMAIN).'.</div>';
+			 echo '<div class="failed"><b><i class="fa fa-exclamation-circle" aria-hidden="true"></i> '.$post_title['title'].'</b> '.__('missing', 'question-answer').'.</div>';
 			}
 		
 		if(empty($_POST['post_content'])){
 			
 			 $validations['post_content'] = '';
-			 echo '<div class="failed"><b><i class="fa fa-exclamation-circle" aria-hidden="true"></i> '.$post_content['title'].'</b> '.__('missing', QA_TEXTDOMAIN).'.</div>';
+			 echo '<div class="failed"><b><i class="fa fa-exclamation-circle" aria-hidden="true"></i> '.$post_content['title'].'</b> '.__('missing', 'question-answer').'.</div>';
 			}		
 		
 		if($qa_reCAPTCHA_enable_question=='yes'){
 			if(empty($_POST['g-recaptcha-response'])){
 				
 				 $validations['recaptcha'] = '';
-				 echo '<div class="failed"><b><i class="fa fa-exclamation-circle" aria-hidden="true"></i> '.$recaptcha['title'].'</b> '.__('missing', QA_TEXTDOMAIN).'.</div>';
+				 echo '<div class="failed"><b><i class="fa fa-exclamation-circle" aria-hidden="true"></i> '.$recaptcha['title'].'</b> '.__('missing', 'question-answer').'.</div>';
 				}
 			
 			}
@@ -102,7 +102,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 				if( !empty( $valid) ) {
 				// if( empty( $_POST[$field_key] ) ) {
 					$validations[$field_key] = '';
-					echo '<div class="failed"><b><i class="fa fa-exclamation-circle"></i></b> '.sprintf(__( '<b>%s</b> missing', QA_TEXTDOMAIN ), $field_details['title'] ).'</div>';
+					echo '<div class="failed"><b><i class="fa fa-exclamation-circle"></i></b> '.sprintf(__( '<b>%s</b> missing', 'question-answer' ), $field_details['title'] ).'</div>';
 				}
 			
 			}
@@ -119,7 +119,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 			if( !empty( $valid) ) {
 			// if( empty( $_POST[$field_key] ) ) {
 				$validations[$field_key] = '';
-				echo '<div class="failed"><b><i class="fa fa-exclamation-circle"></i></b> '.sprintf(__( '<b>%s</b> missing', QA_TEXTDOMAIN ), $field_details['title'] ).'</div>';
+				echo '<div class="failed"><b><i class="fa fa-exclamation-circle"></i></b> '.sprintf(__( '<b>%s</b> missing', 'question-answer' ), $field_details['title'] ).'</div>';
 			}
 		}
 			
@@ -211,8 +211,8 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 			//var_dump(get_post_stati());
 
-			echo '<div class="success"><i class="fa fa-check"></i> '.__('Question Submitted.', QA_TEXTDOMAIN).'</div>';				
-			echo '<div class="success"><i class="fa fa-check"></i> '.__('Submission Status:', QA_TEXTDOMAIN).' '.ucfirst($qa_submitted_post_status).'</div>';	
+			echo '<div class="success"><i class="fa fa-check"></i> '.__('Question Submitted.', 'question-answer').'</div>';				
+			echo '<div class="success"><i class="fa fa-check"></i> '.__('Submission Status:', 'question-answer').' '.ucfirst($qa_submitted_post_status).'</div>';	
 
 
 		} else {
@@ -288,7 +288,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 			
 			wp_nonce_field( 'qa_question' ); ?>
-			<input type="submit"  name="submit" value="<?php _e('Submit', QA_TEXTDOMAIN); ?>" />
+			<input type="submit"  name="submit" value="<?php _e('Submit', 'question-answer'); ?>" />
 		</div>
     </form>
         

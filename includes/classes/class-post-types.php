@@ -22,8 +22,8 @@ class class_qa_post_types{
 		if ( post_type_exists( "question" ) )
 		return;
 
-		$singular  = __( 'Question', QA_TEXTDOMAIN );
-		$plural    = __( 'Questions', QA_TEXTDOMAIN );
+		$singular  = __( 'Question', 'question-answer' );
+		$plural    = __( 'Questions', 'question-answer' );
 	 
 	 
 		register_post_type( "question",
@@ -31,21 +31,21 @@ class class_qa_post_types{
 				'labels' => array(
 					'name' 					=> $plural,
 					'singular_name' 		=> $singular,
-					'menu_name'             => __( $singular, QA_TEXTDOMAIN ),
-					'all_items'             => sprintf( __( 'All %s', QA_TEXTDOMAIN ), $plural ),
-					'add_new' 				=> __( 'Add '.$singular, QA_TEXTDOMAIN ),
-					'add_new_item' 			=> sprintf( __( 'Add %s', QA_TEXTDOMAIN ), $singular ),
-					'edit' 					=> __( 'Edit', QA_TEXTDOMAIN ),
-					'edit_item' 			=> sprintf( __( 'Edit %s', QA_TEXTDOMAIN ), $singular ),
-					'new_item' 				=> sprintf( __( 'New %s', QA_TEXTDOMAIN ), $singular ),
-					'view' 					=> sprintf( __( 'View %s', QA_TEXTDOMAIN ), $singular ),
-					'view_item' 			=> sprintf( __( 'View %s', QA_TEXTDOMAIN ), $singular ),
-					'search_items' 			=> sprintf( __( 'Search %s', QA_TEXTDOMAIN ), $plural ),
-					'not_found' 			=> sprintf( __( 'No %s found', QA_TEXTDOMAIN ), $plural ),
-					'not_found_in_trash' 	=> sprintf( __( 'No %s found in trash', QA_TEXTDOMAIN ), $plural ),
-					'parent' 				=> sprintf( __( 'Parent %s', QA_TEXTDOMAIN ), $singular )
+					'menu_name'             => __( $singular, 'question-answer' ),
+					'all_items'             => sprintf( __( 'All %s', 'question-answer' ), $plural ),
+					'add_new' 				=> __( 'Add '.$singular, 'question-answer' ),
+					'add_new_item' 			=> sprintf( __( 'Add %s', 'question-answer' ), $singular ),
+					'edit' 					=> __( 'Edit', 'question-answer' ),
+					'edit_item' 			=> sprintf( __( 'Edit %s', 'question-answer' ), $singular ),
+					'new_item' 				=> sprintf( __( 'New %s', 'question-answer' ), $singular ),
+					'view' 					=> sprintf( __( 'View %s', 'question-answer' ), $singular ),
+					'view_item' 			=> sprintf( __( 'View %s', 'question-answer' ), $singular ),
+					'search_items' 			=> sprintf( __( 'Search %s', 'question-answer' ), $plural ),
+					'not_found' 			=> sprintf( __( 'No %s found', 'question-answer' ), $plural ),
+					'not_found_in_trash' 	=> sprintf( __( 'No %s found in trash', 'question-answer' ), $plural ),
+					'parent' 				=> sprintf( __( 'Parent %s', 'question-answer' ), $singular )
 				),
-				'description' => sprintf( __( 'This is where you can create and manage %s.', QA_TEXTDOMAIN ), $plural ),
+				'description' => sprintf( __( 'This is where you can create and manage %s.', 'question-answer' ), $plural ),
 				'public' 				=> true,
 				'show_ui' 				=> true,
 				'capability_type' 		=> 'post',
@@ -62,8 +62,8 @@ class class_qa_post_types{
 			) )
 		); 
 			
-			$singular  = __( 'Question Category', QA_TEXTDOMAIN );
-			$plural    = __( 'Questions Categories', QA_TEXTDOMAIN );
+			$singular  = __( 'Question Category', 'question-answer' );
+			$plural    = __( 'Questions Categories', 'question-answer' );
 	 
 			register_taxonomy( "question_cat",
 				apply_filters( 'register_taxonomy_question_cat_object_type', array( 'question' ) ),
@@ -76,14 +76,14 @@ class class_qa_post_types{
 						'name'              => $plural,
 						'singular_name'     => $singular,
 						'menu_name'         => ucwords( $plural ),
-						'search_items'      => sprintf( __( 'Search %s', QA_TEXTDOMAIN ), $plural ),
-						'all_items'         => sprintf( __( 'All %s', QA_TEXTDOMAIN ), $plural ),
-						'parent_item'       => sprintf( __( 'Parent %s', QA_TEXTDOMAIN ), $singular ),
-						'parent_item_colon' => sprintf( __( 'Parent %s:', QA_TEXTDOMAIN ), $singular ),
-						'edit_item'         => sprintf( __( 'Edit %s', QA_TEXTDOMAIN ), $singular ),
-						'update_item'       => sprintf( __( 'Update %s', QA_TEXTDOMAIN ), $singular ),
-						'add_new_item'      => sprintf( __( 'Add New %s', QA_TEXTDOMAIN ), $singular ),
-						'new_item_name'     => sprintf( __( 'New %s Name', QA_TEXTDOMAIN ),  $singular )
+						'search_items'      => sprintf( __( 'Search %s', 'question-answer' ), $plural ),
+						'all_items'         => sprintf( __( 'All %s', 'question-answer' ), $plural ),
+						'parent_item'       => sprintf( __( 'Parent %s', 'question-answer' ), $singular ),
+						'parent_item_colon' => sprintf( __( 'Parent %s:', 'question-answer' ), $singular ),
+						'edit_item'         => sprintf( __( 'Edit %s', 'question-answer' ), $singular ),
+						'update_item'       => sprintf( __( 'Update %s', 'question-answer' ), $singular ),
+						'add_new_item'      => sprintf( __( 'Add New %s', 'question-answer' ), $singular ),
+						'new_item_name'     => sprintf( __( 'New %s Name', 'question-answer' ),  $singular )
 	            	),
 		            'show_ui' 				=> true,
 		            'public' 	     		=> true,
@@ -97,8 +97,8 @@ class class_qa_post_types{
 			
 			
 			
-			$singular  = __( 'Question Tag', QA_TEXTDOMAIN );
-			$plural    = __( 'Question Tags', QA_TEXTDOMAIN );
+			$singular  = __( 'Question Tag', 'question-answer' );
+			$plural    = __( 'Question Tags', 'question-answer' );
 	 
 			register_taxonomy( "question_tags",
 				apply_filters( 'register_taxonomy_question_tag_object_type', array( 'question' ) ),
@@ -111,14 +111,14 @@ class class_qa_post_types{
 						'name'              => $plural,
 						'singular_name'     => $singular,
 						'menu_name'         => ucwords( $plural ),
-						'search_items'      => sprintf( __( 'Search %s', QA_TEXTDOMAIN ), $plural ),
-						'all_items'         => __(  sprintf( 'All %s',$plural   ), QA_TEXTDOMAIN ),
-						'parent_item'       => sprintf( __( 'Parent %s', QA_TEXTDOMAIN ), $singular ),
-						'parent_item_colon' => sprintf( __( 'Parent %s:', QA_TEXTDOMAIN ), $singular ),
-						'edit_item'         => sprintf( __( 'Edit %s', QA_TEXTDOMAIN ), $singular ),
-						'update_item'       => sprintf( __( 'Update %s', QA_TEXTDOMAIN ), $singular ),
-						'add_new_item'      => sprintf( __( 'Add New %s', QA_TEXTDOMAIN ), $singular ),
-						'new_item_name'     => sprintf( __( 'New %s Name', QA_TEXTDOMAIN ),  $singular )
+						'search_items'      => sprintf( __( 'Search %s', 'question-answer' ), $plural ),
+						'all_items'         => __(  sprintf( 'All %s',$plural   ), 'question-answer' ),
+						'parent_item'       => sprintf( __( 'Parent %s', 'question-answer' ), $singular ),
+						'parent_item_colon' => sprintf( __( 'Parent %s:', 'question-answer' ), $singular ),
+						'edit_item'         => sprintf( __( 'Edit %s', 'question-answer' ), $singular ),
+						'update_item'       => sprintf( __( 'Update %s', 'question-answer' ), $singular ),
+						'add_new_item'      => sprintf( __( 'Add New %s', 'question-answer' ), $singular ),
+						'new_item_name'     => sprintf( __( 'New %s Name', 'question-answer' ),  $singular )
 					),
 					'show_ui' 				=> true,
 					'public' 	     		=> true,
@@ -137,8 +137,8 @@ class class_qa_post_types{
 		
 		if ( post_type_exists( "answer" ) ) return;
 
-		$singular  = __( 'Answer', QA_TEXTDOMAIN );
-		$plural    = __( 'Answers', QA_TEXTDOMAIN );
+		$singular  = __( 'Answer', 'question-answer' );
+		$plural    = __( 'Answers', 'question-answer' );
 	 
 	 
 		register_post_type( "answer",
@@ -146,21 +146,21 @@ class class_qa_post_types{
 				'labels' => array(
 					'name' 					=> $plural,
 					'singular_name' 		=> $singular,
-					'menu_name'             => __( $singular, QA_TEXTDOMAIN ),
-					'all_items'             => __( sprintf(  'All %s', $plural ), QA_TEXTDOMAIN ),
-					'add_new' 				=> __( 'Add '.$singular, QA_TEXTDOMAIN ),
-					'add_new_item' 			=> sprintf( __( 'Add %s', QA_TEXTDOMAIN ), $singular ),
-					'edit' 					=> __( 'Edit', QA_TEXTDOMAIN ),
-					'edit_item' 			=> sprintf( __( 'Edit %s', QA_TEXTDOMAIN ), $singular ),
-					'new_item' 				=> sprintf( __( 'New %s', QA_TEXTDOMAIN ), $singular ),
-					'view' 					=> sprintf( __( 'View %s', QA_TEXTDOMAIN ), $singular ),
-					'view_item' 			=> sprintf( __( 'View %s', QA_TEXTDOMAIN ), $singular ),
-					'search_items' 			=> sprintf( __( 'Search %s', QA_TEXTDOMAIN ), $plural ),
-					'not_found' 			=> sprintf( __( 'No %s found', QA_TEXTDOMAIN ), $plural ),
-					'not_found_in_trash' 	=> sprintf( __( 'No %s found in trash', QA_TEXTDOMAIN ), $plural ),
-					'parent' 				=> sprintf( __( 'Parent %s', QA_TEXTDOMAIN ), $singular )
+					'menu_name'             => __( $singular, 'question-answer' ),
+					'all_items'             => __( sprintf(  'All %s', $plural ), 'question-answer' ),
+					'add_new' 				=> __( 'Add '.$singular, 'question-answer' ),
+					'add_new_item' 			=> sprintf( __( 'Add %s', 'question-answer' ), $singular ),
+					'edit' 					=> __( 'Edit', 'question-answer' ),
+					'edit_item' 			=> sprintf( __( 'Edit %s', 'question-answer' ), $singular ),
+					'new_item' 				=> sprintf( __( 'New %s', 'question-answer' ), $singular ),
+					'view' 					=> sprintf( __( 'View %s', 'question-answer' ), $singular ),
+					'view_item' 			=> sprintf( __( 'View %s', 'question-answer' ), $singular ),
+					'search_items' 			=> sprintf( __( 'Search %s', 'question-answer' ), $plural ),
+					'not_found' 			=> sprintf( __( 'No %s found', 'question-answer' ), $plural ),
+					'not_found_in_trash' 	=> sprintf( __( 'No %s found in trash', 'question-answer' ), $plural ),
+					'parent' 				=> sprintf( __( 'Parent %s', 'question-answer' ), $singular )
 				),
-				'description' => sprintf( __( 'This is where you can create and manage %s.', QA_TEXTDOMAIN ), $plural ),
+				'description' => sprintf( __( 'This is where you can create and manage %s.', 'question-answer' ), $plural ),
 				'public' 				=> true,
 				'show_ui' 				=> true,
 				'capability_type' 		=> 'post',
@@ -186,8 +186,8 @@ class class_qa_post_types{
 
         if ( post_type_exists( "qa_keyword" ) ) return;
 
-        $singular  = __( 'Keyword', QA_TEXTDOMAIN );
-        $plural    = __( 'Keywords', QA_TEXTDOMAIN );
+        $singular  = __( 'Keyword', 'question-answer' );
+        $plural    = __( 'Keywords', 'question-answer' );
 
 
         register_post_type( "qa_keyword",
@@ -195,21 +195,21 @@ class class_qa_post_types{
                 'labels' => array(
                     'name' 					=> $plural,
                     'singular_name' 		=> $singular,
-                    'menu_name'             => __( $singular, QA_TEXTDOMAIN ),
-                    'all_items'             => __( sprintf(  'All %s', $plural ), QA_TEXTDOMAIN ),
-                    'add_new' 				=> __( 'Add '.$singular, QA_TEXTDOMAIN ),
-                    'add_new_item' 			=> sprintf( __( 'Add %s', QA_TEXTDOMAIN ), $singular ),
-                    'edit' 					=> __( 'Edit', QA_TEXTDOMAIN ),
-                    'edit_item' 			=> sprintf( __( 'Edit %s', QA_TEXTDOMAIN ), $singular ),
-                    'new_item' 				=> sprintf( __( 'New %s', QA_TEXTDOMAIN ), $singular ),
-                    'view' 					=> sprintf( __( 'View %s', QA_TEXTDOMAIN ), $singular ),
-                    'view_item' 			=> sprintf( __( 'View %s', QA_TEXTDOMAIN ), $singular ),
-                    'search_items' 			=> sprintf( __( 'Search %s', QA_TEXTDOMAIN ), $plural ),
-                    'not_found' 			=> sprintf( __( 'No %s found', QA_TEXTDOMAIN ), $plural ),
-                    'not_found_in_trash' 	=> sprintf( __( 'No %s found in trash', QA_TEXTDOMAIN ), $plural ),
-                    'parent' 				=> sprintf( __( 'Parent %s', QA_TEXTDOMAIN ), $singular )
+                    'menu_name'             => __( $singular, 'question-answer' ),
+                    'all_items'             => __( sprintf(  'All %s', $plural ), 'question-answer' ),
+                    'add_new' 				=> __( 'Add '.$singular, 'question-answer' ),
+                    'add_new_item' 			=> sprintf( __( 'Add %s', 'question-answer' ), $singular ),
+                    'edit' 					=> __( 'Edit', 'question-answer' ),
+                    'edit_item' 			=> sprintf( __( 'Edit %s', 'question-answer' ), $singular ),
+                    'new_item' 				=> sprintf( __( 'New %s', 'question-answer' ), $singular ),
+                    'view' 					=> sprintf( __( 'View %s', 'question-answer' ), $singular ),
+                    'view_item' 			=> sprintf( __( 'View %s', 'question-answer' ), $singular ),
+                    'search_items' 			=> sprintf( __( 'Search %s', 'question-answer' ), $plural ),
+                    'not_found' 			=> sprintf( __( 'No %s found', 'question-answer' ), $plural ),
+                    'not_found_in_trash' 	=> sprintf( __( 'No %s found in trash', 'question-answer' ), $plural ),
+                    'parent' 				=> sprintf( __( 'Parent %s', 'question-answer' ), $singular )
                 ),
-                'description' => sprintf( __( 'This is where you can create and manage %s.', QA_TEXTDOMAIN ), $plural ),
+                'description' => sprintf( __( 'This is where you can create and manage %s.', 'question-answer' ), $plural ),
                 'public' 				=> true,
                 'show_ui' 				=> true,
                 'capability_type' 		=> 'post',
@@ -255,7 +255,7 @@ class class_qa_post_types{
 				'exclude_from_search'       => false,
 				'show_in_admin_all_list'    => true,
 				'show_in_admin_status_list' => true,
-				'label_count'               => _n_noop( "$custom_status <span class='count'>(%s)</span>", "$custom_status <span class='count'>(%s)</span>", QA_TEXTDOMAIN ),
+				'label_count'               => _n_noop( "$custom_status <span class='count'>(%s)</span>", "$custom_status <span class='count'>(%s)</span>", 'question-answer' ),
 			);
 
 			register_post_status( $id, $args );

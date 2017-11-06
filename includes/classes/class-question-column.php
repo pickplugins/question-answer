@@ -36,11 +36,11 @@ class class_qa_question_column{
 		$processing = ( ! isset( $_GET['qa_status'] ) || 'processing' === $this_sort ) ? 'selected' : '';
 		
 		$dropdown        = '<select id="qa_status" name="qa_status">';
-		$dropdown        .= "<option value='' $all>" . __( 'Any status', QA_TEXTDOMAIN ) . "</option>";
-		$dropdown        .= "<option value='pending' $pending>" . __( 'Pending', QA_TEXTDOMAIN ) . "</option>";
-		$dropdown        .= "<option value='processing' $processing>" . __( 'On discussion', QA_TEXTDOMAIN ) . "</option>";
-		$dropdown        .= "<option value='hold' $hold>" . __( 'On hold', QA_TEXTDOMAIN ) . "</option>";
-		$dropdown        .= "<option value='solved' $solved>" . __( 'Solved', QA_TEXTDOMAIN ) . "</option>";
+		$dropdown        .= "<option value='' $all>" . __( 'Any status', 'question-answer' ) . "</option>";
+		$dropdown        .= "<option value='pending' $pending>" . __( 'Pending', 'question-answer' ) . "</option>";
+		$dropdown        .= "<option value='processing' $processing>" . __( 'On discussion', 'question-answer' ) . "</option>";
+		$dropdown        .= "<option value='hold' $hold>" . __( 'On hold', 'question-answer' ) . "</option>";
+		$dropdown        .= "<option value='solved' $solved>" . __( 'Solved', 'question-answer' ) . "</option>";
 		$dropdown        .= '</select>';
 
 		echo $dropdown;
@@ -97,26 +97,26 @@ class class_qa_question_column{
 		foreach ( $columns as $col_id => $col_label ) { $count++;
 
 			if ( $count == 3 ) 
-			$new['qa-status'] = '' . esc_html__( 'Question status', QA_TEXTDOMAIN );
+			$new['qa-status'] = '' . esc_html__( 'Question status', 'question-answer' );
 			
 			if( 'title' === $col_id ) {
-				$new[$col_id] = '<i class="fa fa-question-circle fs_18"></i> ' . esc_html__( 'Question title', QA_TEXTDOMAIN );
+				$new[$col_id] = '<i class="fa fa-question-circle fs_18"></i> ' . esc_html__( 'Question title', 'question-answer' );
 			
 			} elseif ( 'author' === $col_id ) {
-				$new[$col_id] = '' . esc_html__( 'Created by', QA_TEXTDOMAIN );
+				$new[$col_id] = '' . esc_html__( 'Created by', 'question-answer' );
 			
 			} elseif( 'taxonomy-question_tags' === $col_id ) {
-				$new[$col_id] = '' . esc_html__( 'Question tags', QA_TEXTDOMAIN );
+				$new[$col_id] = '' . esc_html__( 'Question tags', 'question-answer' );
 			
 			} elseif( 'taxonomy-question_cat' === $col_id ) {
-				$new[$col_id] = '' . esc_html__( 'Questions categories', QA_TEXTDOMAIN );
+				$new[$col_id] = '' . esc_html__( 'Questions categories', 'question-answer' );
 			
 			} else {
 				$new[ $col_id ] = $col_label;
 			}
 		}
 
-		//$new['date'] = $new['date'] = '' . esc_html__( 'Date', QA_TEXTDOMAIN );
+		//$new['date'] = $new['date'] = '' . esc_html__( 'Date', 'question-answer' );
 		
 		return $new;
 	}
@@ -126,19 +126,19 @@ class class_qa_question_column{
 		case 'qa-status':
 			
 			if( 'pending' === get_post_status($post_id) ) {
-				echo '<div class="qa_queued fs_13">'.__('Pending',QA_TEXTDOMAIN).'</div>';
+				echo '<div class="qa_queued fs_13">'.__('Pending','question-answer').'</div>';
 			} else {
 				
 				$status_meta 	= get_post_meta( $post_id, 'qa_question_status', true );
 				
 				if( 'processing' === $status_meta )
-					echo '<div class="qa_publish fs_13">'.__('On discussion',QA_TEXTDOMAIN).'</div>';
+					echo '<div class="qa_publish fs_13">'.__('On discussion','question-answer').'</div>';
 				
 				if( 'hold' === $status_meta )
-					echo '<div class="qa_hold fs_13">'.__('On hold',QA_TEXTDOMAIN).'</div>';
+					echo '<div class="qa_hold fs_13">'.__('On hold','question-answer').'</div>';
 				
 				if( 'solved' === $status_meta ) 
-					echo '<div class="qa_solved fs_13">'.__('Solved',QA_TEXTDOMAIN).'</div>';
+					echo '<div class="qa_solved fs_13">'.__('Solved','question-answer').'</div>';
 			}
 			
 			

@@ -63,12 +63,12 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 				if( $qa_question_status == 'solved' ){
 					$is_solved_class = 'solved';
 					$is_solved_icon = '<i class="fa fa-check-circle"></i>';					
-					$is_solved_text = __('Solved', QA_TEXTDOMAIN);
+					$is_solved_text = __('Solved', 'question-answer');
 					}
 				else{
 					$is_solved_class = 'not-solved';
 					$is_solved_icon = '<i class="fa fa-times"></i>';
-					$is_solved_text = __('Not Solved', QA_TEXTDOMAIN);
+					$is_solved_text = __('Not Solved', 'question-answer');
 					}
 				?>
                 

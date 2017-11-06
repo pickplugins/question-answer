@@ -32,7 +32,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 	
 	$author_name = !empty( $author->display_name ) ? $author->display_name : $author->user_login; 
-	$author_role = !empty( $author->roles ) ? $author->roles[0] : __('Anonymous', QA_TEXTDOMAIN); 
+	$author_role = !empty( $author->roles ) ? $author->roles[0] : __('Anonymous', 'question-answer');
 	$author_date = !empty( $author->user_registered ) ? $author->user_registered : 'N/A'; 
 	
 	
@@ -94,7 +94,7 @@ $qa_css .= ".qa-single-vote .qa-thumb-up, .qa-single-vote .qa-thumb-reply, .qa-s
             </span>
 			<span class="qa-user-role"><?php echo ucfirst($author_role); ?></span>
 			<span class="qa-user-badge"><?php echo apply_filters('qa_filter_single_question_badge','',$author->ID, 2); ?></span>            
-			<span class="qa-member-since"><?php echo sprintf( __('Member Since %s', QA_TEXTDOMAIN), date( "M Y", strtotime( $author_date ) )); ?><?php //echo date( "M Y", strtotime( $author_date ) ); ?></span>
+			<span class="qa-member-since"><?php echo sprintf( __('Member Since %s', 'question-answer'), date( "M Y", strtotime( $author_date ) )); ?><?php //echo date( "M Y", strtotime( $author_date ) ); ?></span>
 		</div>
 
 
@@ -102,11 +102,11 @@ $qa_css .= ".qa-single-vote .qa-thumb-up, .qa-single-vote .qa-thumb-reply, .qa-s
 
 if( array_key_exists($user_ID, $qa_flag) && $qa_flag[$user_ID]['type']=='flag'  ) {
 
-$flag_text = __('Unflag', QA_TEXTDOMAIN);
+$flag_text = __('Unflag', 'question-answer');
 
 } else {
 
-$flag_text = __('Flag', QA_TEXTDOMAIN);
+$flag_text = __('Flag', 'question-answer');
 }
 
 echo '<div class="qa-flag qa-flag-action float_right" post_id="'.get_the_ID().'"><i class="fa fa-flag flag-icon"></i> <span class="flag-text">'.$flag_text.'</span><span class="flag-count">('.$flag_count.')</span> <span class="waiting"><i class="fa fa-cog fa-spin"></i></span> </div>';
@@ -156,7 +156,7 @@ echo '<div class="qa-flag qa-flag-action float_right" post_id="'.get_the_ID().'"
 			$total = count($poll_result);
 			$count_values = array_count_values($poll_result);		
 			//var_dump($count_values);
-			echo '<div class="">'.__('Total:', QA_TEXTDOMAIN).' '.$total.'</div>';
+			echo '<div class="">'.__('Total:', 'question-answer').' '.$total.'</div>';
 			
 			foreach($count_values as $id=>$value){
 				
@@ -201,11 +201,11 @@ echo '<div class="qa-flag qa-flag-action float_right" post_id="'.get_the_ID().'"
 		}
 	else{
 		
-		$tag_html = __('N/A', QA_TEXTDOMAIN);
+		$tag_html = __('N/A', 'question-answer');
 		}
 
     if($total_tag>0)
-	echo apply_filters( 'qa_filter_single_question_tags', __('Tags: ', QA_TEXTDOMAIN ).$tag_html );
+	echo apply_filters( 'qa_filter_single_question_tags', __('Tags: ', 'question-answer' ).$tag_html );
 	
 	 ?>
      
@@ -215,7 +215,7 @@ echo '<div class="qa-flag qa-flag-action float_right" post_id="'.get_the_ID().'"
 
 		<?php 
 		$status = 0;
-		$tt_text = '<i class="fa fa-lock"></i> '.__('Login First', QA_TEXTDOMAIN);
+		$tt_text = '<i class="fa fa-lock"></i> '.__('Login First', 'question-answer');
 		
 	
 		$current_user 	= wp_get_current_user();
@@ -224,7 +224,7 @@ echo '<div class="qa-flag qa-flag-action float_right" post_id="'.get_the_ID().'"
 		
 		if( !empty($user_ID) ) {
 			$status = 1;
-			$tt_text = '<i class="fa fa-thumbs-down"></i> '.__('Report this', QA_TEXTDOMAIN);
+			$tt_text = '<i class="fa fa-thumbs-down"></i> '.__('Report this', 'question-answer');
 		}
 		
 		foreach( $comments as $comment ) {
@@ -238,7 +238,7 @@ echo '<div class="qa-flag qa-flag-action float_right" post_id="'.get_the_ID().'"
             }
 
             else{
-            $comment_author =  __('Anonymous', QA_TEXTDOMAIN);
+            $comment_author =  __('Anonymous', 'question-answer');
             }
 
             $qa_flag_comment 	= get_comment_meta( $comment->comment_ID, 'qa_flag_comment', true );
@@ -252,11 +252,11 @@ echo '<div class="qa-flag qa-flag-action float_right" post_id="'.get_the_ID().'"
 
             if( array_key_exists($user_ID, $qa_flag_comment) && $qa_flag_comment[$user_ID]['type']=='flag'  ) {
 
-            $flag_text = __('Unflag', QA_TEXTDOMAIN);
+            $flag_text = __('Unflag', 'question-answer');
 
             } else {
 
-            $flag_text = __('Flag', QA_TEXTDOMAIN);
+            $flag_text = __('Flag', 'question-answer');
             }
 
             $flag_html = '<div class="qa-comment-flag qa-comment-flag-action float_right" comment_id="'.$comment->comment_ID.'"><i class="fa fa-flag flag-icon"></i> <span class="flag-text">'.$flag_text.'</span><span class="flag-count">('.$flag_comment_count.')</span> <span class="waiting"><i class="fa fa-cog fa-spin"></i></span> </div>';
@@ -270,15 +270,15 @@ echo '<div class="qa-flag qa-flag-action float_right" post_id="'.get_the_ID().'"
 
 				$flag_html = '
 				<span class="qa-comment-action float_right qa_tt" action="unflag" user_id="'.$user_ID.'" status="'.$status.'" comment_id="'.$comment->comment_ID.'">
-					'.__('Unflag', QA_TEXTDOMAIN).' ('.$count_flag.')
-					<span class="qa_ttt qa_w_160"><i class="fa fa-undo"></i> '.__('Undo Report', QA_TEXTDOMAIN).'</span>
+					'.__('Unflag', 'question-answer').' ('.$count_flag.')
+					<span class="qa_ttt qa_w_160"><i class="fa fa-undo"></i> '.__('Undo Report', 'question-answer').'</span>
 				</span>';
 
 			} else {
 
 				$flag_html = '
 				<span class="qa-comment-action float_right qa_tt" action="flag" user_id="'.$user_ID.'" status="'.$status.'" comment_id="'.$comment->comment_ID.'">
-					'.__('Flag', QA_TEXTDOMAIN).' ('.$count_flag.')
+					'.__('Flag', 'question-answer').' ('.$count_flag.')
 					<span class="qa_ttt qa_w_160">'.$tt_text.'</span>
 				</span>';
 
@@ -329,14 +329,14 @@ echo ob_get_clean();
 
             <div class="qa-answer-reply" post_id="<?php echo get_the_ID(); ?>">
                 <i class="fa fa-reply"></i>
-                <span><?php echo __('Reply on This', QA_TEXTDOMAIN); ?></span>
+                <span><?php echo __('Reply on This', 'question-answer'); ?></span>
             </div>
             <div class="qa-reply-popup qa-reply-popup-<?php echo get_the_ID(); ?>">
                 <div class="qa-reply-form">
                     <span class="close"><i class="fa fa-times"></i></span>
-                    <span class="qa-reply-header"><?php echo __('Replying as', QA_TEXTDOMAIN); ?> <?php echo $current_user->display_name; ?></span>
+                    <span class="qa-reply-header"><?php echo __('Replying as', 'question-answer'); ?> <?php echo $current_user->display_name; ?></span>
                     <textarea rows="4" cols="40" id="qa-answer-reply-<?php echo get_the_ID(); ?>"></textarea>
-                    <span class="qa-reply-form-submit" id="<?php echo get_the_ID(); ?>"><?php echo __('Submit', QA_TEXTDOMAIN); ?></span>
+                    <span class="qa-reply-form-submit" id="<?php echo get_the_ID(); ?>"><?php echo __('Submit', 'question-answer'); ?></span>
                 </div>
             </div>
 

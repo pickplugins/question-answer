@@ -12,7 +12,7 @@ class QAWidgetCategories extends WP_Widget {
 
 	function __construct() {
 		
-		parent::__construct( 'qa_widget_categories', __('Question Answer - Categories', QA_TEXTDOMAIN), array( 'description' => __( 'Show Categories.', QA_TEXTDOMAIN ), ) );
+		parent::__construct( 'qa_widget_categories', __('Question Answer - Categories', 'question-answer'), array( 'description' => __( 'Show Categories.', 'question-answer' ), ) );
 	}
 
 	public function widget( $args, $instance ) {
@@ -105,7 +105,7 @@ class QAWidgetCategories extends WP_Widget {
 
 	public function form( $instance ) {
 		
-		$title = isset( $instance[ 'title' ] ) ? $title = $instance[ 'title' ] : __( 'Categories', QA_TEXTDOMAIN );
+		$title = isset( $instance[ 'title' ] ) ? $title = $instance[ 'title' ] : __( 'Categories', 'question-answer' );
 		?>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:' ); ?></label> 
@@ -113,7 +113,7 @@ class QAWidgetCategories extends WP_Widget {
 		</p>
 		<?php
 		
-		$display_count = isset( $instance[ 'display_count' ] ) ? $display_count = $instance[ 'display_count' ] : __( 'Categories', QA_TEXTDOMAIN );
+		$display_count = isset( $instance[ 'display_count' ] ) ? $display_count = $instance[ 'display_count' ] : __( 'Categories', 'question-answer' );
 		?>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'display_count' ); ?>"><?php _e( 'Display count:' ); ?></label> 

@@ -12,7 +12,7 @@ class QAWidgetLeaderboard extends WP_Widget {
 
 	function __construct() {
 		
-		parent::__construct( 'qa_widget_leaderboard', __('Question Answer - Leaderboard', QA_TEXTDOMAIN), array( 'description' => __( 'Show Leaderboard.', QA_TEXTDOMAIN ), ) );
+		parent::__construct( 'qa_widget_leaderboard', __('Question Answer - Leaderboard', 'question-answer'), array( 'description' => __( 'Show Leaderboard.', 'question-answer' ), ) );
 	}
 
 	public function widget( $args, $instance ) {
@@ -247,7 +247,7 @@ class QAWidgetLeaderboard extends WP_Widget {
 
                     echo '<div class="author_name">'.$author_data->display_name.'</div>';
 
-                    echo '<div class="author_answered">'.sprintf( ''.__('Total answers: %s', QA_TEXTDOMAIN), $answer_count ).'</div>';
+                    echo '<div class="author_answered">'.sprintf( ''.__('Total answers: %s', 'question-answer'), $answer_count ).'</div>';
 
                     echo '</div>';
 
@@ -286,7 +286,7 @@ class QAWidgetLeaderboard extends WP_Widget {
 
 	public function form( $instance ) {
 		
-		$title = isset( $instance[ 'title' ] ) ? $title = $instance[ 'title' ] : __( 'Leaderboard', QA_TEXTDOMAIN );
+		$title = isset( $instance[ 'title' ] ) ? $title = $instance[ 'title' ] : __( 'Leaderboard', 'question-answer' );
         $date_range = isset( $instance[ 'date_range' ] ) ? $date_range = $instance[ 'date_range' ] : 'last_7_days';
         $date_ranges_start = isset( $instance[ 'date_ranges_start' ] ) ? $date_ranges_start = $instance[ 'date_ranges_start' ] : '';
         $date_ranges_end = isset( $instance[ 'date_ranges_end' ] ) ? $date_ranges_end = $instance[ 'date_ranges_end' ] : '';
@@ -298,7 +298,7 @@ class QAWidgetLeaderboard extends WP_Widget {
 		</p>
 		<?php
 		
-		$limit = isset( $instance[ 'limit' ] ) ? $limit = $instance[ 'limit' ] : __( 'Leaderboard', QA_TEXTDOMAIN );
+		$limit = isset( $instance[ 'limit' ] ) ? $limit = $instance[ 'limit' ] : __( 'Leaderboard', 'question-answer' );
 		?>
 		<p>
 		<label for="<?php echo $this->get_field_id( 'limit' ); ?>"><?php _e( 'Limit:' ); ?></label> 

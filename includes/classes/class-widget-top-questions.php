@@ -12,7 +12,7 @@ class QAWidgetTopQuestions extends WP_Widget {
 
 	function __construct() {
 		
-		parent::__construct( 'qa_widget_top_questions', __('Question Answer - Top Questions', QA_TEXTDOMAIN), array( 'description' => __( 'Show Top Questions.', QA_TEXTDOMAIN ), ) );
+		parent::__construct( 'qa_widget_top_questions', __('Question Answer - Top Questions', 'question-answer'), array( 'description' => __( 'Show Top Questions.', 'question-answer' ), ) );
 	}
 
 	public function widget( $args, $instance ) {
@@ -301,10 +301,10 @@ class QAWidgetTopQuestions extends WP_Widget {
 
                 echo '<div class="q-title"><a href="'.get_permalink($question_id).'">'.get_the_title($question_id).'</a></div>';
                 echo '<div class="meta-items">';
-                echo '<span title="'.__('View count.', QA_TEXTDOMAIN).'" class="view-count"><i class="fa fa-eye"></i> '.$qa_view_count.'</span>';
-                echo '<span title="'.__('Total vote.', QA_TEXTDOMAIN).'" class="vote-count"><i class="fa fa-hand-peace-o"></i> '.$vote_count.'</span>';
-                echo '<span title="'.__('Total up vote.', QA_TEXTDOMAIN).'" class="up-count"><i class="fa fa-thumbs-up"></i> '.$up_vote.'</span>';
-                echo '<span title="'.__('Total down vote.', QA_TEXTDOMAIN).'" class="down-count"><i class="fa fa-thumbs-down"></i> '.$down_vote.'</span>';
+                echo '<span title="'.__('View count.', 'question-answer').'" class="view-count"><i class="fa fa-eye"></i> '.$qa_view_count.'</span>';
+                echo '<span title="'.__('Total vote.', 'question-answer').'" class="vote-count"><i class="fa fa-hand-peace-o"></i> '.$vote_count.'</span>';
+                echo '<span title="'.__('Total up vote.', 'question-answer').'" class="up-count"><i class="fa fa-thumbs-up"></i> '.$up_vote.'</span>';
+                echo '<span title="'.__('Total down vote.', 'question-answer').'" class="down-count"><i class="fa fa-thumbs-down"></i> '.$down_vote.'</span>';
                 echo '</div>';
 
                 echo '</div>';
@@ -322,7 +322,7 @@ class QAWidgetTopQuestions extends WP_Widget {
 
 
         else:
-            echo __('No question found.', QA_TEXTDOMAIN);
+            echo __('No question found.', 'question-answer');
 
         endif;
 
@@ -340,7 +340,7 @@ class QAWidgetTopQuestions extends WP_Widget {
 
 	public function form( $instance ) {
 		
-		$title = isset( $instance[ 'title' ] ) ? $title = $instance[ 'title' ] : __( 'Top Questions', QA_TEXTDOMAIN );
+		$title = isset( $instance[ 'title' ] ) ? $title = $instance[ 'title' ] : __( 'Top Questions', 'question-answer' );
         $date_range = isset( $instance[ 'date_range' ] ) ? $date_range = $instance[ 'date_range' ] : 'last_7_days';
         $date_ranges_start = isset( $instance[ 'date_ranges_start' ] ) ? $date_ranges_start = $instance[ 'date_ranges_start' ] : '';
         $date_ranges_end = isset( $instance[ 'date_ranges_end' ] ) ? $date_ranges_end = $instance[ 'date_ranges_end' ] : '';

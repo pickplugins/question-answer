@@ -40,7 +40,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	function qa_breadcrumb_links($action){
 		
 		$archive_page_id = get_option( 'qa_page_question_archive' );
-		$archive_page_title = empty( $archive_page_id ) ? __('Question Archive', QA_TEXTDOMAIN) : get_the_title( $archive_page_id );
+		$archive_page_title = empty( $archive_page_id ) ? __('Question Archive', 'question-answer') : get_the_title( $archive_page_id );
 		$archive_page_href = empty( $archive_page_id ) ? '#' : get_the_permalink( $archive_page_id );
 		
 		echo apply_filters( 'qa_filter_breadcrumb_question_archive_link_html', sprintf( '<i class="fa fa-angle-double-right separator" aria-hidden="true"></i> <a class="link" href="%s">%s</a>', $archive_page_href, $archive_page_title ) );
