@@ -70,10 +70,10 @@ Built Question Answer site for your WordPress.
 
 # Shortcodes
 
-**QA Account** 
+**QA dashboard** 
 
 `
-[qa_myaccount]
+[qa_dashboard]
 `
 
 **Question submission**
