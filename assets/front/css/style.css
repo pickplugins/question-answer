@@ -84,9 +84,17 @@ span.qa-meta-item i {
 
 
 
+.qa-deprecated {
+    margin-bottom: 20px;
+    background: #ff7474;
+    padding: 4px 10px;
+    color: #fff;
+}
 
-
-
+.qa-deprecated code {
+    background: rgb(174, 76, 76);
+    padding: 2px 6px;
+}
 
 
 

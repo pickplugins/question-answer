@@ -157,6 +157,13 @@ class QuestionAnswer{
 		require_once( QA_PLUGIN_DIR . 'includes/shortcodes/class-shortcode-qa-my-account.php');
 		require_once( QA_PLUGIN_DIR . 'includes/shortcodes/class-shortcode-qa-my-questions.php');
 
+		require_once( QA_PLUGIN_DIR . 'includes/shortcodes/class-shortcode-qa-reset.php');
+		require_once( QA_PLUGIN_DIR . 'includes/shortcodes/class-shortcode-my-notifications.php');
+		require_once( QA_PLUGIN_DIR . 'includes/shortcodes/class-shortcode-qa-my-answers.php');
+
+
+
+
 
 	}
 	
@@ -218,6 +225,8 @@ class QuestionAnswer{
         wp_enqueue_style('jquery-ui', QA_PLUGIN_URL.'assets/front/css/jquery-ui.css');
 		wp_enqueue_style('qa_style', QA_PLUGIN_URL.'assets/front/css/style.css');
 		wp_enqueue_style('qa_dashboard.css', QA_PLUGIN_URL.'assets/front/css/dashboard.css');
+		wp_enqueue_style('notifications.css', QA_PLUGIN_URL.'assets/front/css/notifications.css');
+
 		
 		//global
 		wp_enqueue_style('font-awesome', QA_PLUGIN_URL.'assets/global/css/font-awesome.css');

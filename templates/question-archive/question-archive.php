@@ -19,7 +19,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	elseif ( get_query_var('page') ) { $paged = get_query_var('page'); } 
 	else { $paged = 1; }
 	
-	?>  
+	?>
 <div class="questions-archive"> 
 	
 	<?php 

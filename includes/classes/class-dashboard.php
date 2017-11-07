@@ -21,6 +21,9 @@ class class_qa_dashboard{
 		add_filter('qa_filter_dashboard_account', array( $this, 'my_account_html' ));
 		add_filter('qa_filter_dashboard_account_edit', array( $this, 'edit_account_html' ));
 		add_filter('qa_filter_dashboard_my_questions', array( $this, 'my_questions' ));
+		add_filter('qa_filter_dashboard_my_answers', array( $this, 'my_answers' ));
+		add_filter('qa_filter_dashboard_my_notifications', array( $this, 'my_notifications' ));
+
 
 
 
@@ -44,6 +47,19 @@ class class_qa_dashboard{
 
 	}
 
+	function my_answers(){
+
+		return do_shortcode('[qa_my_answers]');
+
+	}
+
+	function my_notifications(){
+
+		return do_shortcode('[qa_my_notifications]');
+
+	}
+
+
 
 	function dashboard_tabs(){
 
@@ -55,16 +71,29 @@ class class_qa_dashboard{
 
 
 		$tabs['account_edit'] =array(
-			'title'=>__('Account Edit', 'question-answer'),
+			'title'=>__('Account edit', 'question-answer'),
 			'html'=>apply_filters('qa_filter_dashboard_account_edit',''),
 
 		);
 
+		$tabs['my_notifications'] =array(
+			'title'=>__('My notifications', 'question-answer'),
+			'html'=>apply_filters('qa_filter_dashboard_my_notifications',''),
+
+		);
+
 		$tabs['my_questions'] =array(
-			'title'=>__('My Questions', 'question-answer'),
+			'title'=>__('My questions', 'question-answer'),
 			'html'=>apply_filters('qa_filter_dashboard_my_questions',''),
 
 		);
+
+		$tabs['my_answers'] =array(
+			'title'=>__('My answers', 'question-answer'),
+			'html'=>apply_filters('qa_filter_dashboard_my_answers',''),
+
+		);
+
 
 
 		return apply_filters('qa_filter_dashboard_tabs',$tabs);

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Question Answer\n"
-"POT-Creation-Date: 2017-11-06 16:28+0600\n"
-"PO-Revision-Date: 2017-11-06 16:28+0600\n"
+"POT-Creation-Date: 2017-11-07 13:55+0600\n"
+"PO-Revision-Date: 2017-11-07 13:55+0600\n"
 "Last-Translator: \n"
 "Language-Team: pickplugins <support@pickplugins.com>\n"
 "Language: zh_CN\n"
@@ -245,30 +245,44 @@ msgstr "悬而未决"
 #: includes/classes/class-answer-column.php:101
 #: includes/classes/class-functions.php:206
 #: includes/classes/class-question-column.php:43
-#: includes/classes/class-question-column.php:141 includes/functions.php:1661
-#: includes/functions.php:2254 templates/my-account/question-list.php:108
+#: includes/classes/class-question-column.php:141 includes/functions.php:312
+#: includes/functions.php:2042 includes/functions.php:2708
+#: templates/my-account/question-list.php:108
+#: templates/my-notifications.php:355
 #: templates/question-archive/single-question.php:66
 #: templates/single-question/meta.php:76
 msgid "Solved"
 msgstr "已解决"
 
-#: includes/classes/class-dashboard.php:51
+#: includes/classes/class-dashboard.php:67
 #, fuzzy
 #| msgid "My Account"
 msgid "Account"
 msgstr "我的帐号"
 
-#: includes/classes/class-dashboard.php:58
+#: includes/classes/class-dashboard.php:74
 #, fuzzy
 #| msgid "My Account"
-msgid "Account Edit"
+msgid "Account edit"
 msgstr "我的帐号"
 
-#: includes/classes/class-dashboard.php:64
+#: includes/classes/class-dashboard.php:80
+#, fuzzy
+#| msgid "Notifications"
+msgid "My notifications"
+msgstr "提醒"
+
+#: includes/classes/class-dashboard.php:86
 #, fuzzy
 #| msgid "My Question"
-msgid "My Questions"
+msgid "My questions"
 msgstr "我的提问"
+
+#: includes/classes/class-dashboard.php:92
+#, fuzzy
+#| msgid "Answers"
+msgid "My answers"
+msgstr "答复"
 
 #: includes/classes/class-functions.php:30
 msgid "Core"
@@ -794,280 +808,298 @@ msgstr "总回答：%s"
 msgid "Website Stats"
 msgstr "站点状态"
 
-#: includes/functions.php:36
-msgid "Search Count"
-msgstr "找到结果数量"
-
-#: includes/functions.php:76
-msgid "Ask question"
-msgstr "提问"
-
-#: includes/functions.php:113
-msgid "Polls"
-msgstr "投票"
-
-#: includes/functions.php:114
-msgid "Add your polls"
-msgstr "我要投票"
-
-#: includes/functions.php:192 includes/functions.php:242
-msgid "year ago"
-msgstr "年之前"
-
-#: includes/functions.php:196 includes/functions.php:246
-msgid "month ago"
-msgstr "月之前"
-
-#: includes/functions.php:200 includes/functions.php:250
-msgid "day ago"
-msgstr "天前"
-
-#: includes/functions.php:204 includes/functions.php:254
-msgid "hour ago"
-msgstr "小时之前"
-
-#: includes/functions.php:208 includes/functions.php:258
-msgid "minute ago"
-msgstr "分钟之前"
-
-#: includes/functions.php:212 includes/functions.php:262
-msgid "second ago"
-msgstr "秒之前"
-
-#: includes/functions.php:660
-msgid "Please login first."
-msgstr "请登录后操作。"
-
-#: includes/functions.php:667
-msgid "Sorry you can't choose best answer."
-msgstr "对不起，您无法选择最佳答案。"
-
-#: includes/functions.php:677
-msgid "Removed Best answer"
-msgstr "最佳答案已取消"
-
-#: includes/functions.php:694
-msgid "Marked as Best answer"
-msgstr "已选为最佳答案"
-
-#: includes/functions.php:786
-msgid "Removed from featured"
-msgstr "已取消关注"
-
-#: includes/functions.php:792
-msgid "Successfully featured"
-msgstr "关注成功"
-
-#: includes/functions.php:853 templates/single-question/answer-content.php:106
-#: templates/single-question/answer-reply.php:238
-#: templates/single-question/content.php:105
-#: templates/single-question/content.php:255
-msgid "Unflag"
-msgstr "去除标记"
-
-#: includes/functions.php:853
-msgid "Undo Report"
-msgstr "撤销报告"
-
-#: includes/functions.php:855 templates/single-question/answer-content.php:110
-#: templates/single-question/answer-reply.php:242
-#: templates/single-question/content.php:109
-#: templates/single-question/content.php:259
-msgid "Flag"
-msgstr "标记"
-
-#: includes/functions.php:855 templates/single-question/answer-content.php:35
-#: templates/single-question/answer-reply.php:181
-#: templates/single-question/content.php:227
-msgid "Report this"
-msgstr "报告这个"
-
-#: includes/functions.php:883 includes/functions.php:1033
-#: includes/functions.php:1201
-msgid "Please login"
-msgstr "请登录"
-
-#: includes/functions.php:904 includes/functions.php:1217
-msgid "Report removed."
-msgstr "报告已移除。"
-
-#: includes/functions.php:915 includes/functions.php:928
-#: includes/functions.php:949 includes/functions.php:1227
-#: includes/functions.php:1238 includes/functions.php:1255
-msgid "Thanks for report."
-msgstr "感谢您的报告。"
-
-#: includes/functions.php:1050 includes/functions.php:1071
-#: includes/functions.php:1099
-#, fuzzy
-#| msgid "Vote Down"
-msgid "Vote Down."
-msgstr "踩"
-
-#: includes/functions.php:1058 includes/functions.php:1079
-#: includes/functions.php:1108
-#, fuzzy
-#| msgid "Vote Up"
-msgid "Vote Up."
-msgstr "赞"
-
-#: includes/functions.php:1396
-msgid "Something went wrong !"
-msgstr "出问题了！"
-
-#: includes/functions.php:1401
-msgid "Please login to post comments"
-msgstr "登录后才能发表评论"
-
-#: includes/functions.php:1440
-#: templates/question-archive/question-archive.php:190
-#: templates/single-question/content.php:159
-msgid "Total:"
-msgstr "总数："
-
-#: includes/functions.php:1450
-msgid "Please login."
-msgstr "请登录。"
-
-#: includes/functions.php:1481 includes/functions.php:1528
-msgid "Login first to Review !"
-msgstr "登录后才能审核！"
-
-#: includes/functions.php:1507
-msgid "Already Reviewed !"
-msgstr "已经审核过！"
-
-#: includes/functions.php:1554
-msgid "Already Reviewed!"
-msgstr "已审核过！"
-
-#: includes/functions.php:1586
-msgid "Unsubscribe from this question"
-msgstr "不再订阅该问题的通知"
-
-#: includes/functions.php:1600
-msgid "Subscribed to this question"
-msgstr "订阅该问题通知"
-
-#: includes/functions.php:1613
-msgid "Please login first!"
-msgstr "请先登录！"
-
-#: includes/functions.php:1640
-msgid "Successfully marked as unsolved"
-msgstr "已修改成未解决"
-
-#: includes/functions.php:1641 includes/functions.php:1643
-#: templates/single-question/meta.php:83 templates/single-question/meta.php:85
-msgid "Mark as Solved"
-msgstr "已设置为解决"
-
-#: includes/functions.php:1660
-msgid "Successfully marked as Solved"
-msgstr "已设置为解决"
-
-#: includes/functions.php:1663
-msgid "Mark as Unsolved"
-msgstr "已设置为未解决"
-
-#: includes/functions.php:1682
-msgid "Access Denied!"
-msgstr "无权访问！"
-
-#: includes/functions.php:1828
-msgid "Select category"
-msgstr "选择类别"
-
-#: includes/functions.php:1910
-msgid "Select a Category"
-msgstr "选择一个类别"
-
-#: includes/functions.php:1930
-msgid "Category"
-msgstr "类别"
-
-#: includes/functions.php:1963
-msgid "Word moderate."
-msgstr "合适的词。"
-
-#: includes/functions.php:2024
-msgid "Notifications"
-msgstr "提醒"
-
-#: includes/functions.php:2025
-msgid "Refresh"
-msgstr ""
-
-#: includes/functions.php:2055 templates/single-question/answer-reply.php:82
+#: includes/functions.php:49 includes/functions.php:2443
+#: templates/my-notifications.php:84
+#: templates/single-question/answer-reply.php:82
 #: templates/single-question/answer-reply.php:205
 #: templates/single-question/content.php:35
 #: templates/single-question/content.php:241
 msgid "Anonymous"
 msgstr "匿名"
 
-#: includes/functions.php:2065
+#: includes/functions.php:63 includes/functions.php:2459
+#: templates/my-notifications.php:106
 msgid "posted"
 msgstr "发表的"
 
-#: includes/functions.php:2065
+#: includes/functions.php:63 includes/functions.php:2459
+#: templates/my-notifications.php:106
 msgid "New Question"
 msgstr "新问题"
 
-#: includes/functions.php:2074
+#: includes/functions.php:78 includes/functions.php:2474
+#: templates/my-notifications.php:121
 msgid "Answered"
 msgstr "已回答"
 
-#: includes/functions.php:2083
+#: includes/functions.php:93 includes/functions.php:2489
+#: templates/my-notifications.php:136
 msgid "Choosed best answer"
 msgstr "选择最佳答案"
 
-#: includes/functions.php:2092
+#: includes/functions.php:108 includes/functions.php:2504
+#: templates/my-notifications.php:151
 msgid "Removed best answer"
 msgstr "移除最佳答案"
 
-#: includes/functions.php:2124
+#: includes/functions.php:146 includes/functions.php:2542
+#: templates/my-notifications.php:189
 msgid "Commented"
 msgstr "注释"
 
-#: includes/functions.php:2157
+#: includes/functions.php:185 includes/functions.php:2581
+#: templates/my-notifications.php:228
 msgid "Flagged comment"
 msgstr "被标记的评论"
 
-#: includes/functions.php:2187
+#: includes/functions.php:221 includes/functions.php:2617
+#: templates/my-notifications.php:264
 msgid "comment vote up"
 msgstr ""
 
-#: includes/functions.php:2216
+#: includes/functions.php:256 includes/functions.php:2652
+#: templates/my-notifications.php:299
 #, fuzzy
 #| msgid "Commented"
 msgid "comment vote down"
 msgstr "注释"
 
-#: includes/functions.php:2233
+#: includes/functions.php:279 includes/functions.php:2675
+#: templates/my-notifications.php:322
 msgid "Vote Up"
 msgstr "赞"
 
-#: includes/functions.php:2243
+#: includes/functions.php:295 includes/functions.php:2691
+#: templates/my-notifications.php:338
 msgid "Vote Down"
 msgstr "踩"
 
-#: includes/functions.php:2254 includes/functions.php:2263
+#: includes/functions.php:312 includes/functions.php:327
+#: includes/functions.php:2708 includes/functions.php:2723
+#: templates/my-notifications.php:355 templates/my-notifications.php:370
 msgid "marked"
 msgstr "标记好了"
 
-#: includes/functions.php:2263
+#: includes/functions.php:327 includes/functions.php:2723
+#: templates/my-notifications.php:370
 #: templates/question-archive/single-question.php:71
 msgid "Not Solved"
 msgstr "未解决"
 
-#: includes/functions.php:2285
+#: includes/functions.php:355 includes/functions.php:2751
+#: templates/my-notifications.php:398
 #, php-format
 msgid "flagged your %s"
 msgstr "标记您的 %s"
 
-#: includes/functions.php:2307
+#: includes/functions.php:383 includes/functions.php:2779
+#: templates/my-notifications.php:426
 msgid "unflagged "
 msgstr "取消标记"
+
+#: includes/functions.php:417
+msgid "Search Count"
+msgstr "找到结果数量"
+
+#: includes/functions.php:457
+msgid "Ask question"
+msgstr "提问"
+
+#: includes/functions.php:494
+msgid "Polls"
+msgstr "投票"
+
+#: includes/functions.php:495
+msgid "Add your polls"
+msgstr "我要投票"
+
+#: includes/functions.php:573 includes/functions.php:623
+msgid "year ago"
+msgstr "年之前"
+
+#: includes/functions.php:577 includes/functions.php:627
+msgid "month ago"
+msgstr "月之前"
+
+#: includes/functions.php:581 includes/functions.php:631
+msgid "day ago"
+msgstr "天前"
+
+#: includes/functions.php:585 includes/functions.php:635
+msgid "hour ago"
+msgstr "小时之前"
+
+#: includes/functions.php:589 includes/functions.php:639
+msgid "minute ago"
+msgstr "分钟之前"
+
+#: includes/functions.php:593 includes/functions.php:643
+msgid "second ago"
+msgstr "秒之前"
+
+#: includes/functions.php:1041
+msgid "Please login first."
+msgstr "请登录后操作。"
+
+#: includes/functions.php:1048
+msgid "Sorry you can't choose best answer."
+msgstr "对不起，您无法选择最佳答案。"
+
+#: includes/functions.php:1058
+msgid "Removed Best answer"
+msgstr "最佳答案已取消"
+
+#: includes/functions.php:1075
+msgid "Marked as Best answer"
+msgstr "已选为最佳答案"
+
+#: includes/functions.php:1167
+msgid "Removed from featured"
+msgstr "已取消关注"
+
+#: includes/functions.php:1173
+msgid "Successfully featured"
+msgstr "关注成功"
+
+#: includes/functions.php:1234 templates/single-question/answer-content.php:106
+#: templates/single-question/answer-reply.php:238
+#: templates/single-question/content.php:105
+#: templates/single-question/content.php:255
+msgid "Unflag"
+msgstr "去除标记"
+
+#: includes/functions.php:1234
+msgid "Undo Report"
+msgstr "撤销报告"
+
+#: includes/functions.php:1236 templates/single-question/answer-content.php:110
+#: templates/single-question/answer-reply.php:242
+#: templates/single-question/content.php:109
+#: templates/single-question/content.php:259
+msgid "Flag"
+msgstr "标记"
+
+#: includes/functions.php:1236 templates/single-question/answer-content.php:35
+#: templates/single-question/answer-reply.php:181
+#: templates/single-question/content.php:227
+msgid "Report this"
+msgstr "报告这个"
+
+#: includes/functions.php:1264 includes/functions.php:1414
+#: includes/functions.php:1582
+msgid "Please login"
+msgstr "请登录"
+
+#: includes/functions.php:1285 includes/functions.php:1598
+msgid "Report removed."
+msgstr "报告已移除。"
+
+#: includes/functions.php:1296 includes/functions.php:1309
+#: includes/functions.php:1330 includes/functions.php:1608
+#: includes/functions.php:1619 includes/functions.php:1636
+msgid "Thanks for report."
+msgstr "感谢您的报告。"
+
+#: includes/functions.php:1431 includes/functions.php:1452
+#: includes/functions.php:1480
+#, fuzzy
+#| msgid "Vote Down"
+msgid "Vote Down."
+msgstr "踩"
+
+#: includes/functions.php:1439 includes/functions.php:1460
+#: includes/functions.php:1489
+#, fuzzy
+#| msgid "Vote Up"
+msgid "Vote Up."
+msgstr "赞"
+
+#: includes/functions.php:1777
+msgid "Something went wrong !"
+msgstr "出问题了！"
+
+#: includes/functions.php:1782
+msgid "Please login to post comments"
+msgstr "登录后才能发表评论"
+
+#: includes/functions.php:1821
+#: templates/question-archive/question-archive.php:190
+#: templates/single-question/content.php:159
+msgid "Total:"
+msgstr "总数："
+
+#: includes/functions.php:1831
+msgid "Please login."
+msgstr "请登录。"
+
+#: includes/functions.php:1862 includes/functions.php:1909
+msgid "Login first to Review !"
+msgstr "登录后才能审核！"
+
+#: includes/functions.php:1888
+msgid "Already Reviewed !"
+msgstr "已经审核过！"
+
+#: includes/functions.php:1935
+msgid "Already Reviewed!"
+msgstr "已审核过！"
+
+#: includes/functions.php:1967
+msgid "Unsubscribe from this question"
+msgstr "不再订阅该问题的通知"
+
+#: includes/functions.php:1981
+msgid "Subscribed to this question"
+msgstr "订阅该问题通知"
+
+#: includes/functions.php:1994
+msgid "Please login first!"
+msgstr "请先登录！"
+
+#: includes/functions.php:2021
+msgid "Successfully marked as unsolved"
+msgstr "已修改成未解决"
+
+#: includes/functions.php:2022 includes/functions.php:2024
+#: templates/single-question/meta.php:83 templates/single-question/meta.php:85
+msgid "Mark as Solved"
+msgstr "已设置为解决"
+
+#: includes/functions.php:2041
+msgid "Successfully marked as Solved"
+msgstr "已设置为解决"
+
+#: includes/functions.php:2044
+msgid "Mark as Unsolved"
+msgstr "已设置为未解决"
+
+#: includes/functions.php:2063
+msgid "Access Denied!"
+msgstr "无权访问！"
+
+#: includes/functions.php:2209
+msgid "Select category"
+msgstr "选择类别"
+
+#: includes/functions.php:2291
+msgid "Select a Category"
+msgstr "选择一个类别"
+
+#: includes/functions.php:2311
+msgid "Category"
+msgstr "类别"
+
+#: includes/functions.php:2344
+msgid "Word moderate."
+msgstr "合适的词。"
+
+#: includes/functions.php:2408
+msgid "Notifications"
+msgstr "提醒"
+
+#: includes/functions.php:2409 templates/my-notifications.php:52
+msgid "Refresh"
+msgstr ""
 
 #: includes/menus/addons.php:93
 msgid "Version:"
@@ -1695,6 +1727,12 @@ msgstr "您提交的问题"
 #: templates/my-account/question-list.php:105
 msgid "On Hold"
 msgstr "悬而未决的"
+
+#: templates/my-notifications.php:446
+#, fuzzy
+#| msgid "Notifications"
+msgid "No notification right now."
+msgstr "提醒"
 
 #: templates/question-archive/question-archive.php:90
 msgid "keywords"

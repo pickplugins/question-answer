@@ -27,7 +27,7 @@ class class_qa_shortcode_qa_edit_account{
 
 		}
 
-		if(wp_verify_nonce( $_POST['_wpnonce'], 'qa_edit_account_nonce' ) && $_POST['qa_edit_account_hidden'] == 'Y') {
+		if(isset($_POST['_wpnonce']) && wp_verify_nonce( $_POST['_wpnonce'], 'qa_edit_account_nonce' ) && $_POST['qa_edit_account_hidden'] == 'Y') {
 
 			wp_update_user( array( 'ID' => $current_user_id, ' user_email' => sanitize_email($_POST['user_email']) ) );
 			wp_update_user( array( 'ID' => $current_user_id, 'user_url' => esc_url($_POST['user_url']) ) );

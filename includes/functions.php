@@ -15,11 +15,392 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 function qa_ajax_getnotifications(){
 	
 	$response = array();
-	
 	$response['count'] = qa_breadcrumb_total_count(); 
 	
 	ob_start();
-	qa_breadcrumb_menu_notifications();
+
+	$userid = get_current_user_id();
+	global $wpdb;
+	$limit = 10;
+
+	$entries = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}qa_notification WHERE status='unread' AND subscriber_id='$userid' ORDER BY id DESC LIMIT $limit" );
+
+	foreach( $entries as $entry ){
+
+
+		$id = $entry->id;
+		$q_id = $entry->q_id;
+		$a_id = $entry->a_id;
+		$c_id = $entry->c_id;
+		$user_id = $entry->user_id;
+		$subscriber_id = $entry->subscriber_id;
+		$action = $entry->action;
+		$datetime = $entry->datetime;
+
+		$entry_date = new DateTime($datetime);
+		$datetime = $entry_date->format('M d, Y h:i A');
+
+		$user = get_user_by( 'ID', $user_id);
+
+		if(!empty($user->display_name)){
+			$user_display_name = $user->display_name;
+		}
+		else{
+			$user_display_name = __('Anonymous', 'question-answer');
+		}
+
+		?>
+		<div class="item">
+		<?php
+
+		echo '<img src="'.get_avatar_url($user_id,  array('size'=>40)).'" class="thumb">';
+
+		$notify_mark_html = '<span class="notify-mark" notify_id="'.$id.'" ><i class="fa fa-bell-o" aria-hidden="true"></i></span>';
+
+
+		if( $action == 'new_question' ) {
+
+			echo '<span class="name">'.$user_display_name.'</span> '.__('posted', 'question-answer').' <span class="action">'.__('New Question',  'question-answer').'</span> <a href="'.get_permalink($q_id).'" class="link">'.get_the_title($q_id).'</a> ';
+
+			?>
+			<div class="meta">
+
+				<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+				<?php echo $notify_mark_html; ?>
+			</div>
+			<?php
+
+		}
+
+		elseif( $action == 'new_answer' ) {
+
+
+			echo ' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Answered', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($q_id).'</a> ';
+
+			?>
+			<div class="meta">
+
+				<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+				<?php echo $notify_mark_html; ?>
+			</div>
+			<?php
+
+		}
+
+
+		elseif( $action == 'best_answer' ) {
+
+			echo ' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Choosed best answer', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($a_id).'</a>';
+
+			?>
+			<div class="meta">
+
+				<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+				<?php echo $notify_mark_html; ?>
+			</div>
+			<?php
+
+
+		}
+
+		elseif( $action == 'best_answer_removed' ) {
+
+			echo ' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Removed best answer', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($a_id).'</a>';
+
+			?>
+			<div class="meta">
+
+				<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+				<?php echo $notify_mark_html; ?>
+			</div>
+			<?php
+
+
+		}
+
+		elseif($action=='new_comment'){
+
+			$comment_post_data = get_comment( $c_id );
+
+			if(!empty($comment_post_data->comment_post_ID)):
+
+				$comment_post_id = $comment_post_data->comment_post_ID;
+
+				$comment_post_type = get_post_type($comment_post_id);
+
+				if($comment_post_type=='answer'){
+
+					$flag_post_type = 'answer';
+
+					$q_id = get_post_meta( $comment_post_id, 'qa_answer_question_id', true );
+
+
+				}
+				else{
+					$flag_post_type = 'question';
+
+
+				}
+
+				$q_id = get_post_meta( $a_id, 'qa_answer_question_id', true );
+				echo ' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Commented', 'question-answer').'</span> on '.$flag_post_type.' <a href="'.get_permalink($q_id).'#comment-'.$c_id.'" class="link">'.get_the_title($a_id).'</a>';
+
+				?>
+				<div class="meta">
+
+					<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+					<?php echo $notify_mark_html; ?>
+				</div>
+				<?php
+
+
+			endif;
+
+
+		}
+
+
+
+		elseif($action=='comment_flag'){
+
+			$comment_post_data = get_comment( $c_id );
+			$comment_post_id = $comment_post_data->comment_post_ID ;
+
+			$comment_post_type = get_post_type($comment_post_id);
+
+			if($comment_post_type=='answer'){
+
+				$flag_post_type = 'answer';
+				$link_extra = '#comment-'.$c_id;
+				$q_id = get_post_meta( $comment_post_id, 'qa_answer_question_id', true );
+			}
+			else{
+				$flag_post_type = 'question';
+				$link_extra = '#comment-'.$c_id;
+				$q_id = $comment_post_id;
+			}
+
+
+
+			echo ' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Flagged comment', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#comment-'.$c_id.'" class="link">'.get_the_title($q_id).'</a>';
+
+			?>
+			<div class="meta">
+
+				<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+				<?php echo $notify_mark_html; ?>
+			</div>
+			<?php
+
+
+
+		}
+
+
+		elseif($action=='comment_vote_up'){
+
+			$comment_post_data = get_comment( $c_id );
+			$comment_post_id = $comment_post_data->comment_post_ID ;
+
+			$comment_post_type = get_post_type($comment_post_id);
+
+			if($comment_post_type=='answer'){
+
+				$flag_post_type = 'answer';
+				$link_extra = '#comment-'.$c_id;
+				$q_id = get_post_meta( $comment_post_id, 'qa_answer_question_id', true );
+			}
+			else{
+				$flag_post_type = 'question';
+				$link_extra = '#comment-'.$c_id;
+				$q_id = $comment_post_id;
+			}
+
+
+
+			echo ' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('comment vote up', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#comment-'.$c_id.'" class="link">'.get_the_title($q_id).'</a>';
+
+			?>
+			<div class="meta">
+
+				<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+				<?php echo $notify_mark_html; ?>
+			</div>
+			<?php
+
+
+
+		}
+
+		elseif($action=='comment_vote_down'){
+
+			$comment_post_data = get_comment( $c_id );
+			$comment_post_id = $comment_post_data->comment_post_ID ;
+
+			$comment_post_type = get_post_type($comment_post_id);
+
+			if($comment_post_type=='answer'){
+
+				$flag_post_type = 'answer';
+				$link_extra = '#comment-'.$c_id;
+				$q_id = get_post_meta( $comment_post_id, 'qa_answer_question_id', true );
+			}
+			else{
+				$flag_post_type = 'question';
+				$link_extra = '#comment-'.$c_id;
+				$q_id = $comment_post_id;
+			}
+
+
+
+			echo ' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('comment vote down', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#comment-'.$c_id.'" class="link">'.get_the_title($q_id).'</a>';
+
+			?>
+			<div class="meta">
+
+				<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+				<?php echo $notify_mark_html; ?>
+			</div>
+			<?php
+
+
+		}
+
+
+
+
+
+
+
+
+		elseif($action=='vote_up'){
+
+			$q_id = get_post_meta( $a_id, 'qa_answer_question_id', true );
+			echo ' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Vote Up', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($a_id).'</a>';
+
+			?>
+			<div class="meta">
+
+				<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+				<?php echo $notify_mark_html; ?>
+			</div>
+			<?php
+
+
+
+		}
+		elseif($action=='vote_down'){
+
+			$q_id = get_post_meta( $a_id, 'qa_answer_question_id', true );
+			echo ' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Vote Down', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($a_id).'</a>';
+
+			?>
+			<div class="meta">
+
+				<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+				<?php echo $notify_mark_html; ?>
+			</div>
+			<?php
+
+
+
+		}
+
+
+		elseif($action=='q_solved'){
+
+			echo ' <span class="name">'.$user_display_name.'</span> '.__('marked', 'question-answer').' <span class="action">'.__('Solved', 'question-answer').'</span> <a href="'.get_permalink($q_id).'" class="link">'.get_the_title($q_id).'</a>';
+
+			?>
+			<div class="meta">
+
+				<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+				<?php echo $notify_mark_html; ?>
+			</div>
+			<?php
+
+
+		}
+
+		elseif($action=='q_not_solved'){
+
+			echo ' <span class="name">'.$user_display_name.'</span> '.__('marked', 'question-answer').' <span class="action">'.__('Not Solved','question-answer').'</span> <a href="'.get_permalink($q_id).'" class="link">'.get_the_title($q_id).'</a>';
+
+			?>
+			<div class="meta">
+
+				<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+				<?php echo $notify_mark_html; ?>
+			</div>
+			<?php
+
+
+		}
+
+		elseif($action=='flag'){
+
+			if(!empty($a_id)){
+
+				$flag_post_type = 'answer';
+				$link_extra = '#single-answer-'.$a_id;
+			}
+			else{
+
+				$flag_post_type = 'question';
+				$link_extra = '';
+			}
+
+
+			$q_id = get_post_meta( $a_id, 'qa_answer_question_id', true );
+			echo ' <span class="name">'.$user_display_name.'</span> '.sprintf(__('flagged your %s', 'question-answer'), $flag_post_type).' <span class="name"></span> <a href="'.get_permalink($q_id).$link_extra.'" class="link">'.get_the_title($a_id).'</a>';
+
+			?>
+			<div class="meta">
+
+				<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+				<?php echo $notify_mark_html; ?>
+			</div>
+			<?php
+
+
+		}
+
+		elseif($action=='unflag'){
+
+			if(!empty($a_id)){
+
+				$flag_post_type = 'answer';
+				$link_extra = '#single-answer-'.$a_id;
+			}
+			else{
+
+				$flag_post_type = 'question';
+				$link_extra = '';
+			}
+
+
+			$q_id = get_post_meta( $a_id, 'qa_answer_question_id', true );
+			echo ' <span class="name">'.$user_display_name.'</span> '.$flag_post_type.' <span class="action">'.__('unflagged ', 'question-answer').'</span> <a href="'.get_permalink($q_id).$link_extra.'" class="link">'.get_the_title($q_id).'</a>';
+
+			?>
+			<div class="meta">
+
+				<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+				<?php echo $notify_mark_html; ?>
+			</div>
+			<?php
+
+
+
+		}
+
+		?>
+		</div>
+		<?php
+
+	}
+
+
 	$response['html'] = ob_get_contents();
 	ob_end_clean();
 
@@ -2014,7 +2395,10 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 
 		return count($entries);
 	}
-	
+
+
+
+
 	function qa_breadcrumb_menu_notifications(){
 		
 		if( ! is_user_logged_in() ) return;
@@ -2030,7 +2414,11 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 		$limit = 10;
 	
 		$entries = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}qa_notification WHERE status='unread' AND subscriber_id='$userid' ORDER BY id DESC LIMIT $limit" );
-			
+
+		?>
+		<div class="list-items">
+		<?php
+
 		foreach( $entries as $entry ){
 				
 				
@@ -2055,115 +2443,121 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 				$user_display_name = __('Anonymous', 'question-answer');
 				}
 		
-		
+		    ?>
+
+	        <div class="item">
+	        <?php
+
+
+		    echo '<img src="'.get_avatar_url($user_id,  array('size'=>40)).'" class="thumb">';
 		
 			$notify_mark_html = '<span class="notify-mark" notify_id="'.$id.'" ><i class="fa fa-bell-o" aria-hidden="true"></i></span>';
-					
-		
+
+
 			if( $action == 'new_question' ) {
-	 
-				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> '.__('posted', 'question-answer').' <span class="action">'.__('New Question',  'question-answer').'</span> <a href="'.get_permalink($q_id).'" class="link">'.get_the_title($q_id).'</a> ';
-				
-				echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
-				echo '</div>';
+
+				echo '<span class="name">'.$user_display_name.'</span> '.__('posted', 'question-answer').' <span class="action">'.__('New Question',  'question-answer').'</span> <a href="'.get_permalink($q_id).'" class="link">'.get_the_title($q_id).'</a> ';
+
+				?>
+				<div class="meta">
+
+					<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+					<?php echo $notify_mark_html; ?>
+				</div>
+				<?php
+
 			}
-					
+
 			elseif( $action == 'new_answer' ) {
-				
-				
-				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Answered', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($q_id).'</a> ';
-				
-				echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
-				echo '</div>';
-			}				
-			
-			
+
+
+				echo ' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Answered', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($q_id).'</a> ';
+
+				?>
+				<div class="meta">
+
+					<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+					<?php echo $notify_mark_html; ?>
+				</div>
+				<?php
+
+			}
+
+
 			elseif( $action == 'best_answer' ) {
 
-				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Choosed best answer', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($a_id).'</a>';
-				
-				echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
-				echo '</div>';
+				echo ' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Choosed best answer', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($a_id).'</a>';
 
-			}			
-			
+				?>
+				<div class="meta">
+
+					<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+					<?php echo $notify_mark_html; ?>
+				</div>
+				<?php
+
+
+			}
+
 			elseif( $action == 'best_answer_removed' ) {
 
-				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Removed best answer', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($a_id).'</a>';
-				
-				echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
-				echo '</div>';
+				echo ' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Removed best answer', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($a_id).'</a>';
 
-			}			
-	
+				?>
+				<div class="meta">
+
+					<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+					<?php echo $notify_mark_html; ?>
+				</div>
+				<?php
+
+
+			}
+
 			elseif($action=='new_comment'){
 
-                $comment_post_data = get_comment( $c_id );
+				$comment_post_data = get_comment( $c_id );
 
-                if(!empty($comment_post_data->comment_post_ID)):
+				if(!empty($comment_post_data->comment_post_ID)):
 
-                    $comment_post_id = $comment_post_data->comment_post_ID;
+					$comment_post_id = $comment_post_data->comment_post_ID;
 
-                    $comment_post_type = get_post_type($comment_post_id);
+					$comment_post_type = get_post_type($comment_post_id);
 
-                    if($comment_post_type=='answer'){
+					if($comment_post_type=='answer'){
 
-                        $flag_post_type = 'answer';
+						$flag_post_type = 'answer';
 
-                        $q_id = get_post_meta( $comment_post_id, 'qa_answer_question_id', true );
-
-
-                    }
-                    else{
-                        $flag_post_type = 'question';
+						$q_id = get_post_meta( $comment_post_id, 'qa_answer_question_id', true );
 
 
-                    }
+					}
+					else{
+						$flag_post_type = 'question';
 
-                    $q_id = get_post_meta( $a_id, 'qa_answer_question_id', true );
-                    echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Commented', 'question-answer').'</span> on '.$flag_post_type.' <a href="'.get_permalink($q_id).'#comment-'.$c_id.'" class="link">'.get_the_title($a_id).'</a>';
 
-                    echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
-                    echo '</div>';
+					}
 
-                endif;
+					$q_id = get_post_meta( $a_id, 'qa_answer_question_id', true );
+					echo ' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Commented', 'question-answer').'</span> on '.$flag_post_type.' <a href="'.get_permalink($q_id).'#comment-'.$c_id.'" class="link">'.get_the_title($a_id).'</a>';
 
-				
+					?>
+					<div class="meta">
+
+						<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+						<?php echo $notify_mark_html; ?>
+					</div>
+					<?php
+
+
+				endif;
+
+
 			}
 
 
 
-            elseif($action=='comment_flag'){
-
-                $comment_post_data = get_comment( $c_id );
-                $comment_post_id = $comment_post_data->comment_post_ID ;
-
-                $comment_post_type = get_post_type($comment_post_id);
-
-                if($comment_post_type=='answer'){
-
-                    $flag_post_type = 'answer';
-                    $link_extra = '#comment-'.$c_id;
-                    $q_id = get_post_meta( $comment_post_id, 'qa_answer_question_id', true );
-                }
-                else{
-                    $flag_post_type = 'question';
-                    $link_extra = '#comment-'.$c_id;
-                    $q_id = $comment_post_id;
-                }
-
-
-
-                echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Flagged comment', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#comment-'.$c_id.'" class="link">'.get_the_title($q_id).'</a>';
-
-                echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
-                echo '</div>';
-
-
-            }
-
-
-            elseif($action=='comment_vote_up'){
+			elseif($action=='comment_flag'){
 
 				$comment_post_data = get_comment( $c_id );
 				$comment_post_id = $comment_post_data->comment_post_ID ;
@@ -2184,15 +2578,22 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 
 
 
-				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('comment vote up', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#comment-'.$c_id.'" class="link">'.get_the_title($q_id).'</a>';
+				echo ' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Flagged comment', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#comment-'.$c_id.'" class="link">'.get_the_title($q_id).'</a>';
 
-				echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
-				echo '</div>';
+				?>
+				<div class="meta">
+
+					<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+					<?php echo $notify_mark_html; ?>
+				</div>
+				<?php
+
 
 
 			}
 
-            elseif($action=='comment_vote_down'){
+
+			elseif($action=='comment_vote_up'){
 
 				$comment_post_data = get_comment( $c_id );
 				$comment_post_id = $comment_post_data->comment_post_ID ;
@@ -2213,10 +2614,51 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 
 
 
-				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('comment vote down', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#comment-'.$c_id.'" class="link">'.get_the_title($q_id).'</a>';
+				echo ' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('comment vote up', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#comment-'.$c_id.'" class="link">'.get_the_title($q_id).'</a>';
 
-				echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
-				echo '</div>';
+				?>
+				<div class="meta">
+
+					<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+					<?php echo $notify_mark_html; ?>
+				</div>
+				<?php
+
+
+
+			}
+
+			elseif($action=='comment_vote_down'){
+
+				$comment_post_data = get_comment( $c_id );
+				$comment_post_id = $comment_post_data->comment_post_ID ;
+
+				$comment_post_type = get_post_type($comment_post_id);
+
+				if($comment_post_type=='answer'){
+
+					$flag_post_type = 'answer';
+					$link_extra = '#comment-'.$c_id;
+					$q_id = get_post_meta( $comment_post_id, 'qa_answer_question_id', true );
+				}
+				else{
+					$flag_post_type = 'question';
+					$link_extra = '#comment-'.$c_id;
+					$q_id = $comment_post_id;
+				}
+
+
+
+				echo ' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('comment vote down', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#comment-'.$c_id.'" class="link">'.get_the_title($q_id).'</a>';
+
+				?>
+				<div class="meta">
+
+					<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+					<?php echo $notify_mark_html; ?>
+				</div>
+				<?php
+
 
 			}
 
@@ -2228,91 +2670,129 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 
 
 			elseif($action=='vote_up'){
-				
-				$q_id = get_post_meta( $a_id, 'qa_answer_question_id', true );
-				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Vote Up', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($a_id).'</a>';
-				
-				echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
-				echo '</div>';
 
-				
-			}				
+				$q_id = get_post_meta( $a_id, 'qa_answer_question_id', true );
+				echo ' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Vote Up', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($a_id).'</a>';
+
+				?>
+				<div class="meta">
+
+					<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+					<?php echo $notify_mark_html; ?>
+				</div>
+				<?php
+
+
+
+			}
 			elseif($action=='vote_down'){
-				
-				$q_id = get_post_meta( $a_id, 'qa_answer_question_id', true );
-				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Vote Down', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($a_id).'</a>';
-				
-				echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
-				echo '</div>';
 
-				
-			}				
-					
-					
-			elseif($action=='q_solved'){
-	 
-				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> '.__('marked', 'question-answer').' <span class="action">'.__('Solved', 'question-answer').'</span> <a href="'.get_permalink($q_id).'" class="link">'.get_the_title($q_id).'</a>';
-				
-				echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
-				echo '</div>';
-				
-			}	
-					
-			elseif($action=='q_not_solved'){
-	 
-				echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> '.__('marked', 'question-answer').' <span class="action">'.__('Not Solved','question-answer').'</span> <a href="'.get_permalink($q_id).'" class="link">'.get_the_title($q_id).'</a>';
-				
-				echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
-				echo '</div>';
+				$q_id = get_post_meta( $a_id, 'qa_answer_question_id', true );
+				echo ' <span class="name">'.$user_display_name.'</span> <span class="action">'.__('Vote Down', 'question-answer').'</span> <a href="'.get_permalink($q_id).'#single-answer-'.$a_id.'" class="link">'.get_the_title($a_id).'</a>';
+
+				?>
+				<div class="meta">
+
+					<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+					<?php echo $notify_mark_html; ?>
+				</div>
+				<?php
+
+
 
 			}
 
-            elseif($action=='flag'){
 
-			    if(!empty($a_id)){
+			elseif($action=='q_solved'){
 
-			        $flag_post_type = 'answer';
-			        $link_extra = '#single-answer-'.$a_id;
-                }
-                else{
+				echo ' <span class="name">'.$user_display_name.'</span> '.__('marked', 'question-answer').' <span class="action">'.__('Solved', 'question-answer').'</span> <a href="'.get_permalink($q_id).'" class="link">'.get_the_title($q_id).'</a>';
 
-                    $flag_post_type = 'question';
-                    $link_extra = '';
-                }
+				?>
+				<div class="meta">
 
-
-                $q_id = get_post_meta( $a_id, 'qa_answer_question_id', true );
-                echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> '.sprintf(__('flagged your %s', 'question-answer'), $flag_post_type).' <span class="name"></span> <a href="'.get_permalink($q_id).$link_extra.'" class="link">'.get_the_title($a_id).'</a>';
-
-                echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
-                echo '</div>';
-
-            }
-
-            elseif($action=='unflag'){
-
-                if(!empty($a_id)){
-
-                    $flag_post_type = 'answer';
-                    $link_extra = '#single-answer-'.$a_id;
-                }
-                else{
-
-                    $flag_post_type = 'question';
-                    $link_extra = '';
-                }
+					<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+					<?php echo $notify_mark_html; ?>
+				</div>
+				<?php
 
 
-                $q_id = get_post_meta( $a_id, 'qa_answer_question_id', true );
-                echo '<div class="item">'.$notify_mark_html.' <span class="name">'.$user_display_name.'</span> '.$flag_post_type.' <span class="action">'.__('unflagged ', 'question-answer').'</span> <a href="'.get_permalink($q_id).$link_extra.'" class="link">'.get_the_title($q_id).'</a>';
+			}
 
-                echo ' <span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> '.$datetime.'</span>';
-                echo '</div>';
+			elseif($action=='q_not_solved'){
 
-            }
+				echo ' <span class="name">'.$user_display_name.'</span> '.__('marked', 'question-answer').' <span class="action">'.__('Not Solved','question-answer').'</span> <a href="'.get_permalink($q_id).'" class="link">'.get_the_title($q_id).'</a>';
 
+				?>
+				<div class="meta">
+
+					<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+					<?php echo $notify_mark_html; ?>
+				</div>
+				<?php
+
+
+			}
+
+			elseif($action=='flag'){
+
+				if(!empty($a_id)){
+
+					$flag_post_type = 'answer';
+					$link_extra = '#single-answer-'.$a_id;
+				}
+				else{
+
+					$flag_post_type = 'question';
+					$link_extra = '';
+				}
+
+
+				$q_id = get_post_meta( $a_id, 'qa_answer_question_id', true );
+				echo ' <span class="name">'.$user_display_name.'</span> '.sprintf(__('flagged your %s', 'question-answer'), $flag_post_type).' <span class="name"></span> <a href="'.get_permalink($q_id).$link_extra.'" class="link">'.get_the_title($a_id).'</a>';
+
+				?>
+				<div class="meta">
+
+					<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+					<?php echo $notify_mark_html; ?>
+				</div>
+				<?php
+
+
+			}
+
+			elseif($action=='unflag'){
+
+				if(!empty($a_id)){
+
+					$flag_post_type = 'answer';
+					$link_extra = '#single-answer-'.$a_id;
+				}
+				else{
+
+					$flag_post_type = 'question';
+					$link_extra = '';
+				}
+
+
+				$q_id = get_post_meta( $a_id, 'qa_answer_question_id', true );
+				echo ' <span class="name">'.$user_display_name.'</span> '.$flag_post_type.' <span class="action">'.__('unflagged ', 'question-answer').'</span> <a href="'.get_permalink($q_id).$link_extra.'" class="link">'.get_the_title($q_id).'</a>';
+
+				?>
+				<div class="meta">
+
+					<span class="notify-time"><i class="fa fa-clock-o" aria-hidden="true"></i> <?php echo $datetime; ?></span>
+					<?php echo $notify_mark_html; ?>
+				</div>
+				<?php
+
+
+
+			}
+			echo '</div>';
 
 		}
+		echo '</div>';
 		echo '</div>';
 	
 	}

@@ -22,7 +22,16 @@ class class_qa_shortcode_myaccount{
 
 
 
+
 		ob_start();
+
+
+		if(current_user_can('manage_options')):
+		?>
+		<div class="qa-deprecated"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Please use new shortcode <code>[qa_dashboard]</code> instead of <code>[qa_myaccount]</code></div>
+		<?php
+
+		endif;
 
 		include( QA_PLUGIN_DIR . 'templates/my-account/my-account.php');
 

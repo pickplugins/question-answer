@@ -57,7 +57,6 @@
   border-radius: 3px;
   color: #fff;
   font-size: 11px;
-  height: 15px;
   padding: 3px;
   position: absolute;
   right: -10px;
@@ -101,14 +100,6 @@
 }
 
 
-
-
-
-.qa-breadcrumb i {
-	color:#826ECC;
-}
-
-
 .qa-breadcrumb .notifications {
   margin: 10px 0;
 }
@@ -122,16 +113,18 @@
 
 .qa-breadcrumb .notifications .title {
   font-weight: bold;
+  margin-bottom: 20px;
 }
 
 
 .qa-breadcrumb .notifications .qa_breadcrumb_refresh {
-    background: #bbbbbb;
-    margin-right: 10px;
-    float: right;
-    padding: 1px 15px;
-    color: #826ECC;
-    border-radius: 3px;
+  background: #826ECC;
+  margin-right: 10px;
+  float: right;
+  padding: 1px 15px;
+  border-radius: 3px;
+  color: #fff;
+  text-align: center;
 }
 
 
@@ -140,10 +133,19 @@
 .qa-breadcrumb .notifications .item {
   font-size: 12px;
 }
+.qa-breadcrumb .notifications .item .thumb {
+  float: left;
+  margin-right: 10px;
+}
+.qa-breadcrumb .notifications .item .meta {
+  margin-top: 10px;
+  text-align: right;
+}
 
-.qa-breadcrumb .notifications .item  .notify-time {
-  display: block;
-  padding: 8px 0;
+
+.qa-breadcrumb .notifications .item .notify-time {
+  display: inline-block;
+  /* padding: 8px 0; */
 }
 
 

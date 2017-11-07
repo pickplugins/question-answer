@@ -53,16 +53,60 @@
     margin: 0 5px 5px 0;
 }
 
-.qa-my-questions .paginate {
+.paginate {
     margin: 20px 0;
 }
-.qa-my-questions .paginate .page-numbers {
+.paginate .page-numbers {
     padding: 6px 12px;
     background: #ddd;
     text-decoration: none;
     display: inline-block;
     margin: 0 3px;
 }
+
+
+
+
+.qa-my-answers{}
+
+.qa-my-answers .item {
+    margin: 0px 0;
+    border-bottom: 1px solid #ddd9;
+    padding: 15px 0px;
+}
+.qa-my-answers .item .q-title {
+    margin-bottom: 10px;
+}
+
+.qa-my-answers .item .meta{}
+.qa-my-answers .item .meta span {
+    font-size: 13px;
+    background: #dddddd80;
+    padding: 1px 10px;
+    display: inline-block;
+    margin: 0 5px 5px 0;
+}
+
+.qa-my-answers .paginate {
+    margin: 20px 0;
+}
+.qa-my-answers .paginate .page-numbers {
+    padding: 6px 12px;
+    background: #ddd;
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 3px;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

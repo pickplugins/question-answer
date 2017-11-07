@@ -6,9 +6,11 @@ jQuery(document).ready(function($) {
 		$('.qa-breadcrumb .menu-box .menu-box-hover').fadeIn();
 	})
 	
-	$(document).on('click', '.qa-breadcrumb .notifications .qa_breadcrumb_refresh', function (){
+	$(document).on('click', '.qa-breadcrumb .notifications .qa_breadcrumb_refresh, .qa-notifications .qa_breadcrumb_refresh', function (){
 		
-		$('.qa-breadcrumb .menu-box .menu-box-hover .notifications').html( "<i class='fa fa-spin fa-cog'></i>" );
+		//$('.qa-breadcrumb .menu-box .menu-box-hover .notifications').html( "<i class='fa fa-spin fa-cog'></i>" );
+
+		$(this).children('.fa').addClass('fa-spin');
 		
 		$.ajax(
 			{
@@ -25,9 +27,12 @@ jQuery(document).ready(function($) {
 			var html	= data['html'];	
 			
 			$('.qa-breadcrumb .menu-box .bubble').html( count );
-			$('.qa-breadcrumb .menu-box .menu-box-hover .notifications').html( html );
-		}
-			});
+            $('.qa-notifications .count').html( '('+count+')' );
+			$('.qa-breadcrumb .notifications .list-items').html( html );
+            $('.qa-notifications .list-items').html( html );
+            $(this).children('.fa').removeClass('fa-spin');
+			}
+		});
 		
 		$('.qa-breadcrumb .menu-box .menu-box-hover').fadeIn();
 	})

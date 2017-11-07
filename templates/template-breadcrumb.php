@@ -27,7 +27,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 		
 	add_action('qa_breadcrumb_menu','qa_breadcrumb_menu');
 	
-	add_action('qa_breadcrumb_menu','qa_breadcrumb_menu_notifications');	
+	add_action('qa_breadcrumb_menu','qa_breadcrumb_menu_notifications');
 	
 	
 	
@@ -104,9 +104,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
         <?php do_action('qa_breadcrumb_menu'); ?>
         </div>
     </div>
-    
-	
-	
+
     <div class="links">
     <?php do_action('qa_breadcrumb_links'); ?>
     </div> 

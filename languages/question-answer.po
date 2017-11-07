@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Question Answer\n"
-"POT-Creation-Date: 2017-11-06 16:27+0600\n"
-"PO-Revision-Date: 2017-11-06 16:27+0600\n"
+"POT-Creation-Date: 2017-11-07 13:55+0600\n"
+"PO-Revision-Date: 2017-11-07 13:55+0600\n"
 "Last-Translator: \n"
 "Language-Team: pickplugins <support@pickplugins.com>\n"
 "Language: en\n"
@@ -239,23 +239,33 @@ msgstr ""
 #: includes/classes/class-answer-column.php:101
 #: includes/classes/class-functions.php:206
 #: includes/classes/class-question-column.php:43
-#: includes/classes/class-question-column.php:141 includes/functions.php:1661
-#: includes/functions.php:2254 templates/my-account/question-list.php:108
+#: includes/classes/class-question-column.php:141 includes/functions.php:312
+#: includes/functions.php:2042 includes/functions.php:2708
+#: templates/my-account/question-list.php:108
+#: templates/my-notifications.php:355
 #: templates/question-archive/single-question.php:66
 #: templates/single-question/meta.php:76
 msgid "Solved"
 msgstr ""
 
-#: includes/classes/class-dashboard.php:51
+#: includes/classes/class-dashboard.php:67
 msgid "Account"
 msgstr ""
 
-#: includes/classes/class-dashboard.php:58
-msgid "Account Edit"
+#: includes/classes/class-dashboard.php:74
+msgid "Account edit"
 msgstr ""
 
-#: includes/classes/class-dashboard.php:64
-msgid "My Questions"
+#: includes/classes/class-dashboard.php:80
+msgid "My notifications"
+msgstr ""
+
+#: includes/classes/class-dashboard.php:86
+msgid "My questions"
+msgstr ""
+
+#: includes/classes/class-dashboard.php:92
+msgid "My answers"
 msgstr ""
 
 #: includes/classes/class-functions.php:30
@@ -758,273 +768,291 @@ msgstr ""
 msgid "Website Stats"
 msgstr ""
 
-#: includes/functions.php:36
-msgid "Search Count"
-msgstr ""
-
-#: includes/functions.php:76
-msgid "Ask question"
-msgstr ""
-
-#: includes/functions.php:113
-msgid "Polls"
-msgstr ""
-
-#: includes/functions.php:114
-msgid "Add your polls"
-msgstr ""
-
-#: includes/functions.php:192 includes/functions.php:242
-msgid "year ago"
-msgstr ""
-
-#: includes/functions.php:196 includes/functions.php:246
-msgid "month ago"
-msgstr ""
-
-#: includes/functions.php:200 includes/functions.php:250
-msgid "day ago"
-msgstr ""
-
-#: includes/functions.php:204 includes/functions.php:254
-msgid "hour ago"
-msgstr ""
-
-#: includes/functions.php:208 includes/functions.php:258
-msgid "minute ago"
-msgstr ""
-
-#: includes/functions.php:212 includes/functions.php:262
-msgid "second ago"
-msgstr ""
-
-#: includes/functions.php:660
-msgid "Please login first."
-msgstr ""
-
-#: includes/functions.php:667
-msgid "Sorry you can't choose best answer."
-msgstr ""
-
-#: includes/functions.php:677
-msgid "Removed Best answer"
-msgstr ""
-
-#: includes/functions.php:694
-msgid "Marked as Best answer"
-msgstr ""
-
-#: includes/functions.php:786
-msgid "Removed from featured"
-msgstr ""
-
-#: includes/functions.php:792
-msgid "Successfully featured"
-msgstr ""
-
-#: includes/functions.php:853 templates/single-question/answer-content.php:106
-#: templates/single-question/answer-reply.php:238
-#: templates/single-question/content.php:105
-#: templates/single-question/content.php:255
-msgid "Unflag"
-msgstr ""
-
-#: includes/functions.php:853
-msgid "Undo Report"
-msgstr ""
-
-#: includes/functions.php:855 templates/single-question/answer-content.php:110
-#: templates/single-question/answer-reply.php:242
-#: templates/single-question/content.php:109
-#: templates/single-question/content.php:259
-msgid "Flag"
-msgstr ""
-
-#: includes/functions.php:855 templates/single-question/answer-content.php:35
-#: templates/single-question/answer-reply.php:181
-#: templates/single-question/content.php:227
-msgid "Report this"
-msgstr ""
-
-#: includes/functions.php:883 includes/functions.php:1033
-#: includes/functions.php:1201
-msgid "Please login"
-msgstr ""
-
-#: includes/functions.php:904 includes/functions.php:1217
-msgid "Report removed."
-msgstr ""
-
-#: includes/functions.php:915 includes/functions.php:928
-#: includes/functions.php:949 includes/functions.php:1227
-#: includes/functions.php:1238 includes/functions.php:1255
-msgid "Thanks for report."
-msgstr ""
-
-#: includes/functions.php:1050 includes/functions.php:1071
-#: includes/functions.php:1099
-msgid "Vote Down."
-msgstr ""
-
-#: includes/functions.php:1058 includes/functions.php:1079
-#: includes/functions.php:1108
-msgid "Vote Up."
-msgstr ""
-
-#: includes/functions.php:1396
-msgid "Something went wrong !"
-msgstr ""
-
-#: includes/functions.php:1401
-msgid "Please login to post comments"
-msgstr ""
-
-#: includes/functions.php:1440
-#: templates/question-archive/question-archive.php:190
-#: templates/single-question/content.php:159
-msgid "Total:"
-msgstr ""
-
-#: includes/functions.php:1450
-msgid "Please login."
-msgstr ""
-
-#: includes/functions.php:1481 includes/functions.php:1528
-msgid "Login first to Review !"
-msgstr ""
-
-#: includes/functions.php:1507
-msgid "Already Reviewed !"
-msgstr ""
-
-#: includes/functions.php:1554
-msgid "Already Reviewed!"
-msgstr ""
-
-#: includes/functions.php:1586
-msgid "Unsubscribe from this question"
-msgstr ""
-
-#: includes/functions.php:1600
-msgid "Subscribed to this question"
-msgstr ""
-
-#: includes/functions.php:1613
-msgid "Please login first!"
-msgstr ""
-
-#: includes/functions.php:1640
-msgid "Successfully marked as unsolved"
-msgstr ""
-
-#: includes/functions.php:1641 includes/functions.php:1643
-#: templates/single-question/meta.php:83 templates/single-question/meta.php:85
-msgid "Mark as Solved"
-msgstr ""
-
-#: includes/functions.php:1660
-msgid "Successfully marked as Solved"
-msgstr ""
-
-#: includes/functions.php:1663
-msgid "Mark as Unsolved"
-msgstr ""
-
-#: includes/functions.php:1682
-msgid "Access Denied!"
-msgstr ""
-
-#: includes/functions.php:1828
-msgid "Select category"
-msgstr ""
-
-#: includes/functions.php:1910
-msgid "Select a Category"
-msgstr ""
-
-#: includes/functions.php:1930
-msgid "Category"
-msgstr ""
-
-#: includes/functions.php:1963
-msgid "Word moderate."
-msgstr ""
-
-#: includes/functions.php:2024
-msgid "Notifications"
-msgstr ""
-
-#: includes/functions.php:2025
-msgid "Refresh"
-msgstr ""
-
-#: includes/functions.php:2055 templates/single-question/answer-reply.php:82
+#: includes/functions.php:49 includes/functions.php:2443
+#: templates/my-notifications.php:84
+#: templates/single-question/answer-reply.php:82
 #: templates/single-question/answer-reply.php:205
 #: templates/single-question/content.php:35
 #: templates/single-question/content.php:241
 msgid "Anonymous"
 msgstr ""
 
-#: includes/functions.php:2065
+#: includes/functions.php:63 includes/functions.php:2459
+#: templates/my-notifications.php:106
 msgid "posted"
 msgstr ""
 
-#: includes/functions.php:2065
+#: includes/functions.php:63 includes/functions.php:2459
+#: templates/my-notifications.php:106
 msgid "New Question"
 msgstr ""
 
-#: includes/functions.php:2074
+#: includes/functions.php:78 includes/functions.php:2474
+#: templates/my-notifications.php:121
 msgid "Answered"
 msgstr ""
 
-#: includes/functions.php:2083
+#: includes/functions.php:93 includes/functions.php:2489
+#: templates/my-notifications.php:136
 msgid "Choosed best answer"
 msgstr ""
 
-#: includes/functions.php:2092
+#: includes/functions.php:108 includes/functions.php:2504
+#: templates/my-notifications.php:151
 msgid "Removed best answer"
 msgstr ""
 
-#: includes/functions.php:2124
+#: includes/functions.php:146 includes/functions.php:2542
+#: templates/my-notifications.php:189
 msgid "Commented"
 msgstr ""
 
-#: includes/functions.php:2157
+#: includes/functions.php:185 includes/functions.php:2581
+#: templates/my-notifications.php:228
 msgid "Flagged comment"
 msgstr ""
 
-#: includes/functions.php:2187
+#: includes/functions.php:221 includes/functions.php:2617
+#: templates/my-notifications.php:264
 msgid "comment vote up"
 msgstr ""
 
-#: includes/functions.php:2216
+#: includes/functions.php:256 includes/functions.php:2652
+#: templates/my-notifications.php:299
 msgid "comment vote down"
 msgstr ""
 
-#: includes/functions.php:2233
+#: includes/functions.php:279 includes/functions.php:2675
+#: templates/my-notifications.php:322
 msgid "Vote Up"
 msgstr ""
 
-#: includes/functions.php:2243
+#: includes/functions.php:295 includes/functions.php:2691
+#: templates/my-notifications.php:338
 msgid "Vote Down"
 msgstr ""
 
-#: includes/functions.php:2254 includes/functions.php:2263
+#: includes/functions.php:312 includes/functions.php:327
+#: includes/functions.php:2708 includes/functions.php:2723
+#: templates/my-notifications.php:355 templates/my-notifications.php:370
 msgid "marked"
 msgstr ""
 
-#: includes/functions.php:2263
+#: includes/functions.php:327 includes/functions.php:2723
+#: templates/my-notifications.php:370
 #: templates/question-archive/single-question.php:71
 msgid "Not Solved"
 msgstr ""
 
-#: includes/functions.php:2285
+#: includes/functions.php:355 includes/functions.php:2751
+#: templates/my-notifications.php:398
 #, php-format
 msgid "flagged your %s"
 msgstr ""
 
-#: includes/functions.php:2307
+#: includes/functions.php:383 includes/functions.php:2779
+#: templates/my-notifications.php:426
 msgid "unflagged "
+msgstr ""
+
+#: includes/functions.php:417
+msgid "Search Count"
+msgstr ""
+
+#: includes/functions.php:457
+msgid "Ask question"
+msgstr ""
+
+#: includes/functions.php:494
+msgid "Polls"
+msgstr ""
+
+#: includes/functions.php:495
+msgid "Add your polls"
+msgstr ""
+
+#: includes/functions.php:573 includes/functions.php:623
+msgid "year ago"
+msgstr ""
+
+#: includes/functions.php:577 includes/functions.php:627
+msgid "month ago"
+msgstr ""
+
+#: includes/functions.php:581 includes/functions.php:631
+msgid "day ago"
+msgstr ""
+
+#: includes/functions.php:585 includes/functions.php:635
+msgid "hour ago"
+msgstr ""
+
+#: includes/functions.php:589 includes/functions.php:639
+msgid "minute ago"
+msgstr ""
+
+#: includes/functions.php:593 includes/functions.php:643
+msgid "second ago"
+msgstr ""
+
+#: includes/functions.php:1041
+msgid "Please login first."
+msgstr ""
+
+#: includes/functions.php:1048
+msgid "Sorry you can't choose best answer."
+msgstr ""
+
+#: includes/functions.php:1058
+msgid "Removed Best answer"
+msgstr ""
+
+#: includes/functions.php:1075
+msgid "Marked as Best answer"
+msgstr ""
+
+#: includes/functions.php:1167
+msgid "Removed from featured"
+msgstr ""
+
+#: includes/functions.php:1173
+msgid "Successfully featured"
+msgstr ""
+
+#: includes/functions.php:1234 templates/single-question/answer-content.php:106
+#: templates/single-question/answer-reply.php:238
+#: templates/single-question/content.php:105
+#: templates/single-question/content.php:255
+msgid "Unflag"
+msgstr ""
+
+#: includes/functions.php:1234
+msgid "Undo Report"
+msgstr ""
+
+#: includes/functions.php:1236 templates/single-question/answer-content.php:110
+#: templates/single-question/answer-reply.php:242
+#: templates/single-question/content.php:109
+#: templates/single-question/content.php:259
+msgid "Flag"
+msgstr ""
+
+#: includes/functions.php:1236 templates/single-question/answer-content.php:35
+#: templates/single-question/answer-reply.php:181
+#: templates/single-question/content.php:227
+msgid "Report this"
+msgstr ""
+
+#: includes/functions.php:1264 includes/functions.php:1414
+#: includes/functions.php:1582
+msgid "Please login"
+msgstr ""
+
+#: includes/functions.php:1285 includes/functions.php:1598
+msgid "Report removed."
+msgstr ""
+
+#: includes/functions.php:1296 includes/functions.php:1309
+#: includes/functions.php:1330 includes/functions.php:1608
+#: includes/functions.php:1619 includes/functions.php:1636
+msgid "Thanks for report."
+msgstr ""
+
+#: includes/functions.php:1431 includes/functions.php:1452
+#: includes/functions.php:1480
+msgid "Vote Down."
+msgstr ""
+
+#: includes/functions.php:1439 includes/functions.php:1460
+#: includes/functions.php:1489
+msgid "Vote Up."
+msgstr ""
+
+#: includes/functions.php:1777
+msgid "Something went wrong !"
+msgstr ""
+
+#: includes/functions.php:1782
+msgid "Please login to post comments"
+msgstr ""
+
+#: includes/functions.php:1821
+#: templates/question-archive/question-archive.php:190
+#: templates/single-question/content.php:159
+msgid "Total:"
+msgstr ""
+
+#: includes/functions.php:1831
+msgid "Please login."
+msgstr ""
+
+#: includes/functions.php:1862 includes/functions.php:1909
+msgid "Login first to Review !"
+msgstr ""
+
+#: includes/functions.php:1888
+msgid "Already Reviewed !"
+msgstr ""
+
+#: includes/functions.php:1935
+msgid "Already Reviewed!"
+msgstr ""
+
+#: includes/functions.php:1967
+msgid "Unsubscribe from this question"
+msgstr ""
+
+#: includes/functions.php:1981
+msgid "Subscribed to this question"
+msgstr ""
+
+#: includes/functions.php:1994
+msgid "Please login first!"
+msgstr ""
+
+#: includes/functions.php:2021
+msgid "Successfully marked as unsolved"
+msgstr ""
+
+#: includes/functions.php:2022 includes/functions.php:2024
+#: templates/single-question/meta.php:83 templates/single-question/meta.php:85
+msgid "Mark as Solved"
+msgstr ""
+
+#: includes/functions.php:2041
+msgid "Successfully marked as Solved"
+msgstr ""
+
+#: includes/functions.php:2044
+msgid "Mark as Unsolved"
+msgstr ""
+
+#: includes/functions.php:2063
+msgid "Access Denied!"
+msgstr ""
+
+#: includes/functions.php:2209
+msgid "Select category"
+msgstr ""
+
+#: includes/functions.php:2291
+msgid "Select a Category"
+msgstr ""
+
+#: includes/functions.php:2311
+msgid "Category"
+msgstr ""
+
+#: includes/functions.php:2344
+msgid "Word moderate."
+msgstr ""
+
+#: includes/functions.php:2408
+msgid "Notifications"
+msgstr ""
+
+#: includes/functions.php:2409 templates/my-notifications.php:52
+msgid "Refresh"
 msgstr ""
 
 #: includes/menus/addons.php:93
@@ -1648,6 +1676,10 @@ msgstr ""
 
 #: templates/my-account/question-list.php:105
 msgid "On Hold"
+msgstr ""
+
+#: templates/my-notifications.php:446
+msgid "No notification right now."
 msgstr ""
 
 #: templates/question-archive/question-archive.php:90

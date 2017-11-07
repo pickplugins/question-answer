@@ -49,7 +49,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 				
 				}
 			else{
-				echo wp_trim_words(get_the_excerpt(), $qa_question_excerpt_length,'...'); 
+				echo wp_trim_words(get_the_content(), $qa_question_excerpt_length,'...');
 				}
 			
 			
