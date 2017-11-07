@@ -4,9 +4,9 @@ Built Question Answer site for your WordPress.
 
 ### Question Answer by [https://www.pickplugins.com](https://www.pickplugins.com/?ref=wordpress.org)
 
-* [Question Answer](https://www.pickplugins.com/item/question-answer/?ref=wordpress.org)
-* [Live Demo](http://www.pickplugins.com/demo/question-answer/?ref=wordpress.org)
-* [Documentation](https://www.pickplugins.com/documentation/question-answer/?ref=wordpress.org)
+* [Question Answer](https://www.pickplugins.com/item/question-answer/?ref=github.com)
+* [Live Demo](http://www.pickplugins.com/demo/question-answer/?ref=github.com)
+* [Documentation](https://www.pickplugins.com/documentation/question-answer/?ref=github.com)
 
 # Plugin Features
 
@@ -61,11 +61,11 @@ Built Question Answer site for your WordPress.
 
 # Add-ons
 
-* [Question Aswer - Email](https://wordpress.org/plugins/question-answer-email/)
-* [Import DW ](https://wordpress.org/plugins/question-answer-dw-import/)
-* [Import Question2answer ](https://wordpress.org/plugins/question-and-answer-import-question2answer/)
-* [Import AnsPress ](https://wordpress.org/plugins/question-answer-import-anspress/)
-* [Related Questions ](https://wordpress.org/plugins/question-answer-related-questions/)
+* [Question Aswer - Email](https://wordpress.org/plugins/question-answer-email/?ref=github.com)
+* [Import DW ](https://wordpress.org/plugins/question-answer-dw-import/?ref=github.com)
+* [Import Question2answer ](https://wordpress.org/plugins/question-and-answer-import-question2answer/?ref=github.com)
+* [Import AnsPress ](https://wordpress.org/plugins/question-answer-import-anspress/?ref=github.com)
+* [Related Questions ](https://wordpress.org/plugins/question-answer-related-questions/?ref=github.com)
 
 
 # Shortcodes
