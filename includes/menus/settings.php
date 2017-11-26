@@ -269,25 +269,18 @@ class class_qa_settings_page  {
 			'qa_myaccount_question_per_page'=>array(
 				'css_class'=>'qa_myaccount_question_per_page',					
 				'title'=>__('Question Per Page', 'question-answer'),
-				'option_details'=> __('Set the value for question per page in my account page. <br>Default: 10.', 'question-answer'),					
+				'option_details'=> __('Set the value for question per page in dashboard page. <br>Default: 10.', 'question-answer'),
 				'input_type'=>'text',
 				'input_values'=> '',
 				'placeholder' => __('10','question-answer'),					
 			),			
 			
-			'qa_myaccount_show_profile_management'=>array(
-				'css_class'=>'qa_myaccount_show_profile_management',					
-				'title'=>__('Show profile management?', 'question-answer'),
-				'option_details'=> __('Show profile management in My Account page. <br>Default: Yes.', 'question-answer'),					
-				'input_type'=>'select',
-				'input_values'=> '',
-				'input_args'=> array( 'yes'=>__('Yes', 'question-answer'), 'no'=>__('No', 'question-answer'),),
-			),			
+
 			
 			'qa_myaccount_show_question_list'=>array(
 				'css_class'=>'qa_myaccount_show_question_list',					
 				'title'=>__('Show Question List?', 'question-answer'),
-				'option_details'=> __('Show questions by you list in My Account page. <br>Default: Yes.', 'question-answer'),					
+				'option_details'=> __('Show questions by you list in dashboard area. <br>Default: Yes.', 'question-answer'),
 				'input_type'=>'select',
 				'input_values'=> '',
 				'input_args'=> array( 'yes'=>__('Yes', 'question-answer'), 'no'=>__('No', 'question-answer'),),
@@ -296,7 +289,7 @@ class class_qa_settings_page  {
 			'qa_myaccount_show_login_form'=>array(
 				'css_class'=>'qa_myaccount_show_login_form',					
 				'title'=>__('Show Login Form?', 'question-answer'),
-				'option_details'=> __('Show login form in My Account page for logged out users. <br>Default: Yes.', 'question-answer'),					
+				'option_details'=> __('Show login form in dashboard area for logged out users. <br>Default: Yes.', 'question-answer'),
 				'input_type'=>'select',
 				'input_values'=> '',
 				'input_args'=> array( 'yes'=>__('Yes', 'question-answer'), 'no'=>__('No', 'question-answer'),),
@@ -315,7 +308,7 @@ class class_qa_settings_page  {
 			'qa_myaccount_show_register_form'=>array(
 				'css_class'=>'qa_myaccount_show_register_form',					
 				'title'=>__('Show Register Form?', 'question-answer'),
-				'option_details'=> __('Show register form in My Account page for logged out users. <br>Default: Yes.','question-answer'),					
+				'option_details'=> __('Show register form in dashboard area for logged out users. <br>Default: Yes.','question-answer'),
 				'input_type'=>'select',
 				'input_values'=> '',
 				'input_args'=> array( 'yes'=>__('Yes', 'question-answer'), 'no'=>__('No', 'question-answer'),),
@@ -323,7 +316,7 @@ class class_qa_settings_page  {
 			
 			
 		);
-		$options['<i class="fa fa-briefcase"></i> '.__('My Account', 'question-answer')] = apply_filters( 'qa_settings_section_notification', $section_options );
+		$options['<i class="fa fa-briefcase"></i> '.__('Dashboard', 'question-answer')] = apply_filters( 'qa_settings_section_notification', $section_options );
 		
 		$section_options = array(
 			

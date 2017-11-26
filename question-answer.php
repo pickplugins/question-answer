@@ -3,7 +3,7 @@
 Plugin Name: Question Answer
 Plugin URI: https://www.pickplugins.com/product/question-answer/
 Description: Create Awesome Question and Answer Website in a Minute
-Version: 1.2.13
+Version: 1.2.14
 Text Domain: question-answer
 Author: pickplugins
 Author URI: http://pickplugins.com
@@ -140,7 +140,7 @@ class QuestionAnswer{
 		require_once( QA_PLUGIN_DIR . 'includes/actions/action-single-question.php');
 		//require_once( QA_PLUGIN_DIR . 'includes/actions/action-single-answer.php');		
 		require_once( QA_PLUGIN_DIR . 'includes/actions/action-myaccount.php');
-		require_once( QA_PLUGIN_DIR . 'includes/actions/action-breadcrumb.php');
+		//require_once( QA_PLUGIN_DIR . 'includes/actions/action-breadcrumb.php');
 		require_once( QA_PLUGIN_DIR . 'includes/actions/action-add-question.php');		
 	}
 	

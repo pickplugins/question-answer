@@ -29,13 +29,25 @@ class class_qa_shortcode_qa_edit_account{
 
 		if(isset($_POST['_wpnonce']) && wp_verify_nonce( $_POST['_wpnonce'], 'qa_edit_account_nonce' ) && $_POST['qa_edit_account_hidden'] == 'Y') {
 
-			wp_update_user( array( 'ID' => $current_user_id, ' user_email' => sanitize_email($_POST['user_email']) ) );
-			wp_update_user( array( 'ID' => $current_user_id, 'user_url' => esc_url($_POST['user_url']) ) );
 
-			update_user_meta( $current_user_id, 'description' , sanitize_text_field($_POST['description']) );
+		    $display_name = sanitize_text_field($_POST['display_name']);
+			$user_url = esc_url($_POST['user_url']);
+			$user_description = sanitize_text_field($_POST['description']);
 
+			wp_update_user( array( 'ID' => $current_user_id, 'display_name' => $display_name ) );
+			wp_update_user( array( 'ID' => $current_user_id, 'user_url' => $user_url ) );
+
+			update_user_meta( $current_user_id, 'description' , $user_description );
+			//update_user_meta( $current_user_id, 'display_name' , sanitize_text_field($_POST['display_name']) );
+
+            $success_massage = __('Profile updated.','question-answer');
 		}
 		else{
+
+			$display_name = $current_user->display_name;
+			$user_url = $current_user->user_url;
+			$user_description = $current_user->description;
+
 
 		}
 
@@ -47,22 +59,30 @@ class class_qa_shortcode_qa_edit_account{
 		?>
 		<div class="qa-edit-account">
 
+            <?php
+            if(!empty($success_massage)):
+            ?>
+            <div class=""><i class="fa fa-check-square-o" aria-hidden="true"></i> <?php echo $success_massage; ?></div>
+            <?php
+            endif;
+            ?>
+
 			<form action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>" method="post">
 				<input type="hidden" name="qa_edit_account_hidden" value="Y">
 
 				<div class="item">
-					<div class="header"><?php echo __('Email', 'question-answer'); ?></div>
-					<input type="email" name="user_email" value="<?php echo $current_user->user_email; ?>" />
+					<div class="header"><?php echo __('Display name', 'question-answer'); ?></div>
+					<input type="text" name="display_name" value="<?php echo $display_name; ?>" />
 				</div>
 
 				<div class="item">
 					<div class="header"><?php echo __('Website', 'question-answer'); ?></div>
-					<input type="text" name="user_url" value="<?php echo $current_user->user_url; ?>" />
+					<input type="text" name="user_url" value="<?php echo $user_url; ?>" />
 				</div>
 
 				<div class="item">
 					<div class="header"><?php echo __('Biographical Info', 'question-answer'); ?></div>
-					<textarea name="description"><?php echo $current_user->description; ?></textarea>
+					<textarea name="description"><?php echo $user_description; ?></textarea>
 				</div>
 
 				<?php wp_nonce_field( 'qa_edit_account_nonce' ); ?>

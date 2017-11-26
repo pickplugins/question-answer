@@ -78,11 +78,20 @@ $flag_count 		= sizeof($qa_flag);
 			// echo '<pre>'.var_export($author->roles, true).'</pre>';
 			 
 			// $all_roles = get_editable_roles();
-			 
+
+             if(empty($author->display_name)){
+
+	             $author_name = __('Anonymous','question-answer');
+             }
+             else{
+	             $author_name = $author->display_name;
+             }
+
+
 			 ?>
                 
                 
-			<?php echo apply_filters( 'qa_filter_single_answer_meta_author_name', '<a  href="#" class="qa-user-name">'.$author->display_name.'</a>' ); ?>
+			<?php echo apply_filters( 'qa_filter_single_answer_meta_author_name', '<a  href="#" class="qa-user-name">'.$author_name.'</a>' ); ?>
             
             <?php 
 			

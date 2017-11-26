@@ -8,8 +8,14 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 $post_statuses = get_post_statuses();
 $current_post_status = get_post_status(get_the_id());
-//echo '<pre>'.var_export($_POST, true).'</pre>';
+
 //var_dump($post_statuses);
+
+$post_id = get_the_id();
+
+
+//echo '<pre>'.var_export($post_id, true).'</pre>';
+
 ?>
 
 <?php

@@ -4,7 +4,7 @@
 	Tags:  Question Answer, Question, Answer
 	Requires at least: 4.1
 	Tested up to: 4.8
-	Stable tag: 1.2.13
+	Stable tag: 1.2.14
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -164,6 +164,25 @@ function qa_action_after_single_question() {
 
 
 == Changelog ==
+
+
+
+= 1.2.14 =
+
+* 24/11/2017 update - remove single question template and use filter single.php content
+* 24/11/2017 remove - remove action hook qa_action_single_question_title()
+* 24/11/2017 remove - remove action hook on single question page qa_action_breadcrumb()
+* 24/11/2017 remove - remove action hook qa_action_admin_actions()
+* 24/11/2017 remove - remove action hook qa_action_single_question_content()
+* 24/11/2017 remove - remove action hook qa_action_single_question_subscriber()
+
+
+
+
+= 1.2.14 =
+* 08/11/2017 fix - user login added to dashboard.
+* 08/11/2017 fix - user register added to dashboard.
+* 08/11/2017 remove - remove option "Show profile management?".
 
 
 = 1.2.13 =

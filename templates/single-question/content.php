@@ -8,7 +8,10 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 ?>
 
-<?php do_action('qa_action_single_question_content_before'); 
+<?php do_action('qa_action_single_question_content_before');
+
+
+//var_dump(get_the_ID());
 
 	$author_id 	= get_post_field( 'post_author', get_the_ID() );
 	$author 	= get_userdata($author_id);

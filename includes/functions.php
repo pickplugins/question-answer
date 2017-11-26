@@ -923,6 +923,8 @@ function qa_single_question_content($content) {
 
 	if ($post->post_type == 'question') {
 
+
+
 		ob_start();
 		include(QA_PLUGIN_DIR . 'templates/single-question/single-question.php');
 		return ob_get_clean();
@@ -2396,7 +2398,25 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 		return count($entries);
 	}
 
+    function qa_breadcrumb_nav_menu(){
 
+        $class_qa_functions = new class_qa_functions();
+        $menu_items = $class_qa_functions->qa_breadcrumb_menu_items_function();
+
+
+        foreach( $menu_items as $item_key => $item_details ) {
+
+            $link 	= isset( $item_details['link'] ) ? $item_details['link'] : '';
+            $title 	= isset( $item_details['title'] ) ? $item_details['title'] : '';
+
+            echo  '<div class="item '.$item_key.'"><a href="'.$link.'">'.$title.'</a></div>';
+
+        }
+
+    }
+
+
+    add_action('qa_breadcrumb_menu','qa_breadcrumb_nav_menu');
 
 
 	function qa_breadcrumb_menu_notifications(){
@@ -2796,3 +2816,22 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 		echo '</div>';
 	
 	}
+
+    add_action('qa_breadcrumb_menu','qa_breadcrumb_menu_notifications');
+
+
+    function qa_breadcrumb_links($action){
+
+        $archive_page_id = get_option( 'qa_page_question_archive' );
+        $archive_page_title = empty( $archive_page_id ) ? __('Question Archive', 'question-answer') : get_the_title( $archive_page_id );
+        $archive_page_href = empty( $archive_page_id ) ? '#' : get_the_permalink( $archive_page_id );
+
+        echo apply_filters( 'qa_filter_breadcrumb_question_archive_link_html', sprintf( '<i class="fa fa-angle-double-right separator" aria-hidden="true"></i> <a class="link" href="%s">%s</a>', $archive_page_href, $archive_page_title ) );
+
+        if( is_single() )
+            echo apply_filters( 'qa_filter_breadcrumb_single_question_title_html', sprintf( ' <i class="fa fa-angle-double-right separator" aria-hidden="true"></i> <a class="link" href="#" >%s</a>', get_the_title() ) );
+
+    }
+
+
+    add_action('qa_breadcrumb_links','qa_breadcrumb_links');

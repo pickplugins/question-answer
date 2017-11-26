@@ -33,13 +33,13 @@ class class_qa_functions{
 							
 											array(
 												'question'=>__('Single question page full width issue', 'question-answer'),
-												'answer_url'=>'https://goo.gl/VUOFKM',
+												'answer_url'=>'https://www.pickplugins.com/documentation/question-answer/faq/single-question-page-full-width-issue/',
 					
 												),							
 											
 											array(
 												'question'=>__('Question page 404 error', 'question-answer'),
-												'answer_url'=>'https://goo.gl/mX1tsq',
+												'answer_url'=>'https://www.pickplugins.com/documentation/question-answer/faq/question-page-404-error/',
 					
 												),												
 											

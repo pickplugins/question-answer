@@ -91,18 +91,28 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 		</div>
         
         <div class="form-meta">
+
 		<select id="category" name="category">
 			<option value=""><?php echo __('Select a category', 'question-answer'); ?></option> <?php
 
 			foreach( qa_get_categories() as $cat_id => $cat_info ) { ksort($cat_info);
-				$this_category = get_category( $cat_id );
+
+
+
+				$this_category = get_term( $cat_id );
+
+				//var_dump($this_category);
+
+				//if(!empty($this_category))
 				foreach( $cat_info as $key => $value ) {
-					
+
+					//var_dump($category);
+
 					if( $key == 0 )  {
 						?><option <?php selected( $this_category->slug, $category ); ?> value="<?php echo $this_category->slug; ?>"><?php echo $value; ?></option><?php
 					} else {
 						$this_category = get_category( $key );
-						
+
 						?><option <?php selected( $this_category->slug, $category ); ?> value="<?php echo $this_category->slug; ?>">  - <?php echo $value; ?></option> <?php
 					}
 				}
@@ -111,33 +121,23 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
         </div>
 		
         <div class="form-meta">
-		<select id="order_by" name="order_by"> <?php 
-			$sorter = $class_qa_functions->qa_question_archive_filter_options();
-			foreach( $sorter as $key => $value ) {
-				?><option <?php selected( $key, $order_by ); ?> value="<?php echo $key; ?>"><?php echo $value; ?></option><?php
-			} ?>
-		</select>
+            <select id="order_by" name="order_by"> <?php
+                $sorter = $class_qa_functions->qa_question_archive_filter_options();
+                foreach( $sorter as $key => $value ) {
+                    ?><option <?php selected( $key, $order_by ); ?> value="<?php echo $key; ?>"><?php echo $value; ?></option><?php
+                } ?>
+            </select>
 		</div>
-        
-<!-- 
-
-        <div class="form-meta">
-		<input type="text" placeholder="<?php echo __('username', 'question-answer'); ?>" name="user_slug" value="<?php echo $user_slug; ?>"/>
-		</div>
-        
--->
-        
    	 	<div class="form-meta">
-		<select id="filter_by" name="filter_by"> <?php 
-			$status = $class_qa_functions->qa_question_status();
-			foreach( $status as $key => $value ) {
-				?><option <?php selected( $key, $filter_by ); ?> value="<?php echo $key; ?>"><?php echo $value; ?></option><?php
-			} ?>
-		</select>
+            <select id="filter_by" name="filter_by"> <?php
+                $status = $class_qa_functions->qa_question_status();
+                foreach( $status as $key => $value ) {
+                    ?><option <?php selected( $key, $filter_by ); ?> value="<?php echo $key; ?>"><?php echo $value; ?></option><?php
+                } ?>
+            </select>
 		</div>
-		
         <div class="form-meta">
-		<input type="submit" value="<?php echo __('Search', 'question-answer'); ?>" />
+		    <input type="submit" value="<?php echo __('Search', 'question-answer'); ?>" />
 		</div>
 	</form>
 	<?php 
@@ -160,12 +160,6 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
         'meta_query' => $meta_query,
 
     ) );
-
-
-
-
-
-
 
 
 	$wp_query = new WP_Query( array (

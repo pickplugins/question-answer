@@ -7,7 +7,7 @@
 if ( ! defined('ABSPATH')) exit;  // if direct access 
 
 
-$question_id = get_the_id();
+    $question_id = get_the_id();
 
 	//get_header();
 
@@ -32,6 +32,7 @@ $question_id = get_the_id();
            ?>
            <div itemscope itemtype="http://schema.org/Question" id="question-<?php echo $question_id;  ?>" <?php post_class('single-question entry-content'); ?>>
             <?php
+
 
            do_action('qa_action_single_question_main');
 
