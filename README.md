@@ -2,7 +2,7 @@
 
 Built Question Answer site for your WordPress.
 
-### Question Answer by [https://www.pickplugins.com](https://www.pickplugins.com/?ref=wordpress.org)
+### Question Answer by [https://www.pickplugins.com](https://www.pickplugins.com/?ref=github.com)
 
 * [Question Answer](https://www.pickplugins.com/item/question-answer/?ref=github.com)
 * [Live Demo](http://www.pickplugins.com/demo/question-answer/?ref=github.com)
