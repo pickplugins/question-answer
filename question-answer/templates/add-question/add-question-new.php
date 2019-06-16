@@ -19,18 +19,6 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
     $qa_page_myaccount_url              = !empty($qa_page_myaccount) ? get_permalink($qa_page_myaccount) : wp_login_url($_SERVER['REQUEST_URI']);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
     //do_action('qa_action_breadcrumb'); ?>
 
 
@@ -43,7 +31,6 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
     if(!empty($_POST)){
 
         do_action('qa_question_submit_data', $_POST);
-
 
     }
 
