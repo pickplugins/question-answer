@@ -1,0 +1,82 @@
+@charset "utf-8";
+/* CSS Document */
+
+.qa_add_question{}
+
+
+.qa-q-submit-form{}
+.qa-q-submit-form .errors{
+  margin-bottom: 30px;
+}
+.qa-q-submit-form .errors .error {
+  color: #f0611a;
+  font-size: 12px;
+  padding: 3px 1px;
+}
+
+.qa-q-submit-form .errors .success {
+  color: #54c671;
+  font-size: 12px;
+  padding: 3px 1px;
+}
+
+
+
+
+
+
+
+
+
+.qa-q-submit-form .qa-suggestions{}
+
+.qa-q-submit-form  .qa-suggestions .suggestion-title {
+  font-weight: bold;
+  display: none;
+}
+
+.qa-q-submit-form .qa-suggestions .loading {
+  display: none;
+}
+
+.qa-q-submit-form .qa-suggestions li{}
+.qa-q-submit-form .qa-suggestions li a {
+  display: block;
+  font-size: 13px;
+  margin: 3px 0;
+  text-decoration: none;
+}
+
+
+
+
+.qa-q-submit-form .qa-form-field-wrap{}
+
+.qa-q-submit-form .qa-form-field-wrap input[type="text"], .qa-q-submit-form .qa-form-field-wrap textarea, .qa-q-submit-form .qa-form-field-wrap select{
+  width: 90%;
+}
+
+.qa-q-submit-form .qa-form-field-wrap select, .qa-q-submit-form .qa-form-field-wrap .wp-editor-wrap, .qa-q-submit-form .qa-form-field-wrap input[type="submit"]{
+  width: 93%;
+}
+
+.qa-q-submit-form .qa-form-field-wrap .field-title{
+  width: 250px;
+  float: left;
+}
+
+.qa-q-submit-form .qa-form-field-wrap .field-input{
+  margin-left: 250px;
+}
+.qa-q-submit-form .qa-form-field-wrap .field-details{
+  font-style: italic;
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+
+.qa-q-submitted{
+  background: #f2f2f2 none repeat scroll 0 0;
+  padding: 10px;
+  margin-bottom: 30px;
+}

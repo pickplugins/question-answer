@@ -1,0 +1,269 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+.qa-wrapper{}
+
+/*Nav Top*/
+
+.qa-wrapper .top-nav{
+    margin: 20px 0;
+    clear: both;
+    display: block;
+}
+
+/*nav-left*/
+
+.qa-wrapper .nav-left{
+    border-radius: 3px;
+    float: left;
+}
+
+.qa-wrapper .nav-left .item{
+    padding: 5px 10px;
+    background: #f2f2f2 none repeat scroll 0 0;
+    display: inline-block;
+    vertical-align: top;
+    float: left;
+    border-right: 1px solid rgba(0, 0, 0, 0.07);
+    position: relative;
+}
+
+.qa-wrapper .nav-left .item:last-child{
+    border-right: none;
+}
+
+.qa-wrapper .nav-left a{
+    text-decoration: none;
+    font-size: 12px;
+}
+
+
+.qa-wrapper .nav-left .item.search{
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+
+.qa-wrapper .nav-left .item.search:hover .question-search{
+    display: block;
+
+}
+
+
+
+
+
+
+.qa-wrapper .question-search{
+    position: absolute;
+    top: 34px;
+    left: 0;
+    background: #fff;
+    padding: 12px;
+    width: 250px;
+    font-size: 12px;
+    box-shadow: 0 4px 9px 2px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 100;
+}
+
+.qa-wrapper .question-search .form-field{
+    margin-bottom: 20px;
+}
+
+.qa-wrapper .question-search .form-field:last-child{
+    margin-bottom: 0px;
+}
+
+
+
+.qa-wrapper .question-search select, .qa-wrapper .question-search input[type="submit"] {
+    width: 100%;
+}
+
+
+
+.qa-wrapper .question-search input[type="text"]{
+    width: 94%;
+}
+
+
+
+
+
+.qa-wrapper .item.qa-menu:hover .qa-menu-wrap{
+    display: block;
+
+}
+
+
+
+
+
+
+.qa-wrapper .qa-menu-wrap{
+    position: absolute;
+    top: 34px;
+    left: 0;
+    background: #fff;
+    padding: 12px;
+    width: 250px;
+    font-size: 12px;
+    box-shadow: 0 4px 9px 2px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 100;
+}
+
+
+
+
+
+
+
+
+
+
+/*nav-right*/
+
+.qa-wrapper .nav-right{
+    float: right;
+    vertical-align: text-bottom;
+}
+.qa-wrapper .nav-right .item{display: inline-block;
+    margin-left: 10px;}
+
+
+
+
+.qa-wrapper .nav-right .item.notifications{background: #f2f2f2 none repeat scroll 0 0;
+    padding: 4px 10px;}
+
+.qa-wrapper .notifications .count{
+
+    position: absolute;
+    top: -10px;
+    left: -17px;
+    padding: 2px 7px;
+    background: #bbb none repeat scroll 0 0;
+    border-radius: 3px;
+    color: #fff;
+    font-size: 12px;
+    line-height: normal;
+}
+
+.qa-wrapper .nav-right .item.ask-question{background: #f2f2f2 none repeat scroll 0 0;
+    padding: 4px 10px;}
+
+.qa-wrapper .nav-right .item.ask-question a{text-decoration: none;font-size: 12px;}
+
+.qa-wrapper .nav-right .notifications{    position: relative;}
+
+
+.qa-wrapper .nav-right .item.notifications:hover .notification-wrapper{display: block;}
+
+.qa-wrapper .nav-right .notification-wrapper {
+    position: absolute;
+    right: 0;
+    width: 350px;
+    background: #fff;
+    font-size: 12px;
+    box-shadow: 0 2px 9px 2px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    display: none;
+    z-index: 100;
+}
+
+
+
+.qa-wrapper .nav-right .notification-list-top {padding: 0 0 6px 0;}
+.qa-wrapper .nav-right .notification-list-top span {
+    margin: 0;
+    border-right: 1px solid #ddd;
+    padding: 0 8px;
+}
+.qa-wrapper .nav-right .notification-list-top span:last-child{
+    border-right: 1px solid rgba(0,0,0,0);
+
+}
+
+
+
+.qa-wrapper .nav-right .notification-list-bottom {
+  margin-top: 10px;
+}
+.qa-wrapper .nav-right .notification-list {    max-height: 300px;
+    overflow: hidden;
+    overflow-y: scroll;}
+.qa-wrapper .nav-right .notification-list .item{
+    margin-bottom: 10px;
+    border-bottom: 1px solid #ddd;
+    /* padding-bottom: 10px; */
+    margin: 0;
+    /* margin-top: 10px; */
+    clear: both;
+    padding: 10px;
+}
+
+.qa-wrapper .nav-right .notification-list .item.unread{
+    background: #eee;
+}
+
+.qa-wrapper .nav-right .notification-list .item img{float: left;
+    margin-right: 15px;}
+
+.qa-wrapper .nav-right .notification-list .item a{
+    text-decoration: none;
+}
+
+.qa-wrapper .nav-right .notification-list .item .meta{        text-align: right;
+    font-size: 10px;
+    float: right;}
+
+
+.qa-wrapper .nav-right .notification-list .item .meta .notify-time{
+
+}
+.qa-wrapper .nav-right .notification-list .item .meta .notify-mark{
+    display: inline-block;
+    padding: 3px 7px;
+    background: #ebebeb none repeat scroll 0 0;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.qa-wrapper .nav-right .notification-list .item:last-child{border-bottom: none;}
+
+
+
+
+
+
+.qa-wrapper .load-notifications{
+    background: #f2f2f2 none repeat scroll 0 0;
+    text-align: center;
+    padding: 5px 0;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.qa-wrapper .mark-all-read{
+    cursor: pointer;
+}
+
+
+
+.qa-wrapper .load-notifications.loading{
+
+}
+
+
+.qa-wrapper .load-notifications .spinner{
+    margin: 0 10px;
+    display: none;
+}
+
+.qa-wrapper .load-notifications.loading .spinner{
+    margin: 0 10px;
+    display: inline;
+}
