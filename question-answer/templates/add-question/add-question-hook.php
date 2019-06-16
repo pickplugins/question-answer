@@ -336,7 +336,7 @@ function qa_question_submitted_message($question_ID, $post_data){
 
     ?>
     <div class="qa-q-submitted">
-        <div class="thanku-mgs">Thanks for submit question, we will review soon.</div>
+        <?php echo apply_filters('qa_q_submitted_thank_you', _e('Thanks for submit question, we will review soon.', 'question-answer')); ?>
     </div>
     <?php
 
@@ -386,7 +386,10 @@ function qa_question_submitted_redirect($question_ID, $post_data){
     $redirect_page_url 					= get_permalink($qa_page_question_post_redirect);
 
 
-    wp_safe_redirect($redirect_page_url);
-    exit;
+    if(!empty($qa_page_question_post_redirect)){
+        wp_safe_redirect($redirect_page_url);
+        exit;
+    }
+
 
 }
