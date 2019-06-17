@@ -2,7 +2,7 @@
 
 you can add custom input field to question submit form via action hook and validated data and save as you want.
 
-```
+```php
 
 /*
  *  Display HTML inout field on form
