@@ -9,10 +9,6 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 
 
-
-
-
-
 function qa_ajax_admin_actions_submit(){
 
 	foreach( $_POST['form_data'] as $d ) ${$d['name']} = isset( $d['value'] ) ? sanitize_text_field( $d['value'] ) : '';

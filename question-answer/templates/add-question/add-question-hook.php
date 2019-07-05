@@ -4,7 +4,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 /* Display question title field */
 
-add_action('qa_question_submit_form', 'qa_question_submit_form_title');
+add_action('qa_question_submit_form', 'qa_question_submit_form_title', 0);
 
 function qa_question_submit_form_title(){
 
@@ -25,7 +25,7 @@ function qa_question_submit_form_title(){
 
 /* Display question details input field*/
 
-add_action('qa_question_submit_form', 'qa_question_submit_form_content');
+add_action('qa_question_submit_form', 'qa_question_submit_form_content', 10);
 
 function qa_question_submit_form_content(){
 
@@ -55,7 +55,7 @@ function qa_question_submit_form_content(){
 
 /* Display is private checkbox */
 
-add_action('qa_question_submit_form', 'qa_question_submit_form_is_private');
+add_action('qa_question_submit_form', 'qa_question_submit_form_is_private', 20);
 
 function qa_question_submit_form_is_private(){
 
@@ -77,7 +77,7 @@ function qa_question_submit_form_is_private(){
 
 /* Display category input field  */
 
-add_action('qa_question_submit_form', 'qa_question_submit_form_categories');
+add_action('qa_question_submit_form', 'qa_question_submit_form_categories', 30);
 
 function qa_question_submit_form_categories(){
 
@@ -111,9 +111,92 @@ function qa_question_submit_form_categories(){
     <?php
 }
 
-/* Displat tags input fields */
+/* Display tags input fields */
 
-add_action('qa_question_submit_form', 'qa_question_submit_form_tags');
+add_action('qa_question_submit_form', 'qa_question_submit_form_poll', 40);
+
+function qa_question_submit_form_poll(){
+
+    $qa_enable_poll                     = get_option('qa_enable_poll', 'no');
+
+
+    if($qa_enable_poll != 'yes') return;
+
+
+    $polls = isset($_POST['polls']) ? ($_POST['polls']) : array();
+
+
+    ?>
+    <div class="qa-form-field-wrap">
+        <div class="field-title"><?php esc_html_e('Polls','question-answer'); ?></div>
+        <div class="field-input">
+
+            <div class="poll-field-wrap">
+                <button class="add-poll">Add Poll</button>
+
+                <div class="poll-items">
+
+                    <?php
+
+                    if(!empty($polls))
+                        foreach ($polls as $poll):
+                            ?>
+                            <div class="item">
+                                <input type="text" name="polls[]" value="<?php echo $poll; ?>"/>
+                                <span class="sort-hndle"> ... </span>
+                                <button class="remove"> X </button>
+                            </div>
+                            <?php
+                        endforeach;
+                    ?>
+
+                </div>
+
+
+            </div>
+
+            <p class="field-details"><?php esc_html_e('Add some polls.', 'question-answer'); ?></p>
+        </div>
+    </div>
+
+    <script>
+        jQuery(document).ready(function($) {
+
+            $( ".poll-items" ).sortable({handle:'.sort-hndle'});
+            $(document).on('click', '.poll-field-wrap .remove', function(e){
+
+                e.preventDefault();
+
+                $(this).parent().remove();
+
+
+            })
+            $(document).on('click', '.poll-field-wrap .add-poll', function(e){
+
+                e.preventDefault();
+                var id = $.now();
+
+                var html = '<div class="item">';
+                html += '<input type="text" name="polls[]" value=""/>';
+                html += '<span class="sort-hndle"> ... </span>';
+                html += '<button class="remove" > X </button>';
+                html += '</div>';
+
+
+                $('.poll-items').append(html);
+
+
+            })
+
+        })
+    </script>
+
+    <?php
+}
+
+/* Display tags input fields */
+
+add_action('qa_question_submit_form', 'qa_question_submit_form_tags', 50);
 
 function qa_question_submit_form_tags(){
 
@@ -136,7 +219,7 @@ function qa_question_submit_form_tags(){
 
 /* display reCaptcha */
 
-add_action('qa_question_submit_form', 'qa_question_submit_form_recaptcha');
+add_action('qa_question_submit_form', 'qa_question_submit_form_recaptcha', 60);
 
 function qa_question_submit_form_recaptcha(){
 
@@ -165,7 +248,7 @@ function qa_question_submit_form_recaptcha(){
 
 /* Display nonce  */
 
-add_action('qa_question_submit_form', 'qa_question_submit_form_nonce');
+add_action('qa_question_submit_form', 'qa_question_submit_form_nonce' );
 
 function qa_question_submit_form_nonce(){
 
@@ -186,7 +269,7 @@ function qa_question_submit_form_nonce(){
 
 /* Display submit button */
 
-add_action('qa_question_submit_form', 'qa_question_submit_form_submit');
+add_action('qa_question_submit_form', 'qa_question_submit_form_submit', 90);
 
 function qa_question_submit_form_submit(){
 
@@ -216,6 +299,7 @@ function qa_question_submit_data($post_data){
     $login_page_url 					= get_permalink($qa_question_login_page_id);
     $qa_page_myaccount 			        = get_option('qa_page_myaccount', '' );
     $qa_submitted_post_status 			= get_option('qa_submitted_question_status', 'pending' );
+    $qa_enable_poll                     = get_option('qa_enable_poll', 'no');
 
     $qa_page_myaccount_url = !empty($qa_page_myaccount) ? get_permalink($qa_page_myaccount) : wp_login_url($_SERVER['REQUEST_URI']);
 
@@ -241,6 +325,11 @@ function qa_question_submit_data($post_data){
     }
 
 
+    if(empty($post_data['polls']) && $qa_enable_poll =='yes'){
+
+        $qa_error->add( 'polls', __( '<strong>ERROR</strong>: Polls should not empty.', 'question-answer' ) );
+    }
+
     if(empty($post_data['g-recaptcha-response']) && $qa_reCAPTCHA_enable_question =='yes'){
 
         $qa_error->add( 'g-recaptcha-response', __( '<strong>ERROR</strong>: reCaptcha test failed.', 'question-answer' ) );
@@ -261,6 +350,10 @@ function qa_question_submit_data($post_data){
 
 
     $errors = apply_filters( 'qa_question_submit_errors', $qa_error, $post_data );
+
+
+
+
 
 
     if ( !$qa_error->has_errors() ) {
@@ -315,15 +408,19 @@ add_action('qa_question_submitted', 'qa_question_submitted', 90, 2);
 
 function qa_question_submitted($question_ID, $post_data){
 
+    $user_id = get_current_user_id();
 
     $question_tags = isset($post_data['question_tags']) ? sanitize_text_field($post_data['question_tags']) : "";
     $question_cat = isset($post_data['question_cat']) ? sanitize_text_field($post_data['question_cat']) : "";
+    $question_polls = isset($post_data['polls']) ? ($post_data['polls']) : array();
 
 
     wp_set_post_terms( $question_ID, $question_tags, 'question_tags', true );
     wp_set_post_terms( $question_ID, $question_cat, 'question_cat' );
 
 
+    update_post_meta($question_ID,'q_subscriber',array($user_id));
+    update_post_meta($question_ID,'polls', $question_polls);
 
 }
 
@@ -369,7 +466,6 @@ function qa_question_submitted_notification($question_ID, $post_data){
 
     do_action('qa_action_notification_save', $notification_data);
 
-    update_post_meta($question_ID,'q_subscriber',array($user_id));
 
 
 }

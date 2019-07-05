@@ -80,3 +80,42 @@
   padding: 10px;
   margin-bottom: 30px;
 }
+
+
+.poll-field-wrap{}
+
+
+.poll-field-wrap .add-poll{
+  margin-bottom: 10px;
+}
+.poll-field-wrap .poll-items{}
+.poll-field-wrap .poll-items .item{
+  margin-bottom: 10px;
+}
+.poll-field-wrap .poll-items input[type="text"]{
+  width: 80% !important;
+}
+
+.poll-field-wrap .poll-items .sort-hndle{
+  cursor: move;
+  width: 20px;
+  display: inline-block;
+  text-align: center;
+  vertical-align: super;
+}
+
+.poll-field-wrap .poll-items .remove{}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

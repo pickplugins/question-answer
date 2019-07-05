@@ -25,7 +25,6 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 <div class="qa-q-submit-form">
 
-
     <?php
 
     if(!empty($_POST)){

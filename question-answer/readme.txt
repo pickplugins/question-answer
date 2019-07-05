@@ -4,7 +4,7 @@
 	Tags:  Question Answer, Question, Answer
 	Requires at least: 4.1
 	Tested up to: 5.2
-	Stable tag: 1.2.33
+	Stable tag: 1.2.34
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -166,6 +166,9 @@ function qa_action_after_single_question() {
 == Changelog ==
 
 
+
+= 1.2.34 =
+* 17/06/2019 fix - Fixed poll issue, added back.
 
 = 1.2.33 =
 * 16/06/2019 re-write - Rewrite question submit form. added new action hook.
