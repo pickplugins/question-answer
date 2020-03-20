@@ -307,14 +307,14 @@
 
 /*input*/
 
-.settings-tabs input[type="text"], .settings-tabs .range-slider, .settings-tabs input[type="email"],.settings-tabs textarea, .settings-tabs select, .settings-tabs input[type="range"]{
+.settings-tabs input[type="text"], .settings-tabs input[type="search"],.settings-tabs .range-slider, .settings-tabs input[type="email"],.settings-tabs textarea, .settings-tabs select, .settings-tabs input[type="range"]{
     width: 360px;
     background: #f1f1f1;
 }
 
 
 @media (max-width: 1170px){
-    .settings-tabs input[type="text"],     .settings-tabs input[type="email"],.settings-tabs textarea, .settings-tabs select, .settings-tabs input[type="range"], .settings-tabs .select2{
+    .settings-tabs input[type="text"], .settings-tabs input[type="search"],    .settings-tabs input[type="email"],.settings-tabs textarea, .settings-tabs select, .settings-tabs input[type="range"], .settings-tabs .select2{
         width: 100% !important;
 
     }

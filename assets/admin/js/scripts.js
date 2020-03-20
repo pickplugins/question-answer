@@ -105,10 +105,12 @@ jQuery(document).ready(function($)
 							var response 		= JSON.parse(data)
 							var html 	= response['html'];
 							var users 	= response['users'];
+							var keyword 	= response['keyword'];
+
 
 							$('.assign-to-suggestion').html(html);
 
-							console.log(users);
+							console.log(keyword);
 
 
 						}
@@ -129,12 +131,13 @@ jQuery(document).ready(function($)
 			user_avatar = $(this).attr('user_avatar');
 			user_name = $(this).attr('user_name');
 
-			console.log(user_name);
+			//console.log(user_name);
 
 			html = '<div class="item">';
+			html += '<span class="remove"><i class="fas fa-times"></i></span> ';
 			html += '<img width="50" src="'+user_avatar+'">';
 			html += '<span> '+user_name+'</span>';
-			html += '<input type="hidden" name="qa_question_options[assign_to][]" value="'+user_id+'">';
+			html += '<input type="hidden" name="qa_assign_to[]" value="'+user_id+'">';
 			html += '</div>';
 
 

@@ -3,7 +3,7 @@
 Plugin Name: Question Answer
 Plugin URI: https://www.pickplugins.com/item/question-answer/?ref=dashboard
 Description: Create Awesome Question and Answer Website in a Minute
-Version: 1.2.39
+Version: 1.2.40
 Text Domain: question-answer
 Domain Path: /languages
 Author: PickPlugins
@@ -201,6 +201,7 @@ class QuestionAnswer{
 		require_once( QA_PLUGIN_DIR . 'includes/classes/class-answer-column.php');
 		require_once( QA_PLUGIN_DIR . 'includes/classes/class-dynamic-css.php');
 		require_once( QA_PLUGIN_DIR . 'includes/classes/class-import.php');
+        require_once( QA_PLUGIN_DIR . 'includes/classes/class-emails.php');
 
 
 	}
@@ -236,7 +237,7 @@ class QuestionAnswer{
 	public function qa_front_scripts(){
 
 
-        wp_register_style('font_awesome_5', QA_PLUGIN_URL.'assets/global/css/font-awesome-5.css');
+        wp_register_style('font-awesome-5', QA_PLUGIN_URL.'assets/global/css/font-awesome-5.css');
 
 
         wp_enqueue_script('jquery');
@@ -266,7 +267,7 @@ class QuestionAnswer{
 		}
 
 		//global
-		wp_enqueue_style('font_awesome_5');
+		wp_enqueue_style('font-awesome-5');
 		wp_enqueue_style('qa_global_style', QA_PLUGIN_URL.'assets/global/css/style.css');
 
 
@@ -285,7 +286,7 @@ class QuestionAnswer{
 
         wp_register_script('welcome-tabs', QA_PLUGIN_URL.'assets/admin/js/welcome-tabs.js', array( 'jquery' ));
         wp_register_style('welcome-tabs', QA_PLUGIN_URL.'assets/admin/css/welcome-tabs.css');
-        wp_register_style('font_awesome_5', QA_PLUGIN_URL.'assets/global/css/font-awesome-5.css');
+        wp_register_style('font-awesome-5', QA_PLUGIN_URL.'assets/global/css/font-awesome-5.css');
 
 
 

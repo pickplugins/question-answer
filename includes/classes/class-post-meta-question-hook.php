@@ -3,74 +3,27 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 
 
+
+
+
 add_action('qa_question_metabox_content_general','qa_question_metabox_content_general');
 function qa_question_metabox_content_general($post_id){
 
 
     $settings_tabs_field = new settings_tabs_field();
 
-    $qa_question_options = get_post_meta($post_id,'qa_question_options', true);
+    $qa_question_status = get_post_meta($post_id,'qa_question_status', true);
+    $qa_featured_questions = get_post_meta($post_id,'qa_featured_questions', true);
+    $mark_as_close = get_post_meta($post_id,'mark_as_close', true);
+    $qa_assign_to = get_post_meta($post_id,'qa_assign_to', true);
+    $qa_assign_to = !empty($qa_assign_to) ? $qa_assign_to : array();
 
-    $_status = isset($qa_question_options['_status']) ? $qa_question_options['_status'] : '';
-    $_featured = isset($qa_question_options['_featured']) ? $qa_question_options['_featured'] : '';
+
 
     $class_qa_functions = new class_qa_functions();
     $question_status = $class_qa_functions->qa_question_status();
 
-
-    ?>
-    <div class="section">
-        <div class="section-title"><?php echo __('Admin actions', 'team'); ?></div>
-        <p class="description section-description"><?php echo __('Choose some admin actions.', 'team'); ?></p>
-
-
-        <?php
-
-
-
-
-
-
-        $args = array(
-            'id'		=> '_featured',
-            'parent'		=> 'qa_question_options',
-            'title'		=> __('Featured question?','team'),
-            'details'	=> __('Choose is question featured or not','team'),
-            'type'		=> 'select',
-            'value'		=> $_featured,
-            'default'		=> '',
-            'args'		=> array('no'=>'No', 'yes'=>'Yes'),
-        );
-
-        $settings_tabs_field->generate_field($args);
-
-
-
-
-        ?>
-    </div>
-    <?php
-
-
-}
-
-
-
-
-add_action('qa_question_metabox_content_admin_action','qa_question_metabox_content_admin_action');
-function qa_question_metabox_content_admin_action($post_id){
-
-
-    $settings_tabs_field = new settings_tabs_field();
-
-    $qa_question_options = get_post_meta($post_id,'qa_question_options', true);
-
-    $_status = isset($qa_question_options['_status']) ? $qa_question_options['_status'] : '';
-    $_featured = isset($qa_question_options['_featured']) ? $qa_question_options['_featured'] : '';
-
-    $class_qa_functions = new class_qa_functions();
-    $question_status = $class_qa_functions->qa_question_status();
-
+    //var_dump($qa_question_options);
 
     ?>
     <div class="section">
@@ -83,12 +36,12 @@ function qa_question_metabox_content_admin_action($post_id){
 
 
         $args = array(
-            'id'		=> '_status',
-            'parent'		=> 'qa_question_options',
+            'id'		=> 'qa_question_status',
+            //'parent'		=> 'qa_question_options',
             'title'		=> __('Question status','team'),
             'details'	=> __('Choose question status','team'),
             'type'		=> 'select',
-            'value'		=> $_status,
+            'value'		=> $qa_question_status,
             'default'		=> '',
             'args'		=> $question_status,
         );
@@ -97,11 +50,11 @@ function qa_question_metabox_content_admin_action($post_id){
 
         $args = array(
             'id'		=> 'mark_as_close',
-            'parent'		=> 'qa_question_options',
+            //'parent'		=> 'qa_question_options',
             'title'		=> __('Marked as close','team'),
             'details'	=> __('Choose mark as closed, user will not able to answer or comments','team'),
             'type'		=> 'select',
-            'value'		=> $_featured,
+            'value'		=> $mark_as_close,
             'default'		=> '',
             'args'		=> array('no'=>'No', 'yes'=>'Yes'),
         );
@@ -109,22 +62,31 @@ function qa_question_metabox_content_admin_action($post_id){
         $settings_tabs_field->generate_field($args);
 
 
-
+//var_dump($assign_to);
 
         ob_start();
         ?>
 
 
         <div class="assign-to-list">
-            <div class="item" title="Nur hasan">
-                <img width="50" src="http://2.gravatar.com/avatar/b6e75caf7388bb6978612a75487bdc1e?s=60&d=mm&r=g">
-                <span>Nur hasan</span>
-                <input type="hidden" name="qa_question_options[assign_to][]">
-            </div>
-            <div class="item" title="">
-                <img width="50" src="http://2.gravatar.com/avatar/b6e75caf7388bb6978612a75487bdc1e?s=60&d=mm&r=g">
-                <span>Nirjhar</span>
-            </div>
+            <?php
+
+            foreach ($qa_assign_to as $userId){
+                $user = get_user_by('id', $userId);
+                $avatar_url = get_avatar_url($userId);
+                ?>
+                <div class="item" title="<?php echo $user->display_name; ?>">
+                    <span class="remove" onclick="jQuery(this).parent().remove();"><i class="fas fa-times"></i></span>
+                    <img width="50" src="<?php echo $avatar_url; ?>">
+                    <span><?php echo $user->display_name; ?></span>
+                    <input type="hidden" name="qa_assign_to[]" value="<?php echo $userId; ?>">
+                </div>
+                <?php
+
+            }
+
+            ?>
+
 
 
         </div>
@@ -144,8 +106,15 @@ function qa_question_metabox_content_admin_action($post_id){
                 overflow: hidden;
                 vertical-align: top;
                 margin: 5px;
-
+                position: relative;
             }
+            .assign-to-list .item .remove{
+                background: #fb4c4c;
+                padding: 4px 7px;
+                color: #fff;
+                cursor: pointer;
+            }
+
             .assign-to-list img{
                 height: auto;
                 vertical-align: middle;
@@ -185,12 +154,12 @@ function qa_question_metabox_content_admin_action($post_id){
 
 
         $args = array(
-            'id'		=> '_featured',
-            'parent'		=> 'qa_question_options',
+            'id'		=> 'qa_featured_questions',
+            //'parent'		=> 'qa_question_options',
             'title'		=> __('Featured question?','team'),
             'details'	=> __('Choose is question featured or not','team'),
             'type'		=> 'select',
-            'value'		=> $_featured,
+            'value'		=> $qa_featured_questions,
             'default'		=> '',
             'args'		=> array('no'=>'No', 'yes'=>'Yes'),
         );
@@ -212,12 +181,22 @@ function qa_question_metabox_content_admin_action($post_id){
 
 
 
-add_action('team_meta_box_save_team','team_meta_box_save_team');
+add_action('qa_post_meta_save_question','qa_post_meta_save_question');
 
-function team_meta_box_save_team($job_id){
+function qa_post_meta_save_question($job_id){
 
-    $qa_question_options = isset($_POST['qa_question_options']) ? stripslashes_deep($_POST['qa_question_options']) : '';
-    update_post_meta($job_id, 'qa_question_options', $qa_question_options);
+
+    $qa_question_status = isset($_POST['qa_question_status']) ? sanitize_text_field($_POST['qa_question_status']) : '';
+    update_post_meta($job_id, 'qa_question_status', $qa_question_status);
+
+    $qa_featured_questions = isset($_POST['qa_featured_questions']) ? sanitize_text_field($_POST['qa_featured_questions']) : '';
+    update_post_meta($job_id, 'qa_featured_questions', $qa_featured_questions);
+
+    $mark_as_close = isset($_POST['mark_as_close']) ? sanitize_text_field($_POST['mark_as_close']) : '';
+    update_post_meta($job_id, 'mark_as_close', $mark_as_close);
+
+    $qa_assign_to = isset($_POST['qa_assign_to']) ? stripslashes_deep($_POST['qa_assign_to']) : '';
+    update_post_meta($job_id, 'qa_assign_to', $qa_assign_to);
 
 }
 

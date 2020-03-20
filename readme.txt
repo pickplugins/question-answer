@@ -166,6 +166,17 @@ function qa_action_after_single_question() {
 == Changelog ==
 
 
+= 1.2.40 =
+* 2020-03-20 add - question vote button added.
+* 2020-03-20 fix - answer vote issue fixed.
+* 2020-03-20 fix - question content wpautop issue fixed.
+* 2020-03-20 fix - question content embed issue fixed.
+* 2020-03-20 fix - question content shortcode issue fixed.
+* 2020-03-20 add - question assign to user as support stuff or request to answer.
+* 2020-03-20 add - mark as closed question no longer accept new answers.
+
+
+
 = 1.2.39 =
 * 12/10/2019 update - re-designed admin settings
 

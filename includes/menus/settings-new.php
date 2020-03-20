@@ -53,7 +53,12 @@ $qa_settings_tab[] = array(
     'active' => false,
 );
 
-
+$qa_settings_tab[] = array(
+    'id' => 'emails',
+    'title' => sprintf(__('%s Emails','question-answer'),'<i class="fas fa-envelope-open-text"></i>'),
+    'priority' => 9,
+    'active' => false,
+);
 
 
 
@@ -286,7 +291,7 @@ array_multisort($tabs_sorted, SORT_ASC, $qa_settings_tab);
 
 wp_enqueue_script('settings-tabs');
 wp_enqueue_style('settings-tabs');
-wp_enqueue_style('font_awesome_5');
+wp_enqueue_style('font-awesome-5');
 
 
 ?>

@@ -2881,7 +2881,7 @@ function qa_search_users() {
     $response = array();
 
     if(current_user_can('manage_options')){
-        $users = get_users( array( 'search' => $keyword, 'number'       => 3, ) );
+        $users = get_users( array( 'search' => '*'.$keyword.'*', 'number'       => 5, ) );
 
         ob_start();
         if(!empty($users)):
@@ -2904,9 +2904,10 @@ function qa_search_users() {
             </div>
         <?php
         endif;
+
         $response['html'] = ob_get_clean();
         $response['users'] = $users;
-
+        $response['keyword'] = $keyword;
 
     }else{
         $response['error'] = 'yes';

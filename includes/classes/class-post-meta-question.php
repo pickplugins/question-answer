@@ -39,14 +39,14 @@ class class_qa_post_meta_question{
 
         $qa_settings_tabs = array();
         $question_answer_options = get_post_meta($post_id,'question_answer_options', true);
-        $current_tab = isset($question_answer_options['current_tab']) ? $question_answer_options['current_tab'] : 'admin_action';
+        $current_tab = isset($question_answer_options['current_tab']) ? $question_answer_options['current_tab'] : 'general';
 
 
         $qa_settings_tabs[] = array(
-            'id' => 'admin_action',
+            'id' => 'general',
             'title' => sprintf(__('%s Admin action','question-answer'),'<i class="fas fa-code"></i>'),
             'priority' => 1,
-            'active' => ($current_tab == 'admin_action') ? true : false,
+            'active' => ($current_tab == 'general') ? true : false,
         );
 
 
@@ -82,7 +82,7 @@ class class_qa_post_meta_question{
         wp_enqueue_style( 'font-awesome-5' );
         wp_enqueue_style( 'settings-tabs' );
         wp_enqueue_script( 'settings-tabs' );
-
+        wp_enqueue_style('font-awesome-5');
 
 
 		?>
