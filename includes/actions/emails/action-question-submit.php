@@ -7,20 +7,13 @@
 if ( ! defined('ABSPATH')) exit;  // if direct access 
 
 
-	add_action( 'qa_action_comment_flag', 'qa_email_action_comment_flag_function', 10 );
+	add_action( 'qa_action_after_question_submit', 'qa_email_action_question_submit_function', 10,1 );
 	
-	if ( ! function_exists( 'qa_email_action_comment_flag_function' ) ) {
-		function qa_email_action_comment_flag_function( $comment_ID ) {
+	if ( ! function_exists( 'qa_email_action_question_submit_function' ) ) {
+		function qa_email_action_question_submit_function( $question_ID ) {
 			
 			global $current_user;
-			
-			
-			$comment = get_comment( $comment_ID ); 
-			$comment_content = $comment->comment_content;	
-			$question_ID = $comment->comment_post_ID ;
 			$question_data = get_post( $question_ID );
-			
-			$question_url = get_permalink($question_ID);
 			
 			$vars = array(
 				'{site_name}'=> get_bloginfo('name'),
@@ -33,14 +26,10 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 				'{user_email}' => '',
 			
 				'{question_title}'  => $question_data->post_title,						  			
-				'{question_url}'  => $question_url,
+				'{question_url}'  => get_permalink($question_ID),
 				'{question_edit_url}'  => get_admin_url().'post.php?post='.$question_ID.'&action=edit',						
 				'{question_id}'  => $question_ID,
-				'{question_content}'  => $question_data->post_content,
-				
-				'{comment_content}'  => $comment_content,	
-				'{comment_url}'  => $question_url.'#comment-'.$comment_ID,	
-																
+				'{question_content}'  => $question_data->post_content,												
 			);
 
 			$admin_email = get_option('admin_email');
@@ -54,21 +43,16 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 			} else {
 
 				$templates_data = $class_qa_emails->qa_email_templates_data();
-				$templates_data =array_merge($templates_data, $qa_email_templates_data);
+				$templates_data = array_merge($templates_data, $qa_email_templates_data);
 			}
 			
-			$email_body = strtr($templates_data['comment_flag']['html'], $vars);
-			$email_subject =strtr($templates_data['comment_flag']['subject'], $vars);
+			$email_body = strtr($templates_data['new_question_submitted']['html'], $vars);
+			$email_subject =strtr($templates_data['new_question_submitted']['subject'], $vars);
 		
-			$qa_email_on_comment_flagged = get_option( 'qa_email_on_comment_flagged', 'yes' );
+			$qa_email_on_question_submission = get_option( 'qa_email_on_question_submission', 'yes' );
 			
-			if( $qa_email_on_comment_flagged == 'yes' ){
-
-				//update_option('hello_answer',$email_body);
-				$class_qa_emails->qa_send_email( $comment->comment_author_email, $email_subject, $email_body );
-				
-				}
-			
+			if( $qa_email_on_question_submission == 'yes' )
+			$class_qa_emails->qa_send_email( $admin_email, $email_subject, $email_body );
 		}
 	}
 	

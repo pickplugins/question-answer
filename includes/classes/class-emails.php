@@ -1,7 +1,7 @@
 <?php
 if ( ! defined('ABSPATH')) exit;  // if direct access
 
-class class_job_bm_emails{
+class class_qa_emails{
 	
 	public function __construct(){
 
@@ -12,7 +12,7 @@ class class_job_bm_emails{
 
 		
 		
-	public function job_bm_send_email($email_data){
+	public function qa_send_email($email_data){
 		
 
 		
@@ -46,7 +46,7 @@ class class_job_bm_emails{
 		
 		
 
-	public function job_bm_email_templates_data(){
+	public function qa_email_templates_data(){
 		
 		$templates_data_html = array();
         $admin_email = get_option('admin_email');
@@ -75,9 +75,9 @@ class class_job_bm_emails{
 		$templates_data = array(
 
             'new_question_submitted'=>array(
-                'name'=>__('New Question Submitted', 'job-board-manager'),
-                'description'=>__('Notification email for when new question submitted.', 'job-board-manager'),
-                'subject'=>__('New Question Submitted - {site_url}', 'job-board-manager'),
+                'name'=>__('New Question Submitted', 'question-answer'),
+                'description'=>__('Notification email for when new question submitted.', 'question-answer'),
+                'subject'=>__('New Question Submitted - {site_url}', 'question-answer'),
                 'html'=>$templates_data_html['new_question_submitted'],
                 'email_to'=>$admin_email,
                 'email_from'=>$admin_email,
@@ -86,9 +86,9 @@ class class_job_bm_emails{
             ),
 
             'new_question_published'=>array(
-                'name'=>__('New question published', 'job-board-manager'),
-                'description'=>__('Notification email for when new question published.', 'job-board-manager'),
-                'subject'=>__('New Question Published - {site_url}', 'job-board-manager'),
+                'name'=>__('New question published', 'question-answer'),
+                'description'=>__('Notification email for when new question published.', 'question-answer'),
+                'subject'=>__('New Question Published - {site_url}', 'question-answer'),
                 'html'=>$templates_data_html['new_question_published'],
                 'email_to'=>$admin_email,
                 'email_from'=>$admin_email,
@@ -97,9 +97,9 @@ class class_job_bm_emails{
             ),
 
             'new_answer_submitted'=>array(
-                'name'=>__('New Answer Submitted', 'job-board-manager'),
-                'description'=>__('Notification email for new answer submitted.', 'job-board-manager'),
-                'subject'=>__('New Answer Submitted - {site_url}', 'job-board-manager'),
+                'name'=>__('New Answer Submitted', 'question-answer'),
+                'description'=>__('Notification email for new answer submitted.', 'question-answer'),
+                'subject'=>__('New Answer Submitted - {site_url}', 'question-answer'),
                 'html'=>$templates_data_html['new_answer_submitted'],
                 'email_to'=>$admin_email,
                 'email_from'=>$admin_email,
@@ -108,9 +108,9 @@ class class_job_bm_emails{
             ),
 
             'new_answer_published'=>array(
-                'name'=>__('New Answer Published', 'job-board-manager'),
-                'description'=>__('Notification email for new answer published.', 'job-board-manager'),
-                'subject'=>__('New Answer Published - {site_url}', 'job-board-manager'),
+                'name'=>__('New Answer Published', 'question-answer'),
+                'description'=>__('Notification email for new answer published.', 'question-answer'),
+                'subject'=>__('New Answer Published - {site_url}', 'question-answer'),
                 'html'=>$templates_data_html['new_answer_published'],
                 'email_to'=>$admin_email,
                 'email_from'=>$admin_email,
@@ -119,9 +119,9 @@ class class_job_bm_emails{
             ),
 
             'question_solved'=>array(
-                'name'=>__('Question solved', 'job-board-manager'),
-                'description'=>__('Notification email for question solved.', 'job-board-manager'),
-                'subject'=>__('Question solved - {site_url}', 'job-board-manager'),
+                'name'=>__('Question solved', 'question-answer'),
+                'description'=>__('Notification email for question solved.', 'question-answer'),
+                'subject'=>__('Question solved - {site_url}', 'question-answer'),
                 'html'=>$templates_data_html['question_solved'],
                 'email_to'=>$admin_email,
                 'email_from'=>$admin_email,
@@ -131,9 +131,9 @@ class class_job_bm_emails{
 
 
             'question_unsolved'=>array(
-                'name'=>__('Question unsolved', 'job-board-manager'),
-                'description'=>__('Notification email for Question unsolved.', 'job-board-manager'),
-                'subject'=>__('Question unsolved - {site_url}', 'job-board-manager'),
+                'name'=>__('Question unsolved', 'question-answer'),
+                'description'=>__('Notification email for Question unsolved.', 'question-answer'),
+                'subject'=>__('Question unsolved - {site_url}', 'question-answer'),
                 'html'=>$templates_data_html['question_unsolved'],
                 'email_to'=>$admin_email,
                 'email_from'=>$admin_email,
@@ -144,9 +144,9 @@ class class_job_bm_emails{
 
 
             'comment_flag'=>array(
-                'name'=>__('Comment flag', 'job-board-manager'),
-                'description'=>__('Notification email for admin when Comment flag.', 'job-board-manager'),
-                'subject'=>__('Comment flag - {site_url}', 'job-board-manager'),
+                'name'=>__('Comment flag', 'question-answer'),
+                'description'=>__('Notification email for admin when Comment flag.', 'question-answer'),
+                'subject'=>__('Comment flag - {site_url}', 'question-answer'),
                 'html'=>$templates_data_html['comment_flag'],
                 'email_to'=>$admin_email,
                 'email_from'=>$admin_email,
@@ -156,9 +156,9 @@ class class_job_bm_emails{
 
 
             'comment_unflag'=>array(
-                'name'=>__('Comment unflag', 'job-board-manager'),
-                'description'=>__('Notification email for Comment unflag.', 'job-board-manager'),
-                'subject'=>__('Comment unflag - {site_url}', 'job-board-manager'),
+                'name'=>__('Comment unflag', 'question-answer'),
+                'description'=>__('Notification email for Comment unflag.', 'question-answer'),
+                'subject'=>__('Comment unflag - {site_url}', 'question-answer'),
                 'html'=>$templates_data_html['comment_unflag'],
                 'email_to'=>$admin_email,
                 'email_from'=>$admin_email,
@@ -167,9 +167,9 @@ class class_job_bm_emails{
             ),
 
             'answer_voteup'=>array(
-                'name'=>__('Answer Voted Up', 'job-board-manager'),
-                'description'=>__('Notification email for Answer Voted Up.', 'job-board-manager'),
-                'subject'=>__('Answer voted up - {site_url}', 'job-board-manager'),
+                'name'=>__('Answer Voted Up', 'question-answer'),
+                'description'=>__('Notification email for Answer Voted Up.', 'question-answer'),
+                'subject'=>__('Answer voted up - {site_url}', 'question-answer'),
                 'html'=>$templates_data_html['answer_voteup'],
                 'email_to'=>$admin_email,
                 'email_from'=>$admin_email,
@@ -179,9 +179,9 @@ class class_job_bm_emails{
 
 
             'answer_votedown'=>array(
-                'name'=>__('Answer Voted Down', 'job-board-manager'),
-                'description'=>__('Notification email for answer voted down.', 'job-board-manager'),
-                'subject'=>__('Answer voted down - {site_url}', 'job-board-manager'),
+                'name'=>__('Answer Voted Down', 'question-answer'),
+                'description'=>__('Notification email for answer voted down.', 'question-answer'),
+                'subject'=>__('Answer voted down - {site_url}', 'question-answer'),
                 'html'=>$templates_data_html['answer_votedown'],
                 'email_to'=>$admin_email,
                 'email_from'=>$admin_email,
@@ -190,9 +190,9 @@ class class_job_bm_emails{
             ),
 
             'answer_comment'=>array(
-                'name'=>__('Answer Comment', 'job-board-manager'),
-                'description'=>__('Notification email for Answer Comment.', 'job-board-manager'),
-                'subject'=>__('Answer comment - {site_url}', 'job-board-manager'),
+                'name'=>__('Answer Comment', 'question-answer'),
+                'description'=>__('Notification email for Answer Comment.', 'question-answer'),
+                'subject'=>__('Answer comment - {site_url}', 'question-answer'),
                 'html'=>$templates_data_html['answer_comment'],
                 'email_to'=>$admin_email,
                 'email_from'=>$admin_email,
@@ -204,7 +204,7 @@ class class_job_bm_emails{
 
 		);
 		
-		$templates_data = apply_filters('job_bm_email_templates_data', $templates_data);
+		$templates_data = apply_filters('qa_email_templates_data', $templates_data);
 		
 		return $templates_data;
 
@@ -507,4 +507,4 @@ class class_job_bm_emails{
 
 	}
 	
-new class_job_bm_emails();
+new class_qa_emails();

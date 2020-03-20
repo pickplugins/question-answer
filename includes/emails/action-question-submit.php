@@ -33,16 +33,16 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 			);
 
 			$admin_email = get_option('admin_email');
-			$class_qa_email_templates_design = new class_qa_email_templates_design();
+			$class_qa_emails = new class_qa_emails();
 		
 			$qa_email_templates_data = get_option( 'qa_email_templates_data' );
 				
 			if( empty( $qa_email_templates_data ) ) {
 				
-				$templates_data = $class_qa_email_templates_design->qa_email_templates_data();
+				$templates_data = $class_qa_emails->qa_email_templates_data();
 			} else {
 
-				$templates_data = $class_qa_email_templates_design->qa_email_templates_data();
+				$templates_data = $class_qa_emails->qa_email_templates_data();
 				$templates_data =array_merge($templates_data, $qa_email_templates_data);
 			}
 			
@@ -52,7 +52,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 			$qa_email_on_question_submission = get_option( 'qa_email_on_question_submission', 'yes' );
 			
 			if( $qa_email_on_question_submission == 'yes' )
-			$class_qa_email_templates_design->qa_send_email( $admin_email, $email_subject, $email_body );
+			$class_qa_emails->qa_send_email( $admin_email, $email_subject, $email_body );
 		}
 	}
 	

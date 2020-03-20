@@ -854,7 +854,138 @@ if(!function_exists('qa_settings_tabs_right_panel_archive')) {
     }
 }
 
+add_action('qa_settings_save', 'qa_settings_save');
 
+if(!function_exists('qa_settings_save')) {
+    function qa_settings_save($tab){
+
+
+        $qa_question_item_per_page = isset($_POST['qa_question_item_per_page']) ?  sanitize_text_field($_POST['qa_question_item_per_page']) : '';
+        update_option('qa_question_item_per_page', $qa_question_item_per_page);
+
+        $reCAPTCHA_site_key = isset($_POST['reCAPTCHA_site_key']) ?  sanitize_text_field($_POST['reCAPTCHA_site_key']) : '';
+        update_option('reCAPTCHA_site_key', $reCAPTCHA_site_key);
+
+        $qa_options_filter_badwords = isset($_POST['qa_options_filter_badwords']) ?  sanitize_text_field($_POST['qa_options_filter_badwords']) : '';
+        update_option('qa_options_filter_badwords', $qa_options_filter_badwords);
+
+        $qa_options_badwords = isset($_POST['qa_options_badwords']) ?  sanitize_text_field($_POST['qa_options_badwords']) : '';
+        update_option('qa_options_badwords', $qa_options_badwords);
+
+        $qa_options_badwords_replacer= isset($_POST['qa_options_badwords_replacer']) ?  sanitize_text_field($_POST['qa_options_badwords_replacer']) : '';
+        update_option('qa_options_badwords_replacer', $qa_options_badwords_replacer);
+
+        $qa_options_quick_notes = isset($_POST['qa_options_quick_notes']) ?  stripslashes_deep($_POST['qa_options_quick_notes']) : '';
+        update_option('qa_options_quick_notes', $qa_options_quick_notes);
+
+        $qa_who_can_see_quick_notes = isset($_POST['qa_who_can_see_quick_notes']) ?  stripslashes_deep($_POST['qa_who_can_see_quick_notes']) : '';
+        update_option('qa_who_can_see_quick_notes', $qa_who_can_see_quick_notes);
+
+        $qa_answer_item_per_page = isset($_POST['qa_answer_item_per_page']) ?  sanitize_text_field($_POST['qa_answer_item_per_page']) : '';
+        update_option('qa_answer_item_per_page', $qa_answer_item_per_page);
+
+        $qa_account_required_post_answer = isset($_POST['qa_account_required_post_answer']) ?  sanitize_text_field($_POST['qa_account_required_post_answer']) : '';
+        update_option('qa_account_required_post_answer', $qa_account_required_post_answer);
+
+        $qa_submitted_answer_status = isset($_POST['qa_submitted_answer_status']) ?  sanitize_text_field($_POST['qa_submitted_answer_status']) : '';
+        update_option('qa_submitted_answer_status', $qa_submitted_answer_status);
+
+        $qa_who_can_answer = isset($_POST['qa_who_can_answer']) ?  stripslashes_deep($_POST['qa_who_can_answer']) : '';
+        update_option('qa_who_can_answer', $qa_who_can_answer);
+
+        $qa_who_can_comment_answer = isset($_POST['qa_who_can_comment_answer']) ?  stripslashes_deep($_POST['qa_who_can_comment_answer']) : '';
+        update_option('qa_who_can_comment_answer', $qa_who_can_comment_answer);
+
+        $qa_can_edit_answer = isset($_POST['qa_can_edit_answer']) ?  sanitize_text_field($_POST['qa_can_edit_answer']) : '';
+        update_option('qa_can_edit_answer', $qa_can_edit_answer);
+
+        $qa_answer_editor_type = isset($_POST['qa_answer_editor_type']) ?  sanitize_text_field($_POST['qa_answer_editor_type']) : '';
+        update_option('qa_answer_editor_type', $qa_answer_editor_type);
+
+        $qa_answer_editor_media_buttons = isset($_POST['qa_answer_editor_media_buttons']) ?  sanitize_text_field($_POST['qa_answer_editor_media_buttons']) : '';
+        update_option('qa_answer_editor_media_buttons', $qa_answer_editor_media_buttons);
+
+        $qa_answer_reply_order = isset($_POST['qa_answer_reply_order']) ?  sanitize_text_field($_POST['qa_answer_reply_order']) : '';
+        update_option('qa_answer_reply_order', $qa_answer_reply_order);
+
+        $qa_page_question_post = isset($_POST['qa_page_question_post']) ?  sanitize_text_field($_POST['qa_page_question_post']) : '';
+        update_option('qa_page_question_post', $qa_page_question_post);
+
+        $qa_page_question_post_redirect = isset($_POST['qa_page_question_post_redirect']) ?  sanitize_text_field($_POST['qa_page_question_post_redirect']) : '';
+        update_option('qa_page_question_post_redirect', $qa_page_question_post_redirect);
+
+        $qa_page_question_archive = isset($_POST['qa_page_question_archive']) ?  sanitize_text_field($_POST['qa_page_question_archive']) : '';
+        update_option('qa_page_question_archive', $qa_page_question_archive);
+
+        $qa_page_user_profile = isset($_POST['qa_page_user_profile']) ?  sanitize_text_field($_POST['qa_page_user_profile']) : '';
+        update_option('qa_page_user_profile', $qa_page_user_profile);
+
+        $qa_page_myaccount = isset($_POST['qa_page_myaccount']) ?  sanitize_text_field($_POST['qa_page_myaccount']) : '';
+        update_option('qa_page_myaccount', $qa_page_myaccount);
+
+        $qa_account_required_post_question = isset($_POST['qa_account_required_post_question']) ?  sanitize_text_field($_POST['qa_account_required_post_question']) : '';
+        update_option('qa_account_required_post_question', $qa_account_required_post_question);
+
+        $qa_submitted_question_status = isset($_POST['qa_submitted_question_status']) ?  sanitize_text_field($_POST['qa_submitted_question_status']) : '';
+        update_option('qa_submitted_question_status', $qa_submitted_question_status);
+
+        $qa_allow_question_comment = isset($_POST['qa_allow_question_comment']) ?  sanitize_text_field($_POST['qa_allow_question_comment']) : '';
+        update_option('qa_allow_question_comment', $qa_allow_question_comment);
+
+        $qa_enable_poll = isset($_POST['qa_enable_poll']) ?  sanitize_text_field($_POST['qa_enable_poll']) : '';
+        update_option('qa_enable_poll', $qa_enable_poll);
+
+        $qa_myaccount_show_login_form = isset($_POST['qa_myaccount_show_login_form']) ?  sanitize_text_field($_POST['qa_myaccount_show_login_form']) : '';
+        update_option('qa_myaccount_show_login_form', $qa_myaccount_show_login_form);
+
+        $qa_myaccount_login_redirect_page = isset($_POST['qa_myaccount_login_redirect_page']) ?  sanitize_text_field($_POST['qa_myaccount_login_redirect_page']) : '';
+        update_option('qa_myaccount_login_redirect_page', $qa_myaccount_login_redirect_page);
+
+        $qa_myaccount_show_register_form = isset($_POST['qa_myaccount_show_register_form']) ?  sanitize_text_field($_POST['qa_myaccount_show_register_form']) : '';
+        update_option('qa_myaccount_show_register_form', $qa_myaccount_show_register_form);
+
+        $qa_color_archive_answer_count = isset($_POST['qa_color_archive_answer_count']) ?  sanitize_text_field($_POST['qa_color_archive_answer_count']) : '';
+        update_option('qa_color_archive_answer_count', $qa_color_archive_answer_count);
+
+        $qa_color_archive_view_count = isset($_POST['qa_color_archive_view_count']) ?  sanitize_text_field($_POST['qa_color_archive_view_count']) : '';
+        update_option('qa_color_archive_view_count', $qa_color_archive_view_count);
+
+        $qa_color_single_user_role = isset($_POST['qa_color_single_user_role']) ?  sanitize_text_field($_POST['qa_color_single_user_role']) : '';
+        update_option('qa_color_single_user_role', $qa_color_single_user_role);
+
+        $qa_color_single_user_role_background = isset($_POST['qa_color_single_user_role_background']) ?  sanitize_text_field($_POST['qa_color_single_user_role_background']) : '';
+        update_option('qa_color_single_user_role_background', $qa_color_single_user_role_background);
+
+        $qa_color_add_comment_background = isset($_POST['qa_color_add_comment_background']) ?  sanitize_text_field($_POST['qa_color_add_comment_background']) : '';
+        update_option('qa_color_add_comment_background', $qa_color_add_comment_background);
+
+        $qa_ask_button_bg_color = isset($_POST['qa_ask_button_bg_color']) ?  sanitize_text_field($_POST['qa_ask_button_bg_color']) : '';
+        update_option('qa_ask_button_bg_color', $qa_ask_button_bg_color);
+
+        $qa_color_best_answer_background = isset($_POST['qa_color_best_answer_background']) ?  sanitize_text_field($_POST['qa_color_best_answer_background']) : '';
+        update_option('qa_color_best_answer_background', $qa_color_best_answer_background);
+
+        $qa_ask_button_text_color = isset($_POST['qa_ask_button_text_color']) ?  sanitize_text_field($_POST['qa_ask_button_text_color']) : '';
+        update_option('qa_ask_button_text_color', $qa_ask_button_text_color);
+
+        $qa_vote_button_bg_color = isset($_POST['qa_vote_button_bg_color']) ?  sanitize_text_field($_POST['qa_vote_button_bg_color']) : '';
+        update_option('qa_vote_button_bg_color', $qa_vote_button_bg_color);
+
+        $qa_flag_button_bg_color = isset($_POST['qa_flag_button_bg_color']) ?  sanitize_text_field($_POST['qa_flag_button_bg_color']) : '';
+        update_option('qa_flag_button_bg_color', $qa_flag_button_bg_color);
+
+
+        $qa_logo_url = isset($_POST['qa_logo_url']) ?  sanitize_text_field($_POST['qa_logo_url']) : '';
+        update_option('qa_logo_url', $qa_logo_url);
+
+        $qa_from_email = isset($_POST['qa_from_email']) ?  sanitize_text_field($_POST['qa_from_email']) : '';
+        update_option('qa_from_email', $qa_from_email);
+
+        $qa_email_templates_data = isset($_POST['qa_email_templates_data']) ?  stripslashes_deep($_POST['qa_email_templates_data']) : '';
+        update_option('qa_email_templates_data', $qa_email_templates_data);
+
+    }
+}
 
 
 add_action('qa_settings_tabs_content_emails', 'qa_settings_tabs_content_emails');
@@ -863,34 +994,27 @@ if(!function_exists('qa_settings_tabs_content_emails')) {
     function qa_settings_tabs_content_emails($tab){
 
         $settings_tabs_field = new settings_tabs_field();
-        $class_job_bm_emails = new class_job_bm_emails();
-        $templates_data_default = $class_job_bm_emails->job_bm_email_templates_data();
+        $class_job_bm_emails = new class_qa_emails();
+        $templates_data_default = $class_job_bm_emails->qa_email_templates_data();
         $email_templates_parameters = $class_job_bm_emails->email_templates_parameters();
 
-
-        $job_bm_logo_url = get_option('job_bm_logo_url');
-        $job_bm_from_email = get_option('job_bm_from_email');
-        $templates_data_saved = get_option( 'job_bm_email_templates_data', $templates_data_default );
-
-//        $job_bm_test_option = get_option('job_bm_test_option');
-//
-        //var_dump($templates_data);
-
-
+        $qa_logo_url = get_option('qa_logo_url');
+        $qa_from_email = get_option('qa_from_email');
+        $templates_data_saved = get_option( 'qa_email_templates_data', $templates_data_default );
         ?>
         <div class="section">
-            <div class="section-title"><?php echo __('Email settings', 'job-board-manager'); ?></div>
-            <p class="description section-description"><?php echo __('Customize email settings.', 'job-board-manager'); ?></p>
+            <div class="section-title"><?php echo __('Email settings', 'question-answer'); ?></div>
+            <p class="description section-description"><?php echo __('Customize email settings.', 'question-answer'); ?></p>
 
             <?php
 
             $args = array(
-                'id'		=> 'job_bm_logo_url',
+                'id'		=> 'qa_logo_url',
                 //'parent'		=> '',
-                'title'		=> __('Email logo','job-board-manager'),
-                'details'	=> __('Email logo URL to display on mail.','job-board-manager'),
+                'title'		=> __('Email logo','question-answer'),
+                'details'	=> __('Email logo URL to display on mail.','question-answer'),
                 'type'		=> 'media',
-                'value'		=> $job_bm_logo_url,
+                'value'		=> $qa_logo_url,
                 'default'		=> '',
                 'placeholder'		=> '',
             );
@@ -900,13 +1024,13 @@ if(!function_exists('qa_settings_tabs_content_emails')) {
 
 
             $args = array(
-                'id'		=> 'job_bm_from_email',
+                'id'		=> 'qa_from_email',
                 //'parent'		=> '',
-                'title'		=> __('From email address','job-board-manager'),
-                'details'	=> __('Write from email address.','job-board-manager'),
+                'title'		=> __('From email address','question-answer'),
+                'details'	=> __('Write from email address.','question-answer'),
                 'type'		=> 'text',
                 //'multiple'		=> true,
-                'value'		=> $job_bm_from_email,
+                'value'		=> $qa_from_email,
                 'default'		=> '',
             );
 
@@ -949,7 +1073,7 @@ if(!function_exists('qa_settings_tabs_content_emails')) {
                         ?>
                         <div class="item template <?php echo $key; ?>">
                             <div class="header">
-                        <span title="<?php echo __('Click to expand', 'job-board-manager'); ?>" class="expand ">
+                        <span title="<?php echo __('Click to expand', 'question-answer'); ?>" class="expand ">
                             <i class="fa fa-expand"></i>
                             <i class="fa fa-compress"></i>
                         </span>
@@ -957,13 +1081,13 @@ if(!function_exists('qa_settings_tabs_content_emails')) {
                                 <?php
                                 if($enable =='yes'):
                                     ?>
-                                    <span title="<?php echo __('Enable', 'job-board-manager'); ?>" class="is-enable ">
+                                    <span title="<?php echo __('Enable', 'question-answer'); ?>" class="is-enable ">
                             <i class="fa fa-check-square"></i>
                             </span>
                                 <?php
                                 else:
                                     ?>
-                                    <span title="<?php echo __('Disabled', 'job-board-manager'); ?>" class="is-enable ">
+                                    <span title="<?php echo __('Disabled', 'question-answer'); ?>" class="is-enable ">
                             <i class="fa fa-times-circle"></i>
                             </span>
                                 <?php
@@ -973,69 +1097,69 @@ if(!function_exists('qa_settings_tabs_content_emails')) {
 
                                 <?php echo $templates['name']; ?>
                             </div>
-                            <input type="hidden" name="job_bm_email_templates_data[<?php echo $key; ?>][name]" value="<?php echo $templates['name']; ?>" />
+                            <input type="hidden" name="qa_email_templates_data[<?php echo $key; ?>][name]" value="<?php echo $templates['name']; ?>" />
                             <div class="options">
                                 <div class="description"><?php echo $description; ?></div><br/><br/>
 
 
                                 <div class="setting-field">
-                                    <div class="field-lable"><?php echo __('Enable?', 'job-board-manager'); ?></div>
+                                    <div class="field-lable"><?php echo __('Enable?', 'question-answer'); ?></div>
                                     <div class="field-input">
-                                        <select name="job_bm_email_templates_data[<?php echo $key; ?>][enable]" >
-                                            <option <?php echo selected($enable,'yes'); ?> value="yes" ><?php echo __('Yes', 'job-board-manager'); ?></option>
-                                            <option <?php echo selected($enable,'no'); ?>  value="no" ><?php echo __('No', 'job-board-manager'); ?></option>
+                                        <select name="qa_email_templates_data[<?php echo $key; ?>][enable]" >
+                                            <option <?php echo selected($enable,'yes'); ?> value="yes" ><?php echo __('Yes', 'question-answer'); ?></option>
+                                            <option <?php echo selected($enable,'no'); ?>  value="no" ><?php echo __('No', 'question-answer'); ?></option>
                                         </select>
-                                        <p class="description"><?php echo __('Enable or disable this email notification.', 'job-board-manager'); ?></p>
+                                        <p class="description"><?php echo __('Enable or disable this email notification.', 'question-answer'); ?></p>
                                     </div>
                                 </div>
 
 
                                 <div class="setting-field">
-                                    <div class="field-lable"><?php echo __('Email To(Bcc)', 'job-board-manager'); ?></div>
+                                    <div class="field-lable"><?php echo __('Email To(Bcc)', 'question-answer'); ?></div>
                                     <div class="field-input">
-                                        <input placeholder="hello_1@hello.com,hello_2@hello.com" type="text" name="job_bm_email_templates_data[<?php echo $key; ?>][email_to]" value="<?php echo $email_to; ?>" />
-                                        <p class="description"><?php echo __('Email send to(copy)', 'job-board-manager'); ?></p>
+                                        <input placeholder="hello_1@hello.com,hello_2@hello.com" type="text" name="qa_email_templates_data[<?php echo $key; ?>][email_to]" value="<?php echo $email_to; ?>" />
+                                        <p class="description"><?php echo __('Email send to(copy)', 'question-answer'); ?></p>
                                     </div>
                                 </div>
 
                                 <div class="setting-field">
-                                    <div class="field-lable"><?php echo __('Email from name', 'job-board-manager'); ?></div>
+                                    <div class="field-lable"><?php echo __('Email from name', 'question-answer'); ?></div>
                                     <div class="field-input">
-                                        <input placeholder="hello_1@hello.com" type="text" name="job_bm_email_templates_data[<?php echo $key; ?>][email_from_name]" value="<?php echo $email_from_name; ?>" />
-                                        <p class="description"><?php echo __('Email send from name', 'job-board-manager'); ?></p>
+                                        <input placeholder="hello_1@hello.com" type="text" name="qa_email_templates_data[<?php echo $key; ?>][email_from_name]" value="<?php echo $email_from_name; ?>" />
+                                        <p class="description"><?php echo __('Email send from name', 'question-answer'); ?></p>
                                     </div>
                                 </div>
 
                                 <div class="setting-field">
-                                    <div class="field-lable"><?php echo __('Email from', 'job-board-manager'); ?></div>
+                                    <div class="field-lable"><?php echo __('Email from', 'question-answer'); ?></div>
                                     <div class="field-input">
-                                        <input placeholder="hello_1@hello.com" type="text" name="job_bm_email_templates_data[<?php echo $key; ?>][email_from]" value="<?php echo $email_from; ?>" />
-                                        <p class="description"><?php echo __('Email send from', 'job-board-manager'); ?></p>
+                                        <input placeholder="hello_1@hello.com" type="text" name="qa_email_templates_data[<?php echo $key; ?>][email_from]" value="<?php echo $email_from; ?>" />
+                                        <p class="description"><?php echo __('Email send from', 'question-answer'); ?></p>
                                     </div>
                                 </div>
 
                                 <div class="setting-field">
-                                    <div class="field-lable"><?php echo __('Email Subject', 'job-board-manager'); ?></div>
+                                    <div class="field-lable"><?php echo __('Email Subject', 'question-answer'); ?></div>
                                     <div class="field-input">
-                                        <input type="text" name="job_bm_email_templates_data[<?php echo $key; ?>][subject]" value="<?php echo $templates['subject']; ?>" />
-                                        <p class="description"><?php echo __('Write email subject', 'job-board-manager'); ?></p>
+                                        <input type="text" name="qa_email_templates_data[<?php echo $key; ?>][subject]" value="<?php echo $templates['subject']; ?>" />
+                                        <p class="description"><?php echo __('Write email subject', 'question-answer'); ?></p>
                                     </div>
                                 </div>
 
                                 <div class="setting-field">
-                                    <div class="field-lable"><?php echo __('Email Body', 'job-board-manager'); ?></div>
+                                    <div class="field-lable"><?php echo __('Email Body', 'question-answer'); ?></div>
                                     <div class="field-input">
                                         <?php
 
-                                        wp_editor( $templates['html'], $key, $settings = array('textarea_name'=>'job_bm_email_templates_data['.$key.'][html]','media_buttons'=>false,'wpautop'=>true,'teeny'=>true,'editor_height'=>'400px', ) );
+                                        wp_editor( $templates['html'], $key, $settings = array('textarea_name'=>'qa_email_templates_data['.$key.'][html]','media_buttons'=>false,'wpautop'=>true,'teeny'=>true,'editor_height'=>'400px', ) );
 
                                         ?>
-                                        <p class="description"><?php echo __('Write email body', 'job-board-manager'); ?></p>
+                                        <p class="description"><?php echo __('Write email body', 'question-answer'); ?></p>
                                     </div>
                                 </div>
 
                                 <div class="setting-field">
-                                    <div class="field-lable"><?php echo __('Parameter', 'job-board-manager'); ?></div>
+                                    <div class="field-lable"><?php echo __('Parameter', 'question-answer'); ?></div>
                                     <div class="field-input">
 
                                         <ul>
@@ -1053,7 +1177,7 @@ if(!function_exists('qa_settings_tabs_content_emails')) {
                                             ?>
                                         </ul>
 
-                                        <p class="description"><?php echo __('Available parameter for this email template', 'job-board-manager'); ?></p>
+                                        <p class="description"><?php echo __('Available parameter for this email template', 'question-answer'); ?></p>
                                     </div>
                                 </div>
 
@@ -1080,8 +1204,8 @@ if(!function_exists('qa_settings_tabs_content_emails')) {
             $args = array(
                 'id'		=> 'job_bm_email_templates',
                 //'parent'		=> '',
-                'title'		=> __('Email templates','job-board-manager'),
-                'details'	=> __('Customize email templates.','job-board-manager'),
+                'title'		=> __('Email templates','question-answer'),
+                'details'	=> __('Customize email templates.','question-answer'),
                 'type'		=> 'custom_html',
                 //'multiple'		=> true,
                 'html'		=> $html,

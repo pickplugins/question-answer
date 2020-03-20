@@ -74,9 +74,8 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 				if(is_array($a_subscriber))
 				foreach($a_subscriber as $subscriber){
 					$subscriber_data = get_user_by('id', $subscriber);
-
-
-
+					
+					//update_option('hello_answer',$subscriber_data->user_email); // testing
 
 					$class_qa_emails->qa_send_email( $subscriber_data->user_email, $email_subject, $email_body );
 					}

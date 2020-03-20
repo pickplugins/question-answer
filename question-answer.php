@@ -124,6 +124,7 @@ class QuestionAnswer{
 		require_once( QA_PLUGIN_DIR . 'includes/functions-counter.php');
 		require_once( QA_PLUGIN_DIR . 'includes/functions-notification.php');
 
+        require_once( QA_PLUGIN_DIR . 'includes/functions/functions-notification-email.php');
 
 		require_once( QA_PLUGIN_DIR . 'includes/deprecated.php');
 
@@ -160,6 +161,18 @@ class QuestionAnswer{
 		require_once( QA_PLUGIN_DIR . 'includes/actions/action-add-question.php');
 
 		require_once( QA_PLUGIN_DIR . 'templates/user-profile/user-profile-hook.php');
+
+
+//        require_once( QA_PLUGIN_DIR . 'includes/actions/emails/action-question-submit.php');
+//        require_once( QA_PLUGIN_DIR . 'includes/actions/emails/action-question-published.php');
+//        require_once( QA_PLUGIN_DIR . 'includes/actions/emails/action-answer-published.php');
+//        require_once( QA_PLUGIN_DIR . 'includes/actions/emails/action-question-solved.php');
+//        require_once( QA_PLUGIN_DIR . 'includes/actions/emails/action-question-unsolved.php');
+//        require_once( QA_PLUGIN_DIR . 'includes/actions/emails/action-comment-flag.php');
+//        require_once( QA_PLUGIN_DIR . 'includes/actions/emails/action-comment-unflag.php');
+//        require_once( QA_PLUGIN_DIR . 'includes/actions/emails/action-answer-voteup.php');
+//        require_once( QA_PLUGIN_DIR . 'includes/actions/emails/action-answer-votedown.php');
+//        require_once( QA_PLUGIN_DIR . 'includes/actions/emails/action-answer-comment.php');
 
 	}
 
