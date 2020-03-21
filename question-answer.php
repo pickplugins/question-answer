@@ -28,7 +28,6 @@ class QuestionAnswer{
 		$this->qa_declare_actions();
 
 		$this->qa_loading_script();
-		$this->qa_loading_plugin();
 		$this->qa_loading_widgets();
 		$this->qa_loading_functions();
 
@@ -136,11 +135,7 @@ class QuestionAnswer{
 
 	}
 
-	public function qa_loading_plugin() {
 
-		add_action( 'activated_plugin', array( $this, 'redirect_welcome' ));
-		require_once( QA_PLUGIN_DIR . 'includes/classes/class-admin-setup-wizard.php');
-	}
 
 	public function qa_loading_script() {
 
@@ -161,18 +156,6 @@ class QuestionAnswer{
 		require_once( QA_PLUGIN_DIR . 'includes/actions/action-add-question.php');
 
 		require_once( QA_PLUGIN_DIR . 'templates/user-profile/user-profile-hook.php');
-
-
-//        require_once( QA_PLUGIN_DIR . 'includes/actions/emails/action-question-submit.php');
-//        require_once( QA_PLUGIN_DIR . 'includes/actions/emails/action-question-published.php');
-//        require_once( QA_PLUGIN_DIR . 'includes/actions/emails/action-answer-published.php');
-//        require_once( QA_PLUGIN_DIR . 'includes/actions/emails/action-question-solved.php');
-//        require_once( QA_PLUGIN_DIR . 'includes/actions/emails/action-question-unsolved.php');
-//        require_once( QA_PLUGIN_DIR . 'includes/actions/emails/action-comment-flag.php');
-//        require_once( QA_PLUGIN_DIR . 'includes/actions/emails/action-comment-unflag.php');
-//        require_once( QA_PLUGIN_DIR . 'includes/actions/emails/action-answer-voteup.php');
-//        require_once( QA_PLUGIN_DIR . 'includes/actions/emails/action-answer-votedown.php');
-//        require_once( QA_PLUGIN_DIR . 'includes/actions/emails/action-answer-comment.php');
 
 	}
 
@@ -236,15 +219,7 @@ class QuestionAnswer{
 	}
 
 
-	public function redirect_welcome($plugin){
 
-		if( get_option( 'qa_complete_setting_wizard', 'no' ) == 'no' ) {
-			if( $plugin == 'question-answer/question-answer.php' ) {
-				wp_safe_redirect( admin_url( 'index.php?page=qa-setup' ) );
-				exit;
-			}
-		}
-	}
 
 
 	public function qa_front_scripts(){
@@ -315,7 +290,7 @@ class QuestionAnswer{
 
         wp_enqueue_style('jquery-ui', QA_PLUGIN_URL.'assets/global/css/jquery-ui.css');
 		wp_enqueue_style('qa_admin_style', QA_PLUGIN_URL.'assets/admin/css/style.css');
-		wp_enqueue_style('qa_admin_addons', QA_PLUGIN_URL.'assets/admin/css/addons.css');
+		//wp_enqueue_style('qa_admin_addons', QA_PLUGIN_URL.'assets/admin/css/addons.css');
 
 
 		//global

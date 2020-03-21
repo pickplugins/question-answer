@@ -321,10 +321,10 @@ if ( ! function_exists( 'qa_email_action_question_published_function' ) ) {
 
 
 
-add_action( 'qa_action_after_question_submit', 'qa_email_action_question_submit_function', 10 );
+add_action( 'qa_question_submitted', 'qa_question_submitted_send_email', 10, 2 );
 
-if ( ! function_exists( 'qa_email_action_question_submit_function' ) ) {
-    function qa_email_action_question_submit_function( $question_ID ) {
+if ( ! function_exists( 'qa_question_submitted_send_email' ) ) {
+    function qa_question_submitted_send_email( $question_ID, $post_data ) {
 
         $admin_email = get_option('admin_email');
         $site_name = get_bloginfo('name');
@@ -380,8 +380,10 @@ if ( ! function_exists( 'qa_email_action_question_submit_function' ) ) {
             $email_data['html'] = strtr($email_html, $vars);
             $email_data['attachments'] = array();
 
-            $status = $class_qa_emails->qa_send_email($email_data);
+            //var_dump($email_from);
 
+            $status = $class_qa_emails->qa_send_email($email_data);
+            //var_dump($status);
         endif;
 
 

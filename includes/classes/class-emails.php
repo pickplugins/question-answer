@@ -6,36 +6,32 @@ class class_qa_emails{
 	public function __construct(){
 
 
-		}
+	}
 
-
-
-		
-		
 	public function qa_send_email($email_data){
-		
 
-		
 		$email_to = isset($email_data['email_to']) ? $email_data['email_to'] : '';
         $email_bcc = isset($email_data['email_bcc']) ? $email_data['email_bcc'] : '';
-
-		$email_from = isset($email_data['email_from']) ? $email_data['email_from'] : get_option('admin_email');
-		$email_from_name = isset($email_data['email_from_name']) ? $email_data['email_from_name'] : get_bloginfo('name');
+		$email_from = !empty($email_data['email_from']) ? $email_data['email_from'] : get_option('admin_email');
+		$email_from_name = !empty($email_data['email_from_name']) ? $email_data['email_from_name'] : get_bloginfo('name');
 		$subject = isset($email_data['subject']) ? $email_data['subject'] : '';
 		$email_body = isset($email_data['html']) ? $email_data['html'] : '';
 		$attachments = isset($email_data['attachments']) ? $email_data['attachments'] : '';
-					
 
 		$headers = array();
 		$headers[] = "From: ".$email_from_name." <".$email_from.">";
 		$headers[] = "MIME-Version: 1.0";
 		$headers[] = "Content-Type: text/html; charset=UTF-8";
+
         if(!empty($email_bcc)){
             $headers[] = "Bcc: ".$email_bcc;
         }
         $headers = apply_filters('job_bm_mail_headers', $headers);
 
-		$status = wp_mail($email_to, $subject, $email_body, $headers, $attachments);
+
+        //var_dump($headers);
+
+        $status = wp_mail($email_to, $subject, $email_body, $headers, $attachments);
 
         return $status;
 		

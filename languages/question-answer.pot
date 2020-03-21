@@ -1,233 +1,49 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Question Answer\n"
-"POT-Creation-Date: 2019-10-12 21:25+0600\n"
-"PO-Revision-Date: 2019-10-12 21:25+0600\n"
+"POT-Creation-Date: 2020-03-21 12:47+0600\n"
+"PO-Revision-Date: 2020-03-21 12:47+0600\n"
 "Last-Translator: \n"
 "Language-Team: pickplugins <support@pickplugins.com>\n"
-"Language: sv\n"
+"Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 2.2.3\n"
+"X-Generator: Poedit 2.3\n"
 "X-Poedit-Basepath: ..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-KeywordsList: __;_e;esc_html__\n"
 "X-Poedit-SearchPath-0: includes\n"
 "X-Poedit-SearchPath-1: templates\n"
 
-#: includes/class-settings-tabs.php:146 includes/class-settings-tabs.php:226
+#: includes/class-settings-tabs.php:319
+msgid "Placeholder.jpg"
+msgstr ""
+
+#: includes/class-settings-tabs.php:375 includes/class-settings-tabs.php:456
 msgid "Upload"
 msgstr ""
 
-#: includes/class-settings-tabs.php:147 includes/class-settings-tabs.php:227
+#: includes/class-settings-tabs.php:376 includes/class-settings-tabs.php:457
 msgid "Clear"
 msgstr ""
 
-#: includes/class-settings-tabs.php:339 includes/class-settings-tabs.php:595
-#, fuzzy
-#| msgid "Add "
+#: includes/class-settings-tabs.php:563 includes/class-settings-tabs.php:834
 msgid "Add"
-msgstr "Lägg till"
-
-#: includes/classes/class-admin-setup-wizard.php:29
-msgid ""
-"<strong>Welcome to Question Answer</strong> &#8211; You did not run the "
-"setup wizard yet. You can do that now."
 msgstr ""
 
-#: includes/classes/class-admin-setup-wizard.php:31
-msgid "Run setup wizard"
-msgstr ""
-
-#: includes/classes/class-admin-setup-wizard.php:32
-msgid "Skip setup"
-msgstr ""
-
-#: includes/classes/class-admin-setup-wizard.php:48
-msgid "Introduction"
-msgstr ""
-
-#: includes/classes/class-admin-setup-wizard.php:53
-#: includes/classes/class-admin-setup-wizard.php:160
-msgid "Page setup"
-msgstr ""
-
-#: includes/classes/class-admin-setup-wizard.php:58
 #: includes/classes/class-answer-column.php:31
 #: includes/classes/class-post-types.php:25
 msgid "Question"
-msgstr "Fråga"
-
-#: includes/classes/class-admin-setup-wizard.php:63
-#: includes/classes/class-post-types.php:140
-#: templates/question-archive/answer-count.php:31
-msgid "Answer"
-msgstr "Svar"
-
-#: includes/classes/class-admin-setup-wizard.php:68
-msgid "Ready!"
-msgstr "Klar!"
-
-#: includes/classes/class-admin-setup-wizard.php:113
-msgid "Question Answer &rsaquo; Setup sizard"
 msgstr ""
-
-#: includes/classes/class-admin-setup-wizard.php:127
-msgid "Return to the WordPress dashboard"
-msgstr ""
-
-#: includes/classes/class-admin-setup-wizard.php:162
-#, php-format
-msgid ""
-"Your website needs a few essential %spages%s. The following will be created "
-"automatically (if they do not already exist):"
-msgstr ""
-
-#: includes/classes/class-admin-setup-wizard.php:166
-msgid "Page name"
-msgstr ""
-
-#: includes/classes/class-admin-setup-wizard.php:167
-msgid "Description"
-msgstr "Beskrivning"
-
-#: includes/classes/class-admin-setup-wizard.php:173
-msgid "This page will display a form where visitor can submit new question."
-msgstr ""
-
-#: includes/classes/class-admin-setup-wizard.php:177
-msgid "This page will show all the live questions."
-msgstr ""
-
-#: includes/classes/class-admin-setup-wizard.php:181
-msgid "This page will show user profile."
-msgstr ""
-
-#: includes/classes/class-admin-setup-wizard.php:187
-msgid "This page will show your user account info."
-msgstr ""
-
-#: includes/classes/class-admin-setup-wizard.php:192
-#, php-format
-msgid ""
-"Once created, these pages can be managed from your admin dashboard on the "
-"%sPages screen%s. <br> You can control which pages are shown on your website "
-"via %sAppearance > Menus%s."
-msgstr ""
-
-#: includes/classes/class-admin-setup-wizard.php:196
-#: includes/classes/class-admin-setup-wizard.php:316
-#: includes/classes/class-admin-setup-wizard.php:383
-msgid "Skip this step"
-msgstr "Hoppa över detta steg"
-
-#: includes/classes/class-admin-setup-wizard.php:277
-#: includes/classes/class-admin-setup-wizard.php:350
-#: includes/functions/functions-settings.php:452
-msgid "Question settings"
-msgstr "Frågeinställningar"
-
-#: includes/classes/class-admin-setup-wizard.php:282
-#: includes/classes/class-admin-setup-wizard.php:355
-#: includes/functions/functions-settings.php:37
-msgid "Item per page"
-msgstr "Objekt per sida"
-
-#: includes/classes/class-admin-setup-wizard.php:288
-msgid "Excerpt length in question archive"
-msgstr ""
-
-#: includes/classes/class-admin-setup-wizard.php:294
-msgid "Account required to submit question?"
-msgstr ""
-
-#: includes/classes/class-admin-setup-wizard.php:297
-#: includes/classes/class-admin-setup-wizard.php:364
-#: includes/functions/functions-settings.php:68
-#: includes/functions/functions-settings.php:197
-#: includes/functions/functions-settings.php:254
-#: includes/functions/functions-settings.php:282
-#: includes/functions/functions-settings.php:466
-#: includes/functions/functions-settings.php:500
-#: includes/functions/functions-settings.php:513
-#: includes/functions/functions-settings.php:582
-#: includes/functions/functions-settings.php:609
-msgid "Yes"
-msgstr "Ja"
-
-#: includes/classes/class-admin-setup-wizard.php:298
-#: includes/classes/class-admin-setup-wizard.php:365
-#: includes/functions/functions-settings.php:68
-#: includes/functions/functions-settings.php:197
-#: includes/functions/functions-settings.php:254
-#: includes/functions/functions-settings.php:282
-#: includes/functions/functions-settings.php:466
-#: includes/functions/functions-settings.php:500
-#: includes/functions/functions-settings.php:513
-#: includes/functions/functions-settings.php:582
-#: includes/functions/functions-settings.php:609
-msgid "No"
-msgstr "Nej"
-
-#: includes/classes/class-admin-setup-wizard.php:303
-msgid "New submitted question status ?"
-msgstr ""
-
-#: includes/classes/class-admin-setup-wizard.php:306
-#: includes/classes/class-admin-setup-wizard.php:373
-#: includes/classes/class-answer-column.php:98
-#: includes/classes/class-question-column.php:40
-#: includes/classes/class-question-column.php:129
-#: includes/functions/functions-settings.php:210
-#: includes/functions/functions-settings.php:479
-#: templates/my-account/question-list.php:97
-msgid "Pending"
-msgstr "Avvaktande"
-
-#: includes/classes/class-admin-setup-wizard.php:307
-#: includes/classes/class-admin-setup-wizard.php:374
-#: includes/functions/functions-settings.php:210
-#: includes/functions/functions-settings.php:479
-msgid "Draft"
-msgstr "Utkast"
-
-#: includes/classes/class-admin-setup-wizard.php:308
-#: includes/classes/class-admin-setup-wizard.php:375
-#: includes/functions/functions-settings.php:210
-#: includes/functions/functions-settings.php:479
-msgid "Published"
-msgstr "Publiserad"
-
-#: includes/classes/class-admin-setup-wizard.php:309
-#: includes/classes/class-admin-setup-wizard.php:376
-msgid "Privated"
-msgstr "Privat"
-
-#: includes/classes/class-admin-setup-wizard.php:310
-#: includes/classes/class-admin-setup-wizard.php:377
-msgid "Trashed"
-msgstr ""
-
-#: includes/classes/class-admin-setup-wizard.php:361
-msgid "Account required to submit answer?"
-msgstr ""
-
-#: includes/classes/class-admin-setup-wizard.php:370
-msgid "New submitted answer status ?"
-msgstr ""
-
-#: includes/classes/class-admin-setup-wizard.php:411
-msgid "Your website is ready!"
-msgstr "Din webbsida är klar!"
 
 #: includes/classes/class-answer-column.php:34
 msgid "Answer title"
-msgstr "Svars titel"
+msgstr ""
 
 #: includes/classes/class-answer-column.php:37
 msgid "Answered by"
-msgstr "Svarad av"
+msgstr ""
 
 #: includes/classes/class-answer-column.php:60
 #: includes/classes/class-post-types.php:38
@@ -235,21 +51,30 @@ msgstr "Svarad av"
 #: includes/classes/class-post-types.php:202
 #: templates/single-question/answer-content.php:100
 msgid "Edit"
-msgstr "Redigera"
+msgstr ""
 
 #: includes/classes/class-answer-column.php:62
 #: templates/question-archive/view-count.php:35
 msgid "View"
-msgstr "Visa"
+msgstr ""
 
 #: includes/classes/class-answer-column.php:66
 #: includes/classes/class-post-meta-answer.php:37
 msgid "This question is not exist any more !"
-msgstr "Denna fråga existerar inte längre"
+msgstr ""
 
 #: includes/classes/class-answer-column.php:97
 #: includes/classes/class-question-column.php:39
 msgid "Any status"
+msgstr ""
+
+#: includes/classes/class-answer-column.php:98
+#: includes/classes/class-question-column.php:40
+#: includes/classes/class-question-column.php:129
+#: includes/functions/functions-settings.php:210
+#: includes/functions/functions-settings.php:479
+#: templates/my-account/question-list.php:97
+msgid "Pending"
 msgstr ""
 
 #: includes/classes/class-answer-column.php:99
@@ -270,73 +95,195 @@ msgstr ""
 #: includes/classes/class-functions.php:171
 #: includes/classes/class-question-column.php:43
 #: includes/classes/class-question-column.php:141 includes/functions.php:1148
-#: includes/functions.php:2805 templates/my-account/question-list.php:108
+#: includes/functions.php:2807 templates/my-account/question-list.php:108
 #: templates/my-notifications.php:355
 #: templates/question-archive/question-meta.php:36
 #: templates/question-archive/top-nav.php:498
 #: templates/single-question/meta.php:74
 #: templates/single-question/top-nav.php:481
 msgid "Solved"
-msgstr "Löst"
+msgstr ""
 
 #: includes/classes/class-dashboard.php:67
-#, fuzzy
-#| msgid "My Account"
 msgid "Account"
-msgstr "Mitt konto"
+msgstr ""
 
 #: includes/classes/class-dashboard.php:74
-#, fuzzy
-#| msgid "My Account"
 msgid "Account edit"
-msgstr "Mitt konto"
+msgstr ""
 
 #: includes/classes/class-dashboard.php:80
-#, fuzzy
-#| msgid "Notifications"
 msgid "My notifications"
-msgstr "Notifikationer"
+msgstr ""
 
 #: includes/classes/class-dashboard.php:86
-#, fuzzy
-#| msgid "My Question"
 msgid "My questions"
-msgstr "Min fråga"
+msgstr ""
 
 #: includes/classes/class-dashboard.php:92
-#, fuzzy
-#| msgid "Answers"
 msgid "My answers"
-msgstr "Svar"
+msgstr ""
 
 #: includes/classes/class-dashboard.php:210
 #: templates/my-account/my-account.php:26
 #: templates/template-registration-form.php:65
 msgid "Register"
-msgstr "Registrera"
+msgstr ""
 
 #: includes/classes/class-dashboard.php:250
 #: includes/classes/class-dashboard.php:264
 #: templates/my-account/my-account.php:65
 #: templates/my-account/my-account.php:79
 msgid "Login"
-msgstr "Logga in"
+msgstr ""
 
 #: includes/classes/class-dashboard.php:261
 #: templates/my-account/my-account.php:76
 msgid "Username or email address"
-msgstr "Användarnamn eller mailadress"
+msgstr ""
 
 #: includes/classes/class-dashboard.php:262
 #: templates/my-account/my-account.php:77
 #: templates/template-registration-form.php:52
 msgid "Password"
-msgstr "Lösenord"
+msgstr ""
 
 #: includes/classes/class-dashboard.php:263
 #: templates/my-account/my-account.php:78
 msgid "Remember Me"
-msgstr "Kom ihåg mig"
+msgstr ""
+
+#: includes/classes/class-emails.php:71
+msgid "New Question Submitted"
+msgstr ""
+
+#: includes/classes/class-emails.php:72
+msgid "Notification email for when new question submitted."
+msgstr ""
+
+#: includes/classes/class-emails.php:73
+msgid "New Question Submitted - {site_url}"
+msgstr ""
+
+#: includes/classes/class-emails.php:82
+msgid "New question published"
+msgstr ""
+
+#: includes/classes/class-emails.php:83
+msgid "Notification email for when new question published."
+msgstr ""
+
+#: includes/classes/class-emails.php:84
+msgid "New Question Published - {site_url}"
+msgstr ""
+
+#: includes/classes/class-emails.php:93
+msgid "New Answer Submitted"
+msgstr ""
+
+#: includes/classes/class-emails.php:94
+msgid "Notification email for new answer submitted."
+msgstr ""
+
+#: includes/classes/class-emails.php:95
+msgid "New Answer Submitted - {site_url}"
+msgstr ""
+
+#: includes/classes/class-emails.php:104
+msgid "New Answer Published"
+msgstr ""
+
+#: includes/classes/class-emails.php:105
+msgid "Notification email for new answer published."
+msgstr ""
+
+#: includes/classes/class-emails.php:106
+msgid "New Answer Published - {site_url}"
+msgstr ""
+
+#: includes/classes/class-emails.php:115
+msgid "Question solved"
+msgstr ""
+
+#: includes/classes/class-emails.php:116
+msgid "Notification email for question solved."
+msgstr ""
+
+#: includes/classes/class-emails.php:117
+msgid "Question solved - {site_url}"
+msgstr ""
+
+#: includes/classes/class-emails.php:127
+msgid "Question unsolved"
+msgstr ""
+
+#: includes/classes/class-emails.php:128
+msgid "Notification email for Question unsolved."
+msgstr ""
+
+#: includes/classes/class-emails.php:129
+msgid "Question unsolved - {site_url}"
+msgstr ""
+
+#: includes/classes/class-emails.php:140
+msgid "Comment flag"
+msgstr ""
+
+#: includes/classes/class-emails.php:141
+msgid "Notification email for admin when Comment flag."
+msgstr ""
+
+#: includes/classes/class-emails.php:142
+msgid "Comment flag - {site_url}"
+msgstr ""
+
+#: includes/classes/class-emails.php:152
+msgid "Comment unflag"
+msgstr ""
+
+#: includes/classes/class-emails.php:153
+msgid "Notification email for Comment unflag."
+msgstr ""
+
+#: includes/classes/class-emails.php:154
+msgid "Comment unflag - {site_url}"
+msgstr ""
+
+#: includes/classes/class-emails.php:163
+msgid "Answer Voted Up"
+msgstr ""
+
+#: includes/classes/class-emails.php:164
+msgid "Notification email for Answer Voted Up."
+msgstr ""
+
+#: includes/classes/class-emails.php:165
+msgid "Answer voted up - {site_url}"
+msgstr ""
+
+#: includes/classes/class-emails.php:175
+msgid "Answer Voted Down"
+msgstr ""
+
+#: includes/classes/class-emails.php:176
+msgid "Notification email for answer voted down."
+msgstr ""
+
+#: includes/classes/class-emails.php:177
+msgid "Answer voted down - {site_url}"
+msgstr ""
+
+#: includes/classes/class-emails.php:186
+msgid "Answer Comment"
+msgstr ""
+
+#: includes/classes/class-emails.php:187
+msgid "Notification email for Answer Comment."
+msgstr ""
+
+#: includes/classes/class-emails.php:188
+msgid "Answer comment - {site_url}"
+msgstr ""
 
 #: includes/classes/class-functions.php:30
 msgid "Top Viewed"
@@ -348,10 +295,8 @@ msgstr ""
 
 #: includes/classes/class-functions.php:33
 #: templates/single-question/meta.php:73
-#, fuzzy
-#| msgid "Solved"
 msgid "Unsolved"
-msgstr "Löst"
+msgstr ""
 
 #: includes/classes/class-functions.php:45
 msgid "Core"
@@ -379,19 +324,19 @@ msgstr ""
 
 #: includes/classes/class-functions.php:126
 msgid "Default Sorting"
-msgstr "Standard sortering"
+msgstr ""
 
 #: includes/classes/class-functions.php:127
 msgid "Sort by Title"
-msgstr "Sortera på titel"
+msgstr ""
 
 #: includes/classes/class-functions.php:128
 msgid "Sort by Comment Count"
-msgstr "Sortera på antal kommentarer"
+msgstr ""
 
 #: includes/classes/class-functions.php:129
 msgid "Sort by Older Questions"
-msgstr "Sortera på äldre frågor"
+msgstr ""
 
 #: includes/classes/class-functions.php:146
 #: includes/classes/class-functions.php:214
@@ -401,27 +346,27 @@ msgstr ""
 #: includes/classes/class-functions.php:150 includes/functions.php:234
 #: includes/functions.php:367
 msgid "Status"
-msgstr "Status"
+msgstr ""
 
 #: includes/classes/class-functions.php:154
 msgid "Date"
-msgstr "Datum"
+msgstr ""
 
 #: includes/classes/class-functions.php:158
 #: includes/classes/class-post-types.php:141
 #: templates/my-account/question-list.php:131
 #: templates/single-question/answer-section.php:72
-#: templates/single-question/content.php:129
+#: templates/single-question/content.php:171
 msgid "Answers"
-msgstr "Svar"
+msgstr ""
 
 #: includes/classes/class-functions.php:168
 msgid "All"
-msgstr "Alla"
+msgstr ""
 
 #: includes/classes/class-functions.php:169
 msgid "Processing"
-msgstr "Bearbetning"
+msgstr ""
 
 #: includes/classes/class-functions.php:170
 msgid "Hold"
@@ -429,7 +374,7 @@ msgstr ""
 
 #: includes/classes/class-functions.php:176
 msgid "None"
-msgstr "Ingen"
+msgstr ""
 
 #: includes/classes/class-functions.php:203
 msgid "reCaptcha"
@@ -445,59 +390,106 @@ msgstr ""
 
 #: includes/classes/class-functions.php:225
 msgid "Question Descriptions"
-msgstr "Frågebeskrivning"
+msgstr ""
 
 #: includes/classes/class-functions.php:226
 msgid "Write question descriptions here"
-msgstr "Skriv din fråga här"
+msgstr ""
 
 #: includes/classes/class-functions.php:238
-#, fuzzy
-#| msgid "Private"
 msgid "Is private?"
-msgstr "Privat"
+msgstr ""
 
 #: includes/classes/class-functions.php:239
 msgid "If this is private question."
 msgstr ""
 
 #: includes/classes/class-functions.php:242
-#, fuzzy
-#| msgid "Publish"
 msgid "Public"
-msgstr "Publisera"
+msgstr ""
 
 #: includes/classes/class-functions.php:242
 #: includes/functions/functions-settings.php:210
 #: includes/functions/functions-settings.php:479
 #: templates/single-question/answer-content.php:122
 msgid "Private"
-msgstr "Privat"
+msgstr ""
 
 #: includes/classes/class-functions.php:254
 #: includes/classes/class-post-types.php:65
 msgid "Question Category"
-msgstr "Frågekategori"
+msgstr ""
 
 #: includes/classes/class-functions.php:255
 msgid "Select question category."
-msgstr "Välj frågekategori"
+msgstr ""
 
 #: includes/classes/class-functions.php:266
 #: includes/classes/class-question-column.php:109
 msgid "Question tags"
-msgstr "Frågetags"
+msgstr ""
 
 #: includes/classes/class-functions.php:267
 msgid "Choose question tags, comma separated."
-msgstr "Välj frågetags, separera med komma"
+msgstr ""
 
 #: includes/classes/class-post-meta-answer.php:32
 msgid "See more"
-msgstr "Se mer"
+msgstr ""
 
 #: includes/classes/class-post-meta-answer.php:48
 msgid "Databox"
+msgstr ""
+
+#: includes/classes/class-post-meta-question-hook.php:30
+msgid "Admin actions"
+msgstr ""
+
+#: includes/classes/class-post-meta-question-hook.php:31
+msgid "Choose some admin actions."
+msgstr ""
+
+#: includes/classes/class-post-meta-question-hook.php:41
+#: includes/classes/class-question-column.php:100
+msgid "Question status"
+msgstr ""
+
+#: includes/classes/class-post-meta-question-hook.php:42
+msgid "Choose question status"
+msgstr ""
+
+#: includes/classes/class-post-meta-question-hook.php:54
+msgid "Marked as close"
+msgstr ""
+
+#: includes/classes/class-post-meta-question-hook.php:55
+msgid "Choose mark as closed, user will not able to answer or comments"
+msgstr ""
+
+#: includes/classes/class-post-meta-question-hook.php:143
+msgid "Assign users to give answer."
+msgstr ""
+
+#: includes/classes/class-post-meta-question-hook.php:144
+msgid "Assign to"
+msgstr ""
+
+#: includes/classes/class-post-meta-question-hook.php:159
+#: includes/classes/class-post-meta.php:57
+msgid "Featured question?"
+msgstr ""
+
+#: includes/classes/class-post-meta-question-hook.php:160
+msgid "Choose is question featured or not"
+msgstr ""
+
+#: includes/classes/class-post-meta-question.php:18
+msgid "Question options"
+msgstr ""
+
+#: includes/classes/class-post-meta-question.php:47
+#, php-format
+msgid "%s Admin action"
 msgstr ""
 
 #: includes/classes/class-post-meta.php:24
@@ -508,10 +500,6 @@ msgstr ""
 #: templates/question-archive/top-nav.php:120
 #: templates/single-question/top-nav.php:114
 msgid "Question Status"
-msgstr "Frågestatus"
-
-#: includes/classes/class-post-meta.php:57
-msgid "Featured question?"
 msgstr ""
 
 #: includes/classes/class-post-meta.php:59
@@ -525,26 +513,26 @@ msgstr ""
 
 #: includes/classes/class-post-types.php:26
 msgid "Questions"
-msgstr "Frågor"
+msgstr ""
 
 #: includes/classes/class-post-types.php:35
 #: includes/classes/class-post-types.php:80
 #, php-format
 msgid "All %s"
-msgstr "Alla %s"
+msgstr ""
 
 #: includes/classes/class-post-types.php:36
 #: includes/classes/class-post-types.php:151
 #: includes/classes/class-post-types.php:200
 msgid "Add "
-msgstr "Lägg till"
+msgstr ""
 
 #: includes/classes/class-post-types.php:37
 #: includes/classes/class-post-types.php:152
 #: includes/classes/class-post-types.php:201
 #, php-format
 msgid "Add %s"
-msgstr "Lägg till %s"
+msgstr ""
 
 #: includes/classes/class-post-types.php:39
 #: includes/classes/class-post-types.php:83
@@ -553,14 +541,14 @@ msgstr "Lägg till %s"
 #: includes/classes/class-post-types.php:203
 #, php-format
 msgid "Edit %s"
-msgstr "Redigera %s"
+msgstr ""
 
 #: includes/classes/class-post-types.php:40
 #: includes/classes/class-post-types.php:155
 #: includes/classes/class-post-types.php:204
 #, php-format
 msgid "New %s"
-msgstr "Nya %s"
+msgstr ""
 
 #: includes/classes/class-post-types.php:41
 #: includes/classes/class-post-types.php:42
@@ -570,7 +558,7 @@ msgstr "Nya %s"
 #: includes/classes/class-post-types.php:206
 #, php-format
 msgid "View %s"
-msgstr "Visa %s"
+msgstr ""
 
 #: includes/classes/class-post-types.php:43
 #: includes/classes/class-post-types.php:79
@@ -579,21 +567,21 @@ msgstr "Visa %s"
 #: includes/classes/class-post-types.php:207
 #, php-format
 msgid "Search %s"
-msgstr "Sök %s"
+msgstr ""
 
 #: includes/classes/class-post-types.php:44
 #: includes/classes/class-post-types.php:159
 #: includes/classes/class-post-types.php:208
 #, php-format
 msgid "No %s found"
-msgstr "Inga %s hittade"
+msgstr ""
 
 #: includes/classes/class-post-types.php:45
 #: includes/classes/class-post-types.php:160
 #: includes/classes/class-post-types.php:209
 #, php-format
 msgid "No %s found in trash"
-msgstr "Inga %s hittade i papperskorgen"
+msgstr ""
 
 #: includes/classes/class-post-types.php:46
 #: includes/classes/class-post-types.php:81
@@ -602,50 +590,55 @@ msgstr "Inga %s hittade i papperskorgen"
 #: includes/classes/class-post-types.php:210
 #, php-format
 msgid "Parent %s"
-msgstr "Förälder %s"
+msgstr ""
 
 #: includes/classes/class-post-types.php:48
 #: includes/classes/class-post-types.php:163
 #: includes/classes/class-post-types.php:212
 #, php-format
 msgid "This is where you can create and manage %s."
-msgstr "Här kan du skapa och hantera %s."
+msgstr ""
 
 #: includes/classes/class-post-types.php:66
 msgid "Questions Categories"
-msgstr "Frågekategorier"
+msgstr ""
 
 #: includes/classes/class-post-types.php:82
 #: includes/classes/class-post-types.php:117
 #, php-format
 msgid "Parent %s:"
-msgstr "Förälder %s:"
+msgstr ""
 
 #: includes/classes/class-post-types.php:84
 #: includes/classes/class-post-types.php:119
 #, php-format
 msgid "Update %s"
-msgstr "Uppdatera %s"
+msgstr ""
 
 #: includes/classes/class-post-types.php:85
 #: includes/classes/class-post-types.php:120
 #, php-format
 msgid "Add New %s"
-msgstr "Lägg till ny %s"
+msgstr ""
 
 #: includes/classes/class-post-types.php:86
 #: includes/classes/class-post-types.php:121
 #, php-format
 msgid "New %s Name"
-msgstr "Ny %s namn"
+msgstr ""
 
 #: includes/classes/class-post-types.php:100
 msgid "Question Tag"
-msgstr "Frågetagg"
+msgstr ""
 
 #: includes/classes/class-post-types.php:101
 msgid "Question Tags"
-msgstr "Frågetaggar"
+msgstr ""
+
+#: includes/classes/class-post-types.php:140
+#: templates/question-archive/answer-count.php:31
+msgid "Answer"
+msgstr ""
 
 #: includes/classes/class-post-types.php:189
 #: templates/question-archive/top-nav.php:75
@@ -657,29 +650,25 @@ msgstr ""
 msgid "Keywords"
 msgstr ""
 
-#: includes/classes/class-question-column.php:100
-msgid "Question status"
-msgstr "Frågestatus"
-
 #: includes/classes/class-question-column.php:103
 msgid "Question title"
-msgstr "Frågetitel"
+msgstr ""
 
 #: includes/classes/class-question-column.php:106
 msgid "Created by"
-msgstr "Skapad av"
+msgstr ""
 
 #: includes/classes/class-question-column.php:112
 msgid "Questions categories"
-msgstr "Frågekategorier"
+msgstr ""
 
 #: includes/classes/class-settings.php:21
 msgid "Settings"
-msgstr "Inställningar"
+msgstr ""
 
 #: includes/classes/class-settings.php:22
 msgid "Help"
-msgstr "Hjälp"
+msgstr ""
 
 #: includes/classes/class-settings.php:23
 msgid "Addons"
@@ -705,7 +694,7 @@ msgstr ""
 #: includes/classes/class-widget-top-questions.php:353
 #: includes/classes/class-widget-website-stats.php:88
 msgid "Title:"
-msgstr "Titel:"
+msgstr ""
 
 #: includes/classes/class-widget-categories.php:119
 #: includes/classes/class-widget-tags.php:107
@@ -765,14 +754,12 @@ msgstr ""
 #: includes/classes/class-widget-leaderboard.php:281
 #: includes/classes/class-widget-top-questions.php:361
 msgid "Limit:"
-msgstr "Begränsa:"
+msgstr ""
 
 #: includes/classes/class-widget-leaderboard.php:286
 #: includes/classes/class-widget-top-questions.php:381
-#, fuzzy
-#| msgid "Save Changes"
 msgid "Date Ranges:"
-msgstr "Spara ändringar"
+msgstr ""
 
 #: includes/classes/class-widget-tags.php:15
 msgid "Question Answer - Tags"
@@ -791,16 +778,12 @@ msgid "Max Count:"
 msgstr ""
 
 #: includes/classes/class-widget-top-questions.php:15
-#, fuzzy
-#| msgid "Question Descriptions"
 msgid "Question Answer - Top Questions"
-msgstr "Frågebeskrivning"
+msgstr ""
 
 #: includes/classes/class-widget-top-questions.php:15
-#, fuzzy
-#| msgid "New Question"
 msgid "Show Top Questions."
-msgstr "Ny fråga"
+msgstr ""
 
 #: includes/classes/class-widget-top-questions.php:304
 msgid "View count."
@@ -819,22 +802,16 @@ msgid "Total down vote."
 msgstr ""
 
 #: includes/classes/class-widget-top-questions.php:325
-#, fuzzy
-#| msgid "No question found"
 msgid "No question found."
-msgstr "Inga frågor hittade"
+msgstr ""
 
 #: includes/classes/class-widget-top-questions.php:343
-#, fuzzy
-#| msgid "Questions"
 msgid "Top Questions"
-msgstr "Frågor"
+msgstr ""
 
 #: includes/classes/class-widget-top-questions.php:366
-#, fuzzy
-#| msgid "Sort by Title"
 msgid "Sort by:"
-msgstr "Sortera på titel"
+msgstr ""
 
 #: includes/classes/class-widget-website-stats.php:15
 msgid "Question Answer - Website Stats"
@@ -845,16 +822,12 @@ msgid "Website Stats."
 msgstr ""
 
 #: includes/classes/class-widget-website-stats.php:46
-#, fuzzy
-#| msgid "Questions"
 msgid "Total Question"
-msgstr "Frågor"
+msgstr ""
 
 #: includes/classes/class-widget-website-stats.php:54
-#, fuzzy
-#| msgid "All Answers"
 msgid "Total Answer"
-msgstr "Alla svar"
+msgstr ""
 
 #: includes/classes/class-widget-website-stats.php:63
 msgid "Total Comments"
@@ -869,10 +842,8 @@ msgid "Website Stats"
 msgstr ""
 
 #: includes/functions.php:157
-#, fuzzy
-#| msgid "Please login first."
 msgid "Please login to post answer."
-msgstr "Logga in först"
+msgstr ""
 
 #: includes/functions.php:168 includes/functions.php:331
 msgid "Empty content can\"t be a valid answer!"
@@ -880,23 +851,19 @@ msgstr ""
 
 #: includes/functions.php:175
 msgid "#Replay"
-msgstr "#Svara"
+msgstr ""
 
 #: includes/functions.php:200
-#, fuzzy
-#| msgid "Something went wrong !"
 msgid "Something went wrong!"
-msgstr "Något gick fel!"
+msgstr ""
 
 #: includes/functions.php:231
 msgid "Answer submission successful"
 msgstr ""
 
 #: includes/functions.php:358
-#, fuzzy
-#| msgid "Something went wrong !"
 msgid "Something went wrong! 2"
-msgstr "Något gick fel!"
+msgstr ""
 
 #: includes/functions.php:364
 msgid "Answer update successful"
@@ -907,30 +874,30 @@ msgstr ""
 #: templates/question-archive/question-meta.php:20
 #: templates/question-archive/top-nav.php:224
 #: templates/single-question/answer-content.php:78
-#: templates/single-question/answer-reply.php:99
-#: templates/single-question/answer-reply.php:252
+#: templates/single-question/answer-reply.php:51
+#: templates/single-question/answer-reply.php:153
 #: templates/single-question/content.php:40
 #: templates/single-question/content.php:41
-#: templates/single-question/content.php:271
+#: templates/single-question/content.php:324
 #: templates/single-question/top-nav.php:207
 msgid "Anonymous"
-msgstr "Anonym"
+msgstr ""
 
 #: includes/functions.php:498 includes/functions.php:1963
 #: templates/single-question/answer-content.php:110
-#: templates/single-question/answer-reply.php:296
-#: templates/single-question/content.php:288
+#: templates/single-question/answer-reply.php:197
+#: templates/single-question/content.php:341
 #: templates/single-question/meta.php:133
 msgid "Unflag"
 msgstr ""
 
 #: includes/functions.php:502 includes/functions.php:1965
 #: templates/single-question/answer-content.php:114
-#: templates/single-question/answer-reply.php:300
-#: templates/single-question/content.php:292
+#: templates/single-question/answer-reply.php:201
+#: templates/single-question/content.php:345
 #: templates/single-question/meta.php:137
 msgid "Flag"
-msgstr "Flagga"
+msgstr ""
 
 #: includes/functions.php:681
 msgid "You can not follow yourself."
@@ -938,31 +905,31 @@ msgstr ""
 
 #: includes/functions.php:748 includes/functions.php:1737
 msgid "Please login first."
-msgstr "Logga in först"
+msgstr ""
 
 #: includes/functions.php:856 templates/my-notifications.php:106
 #: templates/question-archive/top-nav.php:249
 #: templates/single-question/top-nav.php:229
 msgid "posted"
-msgstr "postat"
+msgstr ""
 
 #: includes/functions.php:856 templates/my-notifications.php:106
 #: templates/question-archive/top-nav.php:249
 #: templates/single-question/top-nav.php:229
 msgid "New Question"
-msgstr "Ny fråga"
+msgstr ""
 
 #: includes/functions.php:871 templates/my-notifications.php:121
 #: templates/question-archive/top-nav.php:264
 #: templates/single-question/top-nav.php:244
 msgid "Answered"
-msgstr "Svarad"
+msgstr ""
 
 #: includes/functions.php:886 templates/my-notifications.php:136
 #: templates/question-archive/top-nav.php:279
 #: templates/single-question/top-nav.php:259
 msgid "Choosed best answer"
-msgstr "Välj bästa svar"
+msgstr ""
 
 #: includes/functions.php:901 templates/my-notifications.php:151
 #: templates/question-archive/top-nav.php:294
@@ -1017,7 +984,7 @@ msgstr ""
 #: templates/single-question/top-nav.php:481
 #: templates/single-question/top-nav.php:496
 msgid "marked"
-msgstr "markerad"
+msgstr ""
 
 #: includes/functions.php:1163 templates/my-notifications.php:370
 #: templates/question-archive/question-meta.php:41
@@ -1057,27 +1024,27 @@ msgstr ""
 
 #: includes/functions.php:1471 includes/functions.php:1521
 msgid "year ago"
-msgstr "år sen"
+msgstr ""
 
 #: includes/functions.php:1475 includes/functions.php:1525
 msgid "month ago"
-msgstr "månad sen"
+msgstr ""
 
 #: includes/functions.php:1479 includes/functions.php:1529
 msgid "day ago"
-msgstr "dag sen"
+msgstr ""
 
 #: includes/functions.php:1483 includes/functions.php:1533
 msgid "hour ago"
-msgstr "timme sen"
+msgstr ""
 
 #: includes/functions.php:1487 includes/functions.php:1537
 msgid "minute ago"
-msgstr "minut sen"
+msgstr ""
 
 #: includes/functions.php:1491 includes/functions.php:1541
 msgid "second ago"
-msgstr "sekund sen"
+msgstr ""
 
 #: includes/functions.php:1744
 msgid "Sorry you can't choose best answer."
@@ -1104,8 +1071,8 @@ msgid "Undo Report"
 msgstr ""
 
 #: includes/functions.php:1965 templates/single-question/answer-content.php:35
-#: templates/single-question/answer-reply.php:228
-#: templates/single-question/content.php:249
+#: templates/single-question/answer-reply.php:132
+#: templates/single-question/content.php:302
 msgid "Report this"
 msgstr ""
 
@@ -1136,13 +1103,13 @@ msgstr ""
 
 #: includes/functions.php:2513
 msgid "Something went wrong !"
-msgstr "Något gick fel!"
+msgstr ""
 
 #: includes/functions.php:2518
 msgid "Please login to post comments"
 msgstr ""
 
-#: includes/functions.php:2557 templates/single-question/content.php:194
+#: includes/functions.php:2557 templates/single-question/content.php:247
 msgid "Total:"
 msgstr ""
 
@@ -1150,75 +1117,81 @@ msgstr ""
 msgid "Please login."
 msgstr ""
 
-#: includes/functions.php:2598 includes/functions.php:2653
+#: includes/functions.php:2600 includes/functions.php:2655
 msgid "Login first to Review !"
 msgstr ""
 
-#: includes/functions.php:2632
+#: includes/functions.php:2634
 msgid "Already Reviewed !"
 msgstr ""
 
-#: includes/functions.php:2687
+#: includes/functions.php:2689
 msgid "Already Reviewed!"
 msgstr ""
 
-#: includes/functions.php:2719
+#: includes/functions.php:2721
 msgid "Unsubscribe from this question"
 msgstr ""
 
-#: includes/functions.php:2733
+#: includes/functions.php:2735
 msgid "Subscribed to this question"
 msgstr ""
 
-#: includes/functions.php:2746
+#: includes/functions.php:2748
 msgid "Please login first!"
 msgstr ""
 
-#: includes/functions.php:2775
+#: includes/functions.php:2777
 msgid "Successfully marked as unsolved"
 msgstr ""
 
-#: includes/functions.php:2776 includes/functions.php:2778
+#: includes/functions.php:2778 includes/functions.php:2780
 #: templates/single-question/meta.php:75
 msgid "Mark as Solved"
 msgstr ""
 
-#: includes/functions.php:2804
+#: includes/functions.php:2806
 msgid "Successfully marked as Solved"
 msgstr ""
 
-#: includes/functions.php:2807 templates/single-question/meta.php:76
+#: includes/functions.php:2809 templates/single-question/meta.php:76
 msgid "Mark as Unsolved"
 msgstr ""
 
-#: includes/functions.php:2825
+#: includes/functions.php:2827
 msgid "Access Denied!"
 msgstr ""
 
-#: includes/functions.php:2971
+#: includes/functions.php:2903
+msgid "No user found"
+msgstr ""
+
+#: includes/functions.php:3027
 msgid "Select category"
 msgstr ""
 
-#: includes/functions.php:3053
+#: includes/functions.php:3109
 msgid "Select a Category"
-msgstr "Välj en kategori"
+msgstr ""
 
-#: includes/functions.php:3073
+#: includes/functions.php:3129
 msgid "Category"
-msgstr "Kategori"
+msgstr ""
 
-#: includes/functions.php:3106
+#: includes/functions.php:3162
 msgid "Word moderate."
 msgstr ""
 
 #: includes/functions/functions-settings.php:29
-#, fuzzy
-#| msgid "Question settings"
 msgid "General settings"
-msgstr "Frågeinställningar"
+msgstr ""
 
 #: includes/functions/functions-settings.php:30
 msgid "Choose some general setting to get started."
+msgstr ""
+
+#: includes/functions/functions-settings.php:37
+msgid "Item per page"
 msgstr ""
 
 #: includes/functions/functions-settings.php:38
@@ -1244,6 +1217,32 @@ msgstr ""
 msgid "Do you want to filter bad words automatically?"
 msgstr ""
 
+#: includes/functions/functions-settings.php:68
+#: includes/functions/functions-settings.php:197
+#: includes/functions/functions-settings.php:254
+#: includes/functions/functions-settings.php:282
+#: includes/functions/functions-settings.php:466
+#: includes/functions/functions-settings.php:500
+#: includes/functions/functions-settings.php:513
+#: includes/functions/functions-settings.php:582
+#: includes/functions/functions-settings.php:609
+#: includes/functions/functions-settings.php:1109
+msgid "Yes"
+msgstr ""
+
+#: includes/functions/functions-settings.php:68
+#: includes/functions/functions-settings.php:197
+#: includes/functions/functions-settings.php:254
+#: includes/functions/functions-settings.php:282
+#: includes/functions/functions-settings.php:466
+#: includes/functions/functions-settings.php:500
+#: includes/functions/functions-settings.php:513
+#: includes/functions/functions-settings.php:582
+#: includes/functions/functions-settings.php:609
+#: includes/functions/functions-settings.php:1110
+msgid "No"
+msgstr ""
+
 #: includes/functions/functions-settings.php:76
 msgid "Define bad words"
 msgstr ""
@@ -1265,16 +1264,12 @@ msgid ""
 msgstr ""
 
 #: includes/functions/functions-settings.php:142
-#, fuzzy
-#| msgid "%s Settings"
 msgid "Answer Settings"
-msgstr "%s inställningar"
+msgstr ""
 
 #: includes/functions/functions-settings.php:143
-#, fuzzy
-#| msgid "Choose best answer"
 msgid "Choose option for answers."
-msgstr "Välj bästa svar"
+msgstr ""
 
 #: includes/functions/functions-settings.php:150
 msgid "Quick notes on answer"
@@ -1293,10 +1288,8 @@ msgid "Choose user roles to see quick notes on answer submit form."
 msgstr ""
 
 #: includes/functions/functions-settings.php:179
-#, fuzzy
-#| msgid "Item per page"
 msgid "Answer per page"
-msgstr "Objekt per sida"
+msgstr ""
 
 #: includes/functions/functions-settings.php:180
 msgid "Set number of answer display per page."
@@ -1311,13 +1304,21 @@ msgid "Set is account request to submit answers."
 msgstr ""
 
 #: includes/functions/functions-settings.php:205
-#, fuzzy
-#| msgid "Submit Answer"
 msgid "Submitted answer status"
-msgstr "Lämna svar"
+msgstr ""
 
 #: includes/functions/functions-settings.php:206
 msgid "Choose post status for newly submitted answer."
+msgstr ""
+
+#: includes/functions/functions-settings.php:210
+#: includes/functions/functions-settings.php:479
+msgid "Draft"
+msgstr ""
+
+#: includes/functions/functions-settings.php:210
+#: includes/functions/functions-settings.php:479
+msgid "Published"
 msgstr ""
 
 #: includes/functions/functions-settings.php:210
@@ -1342,10 +1343,8 @@ msgid "You can select roles to set who can only post comment on answer."
 msgstr ""
 
 #: includes/functions/functions-settings.php:249
-#, fuzzy
-#| msgid "Choose best answer"
 msgid "Can user edit answer?"
-msgstr "Välj bästa svar"
+msgstr ""
 
 #: includes/functions/functions-settings.php:250
 msgid "Allow user to edit their own answer."
@@ -1368,30 +1367,24 @@ msgid "Enable media upload button on editor."
 msgstr ""
 
 #: includes/functions/functions-settings.php:290
-#, fuzzy
-#| msgid "Answered"
 msgid "Answer reply order"
-msgstr "Svarad"
+msgstr ""
 
 #: includes/functions/functions-settings.php:291
 msgid "Set order to display answer comments."
 msgstr ""
 
 #: includes/functions/functions-settings.php:343
-#, fuzzy
-#| msgid "%s Settings"
 msgid "Pages settings"
-msgstr "%s inställningar"
+msgstr ""
 
 #: includes/functions/functions-settings.php:344
 msgid "Choose option for pages."
 msgstr ""
 
 #: includes/functions/functions-settings.php:351
-#, fuzzy
-#| msgid "Question settings"
 msgid "Question submission page"
-msgstr "Frågeinställningar"
+msgstr ""
 
 #: includes/functions/functions-settings.php:352
 msgid ""
@@ -1408,10 +1401,8 @@ msgid "Select the page where redirect after submit question."
 msgstr ""
 
 #: includes/functions/functions-settings.php:379
-#, fuzzy
-#| msgid "Question Archive"
 msgid "Question archive page"
-msgstr "Frågearkiv"
+msgstr ""
 
 #: includes/functions/functions-settings.php:380
 msgid ""
@@ -1420,10 +1411,8 @@ msgid ""
 msgstr ""
 
 #: includes/functions/functions-settings.php:394
-#, fuzzy
-#| msgid "Item per page"
 msgid "User profile page"
-msgstr "Objekt per sida"
+msgstr ""
 
 #: includes/functions/functions-settings.php:395
 msgid ""
@@ -1441,11 +1430,13 @@ msgid ""
 "<code>[qa_dashboard]</code>."
 msgstr ""
 
+#: includes/functions/functions-settings.php:452
+msgid "Question settings"
+msgstr ""
+
 #: includes/functions/functions-settings.php:453
-#, fuzzy
-#| msgid "Question settings"
 msgid "Choose option for question settings."
-msgstr "Frågeinställningar"
+msgstr ""
 
 #: includes/functions/functions-settings.php:461
 msgid "Account required to question?"
@@ -1456,10 +1447,8 @@ msgid "Choose is account required to post question."
 msgstr ""
 
 #: includes/functions/functions-settings.php:474
-#, fuzzy
-#| msgid "Question status"
 msgid "Submitted question status"
-msgstr "Frågestatus"
+msgstr ""
 
 #: includes/functions/functions-settings.php:475
 msgid "Choose post status for newly submitted question."
@@ -1482,10 +1471,8 @@ msgid "Choose is poll enable or not."
 msgstr ""
 
 #: includes/functions/functions-settings.php:567
-#, fuzzy
-#| msgid "Question settings"
 msgid "Dashboard settings"
-msgstr "Frågeinställningar"
+msgstr ""
 
 #: includes/functions/functions-settings.php:568
 msgid "Choose option for dashboard page."
@@ -1516,16 +1503,12 @@ msgid "Show registration form on dashboard area for logged out users."
 msgstr ""
 
 #: includes/functions/functions-settings.php:657
-#, fuzzy
-#| msgid "Settings"
 msgid "Style settings"
-msgstr "Inställningar"
+msgstr ""
 
 #: includes/functions/functions-settings.php:658
-#, fuzzy
-#| msgid "Question settings"
 msgid "Choose style settings."
-msgstr "Frågeinställningar"
+msgstr ""
 
 #: includes/functions/functions-settings.php:667
 msgid "Answer count text color"
@@ -1607,21 +1590,121 @@ msgstr ""
 msgid "Select Flag button background color."
 msgstr ""
 
+#: includes/functions/functions-settings.php:1006
+msgid "Email settings"
+msgstr ""
+
+#: includes/functions/functions-settings.php:1007
+msgid "Customize email settings."
+msgstr ""
+
+#: includes/functions/functions-settings.php:1014
+msgid "Email logo"
+msgstr ""
+
+#: includes/functions/functions-settings.php:1015
+msgid "Email logo URL to display on mail."
+msgstr ""
+
+#: includes/functions/functions-settings.php:1029
+msgid "From email address"
+msgstr ""
+
+#: includes/functions/functions-settings.php:1030
+msgid "Write from email address."
+msgstr ""
+
+#: includes/functions/functions-settings.php:1076
+msgid "Click to expand"
+msgstr ""
+
+#: includes/functions/functions-settings.php:1084
+msgid "Enable"
+msgstr ""
+
+#: includes/functions/functions-settings.php:1090
+msgid "Disabled"
+msgstr ""
+
+#: includes/functions/functions-settings.php:1106
+msgid "Enable?"
+msgstr ""
+
+#: includes/functions/functions-settings.php:1112
+msgid "Enable or disable this email notification."
+msgstr ""
+
+#: includes/functions/functions-settings.php:1118
+msgid "Email To(Bcc)"
+msgstr ""
+
+#: includes/functions/functions-settings.php:1121
+msgid "Email send to(copy)"
+msgstr ""
+
+#: includes/functions/functions-settings.php:1126
+msgid "Email from name"
+msgstr ""
+
+#: includes/functions/functions-settings.php:1129
+msgid "Email send from name"
+msgstr ""
+
+#: includes/functions/functions-settings.php:1134
+msgid "Email from"
+msgstr ""
+
+#: includes/functions/functions-settings.php:1137
+msgid "Email send from"
+msgstr ""
+
+#: includes/functions/functions-settings.php:1142
+msgid "Email Subject"
+msgstr ""
+
+#: includes/functions/functions-settings.php:1145
+msgid "Write email subject"
+msgstr ""
+
+#: includes/functions/functions-settings.php:1150
+msgid "Email Body"
+msgstr ""
+
+#: includes/functions/functions-settings.php:1157
+msgid "Write email body"
+msgstr ""
+
+#: includes/functions/functions-settings.php:1162
+msgid "Parameter"
+msgstr ""
+
+#: includes/functions/functions-settings.php:1180
+msgid "Available parameter for this email template"
+msgstr ""
+
+#: includes/functions/functions-settings.php:1207
+msgid "Email templates"
+msgstr ""
+
+#: includes/functions/functions-settings.php:1208
+msgid "Customize email templates."
+msgstr ""
+
 #: includes/menus/addons.php:93
 msgid "Version:"
-msgstr "Version:"
+msgstr ""
 
 #: includes/menus/addons.php:97
 msgid "Free"
-msgstr "Gratis"
+msgstr ""
 
 #: includes/menus/addons.php:103
 msgid "Price:"
-msgstr "Pris:"
+msgstr ""
 
 #: includes/menus/addons.php:104
 msgid "Download"
-msgstr "Ladda ner"
+msgstr ""
 
 #: includes/menus/addons.php:142
 #, php-format
@@ -1631,15 +1714,15 @@ msgstr ""
 #: includes/menus/help.php:21
 #, php-format
 msgid "%s Help"
-msgstr "%s hjälp"
+msgstr ""
 
 #: includes/menus/help.php:26
 msgid "Help & Support"
-msgstr "Hjälp och support"
+msgstr ""
 
 #: includes/menus/help.php:36
 msgid "Need Help ?"
-msgstr "Behöver du hjälp?"
+msgstr ""
 
 #: includes/menus/help.php:37
 msgid ""
@@ -1662,56 +1745,56 @@ msgid "%s Dashboard"
 msgstr ""
 
 #: includes/menus/settings-new.php:28
-#, fuzzy, php-format
-#| msgid "Questions"
+#, php-format
 msgid "%s Questions"
-msgstr "Frågor"
+msgstr ""
 
 #: includes/menus/settings-new.php:36
-#, fuzzy, php-format
-#| msgid "Answers"
+#, php-format
 msgid "%s Answers"
-msgstr "Svar"
+msgstr ""
 
 #: includes/menus/settings-new.php:44
-#, fuzzy, php-format
-#| msgid "Pages"
+#, php-format
 msgid "%s Pages"
-msgstr "Sidor"
+msgstr ""
 
 #: includes/menus/settings-new.php:51
 #, php-format
 msgid "%s Style"
 msgstr ""
 
-#: includes/menus/settings-new.php:68
+#: includes/menus/settings-new.php:58
+#, php-format
+msgid "%s Emails"
+msgstr ""
+
+#: includes/menus/settings-new.php:73
 #, php-format
 msgid "%s Settings"
-msgstr "%s inställningar"
+msgstr ""
 
-#: includes/menus/settings-new.php:210
+#: includes/menus/settings-new.php:87
 msgid "Changes Saved."
-msgstr "Ändringar är sparade."
+msgstr ""
 
-#: includes/menus/settings-new.php:279
+#: includes/menus/settings-new.php:156
 msgid "Save Changes"
-msgstr "Spara ändringar"
+msgstr ""
 
 #: includes/shortcodes/class-shortcode-qa-edit-account.php:52
 msgid "Profile updated."
 msgstr ""
 
 #: includes/shortcodes/class-shortcode-qa-edit-account.php:88
-#, fuzzy
-#| msgid "First name"
 msgid "Display name"
-msgstr "Förnamn"
+msgstr ""
 
 #: includes/shortcodes/class-shortcode-qa-edit-account.php:93
 #: includes/shortcodes/class-shortcode-qa-my-account.php:45
 #: templates/my-account/profile.php:90
 msgid "Website"
-msgstr "Webbsida"
+msgstr ""
 
 #: includes/shortcodes/class-shortcode-qa-edit-account.php:98
 #: includes/shortcodes/class-shortcode-qa-my-account.php:50
@@ -1739,13 +1822,13 @@ msgstr ""
 #: includes/shortcodes/class-shortcode-qa-my-account.php:40
 #: templates/template-registration-form.php:58
 msgid "Email"
-msgstr "Mail"
+msgstr ""
 
 #: templates/add-question/add-question-hook.php:280
-#: templates/single-question/answer-reply.php:452
-#: templates/single-question/content.php:364
+#: templates/single-question/answer-reply.php:353
+#: templates/single-question/content.php:417
 msgid "Submit"
-msgstr "Lämna"
+msgstr ""
 
 #: templates/add-question/add-question-hook.php:319
 msgid "<strong>ERROR</strong>: Question title should not empty."
@@ -1774,8 +1857,10 @@ msgstr ""
 msgid "<strong>ERROR</strong>: security test failed."
 msgstr ""
 
-#: templates/add-question/add-question-hook.php:436
-msgid "Thanks for submit question, we will review soon."
+#: templates/add-question/add-question-hook.php:438
+#, php-format
+msgid ""
+"Thanks for submit question. see your question here <a href=\"%s\">%s</a>"
 msgstr ""
 
 #: templates/add-question/ajax-suggestions.php:12
@@ -1793,35 +1878,35 @@ msgstr ""
 
 #: templates/my-account/profile.php:60
 msgid "Name"
-msgstr "Namn"
+msgstr ""
 
 #: templates/my-account/profile.php:61
 msgid "Contact"
-msgstr "Kontakt"
+msgstr ""
 
 #: templates/my-account/profile.php:62
 msgid "About Yourself"
-msgstr "Om dig"
+msgstr ""
 
 #: templates/my-account/profile.php:73
 msgid "First Name"
-msgstr "Förnamn"
+msgstr ""
 
 #: templates/my-account/profile.php:74
 msgid "First name"
-msgstr "Förnamn"
+msgstr ""
 
 #: templates/my-account/profile.php:76
 msgid "Last Name"
-msgstr "Efternamn"
+msgstr ""
 
 #: templates/my-account/profile.php:77
 msgid "Last name"
-msgstr "Efternamn"
+msgstr ""
 
 #: templates/my-account/profile.php:87
 msgid "Email (Required)"
-msgstr "Mailadress (Obligatorisk)"
+msgstr ""
 
 #: templates/my-account/profile.php:100
 msgid "Some text..."
@@ -1833,7 +1918,7 @@ msgstr ""
 
 #: templates/my-account/question-list.php:32
 msgid "Questions by You"
-msgstr "Dina frågor"
+msgstr ""
 
 #: templates/my-account/question-list.php:105
 msgid "On Hold"
@@ -1846,20 +1931,16 @@ msgstr ""
 #: templates/my-notifications.php:450
 #: templates/question-archive/top-nav.php:595
 #: templates/single-question/top-nav.php:579
-#, fuzzy
-#| msgid "Notifications"
 msgid "No notification right now."
-msgstr "Notifikationer"
+msgstr ""
 
 #: templates/question-archive/question-archive.php:129
 msgid "No question found"
-msgstr "Inga frågor hittade"
+msgstr ""
 
 #: templates/question-archive/question-meta.php:47
-#, fuzzy
-#| msgid "Answered by"
 msgid "Asked by"
-msgstr "Svarad av"
+msgstr ""
 
 #: templates/question-archive/question-meta.php:55
 #, php-format
@@ -1868,29 +1949,25 @@ msgstr ""
 
 #: templates/question-archive/search-filter.php:77
 msgid "keywords"
-msgstr "nyckelord"
+msgstr ""
 
 #: templates/question-archive/search-filter.php:83
 msgid "Select a category"
-msgstr "Välj en kategori"
+msgstr ""
 
 #: templates/question-archive/search-filter.php:127
 msgid "Search"
-msgstr "Sök"
+msgstr ""
 
 #: templates/question-archive/top-nav.php:82
 #: templates/single-question/top-nav.php:76
-#, fuzzy
-#| msgid "Select a Category"
 msgid "Select Category"
-msgstr "Välj en kategori"
+msgstr ""
 
 #: templates/question-archive/top-nav.php:85
 #: templates/single-question/top-nav.php:79
-#, fuzzy
-#| msgid "Questions categories"
 msgid "All categories"
-msgstr "Frågekategorier"
+msgstr ""
 
 #: templates/question-archive/top-nav.php:188
 #: templates/single-question/top-nav.php:172
@@ -1904,15 +1981,13 @@ msgstr ""
 
 #: templates/question-archive/top-nav.php:604
 #: templates/single-question/top-nav.php:588
-#, fuzzy
-#| msgid "Add more"
 msgid "Load more"
-msgstr "Lägg till mer"
+msgstr ""
 
 #: templates/question-archive/top-nav.php:622
 #: templates/single-question/top-nav.php:609
 msgid "Ask Question"
-msgstr "Ställ fråga"
+msgstr ""
 
 #: templates/question-archive/vote-count.php:28
 msgid "Vote"
@@ -1920,56 +1995,59 @@ msgstr ""
 
 #: templates/single-question/answer-content.php:63
 msgid "Choose best answer"
-msgstr "Välj bästa svar"
+msgstr ""
 
 #: templates/single-question/answer-content.php:151
 msgid "Answer is private, only admins or its author or questioner can read."
 msgstr ""
 
-#: templates/single-question/answer-posting.php:37
-#: templates/single-question/answer-posting.php:90
-msgid "Submit Answer"
-msgstr "Lämna svar"
+#: templates/single-question/answer-posting.php:23
+#, php-format
+msgid "%s Question is closed."
+msgstr ""
 
-#: templates/single-question/answer-posting.php:45
+#: templates/single-question/answer-posting.php:48
+#: templates/single-question/answer-posting.php:105
+msgid "Submit Answer"
+msgstr ""
+
+#: templates/single-question/answer-posting.php:56
 #, php-format
 msgid ""
 "<form class=\"nodisplay\">Please <a href=\"%s\">login</a> to submit answer.</"
 "form>"
 msgstr ""
 
-#: templates/single-question/answer-posting.php:58
+#: templates/single-question/answer-posting.php:73
 msgid "Quick notes"
 msgstr ""
 
-#: templates/single-question/answer-posting.php:82
+#: templates/single-question/answer-posting.php:97
 msgid "Make your answer private."
 msgstr ""
 
-#: templates/single-question/answer-posting.php:89
-#, fuzzy
-#| msgid "Answer title"
+#: templates/single-question/answer-posting.php:104
 msgid "Answer will review"
-msgstr "Svars titel"
+msgstr ""
 
-#: templates/single-question/answer-reply.php:156
-#: templates/single-question/answer-reply.php:427
+#: templates/single-question/answer-reply.php:95
+#: templates/single-question/answer-reply.php:328
 msgid "Sign in to Reply"
-msgstr "Logga in för att svara"
+msgstr ""
 
-#: templates/single-question/answer-reply.php:165
-#: templates/single-question/answer-reply.php:435
+#: templates/single-question/answer-reply.php:102
+#: templates/single-question/answer-reply.php:336
 msgid "Reply on this"
 msgstr ""
 
-#: templates/single-question/answer-reply.php:410
-#: templates/single-question/content.php:341
+#: templates/single-question/answer-reply.php:311
+#: templates/single-question/content.php:394
 #, php-format
 msgid "<span class=\"count\">%s</span>+ more comments."
 msgstr ""
 
-#: templates/single-question/answer-reply.php:450
-#: templates/single-question/content.php:362
+#: templates/single-question/answer-reply.php:351
+#: templates/single-question/content.php:415
 msgid "Replying as"
 msgstr ""
 
@@ -1979,7 +2057,7 @@ msgstr ""
 
 #: templates/single-question/answer-section.php:79
 msgid "All Answers"
-msgstr "Alla svar"
+msgstr ""
 
 #: templates/single-question/answer-section.php:82
 msgid "Voted Answers"
@@ -2005,34 +2083,34 @@ msgstr ""
 msgid "Next"
 msgstr ""
 
-#: templates/single-question/content.php:152
+#: templates/single-question/content.php:194
 #, php-format
 msgid "Member Since %s"
 msgstr ""
 
-#: templates/single-question/content.php:227
+#: templates/single-question/content.php:280
 msgid "N/A"
 msgstr ""
 
-#: templates/single-question/content.php:231
+#: templates/single-question/content.php:284
 msgid "Tags: "
-msgstr "Taggar:"
+msgstr ""
 
-#: templates/single-question/content.php:240
+#: templates/single-question/content.php:293
 msgid "Login First"
-msgstr "Logga in först"
+msgstr ""
 
-#: templates/single-question/content.php:357
+#: templates/single-question/content.php:410
 msgid "Reply on This"
 msgstr ""
 
 #: templates/single-question/meta.php:101
 msgid "Subscribed"
-msgstr "Tecknat"
+msgstr ""
 
 #: templates/single-question/meta.php:107
 msgid "Subscribe"
-msgstr "Teckna"
+msgstr ""
 
 #: templates/single-question/single-question-hook.php:88
 #: templates/user-profile/user-profile-hook.php:105
@@ -2045,16 +2123,14 @@ msgid "Follow"
 msgstr ""
 
 #: templates/single-question/single-question-hook.php:108
-#, fuzzy, php-format
-#| msgid "Questions"
+#, php-format
 msgid "Total question: %s"
-msgstr "Frågor"
+msgstr ""
 
 #: templates/single-question/single-question-hook.php:117
-#, fuzzy, php-format
-#| msgid "All Answers"
+#, php-format
 msgid "Total answer: %s"
-msgstr "Alla svar"
+msgstr ""
 
 #: templates/single-question/single-question-hook.php:127
 #, php-format
@@ -2062,32 +2138,29 @@ msgid "Total comment: %s"
 msgstr ""
 
 #: templates/single-question/single-question-hook.php:137
-#, fuzzy, php-format
-#| msgid "All Answers"
+#, php-format
 msgid "Total follower: %s"
-msgstr "Alla svar"
+msgstr ""
 
-#: templates/single-question/subscriber.php:17
+#: templates/single-question/subscriber.php:22
 msgid "Subscribers"
-msgstr "Abonnenter"
+msgstr ""
 
 #: templates/single-question/top-nav.php:62
-#, fuzzy
-#| msgid "Question Archive"
 msgid "Back to Archive"
-msgstr "Frågearkiv"
+msgstr ""
 
 #: templates/template-migration.php:26
 msgid "Answers:"
-msgstr "Svar:"
+msgstr ""
 
 #: templates/template-migration.php:31
 msgid "Start Update"
-msgstr "Starta uppdatering"
+msgstr ""
 
 #: templates/template-registration-form.php:46
 msgid "Username"
-msgstr "Användarnamn"
+msgstr ""
 
 #: templates/template-registration-form.php:83
 msgid "Nonce error"
@@ -2095,117 +2168,36 @@ msgstr ""
 
 #: templates/template-registration-form.php:88
 msgid "Required form field is missing"
-msgstr "Obligatoriska formulärfält saknas"
+msgstr ""
 
 #: templates/template-registration-form.php:92
 msgid "Username too short. At least 4 characters is required"
-msgstr "Användarnamn är för kort. Minst fyra bokstäver är nödvändigt"
+msgstr ""
 
 #: templates/template-registration-form.php:96
 msgid "Sorry, that username already exists!"
-msgstr "Användarnamnet är redan i bruk"
+msgstr ""
 
 #: templates/template-registration-form.php:99
 msgid "Sorry, the username you entered is not valid"
-msgstr "Användarnamnet du angav är felaktigt"
+msgstr ""
 
 #: templates/template-registration-form.php:103
 msgid "Password length must be greater than 5"
-msgstr "Lösenordets längd måste va längre än fem bokstäver/siffror"
+msgstr ""
 
 #: templates/template-registration-form.php:107
 msgid "Email is not valid"
-msgstr "E-post är inte giltig"
+msgstr ""
 
 #: templates/template-registration-form.php:111
 msgid "Email Already in use"
-msgstr "E-post är redan i bruk"
+msgstr ""
 
 #: templates/template-registration-form.php:120
 msgid "ERROR"
-msgstr "FEL"
+msgstr ""
 
 #: templates/template-registration-form.php:136
 msgid "Registration complete."
-msgstr "Registreringen är klar"
-
-#~ msgid "Options"
-#~ msgstr "Val"
-
-#, fuzzy
-#~| msgid "Choose best answer"
-#~ msgid "Can user edit answer?."
-#~ msgstr "Välj bästa svar"
-
-#~ msgid "Pages"
-#~ msgstr "Sidor"
-
-#~ msgid "Question Archive"
-#~ msgstr "Frågearkiv"
-
-#~ msgid "Remove"
-#~ msgstr "Ta bort"
-
-#~ msgid "Add more"
-#~ msgstr "Lägg till mer"
-
-#~ msgid "Choose File"
-#~ msgstr "Välj fil"
-
-#~ msgid "Select Files"
-#~ msgstr "Välj filer"
-
-#, fuzzy
-#~| msgid "Submit Answer"
-#~ msgid "Edit Answer"
-#~ msgstr "Lämna svar"
-
-#, fuzzy
-#~| msgid "Edit %s"
-#~ msgid "Edit reason."
-#~ msgstr "Redigera %s"
-
-#, fuzzy
-#~| msgid "Update %s"
-#~ msgid "Update Answer"
-#~ msgstr "Uppdatera %s"
-
-#, fuzzy
-#~| msgid "Edit"
-#~ msgid "Edit:"
-#~ msgstr "Redigera"
-
-#~ msgid "My Question"
-#~ msgstr "Min fråga"
-
-#~ msgid "Default"
-#~ msgstr "Standard"
-
-#~ msgid "Notifications"
-#~ msgstr "Notifikationer"
-
-#~ msgid "My Account"
-#~ msgstr "Mitt konto"
-
-#~ msgid "username"
-#~ msgstr "användarnamn"
-
-#~ msgid "Keyword:"
-#~ msgstr "nyckelord:"
-
-#~ msgid "Date:"
-#~ msgstr "Datum:"
-
-#~ msgid "Category:"
-#~ msgstr "Kategori"
-
-#~ msgid "Author:"
-#~ msgstr "Författare:"
-
-#, fuzzy
-#~| msgid "Answer submitted."
-#~ msgid "Answer submitted"
-#~ msgstr "Svar lämnas."
-
-#~ msgid "Cancel"
-#~ msgstr "Avbryt"
+msgstr ""

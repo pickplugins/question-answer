@@ -325,10 +325,10 @@ function qa_question_submit_data($post_data){
     }
 
 
-    if(empty($post_data['polls']) && $qa_enable_poll =='yes'){
-
-        $qa_error->add( 'polls', __( '<strong>ERROR</strong>: Polls should not empty.', 'question-answer' ) );
-    }
+//    if(empty($post_data['polls']) && $qa_enable_poll =='yes'){
+//
+//        $qa_error->add( 'polls', __( '<strong>ERROR</strong>: Polls should not empty.', 'question-answer' ) );
+//    }
 
     if(empty($post_data['g-recaptcha-response']) && $qa_reCAPTCHA_enable_question =='yes'){
 
@@ -431,9 +431,11 @@ add_action('qa_question_submitted', 'qa_question_submitted_message', 90, 2);
 
 function qa_question_submitted_message($question_ID, $post_data){
 
+    $question_url = get_permalink($question_ID);
+
     ?>
     <div class="qa-q-submitted">
-        <?php echo apply_filters('qa_q_submitted_thank_you', _e('Thanks for submit question, we will review soon.', 'question-answer')); ?>
+        <?php echo apply_filters('qa_q_submitted_thank_you', sprintf(__('Thanks for submit question. see your question here <a href="%s">%s</a>', 'question-answer'), $question_url, '#'.$question_ID )); ?>
     </div>
     <?php
 
