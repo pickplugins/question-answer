@@ -10,8 +10,6 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 $class_qa_functions = new class_qa_functions();
 //var_dump(qa_get_categories());
 
-$archive_filter = $class_qa_functions->archive_filter();
-
 $category = '';
 
 $tax_query = array();
@@ -42,15 +40,6 @@ $order 	= isset( $_GET['order'] ) ? sanitize_text_field( $_GET['order'] ) : '';
 <div class="top-nav">
     <div class="nav-left">
 
-        <?php
-
-        if(!empty($archive_filter)):
-            foreach ($archive_filter as $filter):
-            //echo $filter;
-            endforeach;
-        endif;
-        ?>
-
 
         <?php
 
@@ -60,6 +49,7 @@ $order 	= isset( $_GET['order'] ) ? sanitize_text_field( $_GET['order'] ) : '';
         ?>
 
         <div class="item"><a href="<?php echo $qa_page_question_archive_url; ?>"> <i class="fas fa-reply-all"></i> <?php echo __('Back to Archive', 'question-answer'); ?></a></div>
+
 
         <div class="item search"><i class="fa fa-search" aria-hidden="true"></i>
 

@@ -10,8 +10,6 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 $class_qa_functions = new class_qa_functions();
 //var_dump(qa_get_categories());
 
-$archive_filter = $class_qa_functions->archive_filter();
-
 $category = '';
 
 $tax_query = array();
@@ -42,30 +40,19 @@ $order 	= isset( $_GET['order'] ) ? sanitize_text_field( $_GET['order'] ) : '';
 <div class="top-nav">
     <div class="nav-left">
 
-      <!-- <div class="item qa-menu">
-        <i class="fas fa-bars" aria-hidden="true"></i>
-        <div class="qa-menu-wrap">
-          <?php
-            // do_action('qa_nav_menu_links');
-          ?>
-
-        </div>
-      </div> -->
-        <?php
-
-        if(!empty($archive_filter)):
-            foreach ($archive_filter as $filter):
-            echo $filter;
-            endforeach;
-        endif;
-        ?>
 
         <?php
-
+        $current_filter = isset($_GET['filter']) ? $_GET['filter'] : 'recent';
         $qa_page_question_archive = get_option('qa_page_question_archive');
         $qa_page_question_archive_url = get_permalink($qa_page_question_archive);
 
         ?>
+        <div class="item <?php echo ($current_filter == 'recent') ? 'active' : ''; ?>"><a href="<?php echo $qa_page_question_archive_url; ?>?filter=recent"><?php echo __('Recent','question-answer'); ?></a></div>
+        <div class="item <?php echo ($current_filter == 'top_viewed') ? 'active' : ''; ?>"><a href="<?php echo $qa_page_question_archive_url; ?>?filter=top_viewed"><?php echo __('Top Viewed','question-answer'); ?></a></div>
+        <div class="item <?php echo ($current_filter == 'featured') ? 'active' : ''; ?>"><a href="<?php echo $qa_page_question_archive_url; ?>?filter=featured"><?php echo __('Featured','question-answer'); ?></a></div>
+        <div class="item <?php echo ($current_filter == 'solved') ? 'active' : ''; ?>"><a href="<?php echo $qa_page_question_archive_url; ?>?filter=solved"><?php echo __('Solved','question-answer'); ?></a></div>
+        <div class="item <?php echo ($current_filter == 'unsolved') ? 'active' : ''; ?>"><a href="<?php echo $qa_page_question_archive_url; ?>?filter=unsolved"><?php echo __('Unsolved','question-answer'); ?></a></div>
+
 
         <div class="item search"><i class="fas fa-search" aria-hidden="true"></i>
 

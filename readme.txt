@@ -174,6 +174,12 @@ function qa_action_after_single_question() {
 * 2020-03-20 fix - question content shortcode issue fixed.
 * 2020-03-20 add - question assign to user as support stuff or request to answer.
 * 2020-03-20 add - mark as closed question no longer accept new answers.
+* 2020-03-20 add - non-logged user can't make private question.
+* 2020-03-20 add - non-logged user can create account on question submission.
+* 2020-03-20 add - non-logged user can chose username on question submission.
+* 2020-03-20 add - contact email for non-logged user on question submission.
+* 2020-03-20 fix - Poll can't be empty issue fixed.
+* 2020-03-20 update - redesigned question archive.
 
 
 

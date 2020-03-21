@@ -32,14 +32,13 @@ global $current_user;
 
    else:
        ?>
-       <div itemscope itemtype="http://schema.org/Question" id="question-<?php echo $question_id;  ?>" <?php post_class('single-question entry-content'); ?>>
-        <?php
+        <div itemscope itemtype="http://schema.org/Question" id="question-<?php echo $question_id;  ?>" <?php post_class('single-question entry-content'); ?>>
+            <?php
 
+            do_action('qa_action_single_question_main');
 
-       do_action('qa_action_single_question_main');
-
-       ?>
-       </div>
+            ?>
+        </div>
        <?php
 
    endif;

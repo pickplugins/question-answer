@@ -60,7 +60,7 @@
 }
 
 .qa-user-profile .user-card .author-follow.following{
-    background: #826ecc none repeat scroll 0 0;
+    background: #5f6caf none repeat scroll 0 0;
     color: #fff;
 }
 
@@ -135,7 +135,7 @@
     /* background: #b6b4b4; */
     border: 1px solid #ddd;
     border-bottom: 1px solid #fff;
-    border-top: 2px solid #826ecc;
+    border-top: 2px solid #5f6caf;
     height: 29px;
 }
 

@@ -38,15 +38,16 @@ span.qa-meta-item i {
   text-align: center;
 }
 .questions-archive .qa-paginate .page-numbers, .container-answer-section .qa-paginate .page-numbers {
-    background: #f2f2f2 none repeat scroll 0 0;
+    background: #5f6caf none repeat scroll 0 0;
     margin: 0 2px;
     padding: 7px 15px;
     text-decoration: none;
     border-radius: 4px;
+    color: #fff;
 }
 
 .questions-archive .qa-paginate .current, .container-answer-section .qa-paginate .current {
-  background: #ddd none repeat scroll 0 0;
+  background: #4e588e none repeat scroll 0 0;
 }
 .questions-archive .qa-paginate .pre,
 .container-answer-section .qa-paginate .prev{
@@ -76,7 +77,7 @@ span.qa-meta-item i {
 
 
 .qa-user-role-editor { background-color : #1488C4; }
-.qa-user-role-admin { background-color : #826ECC; }
+.qa-user-role-admin { background-color : #5f6caf; }
 .qa-user-role-administrator { background-color : #3879D9; }
 
 
@@ -96,7 +97,7 @@ span.qa-meta-item i {
 
 
 .qa_button{
-	background: #826ecc none repeat scroll 0 0;
+	background: #5f6caf none repeat scroll 0 0;
     color: #fff;
     padding: 5px 15px;
     text-decoration: none;

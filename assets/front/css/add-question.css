@@ -52,7 +52,7 @@
 
 .qa-q-submit-form .qa-form-field-wrap{}
 
-.qa-q-submit-form .qa-form-field-wrap input[type="text"], .qa-q-submit-form .qa-form-field-wrap textarea, .qa-q-submit-form .qa-form-field-wrap select{
+.qa-q-submit-form .qa-form-field-wrap input[type="text"], .qa-q-submit-form .qa-form-field-wrap input[type="email"],.qa-q-submit-form .qa-form-field-wrap textarea, .qa-q-submit-form .qa-form-field-wrap select{
   width: 90%;
 }
 
@@ -76,9 +76,15 @@
 
 
 .qa-q-submitted{
-  background: #f2f2f2 none repeat scroll 0 0;
+  background: #5f6caf none repeat scroll 0 0;
   padding: 10px;
   margin-bottom: 30px;
+  color: #fff;
+  border-left: 4px solid #293c9e;
+}
+
+.qa-q-submitted a{
+  color: #fff;
 }
 
 

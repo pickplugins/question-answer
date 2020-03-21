@@ -668,7 +668,7 @@ if(!function_exists('qa_settings_tabs_content_style')) {
                 'details'	=> __('Answer count text color on archive page.','question-answer'),
                 'type'		=> 'colorpicker',
                 'value'		=> $qa_color_archive_answer_count,
-                'default'		=> '#999',
+                'default'		=> '#5f6caf',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -680,7 +680,7 @@ if(!function_exists('qa_settings_tabs_content_style')) {
                 'details'	=> __('View count text color','question-answer'),
                 'type'		=> 'colorpicker',
                 'value'		=> $qa_color_archive_view_count,
-                'default'		=> '#999',
+                'default'		=> '#5f6caf',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -694,7 +694,7 @@ if(!function_exists('qa_settings_tabs_content_style')) {
                 'details'	=> __('User role text color in single question page.','question-answer'),
                 'type'		=> 'colorpicker',
                 'value'		=> $qa_color_single_user_role,
-                'default'		=> '#999',
+                'default'		=> '#5f6caf',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -707,7 +707,7 @@ if(!function_exists('qa_settings_tabs_content_style')) {
                 'details'	=> __('User role background color in single question page.','question-answer'),
                 'type'		=> 'colorpicker',
                 'value'		=> $qa_color_single_user_role_background,
-                'default'		=> '#999',
+                'default'		=> '#5f6caf',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -720,7 +720,7 @@ if(!function_exists('qa_settings_tabs_content_style')) {
                 'details'	=> __('Comment button background color in single question page.','question-answer'),
                 'type'		=> 'colorpicker',
                 'value'		=> $qa_color_add_comment_background,
-                'default'		=> '#999',
+                'default'		=> '#5f6caf',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -732,7 +732,7 @@ if(!function_exists('qa_settings_tabs_content_style')) {
                 'details'	=> __('Best answer background color in single question page.','question-answer'),
                 'type'		=> 'colorpicker',
                 'value'		=> $qa_ask_button_bg_color,
-                'default'		=> '#999',
+                'default'		=> '#5f6caf',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -744,7 +744,7 @@ if(!function_exists('qa_settings_tabs_content_style')) {
                 'details'	=> __('Select background color for ask button on top.','question-answer'),
                 'type'		=> 'colorpicker',
                 'value'		=> $qa_color_best_answer_background,
-                'default'		=> '#999',
+                'default'		=> '#5f6caf',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -756,7 +756,7 @@ if(!function_exists('qa_settings_tabs_content_style')) {
                 'details'	=> __('Select text color for ask button on top.','question-answer'),
                 'type'		=> 'colorpicker',
                 'value'		=> $qa_ask_button_text_color,
-                'default'		=> '#999',
+                'default'		=> '#5f6caf',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -768,7 +768,7 @@ if(!function_exists('qa_settings_tabs_content_style')) {
                 'details'	=> __('Select Vote button background color.','question-answer'),
                 'type'		=> 'colorpicker',
                 'value'		=> $qa_vote_button_bg_color,
-                'default'		=> '#999',
+                'default'		=> '#5f6caf',
             );
 
             $settings_tabs_field->generate_field($args);
@@ -781,7 +781,7 @@ if(!function_exists('qa_settings_tabs_content_style')) {
                 'details'	=> __('Select Flag button background color.','question-answer'),
                 'type'		=> 'colorpicker',
                 'value'		=> $qa_flag_button_bg_color,
-                'default'		=> '#999',
+                'default'		=> '#5f6caf',
             );
 
             $settings_tabs_field->generate_field($args);

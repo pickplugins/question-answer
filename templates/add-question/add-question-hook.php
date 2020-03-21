@@ -62,58 +62,26 @@ function qa_question_submit_form_is_private(){
     $post_status = isset($_POST['post_status']) ? sanitize_text_field($_POST['post_status']) : "";
     $checked = !empty($post_status) ? 'checked' : '';
 
-    ?>
-    <div class="qa-form-field-wrap">
-        <div class="field-title"><?php esc_html_e('Is private?','question-answer'); ?></div>
-        <div class="field-input">
-            <label><input type="checkbox" value="1" name="post_status" <?php echo $checked; ?>><?php esc_html_e('Make private','question-answer'); ?></label>
-            <p class="field-details"><?php esc_html_e('Check to create private question.','question-answer'); ?></p>
+    if(is_user_logged_in()):
+        ?>
+        <div class="qa-form-field-wrap">
+            <div class="field-title"><?php esc_html_e('Is private?','question-answer'); ?></div>
+            <div class="field-input">
+                <label><input type="checkbox" value="1" name="post_status" <?php echo $checked; ?>><?php esc_html_e('Make private','question-answer'); ?></label>
+                <p class="field-details"><?php esc_html_e('Check to create private question.','question-answer'); ?></p>
 
+            </div>
         </div>
-    </div>
     <?php
+    endif;
+
+
 }
 
-
-/* Display category input field  */
-
-add_action('qa_question_submit_form', 'qa_question_submit_form_categories', 30);
-
-function qa_question_submit_form_categories(){
-
-    $question_cat = isset($_POST['question_cat']) ? sanitize_text_field($_POST['question_cat']) : "";
-
-    $categories = qa_get_terms('question_cat');
-
-    ?>
-    <div class="qa-form-field-wrap">
-        <div class="field-title"><?php esc_html_e('Question category','question-answer'); ?></div>
-        <div class="field-input">
-            <select name="question_cat" >
-                <?php
-                if(!empty($categories)):
-                    foreach ($categories as $term_id => $term_name){
-
-                        $selected = ($question_cat == $term_id) ? 'selected' : '';
-
-                        ?>
-                        <option <?php echo $selected; ?> value="<?php echo esc_attr($term_id); ?>"><?php echo esc_html
-                            ($term_name); ?></option>
-                        <?php
-                    }
-                endif;
-                ?>
-            </select>
-            <p class="field-details"><?php esc_html_e('Select question category.','question-answer'); ?></p>
-
-        </div>
-    </div>
-    <?php
-}
 
 /* Display tags input fields */
 
-add_action('qa_question_submit_form', 'qa_question_submit_form_poll', 40);
+add_action('qa_question_submit_form', 'qa_question_submit_form_poll', 30);
 
 function qa_question_submit_form_poll(){
 
@@ -194,6 +162,45 @@ function qa_question_submit_form_poll(){
     <?php
 }
 
+
+/* Display category input field  */
+
+add_action('qa_question_submit_form', 'qa_question_submit_form_categories', 40);
+
+function qa_question_submit_form_categories(){
+
+    $question_cat = isset($_POST['question_cat']) ? sanitize_text_field($_POST['question_cat']) : "";
+
+    $categories = qa_get_terms('question_cat');
+
+    ?>
+    <div class="qa-form-field-wrap">
+        <div class="field-title"><?php esc_html_e('Question category','question-answer'); ?></div>
+        <div class="field-input">
+            <select name="question_cat" >
+                <?php
+                if(!empty($categories)):
+                    foreach ($categories as $term_id => $term_name){
+
+                        $selected = ($question_cat == $term_id) ? 'selected' : '';
+
+                        ?>
+                        <option <?php echo $selected; ?> value="<?php echo esc_attr($term_id); ?>"><?php echo esc_html
+                            ($term_name); ?></option>
+                        <?php
+                    }
+                endif;
+                ?>
+            </select>
+            <p class="field-details"><?php esc_html_e('Select question category.','question-answer'); ?></p>
+
+        </div>
+    </div>
+    <?php
+}
+
+
+
 /* Display tags input fields */
 
 add_action('qa_question_submit_form', 'qa_question_submit_form_tags', 50);
@@ -215,11 +222,82 @@ function qa_question_submit_form_tags(){
 }
 
 
+add_action('qa_question_submit_form', 'qa_question_submit_form_contact_email', 80);
+
+
+function qa_question_submit_form_contact_email(){
+
+    $job_bm_job_submit_create_account = get_option('job_bm_job_submit_create_account');
+    $job_bm_job_submit_generate_username = get_option('job_bm_job_submit_generate_username');
+
+
+    global $current_user;
+
+    $logged_user_email =  isset($current_user->user_email) ? $current_user->user_email : '';
+    //var_dump($current_user->user_email);
+
+    $qa_contact_email = isset($_POST['qa_contact_email']) ? sanitize_text_field($_POST['qa_contact_email']) : $logged_user_email;
+    $qa_username = isset($_POST['qa_username']) ? sanitize_text_field($_POST['qa_username']) : '';
+    $qa_create_account = isset($_POST['qa_create_account']) ? sanitize_text_field($_POST['qa_create_account']) : '';
+
+    $login_page_id 			= get_option('qa_question_login_page_id');
+    $login_page_url 					= !empty($login_page_id) ? get_permalink($login_page_id) : wp_login_url($_SERVER['REQUEST_URI']);
+
+    //var_dump($login_page_url);
+    ?>
+
+
+    <?php
+
+    if(!is_user_logged_in()):
+        ?>
+        <div class="qa-form-field-wrap is_required">
+            <div class="field-title"><?php _e('Contact email','question-answer'); ?></div>
+            <div class="field-input">
+                <input placeholder="contact@mail.com" type="email" value="<?php echo $qa_contact_email; ?>" name="qa_contact_email">
+                <p class="field-details"><?php _e('Write your contact email','question-answer');
+                    ?></p>
+            </div>
+        </div>
+
+
+        <div class="qa-form-field-wrap">
+            <div class="field-title"></div>
+            <div class="field-input">
+                <label><input type="checkbox" <?php if($qa_create_account) echo 'checked'; ?>  value="1" name="qa_create_account"> <?php echo __('Create account?','question-answer'); ?></label>
+                <input style="display: <?php if($qa_create_account) echo 'block'; else echo 'none'; ?>" placeholder="username" type="text" value="<?php echo $qa_username; ?>" name="qa_username">
+                <p class="field-details"><?php echo sprintf(__('Please <a href="%s">login</a> if you already have an account.'), $login_page_url); ?></p>
+
+
+            </div>
+        </div>
+        <script>
+            jQuery(document).ready(function($) {
+                $(document).on('change', 'input[name="qa_create_account"]', function(){
+
+                    if($(this).attr("checked") ){
+                        $('input[name="qa_username"]').fadeIn();
+                    }else{
+                        $('input[name="qa_username"]').fadeOut();
+                    }
+                })
+            })
+        </script>
+        <?php
+    endif;
+
+    ?>
+
+
+
+    <?php
+}
+
 
 
 /* display reCaptcha */
 
-add_action('qa_question_submit_form', 'qa_question_submit_form_recaptcha', 60);
+add_action('qa_question_submit_form', 'qa_question_submit_form_recaptcha', 85);
 
 function qa_question_submit_form_recaptcha(){
 
@@ -303,11 +381,7 @@ function qa_question_submit_data($post_data){
 
     $qa_page_myaccount_url = !empty($qa_page_myaccount) ? get_permalink($qa_page_myaccount) : wp_login_url($_SERVER['REQUEST_URI']);
 
-    if ( is_user_logged_in() ) {
-        $user_id = get_current_user_id();
-    } else {
-        $user_id = 0;
-    }
+    $user_id = (is_user_logged_in()) ? get_current_user_id() : 0;
 
     $qa_error = new WP_Error();
 
@@ -325,6 +399,43 @@ function qa_question_submit_data($post_data){
     }
 
 
+    if ( !is_user_logged_in() ) {
+        if(empty($post_data['qa_contact_email'])){
+            $qa_error->add( 'qa_contact_email', __( '<strong>ERROR</strong>: Contact email is empty.', 'question-answer' ) );
+
+        }
+
+        if ( !is_email( $post_data['qa_contact_email'] ) ) {
+            $qa_error->add('email_invalid', __('<strong>ERROR</strong>: Email is not valid','question-answer'));
+        }
+    }
+
+
+
+
+    if(isset($post_data['qa_create_account'])){
+
+        $email = isset($post_data['qa_contact_email']) ? sanitize_email($post_data['qa_contact_email']) : '';
+        if ( email_exists( $email ) ) {
+            $qa_error->add('email_exists', __('<strong>ERROR</strong>: User already registered with this email.','question-answer'));
+        }
+
+        if(empty($post_data['qa_username'])){
+            $qa_error->add( 'username_exist', __( '<strong>ERROR</strong>: Username is empty.', 'question-answer' ) );
+        }
+
+        if ( username_exists( $post_data['qa_username'] ) ){
+            $qa_error->add('username_exist',__( '<strong>ERROR</strong>: Username already exists!','question-answer'));
+        }
+
+        if ( strlen( $post_data['qa_username'] ) < 4 ) {
+            $qa_error->add('username_short', __('<strong>ERROR</strong>: Username at least 4 characters is required','question-answer'));
+        }
+
+
+    }
+
+
 //    if(empty($post_data['polls']) && $qa_enable_poll =='yes'){
 //
 //        $qa_error->add( 'polls', __( '<strong>ERROR</strong>: Polls should not empty.', 'question-answer' ) );
@@ -335,17 +446,41 @@ function qa_question_submit_data($post_data){
         $qa_error->add( 'g-recaptcha-response', __( '<strong>ERROR</strong>: reCaptcha test failed.', 'question-answer' ) );
     }
 
-    if($qa_account_required_post_question=='yes' && !$user_id){
+//    if($qa_account_required_post_question=='yes' && !$user_id){
+//
+//        $qa_error->add( 'login',  sprintf (__('<strong>ERROR</strong>: Please <a target="_blank" href="%s">login</a> to submit question.',
+//            'question-answer'), $qa_page_myaccount_url ));
+//    }
 
-        $qa_error->add( 'login',  sprintf (__('<strong>ERROR</strong>: Please <a target="_blank" href="%s">login</a> to submit question.',
-            'question-answer'), $qa_page_myaccount_url ));
-    }
-
-    if(! isset( $_POST['qa_q_submit_nonce'] )
-        || ! wp_verify_nonce( $_POST['qa_q_submit_nonce'], 'qa_q_submit_nonce' ) ){
+    if(! isset( $_POST['qa_q_submit_nonce'] ) || ! wp_verify_nonce( $_POST['qa_q_submit_nonce'], 'qa_q_submit_nonce' ) ){
 
         $qa_error->add( '_wpnonce', __( '<strong>ERROR</strong>: security test failed.', 'question-answer' ) );
     }
+
+    if(isset($post_data['qa_create_account'])){
+
+        $username = isset($post_data['qa_username']) ? sanitize_user($post_data['qa_username']) : "";
+        $password = wp_generate_password(8);
+        $email = isset($post_data['qa_contact_email']) ? sanitize_email($post_data['qa_contact_email']) : "";
+
+        if(!empty($username) && !empty($email)){
+
+            $userdata = array(
+                'user_login'	=> 	$username,
+                'user_email' 	=> 	$email,
+                'user_pass' 	=> 	$password,
+                'role' 	=> 	'subscriber',
+            );
+
+            $user_id = wp_insert_user( $userdata );
+
+            if( is_wp_error( $user_id )){
+                $qa_error->add( 'account_create', __( '<strong>ERROR</strong>: Something is wrong when creating account.', 'job-board-manager-resume-manager' ) );
+            }
+        }
+
+    }
+
 
 
 
@@ -413,12 +548,13 @@ function qa_question_submitted($question_ID, $post_data){
     $question_tags = isset($post_data['question_tags']) ? sanitize_text_field($post_data['question_tags']) : "";
     $question_cat = isset($post_data['question_cat']) ? sanitize_text_field($post_data['question_cat']) : "";
     $question_polls = isset($post_data['polls']) ? ($post_data['polls']) : array();
+    $qa_contact_email = isset($post_data['qa_contact_email']) ? sanitize_text_field($post_data['qa_contact_email']) : "";
 
 
     wp_set_post_terms( $question_ID, $question_tags, 'question_tags', true );
     wp_set_post_terms( $question_ID, $question_cat, 'question_cat' );
 
-
+    update_post_meta($question_ID,'qa_contact_email', $qa_contact_email);
     update_post_meta($question_ID,'q_subscriber',array($user_id));
     update_post_meta($question_ID,'polls', $question_polls);
 
@@ -435,7 +571,7 @@ function qa_question_submitted_message($question_ID, $post_data){
 
     ?>
     <div class="qa-q-submitted">
-        <?php echo apply_filters('qa_q_submitted_thank_you', sprintf(__('Thanks for submit question. see your question here <a href="%s">%s</a>', 'question-answer'), $question_url, '#'.$question_ID )); ?>
+        <?php echo apply_filters('qa_q_submitted_thank_you', sprintf(__('%s Thanks for submit question. see your question here <a href="%s">%s</a>', 'question-answer'), '<i class="far fa-check-circle"></i>', $question_url, '#'.$question_ID )); ?>
     </div>
     <?php
 

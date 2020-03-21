@@ -9,19 +9,11 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	$qa_question_excerpt_length = get_option('qa_question_excerpt_length' , 20 );
 	$category 	= get_the_terms( get_the_ID(), 'question_cat' );			
 	
-	$qa_featured_questions = get_option('qa_featured_questions');
-	
-	if(empty($qa_featured_questions)){$qa_featured_questions = array(); }
-	
-	
-	if(in_array(get_the_ID(), $qa_featured_questions)){
-		
-		$is_featured = 'featured';
-		}
-	else{
-		$is_featured = '';
-		}
+    $qa_featured_questions 	= get_post_meta(get_the_ID(), 'qa_featured_questions', true);
 
+
+    $is_featured = ($qa_featured_questions == 'yes') ? 'featured':'';
+	
 
     $question_post = get_post(get_the_ID());
 
@@ -36,9 +28,13 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
         do_action( 'qa_action_question_archive_answer_count' );
         do_action( 'qa_action_question_archive_view_count' );
         ?>
+        <div class="thumb">
+            Hello
+        </div>
 
 		<div class="question-details">
-        
+
+
         
 			<div class="title"><a href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a></div>
 			<div class="excerpt"><?php 

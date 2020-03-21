@@ -39,10 +39,9 @@
 }
 
 .single-question .question-content .content-header {
-    /* border: 1px solid #d5d5d533; */
+    border-bottom: 1px solid #ddd;
     padding: 10px;
-    background-color: #f1f1f1;
-    margin-right: 50px;
+
 }
 .single-question .question-content .content-header .meta{
     display: inline-block;
@@ -63,10 +62,9 @@
 }
 
 .single-question .question-content .qa-content-tags .tag {
-  background: #f2f2f2 none repeat scroll 0 0;
   font-size: 13px;
   line-height: normal;
-  padding: 1px 9px;
+
 }
 
 .single-question .bad-word{}
@@ -93,7 +91,7 @@
 
 
 .single-question .qa-comment-flag {
-    background: #826ecc none repeat scroll 0 0;
+    background: #5f6caf none repeat scroll 0 0;
     border-radius: 3px;
     color: #fff;
     cursor: pointer;
@@ -102,7 +100,7 @@
 }
 
 .single-question .comment-vote {
-    background: #826ecc none repeat scroll 0 0;
+    background: #5f6caf none repeat scroll 0 0;
     border-radius: 3px;
     color: #fff;
     display: none;
@@ -113,7 +111,7 @@
 
 
 .single-question .comment-vote .comment-thumb-up, .single-question .comment-vote .comment-thumb-down {
-    background: #826ecc none repeat scroll 0 0;
+    background: #5f6caf none repeat scroll 0 0;
     border-radius: 3px;
     cursor: pointer;
     padding: 2px 5px;
@@ -145,7 +143,7 @@
 
 
 .single-question .qa-add-comment {
-    background: #826ecc none repeat scroll 0 0;
+    background: #5f6caf none repeat scroll 0 0;
     border-color: #566e7d;
     border-radius: 3px;
     color: #fff;
@@ -202,7 +200,7 @@
 
 
 .single-question .qa-is-solved.solved {
-    background: #23cc7b none repeat scroll 0 0;
+    background: #5dad80 none repeat scroll 0 0;
 }
 
 .qa-is-solved.solved .unsolved, .qa-is-solved.solved .mark-solved, .qa-is-solved.solved .mark-unsolved {
@@ -229,7 +227,7 @@
 
 
 .single-question .qa-is-solved.unsolved {
-  background: #ff6f18 none repeat scroll 0 0;
+  background: #fa877f none repeat scroll 0 0;
 }
 
 
@@ -246,7 +244,7 @@
 }
 
 .qa-featured:hover{
-    background: #826ecc none repeat scroll 0 0;
+    background: #5f6caf none repeat scroll 0 0;
 
 }
 
@@ -294,7 +292,7 @@
 }
 
 .qa-featured.qa-featured-yes {
-    background: #826ecc none repeat scroll 0 0;
+    background: #5f6caf none repeat scroll 0 0;
     border-radius: 3px;
     color: #fdfdfd;
 
@@ -302,7 +300,7 @@
 }
 
 .qa-featured.qa-featured-no {
-    background: #b3b3b3 none repeat scroll 0 0;
+    background: #5f6caf none repeat scroll 0 0;
     border-radius: 3px;
     color: #fdfdfd;
 
@@ -310,11 +308,11 @@
 
 
 .single-question .qa-subscribe:hover {
-    background: #826ecc none repeat scroll 0 0;
+    background: #5f6caf none repeat scroll 0 0;
 }
 
 .single-question .qa-subscribe {
-    background: #b3b3b3 none repeat scroll 0 0;
+    background: #5f6caf none repeat scroll 0 0;
     border-radius: 3px;
     color: #fff;
     padding: 2px 10px;
@@ -323,7 +321,7 @@
 }
 
 .single-question .qa-subscribe.subscribed {
-    background: #826ecc none repeat scroll 0 0;
+    background: #5f6caf none repeat scroll 0 0;
 }
 
 
@@ -420,7 +418,7 @@
 
 
 .single-question .answer-pagination a, .single-question .answer-pagination a:visited {
-    background: #826ecc none repeat scroll 0 0;
+    background: #5f6caf none repeat scroll 0 0;
     border-radius: 3px;
     color: #fff;
     cursor: pointer;
@@ -533,8 +531,8 @@
 }
 
 .votted { 
-	background: linear-gradient(to bottom, #826ECC 5%,#fff 60%) !important;
-    color: #826ECC !important;
+	background: linear-gradient(to bottom, #5f6caf 5%,#fff 60%) !important;
+    color: #5f6caf !important;
 }
 
 .qa-single-vote .qa-thumb-up,
@@ -542,9 +540,9 @@
 .qa-single-vote .qa-thumb-down{
     display:table;
     padding: 2px 8px;
-	background:#826ECC;
+	background:#5f6caf;
 	border-radius:3px;
-	border:1px solid #826ECC;
+	border:1px solid #5f6caf;
 	color:#fff;
 	cursor:pointer;
 }
@@ -552,7 +550,7 @@
 .qa-single-vote .qa-thumb-reply:hover,
 .qa-single-vote .qa-thumb-down:hover{
 	background-color:#fff;
-	color:#826ECC;
+	color:#5f6caf;
 }
 
 .qa-thumb-reply {
@@ -686,7 +684,7 @@ span.qa-lock {
 }
 
 .qa-answer-reply {
-    background: #826ecc none repeat scroll 0 0;
+    background: #5f6caf none repeat scroll 0 0;
     border-radius: 3px;
     color: #fff;
     cursor: pointer;
@@ -719,11 +717,11 @@ span.qa-lock {
 }
 
 .qa-reply-popup .qa-reply-form {
-  background: #f2f2f2 none repeat scroll 0 0;
+  background: #5f6caf26  none repeat scroll 0 0;
   border-top: 1px solid #ddd;
   height: auto;
   margin: 0px;
-  padding: 20px;
+  padding: 10px 20px;
   position: relative;
   top: 20%;
 }
@@ -734,12 +732,12 @@ span.qa-lock {
 .qa-reply-popup textarea {
   display: block;
   margin-bottom: 5px;
-  width: 100%;
+  width: 97%;
 }
 
 
 .qa-reply-popup .close {
-  background: #ff6f18 none repeat scroll 0 0;
+  background: #fa877f none repeat scroll 0 0;
   color: #fff;
   cursor: pointer;
   font-size: 20px;
@@ -755,7 +753,7 @@ span.qa-lock {
 
 
 .qa-reply-popup .qa-reply-form-submit {
-    background: #826ecc none repeat scroll 0 0;
+    background: #5f6caf none repeat scroll 0 0;
     border-radius: 3px;
     color: #fff;
     cursor: pointer;
@@ -791,7 +789,7 @@ span.qa-lock {
 
 
 .single-question .qa-social-share .qa-social-single {
-  background: #f2f2f2 none repeat scroll 0 0;
+  background: #5f6caf none repeat scroll 0 0;
   cursor: pointer;
   display: inline-block;
   font-size: 18px;
@@ -836,7 +834,7 @@ span.qa-lock {
   display: none;
 }
 .single-question .poll-result .poll-line {
-  background: #f2f2f2 none repeat scroll 0 0;
+  background: #5f6caf none repeat scroll 0 0;
   border-radius: 3px;
   margin: 6px 0;
   overflow: hidden;
@@ -855,7 +853,7 @@ span.qa-lock {
 
 
 .single-question .qa-edit-answer {
-    background: #826ecc none repeat scroll 0 0;
+    background: #5f6caf none repeat scroll 0 0;
     border-radius: 3px;
     color: #fff;
     cursor: pointer;
@@ -870,7 +868,7 @@ span.qa-lock {
 
 
 .single-question .qa-flag {
-    background: #826ecc none repeat scroll 0 0;
+    background: #5f6caf none repeat scroll 0 0;
     border-radius: 3px;
     color: #fff;
     cursor: pointer;
@@ -1005,7 +1003,7 @@ span.qa-lock {
 }
 
 .qa-user-card .card-author-follow.following {
-    background: #826ecc none repeat scroll 0 0;
+    background: #5f6caf none repeat scroll 0 0;
     color: #fff;
 }
 

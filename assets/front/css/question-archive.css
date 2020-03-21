@@ -96,6 +96,16 @@
   box-shadow: none;
 }
 
+.questions-archive .thumb{
+    float: left;
+    /* height: 80px; */
+    margin: 0 0px;
+    text-align: center;
+    vertical-align: top;
+    width: 85px;
+    padding: 0 5px;
+}
+
 .questions-archive .question-details {
     padding: 0 10px;
     overflow: hidden;
@@ -110,6 +120,7 @@
 .questions-archive .question-details .title a{
     text-decoration: none;
     font-size: 16px;
+    color: #5f6caf;
 }
 
 .questions-archive .question-details .excerpt {
@@ -118,7 +129,7 @@
 }
 
 .questions-archive .question-details .meta {
-  font-size: 12px;
+  font-size: 13px;
   /*margin: 15px 0 0;*/
 }
 
@@ -135,13 +146,13 @@
 }
 	
 .questions-archive .question-details .meta .is-solved.solved {
-  /*background: #23cc7b none repeat scroll 0 0;*/
+  /*background: #5dad80 none repeat scroll 0 0;*/
   border: medium none;
-  color: #23cc7b;
+  color: #5dad80;
 }	
 	
 .questions-archive .question-details .meta .is-solved.not-solved {
-  background: #ff6f18 none repeat scroll 0 0;
+  background: #fa877f none repeat scroll 0 0;
   display: none;
   border: medium none;
   color: #fff;
@@ -149,14 +160,14 @@
 }
 .questions-archive .question-details .meta .category, .questions-archive .question-details .meta .date, .questions-archive .question-details .meta .author , .questions-archive .question-details .meta .is-solved{
   /*border: 1px solid #ddd;*/
-  color: #999;
+  color: #5f6caf;
   display: inline-block;
   /*margin: 5px;*/
   padding: 0px;
 }
 
 .questions-archive .question-details .meta.answered-by{
-    float: right;
+
 }
 
 
@@ -171,7 +182,7 @@
 
 
 .questions-archive .question-side-box {
-    float: left;
+    float: right;
     /* height: 80px; */
     margin: 0 0px;
     text-align: center;

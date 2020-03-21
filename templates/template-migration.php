@@ -99,7 +99,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
   text-align: center;
 }
 .qa-migration .qa-paginate .page-numbers, .container-answer-section .qa-paginate .page-numbers {
-  background: #f2f2f2 none repeat scroll 0 0;
+  background: #5f6caf none repeat scroll 0 0;
   margin: 0 2px;
   padding: 9px 15px;
   text-decoration: none;

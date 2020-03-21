@@ -20,24 +20,6 @@ class class_qa_functions{
 
 	}
 
-    public function archive_filter(){
-
-        $qa_page_question_archive = get_option('qa_page_question_archive');
-        $qa_page_question_archive_url = get_permalink($qa_page_question_archive);
-
-
-        //$faq['unanswered'] = '<div class="item"><a href="'.$qa_page_question_archive_url.'?filter=unanswered">'.__('Unanswered','question-answer').'</a></div>';
-        $faq['top_viewed'] = '<div class="item"><a href="'.$qa_page_question_archive_url.'?filter=top_viewed">'.__('Top Viewed','question-answer').'</a></div>';
-        $faq['featured'] = '<div class="item"><a href="'.$qa_page_question_archive_url.'?filter=featured">'.__('Featured','question-answer').'</a></div>';
-        $faq['solved'] = '<div class="item"><a href="'.$qa_page_question_archive_url.'?filter=solved">'.__('Solved','question-answer').'</a></div>';
-        $faq['unsolved'] = '<div class="item"><a href="'.$qa_page_question_archive_url.'?filter=unsolved">'.__('Unsolved','question-answer').'</a></div>';
-
-        return apply_filters('qa_archive_filters', $faq);
-
-    }
-
-
-
 
 	public function faq(){
 
