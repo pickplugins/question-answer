@@ -29,7 +29,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
         do_action( 'qa_action_question_archive_view_count' );
         ?>
         <div class="thumb">
-            Hello
+            <?php echo get_avatar( $author_id, "45" ); ?>
         </div>
 
 		<div class="question-details">

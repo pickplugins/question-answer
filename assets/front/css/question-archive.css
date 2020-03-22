@@ -77,7 +77,7 @@
 
 .questions-archive .single-question {
     display: inline-block;
-    padding: 15px 0;
+    padding: 15px 10px;
     width: 100%;
     border-bottom: 1px solid rgba(0, 0, 0, 0.05);
 }
@@ -98,12 +98,14 @@
 
 .questions-archive .thumb{
     float: left;
-    /* height: 80px; */
+    height: 45px;
     margin: 0 0px;
     text-align: center;
     vertical-align: top;
-    width: 85px;
-    padding: 0 5px;
+    width: 45px;
+    padding: 0;
+    border-radius: 50px;
+    overflow: hidden;
 }
 
 .questions-archive .question-details {

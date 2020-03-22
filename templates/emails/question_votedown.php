@@ -11,14 +11,14 @@
 if ( ! defined('ABSPATH')) exit;  // if direct access 
 
 
-$templates_data_html['new_answer_published'] = '<div style="background: #f5f5f5; color: #333; font-size: 14px; line-height: 20px; font-family: Arial, sans-serif;">
+$templates_data_html['question_votedown'] = '<div style="background: #f5f5f5; color: #333; font-size: 14px; line-height: 20px; font-family: Arial, sans-serif;">
 <div style="width: 600px; margin: 0 auto;">
 
 <div class="header" style="border-bottom: 1px solid #ddd; padding: 20px 0; text-align: center;"><img src="{site_logo_url}"/></div>
 
 
 <div class="content" style="padding: 10px 0 40px;">
-<p style="font-size: 14px; line-height: 20px; color: #333; font-family: Arial, sans-serif;"><strong>{user_name}</strong> has published an answer</p>
+<p style="font-size: 14px; line-height: 20px; color: #333; font-family: Arial, sans-serif;"><strong>{user_name}</strong> voted down on this question.</p>
 <table width="100%" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>
@@ -27,9 +27,9 @@ $templates_data_html['new_answer_published'] = '<div style="background: #f5f5f5;
 </td>
 <td valign="top">
 <p style="font-size: 14px; line-height: 20px; color: #333; font-family: Arial, sans-serif;">
-<a style="text-decoration: none; color: #51b3ff;font-size:15px;" href="{answer_url}">{question_title}</a><br />
-{answer_content}</p>
-<div style="padding: 10px 0 0;"><a class="btn" style="color: #fff; border-radius: 3px; text-decoration: none; background-color: #51b3ff; padding: 10px 20px; font-size: 14px; font-family: Arial, sans-serif;" href="{answer_edit_url}">Edit Answer</a></div>
+<a style="text-decoration: none; color: #51b3ff;font-size:15px;" href="{answer_url}">{question_title}</a> <br/>
+{question_content}</p>
+
 </td>
 </tr>
 </tbody>

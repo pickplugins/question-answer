@@ -18,7 +18,7 @@ $templates_data_html['new_answer_submitted'] = '<div style="background: #f5f5f5;
 
 
 <div class="content" style="padding: 10px 0 40px;">
-<p style="font-size: 14px; line-height: 20px; color: #333; font-family: Arial, sans-serif;">{user_name} has submitted a Answer</p>
+<p style="font-size: 14px; line-height: 20px; color: #333; font-family: Arial, sans-serif;">{user_name} has submitted an answer</p>
 <table width="100%" cellspacing="0" cellpadding="0">
 <tbody>
 <tr>

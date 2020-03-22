@@ -31,7 +31,7 @@ function qa_question_submit_form_content(){
 
     $field_id = 'post_content';
     $allowed_html = apply_filters('qa_question_submit_allowed_html_tags', array());
-    $post_content = isset($_POST['post_content']) ? wp_kses($_POST['post_content'], $allowed_html) : "";
+    $post_content = isset($_POST['post_content']) ? wp_kses_post($_POST['post_content']) : "";
 
 
     ?>
@@ -40,7 +40,7 @@ function qa_question_submit_form_content(){
         <div class="field-input">
             <?php
             ob_start();
-            wp_editor( $post_content, $field_id, $settings = array('textarea_name'=>$field_id,
+            wp_editor( esc_attr($post_content), $field_id, $settings = array('textarea_name'=>$field_id,
                 'media_buttons'=>false,'wpautop'=>true,'editor_height'=>'200px', ) );
             echo ob_get_clean();
 

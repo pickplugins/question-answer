@@ -27,7 +27,7 @@
 }
 
 .single-question .admin-actions {
-    background: rgba(0, 200, 255, 0.18) none repeat scroll 0 0;
+    background: #5f6caf26;
     display: block;
     font-size: 12px;
     margin: 20px 0;
@@ -370,6 +370,7 @@
     border: 1px solid #f1f1f1;
     margin: 20px 0;
     padding: 10px;
+    background: #5f6caf26;
 }
 .single-question .subscribers .title {
   display: inline-block;
@@ -433,6 +434,7 @@
 .question-closed{
     background: #b5242440;
     padding: 10px;
+    margin: 15px 0;
 }
 
 .answer-post a { text-decoration:none; }
@@ -441,6 +443,7 @@
     border: 1px solid #f1f1f1;
     cursor: pointer;
     padding: 10px;
+    background: #5f6caf26;
 }
 
 .qa_answer_filter {
@@ -499,7 +502,7 @@
 
 }
 .all-single-answer .list_best_answer .qa-answer-details {
-    background: #ffe6ab none repeat scroll 0 0;
+    background: #5f6caf26;
 }
 
 .single-answer {
@@ -516,11 +519,11 @@
 
 }
 .single-answer .best-answer-ribbon span {
-    background: #f69c55 none repeat scroll 0 0;
+    background: #ffac41;
     border-radius: 3px;
     color: #fff;
     display: inline-block;
-    padding: 1px 30px;
+    padding: 5px 30px;
 }
 
 

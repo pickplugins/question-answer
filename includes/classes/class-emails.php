@@ -49,17 +49,24 @@ class class_qa_emails{
         $site_name = get_bloginfo('name');
 
 
-
-
-		include( QA_PLUGIN_DIR.'templates/emails/answer_comment.php');
-        include( QA_PLUGIN_DIR.'templates/emails/answer_votedown.php');
-        include( QA_PLUGIN_DIR.'templates/emails/answer_voteup.php');
         include( QA_PLUGIN_DIR.'templates/emails/comment_flag.php');
         include( QA_PLUGIN_DIR.'templates/emails/comment_unflag.php');
+
+		include( QA_PLUGIN_DIR.'templates/emails/answer_comment.php');
+
+        include( QA_PLUGIN_DIR.'templates/emails/answer_votedown.php');
+        include( QA_PLUGIN_DIR.'templates/emails/answer_voteup.php');
+
+        include( QA_PLUGIN_DIR.'templates/emails/question_votedown.php');
+        include( QA_PLUGIN_DIR.'templates/emails/question_voteup.php');
+
+
         include( QA_PLUGIN_DIR.'templates/emails/new_answer_published.php');
         include( QA_PLUGIN_DIR.'templates/emails/new_answer_submitted.php');
+
         include( QA_PLUGIN_DIR.'templates/emails/new_question_published.php');
         include( QA_PLUGIN_DIR.'templates/emails/new_question_submitted.php');
+
         include( QA_PLUGIN_DIR.'templates/emails/question_solved.php');
         include( QA_PLUGIN_DIR.'templates/emails/question_unsolved.php');
 
@@ -71,9 +78,9 @@ class class_qa_emails{
 		$templates_data = array(
 
             'new_question_submitted'=>array(
-                'name'=>__('New Question Submitted', 'question-answer'),
+                'name'=>__('New question submitted', 'question-answer'),
                 'description'=>__('Notification email for when new question submitted.', 'question-answer'),
-                'subject'=>__('New Question Submitted - {site_url}', 'question-answer'),
+                'subject'=>__('New question submitted - {site_url}', 'question-answer'),
                 'html'=>$templates_data_html['new_question_submitted'],
                 'email_to'=>$admin_email,
                 'email_from'=>$admin_email,
@@ -84,36 +91,35 @@ class class_qa_emails{
             'new_question_published'=>array(
                 'name'=>__('New question published', 'question-answer'),
                 'description'=>__('Notification email for when new question published.', 'question-answer'),
-                'subject'=>__('New Question Published - {site_url}', 'question-answer'),
+                'subject'=>__('New question published - {site_url}', 'question-answer'),
                 'html'=>$templates_data_html['new_question_published'],
                 'email_to'=>$admin_email,
                 'email_from'=>$admin_email,
                 'email_from_name'=> $site_name,
                 'enable'=> 'yes',
             ),
-
-            'new_answer_submitted'=>array(
-                'name'=>__('New Answer Submitted', 'question-answer'),
-                'description'=>__('Notification email for new answer submitted.', 'question-answer'),
-                'subject'=>__('New Answer Submitted - {site_url}', 'question-answer'),
-                'html'=>$templates_data_html['new_answer_submitted'],
+            'question_voteup'=>array(
+                'name'=>__('Question voted up', 'question-answer'),
+                'description'=>__('Notification email for question voted up.', 'question-answer'),
+                'subject'=>__('Question voted up - {site_url}', 'question-answer'),
+                'html'=>$templates_data_html['question_voteup'],
                 'email_to'=>$admin_email,
                 'email_from'=>$admin_email,
                 'email_from_name'=> $site_name,
                 'enable'=> 'yes',
             ),
 
-            'new_answer_published'=>array(
-                'name'=>__('New Answer Published', 'question-answer'),
-                'description'=>__('Notification email for new answer published.', 'question-answer'),
-                'subject'=>__('New Answer Published - {site_url}', 'question-answer'),
-                'html'=>$templates_data_html['new_answer_published'],
+
+            'question_votedown'=>array(
+                'name'=>__('Question voted down', 'question-answer'),
+                'description'=>__('Notification email for question voted down.', 'question-answer'),
+                'subject'=>__('Question voted down - {site_url}', 'question-answer'),
+                'html'=>$templates_data_html['question_votedown'],
                 'email_to'=>$admin_email,
                 'email_from'=>$admin_email,
                 'email_from_name'=> $site_name,
                 'enable'=> 'yes',
             ),
-
             'question_solved'=>array(
                 'name'=>__('Question solved', 'question-answer'),
                 'description'=>__('Notification email for question solved.', 'question-answer'),
@@ -131,6 +137,60 @@ class class_qa_emails{
                 'description'=>__('Notification email for Question unsolved.', 'question-answer'),
                 'subject'=>__('Question unsolved - {site_url}', 'question-answer'),
                 'html'=>$templates_data_html['question_unsolved'],
+                'email_to'=>$admin_email,
+                'email_from'=>$admin_email,
+                'email_from_name'=> $site_name,
+                'enable'=> 'yes',
+            ),
+
+            'new_answer_submitted'=>array(
+                'name'=>__('New answer submitted', 'question-answer'),
+                'description'=>__('Notification email for new answer submitted.', 'question-answer'),
+                'subject'=>__('New answer submitted - {site_url}', 'question-answer'),
+                'html'=>$templates_data_html['new_answer_submitted'],
+                'email_to'=>$admin_email,
+                'email_from'=>$admin_email,
+                'email_from_name'=> $site_name,
+                'enable'=> 'yes',
+            ),
+
+            'new_answer_published'=>array(
+                'name'=>__('New answer published', 'question-answer'),
+                'description'=>__('Notification email for new answer published.', 'question-answer'),
+                'subject'=>__('New answer published - {site_url}', 'question-answer'),
+                'html'=>$templates_data_html['new_answer_published'],
+                'email_to'=>$admin_email,
+                'email_from'=>$admin_email,
+                'email_from_name'=> $site_name,
+                'enable'=> 'yes',
+            ),
+            'answer_voteup'=>array(
+                'name'=>__('Answer voted up', 'question-answer'),
+                'description'=>__('Notification email for Answer Voted Up.', 'question-answer'),
+                'subject'=>__('Answer voted up - {site_url}', 'question-answer'),
+                'html'=>$templates_data_html['answer_voteup'],
+                'email_to'=>$admin_email,
+                'email_from'=>$admin_email,
+                'email_from_name'=> $site_name,
+                'enable'=> 'yes',
+            ),
+
+
+            'answer_votedown'=>array(
+                'name'=>__('Answer voted down', 'question-answer'),
+                'description'=>__('Notification email for answer voted down.', 'question-answer'),
+                'subject'=>__('Answer voted down - {site_url}', 'question-answer'),
+                'html'=>$templates_data_html['answer_votedown'],
+                'email_to'=>$admin_email,
+                'email_from'=>$admin_email,
+                'email_from_name'=> $site_name,
+                'enable'=> 'yes',
+            ),
+            'answer_comment'=>array(
+                'name'=>__('Answer comment', 'question-answer'),
+                'description'=>__('Notification email for Answer Comment.', 'question-answer'),
+                'subject'=>__('Answer comment - {site_url}', 'question-answer'),
+                'html'=>$templates_data_html['answer_comment'],
                 'email_to'=>$admin_email,
                 'email_from'=>$admin_email,
                 'email_from_name'=> $site_name,
@@ -162,41 +222,7 @@ class class_qa_emails{
                 'enable'=> 'yes',
             ),
 
-            'answer_voteup'=>array(
-                'name'=>__('Answer Voted Up', 'question-answer'),
-                'description'=>__('Notification email for Answer Voted Up.', 'question-answer'),
-                'subject'=>__('Answer voted up - {site_url}', 'question-answer'),
-                'html'=>$templates_data_html['answer_voteup'],
-                'email_to'=>$admin_email,
-                'email_from'=>$admin_email,
-                'email_from_name'=> $site_name,
-                'enable'=> 'yes',
-            ),
 
-
-            'answer_votedown'=>array(
-                'name'=>__('Answer Voted Down', 'question-answer'),
-                'description'=>__('Notification email for answer voted down.', 'question-answer'),
-                'subject'=>__('Answer voted down - {site_url}', 'question-answer'),
-                'html'=>$templates_data_html['answer_votedown'],
-                'email_to'=>$admin_email,
-                'email_from'=>$admin_email,
-                'email_from_name'=> $site_name,
-                'enable'=> 'yes',
-            ),
-
-            'answer_comment'=>array(
-                'name'=>__('Answer Comment', 'question-answer'),
-                'description'=>__('Notification email for Answer Comment.', 'question-answer'),
-                'subject'=>__('Answer comment - {site_url}', 'question-answer'),
-                'html'=>$templates_data_html['answer_comment'],
-                'email_to'=>$admin_email,
-                'email_from'=>$admin_email,
-                'email_from_name'=> $site_name,
-                'enable'=> 'yes',
-            ),
-			
-			
 
 		);
 		

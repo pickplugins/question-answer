@@ -10,6 +10,9 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 
 $q_subscriber = get_post_meta(get_the_id(), 'q_subscriber', true);
+$q_subscriber = !empty($q_subscriber) ? $q_subscriber : array();
+
+
 $last_activity_user_id = get_post_meta(get_the_id(), 'last_activity_user_id', true);
 
 

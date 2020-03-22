@@ -47,11 +47,11 @@ $order 	= isset( $_GET['order'] ) ? sanitize_text_field( $_GET['order'] ) : '';
         $qa_page_question_archive_url = get_permalink($qa_page_question_archive);
 
         ?>
-        <div class="item <?php echo ($current_filter == 'recent') ? 'active' : ''; ?>"><a href="<?php echo $qa_page_question_archive_url; ?>?filter=recent"><?php echo __('Recent','question-answer'); ?></a></div>
-        <div class="item <?php echo ($current_filter == 'top_viewed') ? 'active' : ''; ?>"><a href="<?php echo $qa_page_question_archive_url; ?>?filter=top_viewed"><?php echo __('Top Viewed','question-answer'); ?></a></div>
-        <div class="item <?php echo ($current_filter == 'featured') ? 'active' : ''; ?>"><a href="<?php echo $qa_page_question_archive_url; ?>?filter=featured"><?php echo __('Featured','question-answer'); ?></a></div>
-        <div class="item <?php echo ($current_filter == 'solved') ? 'active' : ''; ?>"><a href="<?php echo $qa_page_question_archive_url; ?>?filter=solved"><?php echo __('Solved','question-answer'); ?></a></div>
-        <div class="item <?php echo ($current_filter == 'unsolved') ? 'active' : ''; ?>"><a href="<?php echo $qa_page_question_archive_url; ?>?filter=unsolved"><?php echo __('Unsolved','question-answer'); ?></a></div>
+        <div class="item <?php echo ($current_filter == 'recent') ? 'active' : ''; ?>"><a href="<?php echo $qa_page_question_archive_url; ?>?filter=recent"><i class="fas fa-history"></i> <?php echo __('Recent','question-answer'); ?></a></div>
+        <div class="item <?php echo ($current_filter == 'top_viewed') ? 'active' : ''; ?>"><a href="<?php echo $qa_page_question_archive_url; ?>?filter=top_viewed"><i class="fas fa-binoculars"></i> <?php echo __('Top Viewed','question-answer'); ?></a></div>
+        <div class="item <?php echo ($current_filter == 'featured') ? 'active' : ''; ?>"><a href="<?php echo $qa_page_question_archive_url; ?>?filter=featured"><i class="far fa-star"></i> <?php echo __('Featured','question-answer'); ?></a></div>
+        <div class="item <?php echo ($current_filter == 'solved') ? 'active' : ''; ?>"><a href="<?php echo $qa_page_question_archive_url; ?>?filter=solved"><i class="fas fa-tasks"></i> <?php echo __('Solved','question-answer'); ?></a></div>
+        <div class="item <?php echo ($current_filter == 'unsolved') ? 'active' : ''; ?>"><a href="<?php echo $qa_page_question_archive_url; ?>?filter=unsolved"><i class="fas fa-list-ul"></i> <?php echo __('Unsolved','question-answer'); ?></a></div>
 
 
         <div class="item search"><i class="fas fa-search" aria-hidden="true"></i>

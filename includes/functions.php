@@ -178,6 +178,8 @@ function qa_ajax_answer_posting(){
 	);
 	$new_answer_post_ID = wp_insert_post( $new_answer_post, true );
 
+	do_action('qa_answer_submitted', $new_answer_post_ID, $form_data_arr);
+
 	update_post_meta( $new_answer_post_ID, 'qa_answer_question_id', $question_id );
 	update_post_meta( $new_answer_post_ID, 'qa_answer_is_private', $is_private );
 
@@ -2650,12 +2652,13 @@ add_action('wp_ajax_nopriv_qa_ajax_post_flag', 'qa_ajax_post_flag');
 		$current_user 	= wp_get_current_user();
 
 		$qa_answer_review 	= get_post_meta( $post_id, 'qa_answer_review', true );
+        $qa_answer_review = !empty( $qa_answer_review ) ? $qa_answer_review : array() ;
 
 		if( empty( $current_user->ID ) ) {
 			$response['error'] = __('Login first to Review !', 'question-answer');
 		} else {
 
-			$review_count = empty( $qa_answer_review['reviews'] ) ? 0 : (int)$qa_answer_review['reviews'];
+			$review_count = !empty( $qa_answer_review['reviews'] ) ? (int)$qa_answer_review['reviews'] : 0 ;
 
 			$status = isset( $qa_answer_review['users'][$current_user->ID]['type'] ) ? $qa_answer_review['users'][$current_user->ID]['type'] : '';
 			if( $status != 'down' ) {

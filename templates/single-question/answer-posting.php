@@ -45,8 +45,8 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
         <div class="answer-post  clearfix">
 
             <div class="answer-post-header" _status="0">
-                <span class="fs_18"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <?php echo __('Submit Answer', 'question-answer');?></span>
-                <i class="fa fa-expand fs_28 float_right apost_header_status"></i>
+                <span class="fs_16"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <?php echo __('Submit Answer', 'question-answer');?></span>
+                <i class="fa fa-expand fs_24 float_right apost_header_status"></i>
             </div>
 
             <?php if( ! is_user_logged_in() && $qa_account_required_post_answer == 'yes' ) {

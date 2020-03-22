@@ -8,10 +8,12 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 
 $question_id = get_the_ID();
+$qa_answer_review 	= get_post_meta( $question_id, 'qa_answer_review', true );
+
 
 
 ?>
-
+<pre><?php //echo var_export($qa_answer_review, true); ?></pre>
 <?php do_action('qa_action_single_question_content_before');
 
 $author_id 	= get_post_field( 'post_author', get_the_ID() );
@@ -155,7 +157,7 @@ $qa_css .= ".qa-single-vote .qa-thumb-up, .qa-single-vote .qa-thumb-reply, .qa-s
 
 
 		<?php
-		echo apply_filters( 'qa_filter_single_question_meta_post_date', sprintf( '<span class="qa-meta-item">%s %s</span>', '<i class="fa fa-clock-o"></i>', get_the_date('M d, Y h:i A') ) );
+		echo apply_filters( 'qa_filter_single_question_meta_post_date', sprintf( '<span class="qa-meta-item">%s %s</span>', '<i class="far fa-calendar-alt"></i>', get_the_date('M d, Y h:i A') ) );
 
 
 		$wp_query_answer = new WP_Query(
@@ -171,14 +173,14 @@ $qa_css .= ".qa-single-vote .qa-thumb-up, .qa-single-vote .qa-thumb-reply, .qa-s
 				),
 			) );
 
-		echo apply_filters( 'qa_filter_single_question_meta_answer_count', sprintf('<span class="qa-meta-item">%s %s '.__('Answers', 'question-answer').'</span>', '<i class="fa fa-comments"></i>', number_format_i18n($wp_query_answer->found_posts)) );
+		echo apply_filters( 'qa_filter_single_question_meta_answer_count', sprintf('<span class="qa-meta-item">%s %s '.__('Answers', 'question-answer').'</span>', '<i class="fas fa-reply-all"></i>', number_format_i18n($wp_query_answer->found_posts)) );
 
 		wp_reset_query();
 
 
 		$category = get_the_terms(get_the_ID(), 'question_cat');
 		if(!empty($category[0])){
-			echo apply_filters( 'qa_filter_single_question_meta_category', sprintf( '<span class="qa-meta-item">%s %s</span>', '<i class="fa fa-folder-open"></i>', $category[0]->name ) );
+			echo apply_filters( 'qa_filter_single_question_meta_category', sprintf( '<span class="qa-meta-item">%s %s</span>', '<i class="fas fa-sitemap"></i>', $category[0]->name ) );
 		}
 
 		?>
