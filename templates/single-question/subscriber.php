@@ -19,7 +19,7 @@ $qa_assign_to = !empty($qa_assign_to) ? $qa_assign_to : array();
 
 <div class="subscribers">
 
-    <div class="title"><?php  echo count($q_subscriber).' '.__('Subscribers', 'question-answer'); ?></div>
+    <div class="title"><?php   echo sprintf(__('%s %s Subscribers', 'question-answer'),'<i class="far fa-bell"></i>', count($q_subscriber)); ?></div>
     <?php
     $max_subscriber = 10;
 

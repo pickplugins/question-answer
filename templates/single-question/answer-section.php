@@ -66,7 +66,7 @@ $question_id = get_the_ID();
 	
 <div id="answer-of-<?php the_ID(); ?>" <?php post_class('container-answer-section entry-content'); ?>>
 	<div class="answer-section-header">
-		<span class="fs_16"> <span itemprop="answerCount"><?php echo number_format_i18n($wp_query->found_posts); ?></span> <?php echo __('Answers', 'question-answer'); ?></span>
+		<span class="fs_16"><?php echo sprintf(__('%s %s Answers', 'question-answer'), '<i class="far fa-comments"></i>', number_format_i18n($wp_query->found_posts)); ?></span>
 		
 		<?php if( $qa_show_answer_filter == 'yes' ) { ?>
 		<div class="float_right answer_header_status">

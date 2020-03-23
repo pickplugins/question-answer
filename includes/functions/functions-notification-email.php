@@ -407,72 +407,61 @@ if ( ! function_exists( 'qa_email_action_question_solved_function' ) ) {
 
         $question_data = get_post( $question_ID );
 
-        $qa_answer_question_id = get_post_meta( $question_ID, 'qa_answer_question_id', true );
-        $question_title = get_the_title($qa_answer_question_id);
-        $answer_url = get_permalink($qa_answer_question_id);
-        $answer_data = get_post( $question_ID );
+        global $current_user;
+
+        $email_data = array();
+        $class_qa_emails = new class_qa_emails();
+        $qa_email_templates_data_default = $class_qa_emails->qa_email_templates_data();
+        $qa_email_templates_data = get_option('qa_email_templates_data', $qa_email_templates_data_default);
+
+        $enable = isset($qa_email_templates_data['question_solved']['enable']) ? $qa_email_templates_data['question_solved']['enable'] : 'no';
+
+        if ($enable == 'yes'):
+
+            $email_to = isset($qa_email_templates_data['question_solved']['email_to']) ? $qa_email_templates_data['question_solved']['email_to'] : '';
+            $email_from_name = isset($qa_email_templates_data['question_solved']['email_from_name']) ? $qa_email_templates_data['question_solved']['email_from_name'] : $site_name;
+            $email_from = isset($qa_email_templates_data['question_solved']['email_from']) ? $qa_email_templates_data['question_solved']['email_from'] : $qa_from_email;
+            $email_subject = isset($qa_email_templates_data['question_solved']['subject']) ? $qa_email_templates_data['question_solved']['subject'] : '';
+            $email_html = isset($qa_email_templates_data['question_solved']['html']) ? $qa_email_templates_data['question_solved']['html'] : '';
+
+            $vars = array(
+                '{site_name}' => get_bloginfo('name'),
+                '{site_description}' => get_bloginfo('description'),
+                '{site_url}' => get_bloginfo('url'),
+                '{site_logo_url}' => get_option('question_bm_logo_url'),
+
+                '{user_name}' => $current_user->display_name,
+                '{user_avatar}' => get_avatar($current_user->ID, 60),
+                '{user_email}' => '',
+
+                '{question_title}'  => $question_data->post_title,
+                '{question_url}'  => get_permalink($question_ID),
+                '{question_edit_url}'  => get_admin_url().'post.php?post='.$question_ID.'&action=edit',
+                '{question_id}'  => $question_ID,
+                '{question_content}'  => $question_data->post_content,
+            );
 
 
-        if ($answer_data->post_type == 'question'):
+            $q_subscriber = get_post_meta($question_ID, 'q_subscriber', true);
 
+            if(is_array($q_subscriber))
+                foreach($q_subscriber as $subscriber){
+                    $subscriber_data = get_user_by('id', $subscriber);
 
-            global $current_user;
+                    $email_data['email_to'] = $subscriber_data->user_email;
+                    $email_data['email_bcc'] = $email_to;
+                    $email_data['email_from'] = $email_from;
+                    $email_data['email_from_name'] = $email_from_name;
+                    $email_data['subject'] = strtr($email_subject, $vars);
+                    $email_data['html'] = strtr($email_html, $vars);
+                    $email_data['attachments'] = array();
 
-            $email_data = array();
-            $class_qa_emails = new class_qa_emails();
-            $qa_email_templates_data_default = $class_qa_emails->qa_email_templates_data();
-            $qa_email_templates_data = get_option('qa_email_templates_data', $qa_email_templates_data_default);
-
-            $enable = isset($qa_email_templates_data['question_solved']['enable']) ? $qa_email_templates_data['question_solved']['enable'] : 'no';
-
-            if ($enable == 'yes'):
-
-                $email_to = isset($qa_email_templates_data['question_solved']['email_to']) ? $qa_email_templates_data['question_solved']['email_to'] : '';
-                $email_from_name = isset($qa_email_templates_data['question_solved']['email_from_name']) ? $qa_email_templates_data['question_solved']['email_from_name'] : $site_name;
-                $email_from = isset($qa_email_templates_data['question_solved']['email_from']) ? $qa_email_templates_data['question_solved']['email_from'] : $qa_from_email;
-                $email_subject = isset($qa_email_templates_data['question_solved']['subject']) ? $qa_email_templates_data['question_solved']['subject'] : '';
-                $email_html = isset($qa_email_templates_data['question_solved']['html']) ? $qa_email_templates_data['question_solved']['html'] : '';
-
-                $vars = array(
-                    '{site_name}' => get_bloginfo('name'),
-                    '{site_description}' => get_bloginfo('description'),
-                    '{site_url}' => get_bloginfo('url'),
-                    '{site_logo_url}' => get_option('question_bm_logo_url'),
-
-                    '{user_name}' => $current_user->display_name,
-                    '{user_avatar}' => get_avatar($current_user->ID, 60),
-                    '{user_email}' => '',
-
-                    '{question_title}'  => $question_data->post_title,
-                    '{question_url}'  => get_permalink($question_ID),
-                    '{question_edit_url}'  => get_admin_url().'post.php?post='.$question_ID.'&action=edit',
-                    '{question_id}'  => $question_ID,
-                    '{question_content}'  => $question_data->post_content,
-                );
-
-
-
-
-                $q_subscriber = get_post_meta($question_ID, 'q_subscriber', true);
-                if(is_array($q_subscriber))
-                    foreach($q_subscriber as $subscriber){
-                        $subscriber_data = get_user_by('id', $subscriber);
-
-                        $email_data['email_to'] = $subscriber_data->user_email;
-                        $email_data['email_bcc'] = $email_to;
-                        $email_data['email_from'] = $email_from;
-                        $email_data['email_from_name'] = $email_from_name;
-                        $email_data['subject'] = strtr($email_subject, $vars);
-                        $email_data['html'] = strtr($email_html, $vars);
-                        $email_data['attachments'] = array();
-
-                        $status = $class_qa_emails->qa_send_email($email_data);
-                    }
+                    $status = $class_qa_emails->qa_send_email($email_data);
+                }
 
 
 
 
-            endif;
         endif;
 
     }
@@ -494,73 +483,58 @@ if ( ! function_exists( 'qa_email_action_question_unsolved_function' ) ) {
 
         $question_data = get_post( $question_ID );
 
-        $qa_answer_question_id = get_post_meta( $question_ID, 'qa_answer_question_id', true );
-        $question_title = get_the_title($qa_answer_question_id);
-        $answer_url = get_permalink($qa_answer_question_id);
-        $answer_data = get_post( $question_ID );
+        global $current_user;
+
+        $email_data = array();
+        $class_qa_emails = new class_qa_emails();
+        $qa_email_templates_data_default = $class_qa_emails->qa_email_templates_data();
+        $qa_email_templates_data = get_option('qa_email_templates_data', $qa_email_templates_data_default);
+
+        $enable = isset($qa_email_templates_data['question_unsolved']['enable']) ? $qa_email_templates_data['question_unsolved']['enable'] : 'no';
+
+        if ($enable == 'yes'):
+
+            $email_to = isset($qa_email_templates_data['question_unsolved']['email_to']) ? $qa_email_templates_data['question_unsolved']['email_to'] : '';
+            $email_from_name = isset($qa_email_templates_data['question_unsolved']['email_from_name']) ? $qa_email_templates_data['question_unsolved']['email_from_name'] : $site_name;
+            $email_from = isset($qa_email_templates_data['question_unsolved']['email_from']) ? $qa_email_templates_data['question_unsolved']['email_from'] : $qa_from_email;
+            $email_subject = isset($qa_email_templates_data['question_unsolved']['subject']) ? $qa_email_templates_data['question_unsolved']['subject'] : '';
+            $email_html = isset($qa_email_templates_data['question_unsolved']['html']) ? $qa_email_templates_data['question_unsolved']['html'] : '';
+
+            $vars = array(
+                '{site_name}' => get_bloginfo('name'),
+                '{site_description}' => get_bloginfo('description'),
+                '{site_url}' => get_bloginfo('url'),
+                '{site_logo_url}' => get_option('question_bm_logo_url'),
+
+                '{user_name}' => $current_user->display_name,
+                '{user_avatar}' => get_avatar($current_user->ID, 60),
+                '{user_email}' => '',
+
+                '{question_title}'  => $question_data->post_title,
+                '{question_url}'  => get_permalink($question_ID),
+                '{question_edit_url}'  => get_admin_url().'post.php?post='.$question_ID.'&action=edit',
+                '{question_id}'  => $question_ID,
+                '{question_content}'  => $question_data->post_content,
+            );
 
 
-        if ($answer_data->post_type == 'question'):
+            $q_subscriber = get_post_meta($question_ID, 'q_subscriber', true);
 
+            if(is_array($q_subscriber))
+                foreach($q_subscriber as $subscriber){
+                    $subscriber_data = get_user_by('id', $subscriber);
 
-            global $current_user;
+                    $email_data['email_to'] = $subscriber_data->user_email;
+                    $email_data['email_bcc'] = $email_to;
+                    $email_data['email_from'] = $email_from;
+                    $email_data['email_from_name'] = $email_from_name;
+                    $email_data['subject'] = strtr($email_subject, $vars);
+                    $email_data['html'] = strtr($email_html, $vars);
+                    $email_data['attachments'] = array();
 
-            $email_data = array();
-            $class_qa_emails = new class_qa_emails();
-            $qa_email_templates_data_default = $class_qa_emails->qa_email_templates_data();
-            $qa_email_templates_data = get_option('qa_email_templates_data', $qa_email_templates_data_default);
+                    $status = $class_qa_emails->qa_send_email($email_data);
+                }
 
-            $enable = isset($qa_email_templates_data['question_unsolved']['enable']) ? $qa_email_templates_data['question_unsolved']['enable'] : 'no';
-
-            if ($enable == 'yes'):
-
-                $email_to = isset($qa_email_templates_data['question_unsolved']['email_to']) ? $qa_email_templates_data['question_unsolved']['email_to'] : '';
-                $email_from_name = isset($qa_email_templates_data['question_unsolved']['email_from_name']) ? $qa_email_templates_data['question_unsolved']['email_from_name'] : $site_name;
-                $email_from = isset($qa_email_templates_data['question_unsolved']['email_from']) ? $qa_email_templates_data['question_unsolved']['email_from'] : $qa_from_email;
-                $email_subject = isset($qa_email_templates_data['question_unsolved']['subject']) ? $qa_email_templates_data['question_unsolved']['subject'] : '';
-                $email_html = isset($qa_email_templates_data['question_unsolved']['html']) ? $qa_email_templates_data['question_unsolved']['html'] : '';
-
-                $vars = array(
-                    '{site_name}' => get_bloginfo('name'),
-                    '{site_description}' => get_bloginfo('description'),
-                    '{site_url}' => get_bloginfo('url'),
-                    '{site_logo_url}' => get_option('question_bm_logo_url'),
-
-                    '{user_name}' => $current_user->display_name,
-                    '{user_avatar}' => get_avatar($current_user->ID, 60),
-                    '{user_email}' => '',
-
-                    '{question_title}'  => $question_data->post_title,
-                    '{question_url}'  => get_permalink($question_ID),
-                    '{question_edit_url}'  => get_admin_url().'post.php?post='.$question_ID.'&action=edit',
-                    '{question_id}'  => $question_ID,
-                    '{question_content}'  => $question_data->post_content,
-                );
-
-
-
-
-                $q_subscriber = get_post_meta($question_ID, 'q_subscriber', true);
-
-                if(is_array($q_subscriber))
-                    foreach($q_subscriber as $subscriber){
-                        $subscriber_data = get_user_by('id', $subscriber);
-
-                        $email_data['email_to'] = $subscriber_data->user_email;
-                        $email_data['email_bcc'] = $email_to;
-                        $email_data['email_from'] = $email_from;
-                        $email_data['email_from_name'] = $email_from_name;
-                        $email_data['subject'] = strtr($email_subject, $vars);
-                        $email_data['html'] = strtr($email_html, $vars);
-                        $email_data['attachments'] = array();
-
-                        $status = $class_qa_emails->qa_send_email($email_data);
-                    }
-
-
-
-
-            endif;
         endif;
 
     }
@@ -773,9 +747,9 @@ if ( ! function_exists( 'qa_email_action_answer_votedown_function' ) ) {
             $question_title = get_the_title($question_id);
             $question_url = get_permalink($question_id);
 
-            $answer_data 	= get_post( $question_id );
-            $answer_url = get_permalink($question_id);
-            $answer_url = get_permalink($question_id);
+            $answer_data 	= get_post( $post_id );
+            $answer_url = get_permalink($post_id);
+            $answer_url = get_permalink($post_id);
 
 
             error_log("answer_id: ".$post_id);
@@ -944,9 +918,9 @@ if ( ! function_exists( 'qa_action_answer_vote_up_email' ) ) {
             $question_title = get_the_title($question_id);
             $question_url = get_permalink($question_id);
 
-            $answer_data 	= get_post( $question_id );
-            $answer_url = get_permalink($question_id);
-            $answer_url = get_permalink($question_id);
+            $answer_data 	= get_post( $post_id );
+            $answer_url = get_permalink($post_id);
+            $answer_url = get_permalink($post_id);
 
 
             error_log("answer_id: ".$post_id);

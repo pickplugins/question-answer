@@ -45,7 +45,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
         <div class="answer-post  clearfix">
 
             <div class="answer-post-header" _status="0">
-                <span class="fs_16"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <?php echo __('Submit Answer', 'question-answer');?></span>
+                <span class="fs_16"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <?php echo sprintf(__('%s Submit Answer', 'question-answer'),'<i class="far fa-edit"></i>');?></span>
                 <i class="fa fa-expand fs_24 float_right apost_header_status"></i>
             </div>
 

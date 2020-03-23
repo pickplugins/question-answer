@@ -2094,28 +2094,18 @@ function qa_ajax_comment_vote(){
     $response = array();
 
     $comment_id = (int)sanitize_text_field($_POST['comment_id']);
-    //$comment_id_author = get_comment_author( $comment_ID );
     $vote_type = sanitize_text_field($_POST['vote_type']);
-
-
     $user_ID		= get_current_user_id();
     $qa_vote_comment 	= get_comment_meta( $comment_id, 'qa_vote_comment', true );
 
-
-
-
-
-
     if(!is_user_logged_in()):
-
 
         $down_vote_count = 0;
         $up_vote_count = 0;
+        $vote_count = 0;
 
         if(!empty($qa_vote_comment)){
-
             foreach ($qa_vote_comment as $comment){
-
                 $type = $comment['type'];
 
                 if($type=='down'){
@@ -2125,22 +2115,14 @@ function qa_ajax_comment_vote(){
                     $up_vote_count += 1;
                 }
             }
-
-            $vote_count 		= $up_vote_count-$down_vote_count;
+            $vote_count = $up_vote_count-$down_vote_count;
         }
-        else{
-            $vote_count 		= 0;
-
-        }
-
-
 
         $response['is_error'] = 'yes';
         $response['message'] = __('Please login', 'question-answer');
         $response['vote_count'] = $vote_count;
 
     else:
-
         if(is_array($qa_vote_comment)){
 
             if(array_key_exists($user_ID, $qa_vote_comment)){
@@ -2175,9 +2157,7 @@ function qa_ajax_comment_vote(){
 
                     $vote[$user_ID] = array('type'=>'down');
                     $response['message'] = __('Vote Down.', 'question-answer');
-                    //$response['vote_count'] = $vote_count-1;
                     $action_type = 'comment_vote_down';
-
                 }
                 elseif($vote_type=='up'){
 
@@ -2185,16 +2165,10 @@ function qa_ajax_comment_vote(){
                     $response['message'] = __('Vote Up.', 'question-answer');
                     $response['vote_count'] = $vote_count;
                     $action_type = 'comment_vote_up';
-                    //$response['vote_count'] = $vote_count+1;
-
                 }
-
-
-
             }
 
             $vote = array_replace($qa_vote_comment, $vote);
-            //update_post_meta($post_id, 'qa_flag', $flag);
             update_comment_meta( $comment_id, 'qa_vote_comment', $vote );
         }
         else{
@@ -2204,16 +2178,11 @@ function qa_ajax_comment_vote(){
                 $vote[$user_ID] = array('type'=>'down');
                 $response['message'] = __('Vote Down.', 'question-answer');
                 $action_type = 'comment_vote_down';
-                //$vote_count = $vote_count-1;
-
-
             }
             else{
-
                 $vote[$user_ID] = array('type'=>'up');
                 $response['message'] = __('Vote Up.', 'question-answer');
                 $action_type = 'comment_vote_up';
-                //$vote_count = $vote_count+1;;
             }
 
             update_comment_meta( $comment_id, 'qa_vote_comment', $vote );
@@ -2235,11 +2204,7 @@ function qa_ajax_comment_vote(){
 
 	    do_action('qa_action_notification_save', $notification_data);
 
-
-
         $response['is_error'] = 'no';
-
-
 
     endif;
 

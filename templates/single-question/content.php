@@ -13,7 +13,6 @@ $qa_answer_review 	= get_post_meta( $question_id, 'qa_answer_review', true );
 
 
 ?>
-<pre><?php //echo var_export($qa_answer_review, true); ?></pre>
 <?php do_action('qa_action_single_question_content_before');
 
 $author_id 	= get_post_field( 'post_author', get_the_ID() );
