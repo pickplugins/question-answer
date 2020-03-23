@@ -4,7 +4,7 @@
 	Tags:  Question Answer, Question, Answer
 	Requires at least: 4.1
 	Tested up to: 5.3
-	Stable tag: 1.2.39
+	Stable tag: 1.2.40
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -180,6 +180,8 @@ function qa_action_after_single_question() {
 * 2020-03-20 add - contact email for non-logged user on question submission.
 * 2020-03-20 fix - Poll can't be empty issue fixed.
 * 2020-03-20 update - redesigned question archive.
+* 2020-03-20 update - redesigned welcome setup.
+* 2020-03-20 remove - remove help & addons menu
 
 
 

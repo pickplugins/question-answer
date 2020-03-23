@@ -3167,3 +3167,35 @@ function qa_search_user( $search_item, $string, $seperator = ',' ) {
 
 		return $authors;
 	}
+
+
+
+
+function qa_page_list_id(){
+
+    $wp_query = new WP_Query(
+        array (
+            'post_type' => 'page',
+            'posts_per_page' => -1,
+        ) );
+
+    $pages_ids = array();
+
+    $pages_ids[''] = __('None','question-answer');
+
+    if ( $wp_query->have_posts() ) :
+
+
+        while ( $wp_query->have_posts() ) : $wp_query->the_post();
+
+            $pages_ids[get_the_ID()] = get_the_title();
+
+
+        endwhile;
+        wp_reset_query();
+    endif;
+
+
+    return $pages_ids;
+
+}

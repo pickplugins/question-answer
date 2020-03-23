@@ -17,10 +17,14 @@ class class_qa_settings  {
 
 	public function admin_menu() {
 
-		add_dashboard_page( '', '', 'manage_options', 'qa-setup', '' );
+        $qa_welcome = get_option('qa_welcome');
+
+
+        add_dashboard_page( '', '', 'manage_options', 'qa-setup', '' );
 		add_submenu_page( 'edit.php?post_type=question', __( 'Settings', 'question-answer' ), __( 'Settings', 'question-answer' ), 'manage_options', 'settings', array( $this, 'settings' ) );
-		add_submenu_page( 'edit.php?post_type=question', __( 'Help', 'question-answer' ), __( 'Help', 'question-answer' ), 'manage_options', 'help', array( $this, 'help' ) );
-		add_submenu_page( 'edit.php?post_type=question', __( 'Addons', 'question-answer' ), __( 'Addons', 'question-answer' ), 'manage_options', 'addons', array( $this, 'addons' ) );
+
+		if($qa_welcome != 'done')
+		add_submenu_page( 'edit.php?post_type=question', __( 'Welcome', 'question-answer' ), __( 'Welcome', 'question-answer' ), 'manage_options', 'qa_welcome', array( $this, 'qa_welcome' ) );
 
 
 
@@ -32,15 +36,10 @@ class class_qa_settings  {
 		include( QA_PLUGIN_DIR. 'includes/menus/settings-new.php' );
 	}
 
-	public function addons(){
-		include( QA_PLUGIN_DIR. 'includes/menus/addons.php' );
-	}
 
-	public function help(){
-		include( QA_PLUGIN_DIR. 'includes/menus/help.php' );
-	}
-
-
+    public function qa_welcome(){
+        include( QA_PLUGIN_DIR. 'includes/menus/welcome.php' );
+    }
 
 } new class_qa_settings();
 

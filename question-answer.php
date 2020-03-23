@@ -34,7 +34,24 @@ class QuestionAnswer{
 		register_activation_hook( __FILE__, array( $this, 'qa_activation' ) );
 		add_action( 'plugins_loaded', array( $this, 'load_textdomain' ));
 
-	}
+        add_action( 'activated_plugin', array( $this, 'redirect_welcome' ));
+
+
+    }
+
+    public function redirect_welcome($plugin){
+
+        $qa_welcome = get_option('qa_welcome');
+
+
+        if( empty($qa_welcome) ) {
+            if( $plugin == 'question-answer/question-answer.php' ) {
+                wp_safe_redirect( admin_url( 'edit.php?post_type=question&page=qa_welcome' ) );
+                exit;
+            }
+        }
+    }
+
 
 	public function qa_activation() {
 
@@ -130,6 +147,7 @@ class QuestionAnswer{
 		require_once( QA_PLUGIN_DIR . 'templates/single-question/single-question-hook.php');
 
         require_once( QA_PLUGIN_DIR . 'includes/functions/functions-settings.php');
+        require_once( QA_PLUGIN_DIR . 'includes/functions/functions-welcome.php');
 
 
 
@@ -271,6 +289,8 @@ class QuestionAnswer{
         wp_register_script('settings-tabs', QA_PLUGIN_URL.'assets/admin/js/settings-tabs.js', array( 'jquery' ));
         wp_register_style('settings-tabs', QA_PLUGIN_URL.'assets/admin/css/settings-tabs.css');
 
+        wp_register_script('welcome-tabs', QA_PLUGIN_URL.'assets/admin/js/welcome-tabs.js', array( 'jquery' ));
+        wp_register_style('welcome-tabs', QA_PLUGIN_URL.'assets/admin/css/welcome-tabs.css');
 
         wp_register_script('welcome-tabs', QA_PLUGIN_URL.'assets/admin/js/welcome-tabs.js', array( 'jquery' ));
         wp_register_style('welcome-tabs', QA_PLUGIN_URL.'assets/admin/css/welcome-tabs.css');
