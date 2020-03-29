@@ -18,12 +18,12 @@ function qa_question_metabox_content_general($post_id){
     $qa_assign_to = get_post_meta($post_id,'qa_assign_to', true);
     $qa_assign_to = !empty($qa_assign_to) ? $qa_assign_to : array();
 
+    $qa_assign_to_send_mail = get_post_meta($post_id,'qa_assign_to_send_mail', true);
 
 
     $class_qa_functions = new class_qa_functions();
     $question_status = $class_qa_functions->qa_question_status();
 
-    //var_dump($qa_question_options);
 
     ?>
     <div class="section">
@@ -62,11 +62,12 @@ function qa_question_metabox_content_general($post_id){
         $settings_tabs_field->generate_field($args);
 
 
-//var_dump($assign_to);
+        //var_dump($qa_assign_to_send_mail);
 
         ob_start();
         ?>
 
+        <label><input type="checkbox" name="qa_assign_to_send_mail" value="1">Send notification mail</label>
 
         <div class="assign-to-list">
             <?php
@@ -83,11 +84,12 @@ function qa_question_metabox_content_general($post_id){
                 </div>
                 <?php
 
+                if(!empty($qa_assign_to_send_mail))
+                do_action('question_answer_assign_to_mail', $userId, $post_id);
+
             }
 
             ?>
-
-
 
         </div>
         <form class="assign-to-form">
@@ -183,20 +185,37 @@ function qa_question_metabox_content_general($post_id){
 
 add_action('qa_post_meta_save_question','qa_post_meta_save_question');
 
-function qa_post_meta_save_question($job_id){
+function qa_post_meta_save_question($post_id){
 
 
     $qa_question_status = isset($_POST['qa_question_status']) ? sanitize_text_field($_POST['qa_question_status']) : '';
-    update_post_meta($job_id, 'qa_question_status', $qa_question_status);
+    update_post_meta($post_id, 'qa_question_status', $qa_question_status);
 
     $qa_featured_questions = isset($_POST['qa_featured_questions']) ? sanitize_text_field($_POST['qa_featured_questions']) : '';
-    update_post_meta($job_id, 'qa_featured_questions', $qa_featured_questions);
+    update_post_meta($post_id, 'qa_featured_questions', $qa_featured_questions);
 
     $mark_as_close = isset($_POST['mark_as_close']) ? sanitize_text_field($_POST['mark_as_close']) : '';
-    update_post_meta($job_id, 'mark_as_close', $mark_as_close);
+    update_post_meta($post_id, 'mark_as_close', $mark_as_close);
+
+    $qa_assign_to_send_mail = isset($_POST['qa_assign_to_send_mail']) ? sanitize_text_field($_POST['qa_assign_to_send_mail']) : '';
+    update_post_meta($post_id, 'qa_assign_to_send_mail', $qa_assign_to_send_mail);
+
+
 
     $qa_assign_to = isset($_POST['qa_assign_to']) ? stripslashes_deep($_POST['qa_assign_to']) : '';
-    update_post_meta($job_id, 'qa_assign_to', $qa_assign_to);
+    update_post_meta($post_id, 'qa_assign_to', $qa_assign_to);
+
+
+    $featured_selected 	= isset( $_POST['qa_featured_questions'] ) ? $_POST['qa_featured_questions'] : 'no';
+    $featured_questions	= get_option( 'qa_featured_questions', array() );
+    $featured_post_key	= array_search( $post_id , $featured_questions);
+
+    if( in_array( $post_id, $featured_questions ) && $featured_selected == 'no' )
+        unset( $featured_questions[$featured_post_key] );
+    if( ! in_array( $post_id, $featured_questions ) && $featured_selected == 'yes' )
+        array_push( $featured_questions, $post_id );
+
+    update_option( 'qa_featured_questions', $featured_questions );
 
 }
 

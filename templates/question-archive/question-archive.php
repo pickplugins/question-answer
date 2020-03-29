@@ -1,8 +1,5 @@
 <?php
-/*
-* @Author 		PickPlugins
-* Copyright: 	2015 PickPlugins.com
-*/
+
 
 if ( ! defined('ABSPATH')) exit;  // if direct access
 
@@ -23,6 +20,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
     $qa_featured_questions = get_option( 'qa_featured_questions', array('') );
 
+	//var_dump($qa_featured_questions);
 
     $query_args_sticky = array (
         'post_type' => 'question',
@@ -48,7 +46,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
         //'s' => $keywords,
         'order' => empty( $order ) ? 'DESC' : $order,
         'orderby' => empty( $order_by ) ? 'modified' : $order_by,
-        //'meta_key'   => 'last_update_time',
+        //'meta_key'   => 'last_activity_time',
         //'tax_query' => $tax_query,
         //'meta_query' => $meta_query,
         //'date_query' => $date_query,
@@ -79,8 +77,6 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
         ?>
 
         <div class="question-list">
-
-
 
         <?php
 

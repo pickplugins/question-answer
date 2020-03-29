@@ -1,8 +1,5 @@
 <?php
-/*
-* @Author 		PickPlugins
-* Copyright: 	2015 PickPlugins.com
-*/
+
 
 if ( ! defined('ABSPATH')) exit;  // if direct access 
 
@@ -15,9 +12,11 @@ global $current_user;
 <?php
 
     $question_id = get_the_id();
+    $a_subscriber = get_post_meta($question_id, 'q_subscriber', true);
 
+    //var_dump($a_subscriber);
 
-	do_action('qa_action_before_single_question');
+	do_action('question_answer_single_question_before');
 
 
 	if( isset( $_GET['question_edit'] ) ) :
@@ -35,7 +34,7 @@ global $current_user;
         <div itemscope itemtype="http://schema.org/Question" id="question-<?php echo $question_id;  ?>" <?php post_class('single-question entry-content'); ?>>
             <?php
 
-            do_action('qa_action_single_question_main');
+            do_action('question_answer_single_question', $question_id);
 
             ?>
         </div>
@@ -46,7 +45,7 @@ global $current_user;
        ?>
 
 
-	<?php do_action('qa_action_after_single_question'); ?>
+	<?php do_action('question_answer_single_question_after'); ?>
 
 </div>
 <link rel="stylesheet" href="<?php echo QA_PLUGIN_URL.'assets/front/css/qa-wrapper.css'; ?>">

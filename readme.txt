@@ -4,7 +4,7 @@
 	Tags:  Question Answer, Question, Answer
 	Requires at least: 4.1
 	Tested up to: 5.3
-	Stable tag: 1.2.40
+	Stable tag: 1.2.42
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -109,36 +109,11 @@ Built Question Answer site for your WordPress.
 
 Plugin is translation ready , please find the 'en.po' for default translation file under 'languages' folder and add your own translation. you can also contribute in translation, please contact us http://www.pickplugins.com/contact/
 
-Contributor
-
-* Bengali - Nur Hasan
-* Swedish - Mikaela Hårdstam Ulfsparre
-* Chinese - Lei lyn
-
 == Frequently Asked Questions ==
 
 = Single question page showing 404 error , how to solve ? =
 
 Please go "Settings > Permalink Settings" and save again to reset permalink.
-
-
-= Single question page style broken, what should i do ? =
-
-Please add following action on your theme functions.php file , you need to edit container based on your theme
-`
-add_action('qa_action_before_single_question', 'qa_action_before_single_question', 10);
-add_action('qa_action_after_single_question', 'qa_action_after_single_question', 10);
-
-function qa_action_before_single_question() {
-  echo '<div id="main" class="site-main">';
-}
-
-function qa_action_after_single_question() {
-  echo '</div>';
-}
-
-`
-
 
 
 
@@ -164,6 +139,16 @@ function qa_action_after_single_question() {
 
 
 == Changelog ==
+
+
+= 1.2.42 =
+* 2020-03-25 fix - answer submit mail issue fixed.
+
+= 1.2.41 =
+* 2020-03-25 add - add password field on question submission to create use account.
+* 2020-03-25 add - display custom notice at archive, single question, dashobard, question submission.
+* 2020-03-25 add - invite user to answer.
+
 
 
 = 1.2.40 =

@@ -1,10 +1,40 @@
 <?php
-/*
-* @Author 		PickPlugins
-* Copyright: 	2015 PickPlugins.com
-*/
 
-if ( ! defined('ABSPATH')) exit;  // if direct access 
+
+if ( ! defined('ABSPATH')) exit;  // if direct access
+
+
+add_action('question_answer_single_question','question_answer_single_question_notice', 5);
+
+function question_answer_single_question_notice($question_id){
+
+    $question_answer_settings = get_option('question_answer_settings');
+    $single_question_notice = isset($question_answer_settings['single_question_notice']) ? $question_answer_settings['single_question_notice'] : '';
+
+    if(!empty($single_question_notice)):
+        ?>
+        <div class="qa-notice">
+            <?php echo $single_question_notice; ?>
+        </div>
+
+        <?php
+    endif;
+
+
+
+}
+
+add_action( 'question_answer_single_question', 'question_answer_single_question_top_nav', 5 );
+add_action( 'question_answer_single_question', 'qa_action_admin_actions_function', 5 );
+add_action( 'question_answer_single_question', 'qa_action_single_question_content_function', 10 );
+add_action( 'qa_action_single_question_meta', 'qa_action_single_question_meta_function', 10 );
+add_action( 'question_answer_single_question', 'qa_action_single_question_subscriber_function', 15 );
+add_action( 'question_answer_single_question', 'qa_action_answer_posting_function', 20 );
+add_action( 'question_answer_single_question', 'qa_action_answer_section_function', 25 );
+add_action( 'qa_action_single_answer_content', 'qa_action_single_answer_vote_function', 30 );
+add_action( 'qa_action_single_answer_content', 'qa_action_single_answer_content_function', 35 );
+add_action( 'qa_action_single_answer_reply', 'qa_action_single_answer_reply_function', 10 );
+
 
 
 add_action('qa_question_user_card','qa_question_user_card_cover', 10, 1);
@@ -146,6 +176,87 @@ function qa_card_author_total_follower( $author_id){
 
 
 
+
+
+
+if ( ! function_exists( 'question_answer_single_question_top_nav' ) ) {
+    function question_answer_single_question_top_nav() {
+        include( QA_PLUGIN_DIR. 'templates/single-question/top-nav.php');
+    }
+}
+
+
+
+// Answer action functions
+if ( ! function_exists( 'qa_action_answer_section_function' ) ) {
+    function qa_action_answer_section_function() {
+        include( QA_PLUGIN_DIR. 'templates/single-question/answer-section.php');
+    }
+}
+
+
+if ( ! function_exists( 'qa_action_single_answer_vote_function' ) ) {
+    function qa_action_single_answer_vote_function() {
+        include( QA_PLUGIN_DIR. 'templates/single-question/answer-vote.php');
+    }
+}
+
+if ( ! function_exists( 'qa_action_single_answer_content_function' ) ) {
+    function qa_action_single_answer_content_function() {
+        include( QA_PLUGIN_DIR. 'templates/single-question/answer-content.php');
+    }
+}
+
+if ( ! function_exists( 'qa_action_answer_posting_function' ) ) {
+    function qa_action_answer_posting_function() {
+        include( QA_PLUGIN_DIR. 'templates/single-question/answer-posting.php');
+    }
+}
+
+if ( ! function_exists( 'qa_action_single_answer_reply_function' ) ) {
+    function qa_action_single_answer_reply_function() {
+        include( QA_PLUGIN_DIR. 'templates/single-question/answer-reply.php');
+    }
+}
+
+
+
+
+
+
+if ( ! function_exists( 'qa_action_admin_actions_function' ) ) {
+    function qa_action_admin_actions_function() {
+        include( QA_PLUGIN_DIR. 'templates/single-question/admin-actions.php');
+    }
+}
+
+
+
+
+
+
+
+
+if ( ! function_exists( 'qa_action_single_question_meta_function' ) ) {
+    function qa_action_single_question_meta_function() {
+        include( QA_PLUGIN_DIR. 'templates/single-question/meta.php');
+    }
+}
+
+
+if ( ! function_exists( 'qa_action_single_question_content_function' ) ) {
+    function qa_action_single_question_content_function() {
+        include( QA_PLUGIN_DIR. 'templates/single-question/content.php');
+    }
+}
+
+
+
+if ( ! function_exists( 'qa_action_single_question_subscriber_function' ) ) {
+    function qa_action_single_question_subscriber_function() {
+        include( QA_PLUGIN_DIR. 'templates/single-question/subscriber.php');
+    }
+}
 
 
 

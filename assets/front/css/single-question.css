@@ -292,7 +292,7 @@
 }
 
 .qa-featured.qa-featured-yes {
-    background: #5f6caf none repeat scroll 0 0;
+    background: #fbc224 none repeat scroll 0 0;
     border-radius: 3px;
     color: #fdfdfd;
 
@@ -621,7 +621,7 @@
 
 
 .qa-answer-content {
-	padding:5px;
+	padding:10px;
 }
 
 span.qa-lock {
@@ -871,7 +871,7 @@ span.qa-lock {
 
 
 .single-question .qa-flag {
-    background: #5f6caf none repeat scroll 0 0;
+    background: #ff6361 none repeat scroll 0 0;
     border-radius: 3px;
     color: #fff;
     cursor: pointer;

@@ -1,6 +1,23 @@
 <?php
 if ( ! defined('ABSPATH')) exit;  // if direct access
 
+add_action( 'question_answer_archive', 'question_answer_archive_notice', 10 );
+if ( ! function_exists( 'question_answer_archive_notice' ) ) {
+    function question_answer_archive_notice( $wp_query ) {
+        $question_answer_settings = get_option('question_answer_settings');
+        $archive_notice = isset($question_answer_settings['archive_notice']) ? $question_answer_settings['archive_notice'] : '';
+
+        ?>
+        <div class="qa-notice">
+            <?php echo $archive_notice; ?>
+        </div>
+        <?php
+
+
+
+    }
+}
+
 
 add_action( 'question_answer_archive', 'question_answer_archive_top_nav', 10 );
 if ( ! function_exists( 'question_answer_archive_top_nav' ) ) {

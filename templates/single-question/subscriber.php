@@ -1,8 +1,5 @@
 <?php
-/*
-* @Author 		PickPlugins
-* Copyright: 	2015 PickPlugins.com
-*/
+
 
 if ( ! defined('ABSPATH')) exit;  // if direct access 
 
@@ -11,7 +8,7 @@ $q_subscriber = get_post_meta(  get_the_ID(), 'q_subscriber', true );
 $qa_assign_to = get_post_meta(  get_the_ID(), 'qa_assign_to', true );
 $qa_assign_to = !empty($qa_assign_to) ? $qa_assign_to : array();
 
-
+$q_subscriber_count = !empty($q_subscriber) ? count($q_subscriber) : 0;
 
 //var_dump($assign_to);
 
@@ -19,7 +16,7 @@ $qa_assign_to = !empty($qa_assign_to) ? $qa_assign_to : array();
 
 <div class="subscribers">
 
-    <div class="title"><?php   echo sprintf(__('%s %s Subscribers', 'question-answer'),'<i class="far fa-bell"></i>', count($q_subscriber)); ?></div>
+    <div class="title"><?php   echo sprintf(__('%s %s Subscribers', 'question-answer'),'<i class="far fa-bell"></i>', $q_subscriber_count); ?></div>
     <?php
     $max_subscriber = 10;
 

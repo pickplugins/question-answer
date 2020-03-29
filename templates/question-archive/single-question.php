@@ -1,8 +1,5 @@
 <?php
-/*
-* @Author 		PickPlugins
-* Copyright: 	2015 PickPlugins.com
-*/
+
 
 if ( ! defined('ABSPATH')) exit;  // if direct access 
 
@@ -12,8 +9,8 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
     $qa_featured_questions 	= get_post_meta(get_the_ID(), 'qa_featured_questions', true);
 
 
-    $is_featured = ($qa_featured_questions == 'yes') ? 'featured':'';
-	
+    $is_featured = ($qa_featured_questions == 'yes') ? 'featured': '';
+    //var_dump($is_featured);
 
     $question_post = get_post(get_the_ID());
 

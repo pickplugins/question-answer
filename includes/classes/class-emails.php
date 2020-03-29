@@ -70,6 +70,7 @@ class class_qa_emails{
         include( QA_PLUGIN_DIR.'templates/emails/question_solved.php');
         include( QA_PLUGIN_DIR.'templates/emails/question_unsolved.php');
 
+        include( QA_PLUGIN_DIR.'templates/emails/assign_to.php');
 
 
 
@@ -216,6 +217,17 @@ class class_qa_emails{
                 'description'=>__('Notification email for Comment unflag.', 'question-answer'),
                 'subject'=>__('Comment unflag - {site_url}', 'question-answer'),
                 'html'=>$templates_data_html['comment_unflag'],
+                'email_to'=>$admin_email,
+                'email_from'=>$admin_email,
+                'email_from_name'=> $site_name,
+                'enable'=> 'yes',
+            ),
+
+            'assign_to'=>array(
+                'name'=>__('Invite to answer', 'question-answer'),
+                'description'=>__('Notification email for invite to answer.', 'question-answer'),
+                'subject'=>__('Invitation for answer - {site_url}', 'question-answer'),
+                'html'=>$templates_data_html['assign_to'],
                 'email_to'=>$admin_email,
                 'email_from'=>$admin_email,
                 'email_from_name'=> $site_name,

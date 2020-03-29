@@ -2,11 +2,30 @@
 if ( ! defined('ABSPATH')) exit;  // if direct access 
 
 
+add_action('question_answer_submit_question', 'question_answer_submit_question_notice', 0);
+
+function question_answer_submit_question_notice(){
+
+    $question_answer_settings = get_option('question_answer_settings');
+    $question_submission_notice = isset($question_answer_settings['question_submission_notice']) ? $question_answer_settings['question_submission_notice'] : '';
+
+
+    if(!empty($question_submission_notice)):
+        ?>
+        <div class="qa-notice">
+            <?php echo $question_submission_notice; ?>
+        </div>
+    <?php
+    endif;
+
+}
+
+
 /* Display question title field */
 
-add_action('qa_question_submit_form', 'qa_question_submit_form_title', 0);
+add_action('question_answer_submit_question', 'question_answer_submit_question_title', 0);
 
-function qa_question_submit_form_title(){
+function question_answer_submit_question_title(){
 
     $post_title = isset($_POST['post_title']) ? sanitize_text_field($_POST['post_title']) : "";
 
@@ -25,9 +44,9 @@ function qa_question_submit_form_title(){
 
 /* Display question details input field*/
 
-add_action('qa_question_submit_form', 'qa_question_submit_form_content', 10);
+add_action('question_answer_submit_question', 'question_answer_submit_question_content', 10);
 
-function qa_question_submit_form_content(){
+function question_answer_submit_question_content(){
 
     $field_id = 'post_content';
     $allowed_html = apply_filters('qa_question_submit_allowed_html_tags', array());
@@ -55,9 +74,9 @@ function qa_question_submit_form_content(){
 
 /* Display is private checkbox */
 
-add_action('qa_question_submit_form', 'qa_question_submit_form_is_private', 20);
+add_action('question_answer_submit_question', 'question_answer_submit_question_is_private', 20);
 
-function qa_question_submit_form_is_private(){
+function question_answer_submit_question_is_private(){
 
     $post_status = isset($_POST['post_status']) ? sanitize_text_field($_POST['post_status']) : "";
     $checked = !empty($post_status) ? 'checked' : '';
@@ -67,7 +86,7 @@ function qa_question_submit_form_is_private(){
         <div class="qa-form-field-wrap">
             <div class="field-title"><?php esc_html_e('Is private?','question-answer'); ?></div>
             <div class="field-input">
-                <label><input type="checkbox" value="1" name="post_status" <?php echo $checked; ?>><?php esc_html_e('Make private','question-answer'); ?></label>
+                <label><input type="checkbox" value="1" name="post_status" <?php echo $checked; ?>> <?php esc_html_e('Make private','question-answer'); ?></label>
                 <p class="field-details"><?php esc_html_e('Check to create private question.','question-answer'); ?></p>
 
             </div>
@@ -81,9 +100,9 @@ function qa_question_submit_form_is_private(){
 
 /* Display tags input fields */
 
-add_action('qa_question_submit_form', 'qa_question_submit_form_poll', 30);
+add_action('question_answer_submit_question', 'question_answer_submit_question_poll', 30);
 
-function qa_question_submit_form_poll(){
+function question_answer_submit_question_poll(){
 
     $qa_enable_poll                     = get_option('qa_enable_poll', 'no');
 
@@ -165,9 +184,9 @@ function qa_question_submit_form_poll(){
 
 /* Display category input field  */
 
-add_action('qa_question_submit_form', 'qa_question_submit_form_categories', 40);
+add_action('question_answer_submit_question', 'question_answer_submit_question_categories', 40);
 
-function qa_question_submit_form_categories(){
+function question_answer_submit_question_categories(){
 
     $question_cat = isset($_POST['question_cat']) ? sanitize_text_field($_POST['question_cat']) : "";
 
@@ -203,9 +222,9 @@ function qa_question_submit_form_categories(){
 
 /* Display tags input fields */
 
-add_action('qa_question_submit_form', 'qa_question_submit_form_tags', 50);
+add_action('question_answer_submit_question', 'question_answer_submit_question_tags', 50);
 
-function qa_question_submit_form_tags(){
+function question_answer_submit_question_tags(){
 
     $question_tags = isset($_POST['question_tags']) ? sanitize_text_field($_POST['question_tags']) : "";
 
@@ -222,10 +241,10 @@ function qa_question_submit_form_tags(){
 }
 
 
-add_action('qa_question_submit_form', 'qa_question_submit_form_contact_email', 80);
+add_action('question_answer_submit_question', 'question_answer_submit_question_contact_email', 80);
 
 
-function qa_question_submit_form_contact_email(){
+function question_answer_submit_question_contact_email(){
 
     $job_bm_job_submit_create_account = get_option('job_bm_job_submit_create_account');
     $job_bm_job_submit_generate_username = get_option('job_bm_job_submit_generate_username');
@@ -238,6 +257,8 @@ function qa_question_submit_form_contact_email(){
 
     $qa_contact_email = isset($_POST['qa_contact_email']) ? sanitize_text_field($_POST['qa_contact_email']) : $logged_user_email;
     $qa_username = isset($_POST['qa_username']) ? sanitize_text_field($_POST['qa_username']) : '';
+    $qa_password = isset($_POST['qa_password']) ? sanitize_text_field($_POST['qa_password']) : '';
+
     $qa_create_account = isset($_POST['qa_create_account']) ? sanitize_text_field($_POST['qa_create_account']) : '';
 
     $login_page_id 			= get_option('qa_question_login_page_id');
@@ -255,8 +276,8 @@ function qa_question_submit_form_contact_email(){
             <div class="field-title"><?php _e('Contact email','question-answer'); ?></div>
             <div class="field-input">
                 <input placeholder="contact@mail.com" type="email" value="<?php echo $qa_contact_email; ?>" name="qa_contact_email">
-                <p class="field-details"><?php _e('Write your contact email','question-answer');
-                    ?></p>
+                <p class="field-details"><?php _e('Write your contact email','question-answer'); ?></p>
+
             </div>
         </div>
 
@@ -265,7 +286,9 @@ function qa_question_submit_form_contact_email(){
             <div class="field-title"></div>
             <div class="field-input">
                 <label><input type="checkbox" <?php if($qa_create_account) echo 'checked'; ?>  value="1" name="qa_create_account"> <?php echo __('Create account?','question-answer'); ?></label>
-                <input style="display: <?php if($qa_create_account) echo 'block'; else echo 'none'; ?>" placeholder="username" type="text" value="<?php echo $qa_username; ?>" name="qa_username">
+                <input style="display: <?php if($qa_create_account) echo 'block'; else echo 'none'; ?>;margin: 10px 0;" placeholder="username" type="text" value="<?php echo $qa_username; ?>" name="qa_username">
+                <input style="display: <?php if($qa_create_account) echo 'block'; else echo 'none'; ?>;margin: 10px 0;" placeholder="password" type="text" value="<?php echo $qa_password; ?>" name="qa_password">
+
                 <p class="field-details"><?php echo sprintf(__('Please <a href="%s">login</a> if you already have an account.'), $login_page_url); ?></p>
 
 
@@ -277,8 +300,12 @@ function qa_question_submit_form_contact_email(){
 
                     if($(this).attr("checked") ){
                         $('input[name="qa_username"]').fadeIn();
+                        $('input[name="qa_password"]').fadeIn();
+
                     }else{
                         $('input[name="qa_username"]').fadeOut();
+                        $('input[name="qa_password"]').fadeOut();
+
                     }
                 })
             })
@@ -297,9 +324,9 @@ function qa_question_submit_form_contact_email(){
 
 /* display reCaptcha */
 
-add_action('qa_question_submit_form', 'qa_question_submit_form_recaptcha', 85);
+add_action('question_answer_submit_question', 'question_answer_submit_question_recaptcha', 85);
 
-function qa_question_submit_form_recaptcha(){
+function question_answer_submit_question_recaptcha(){
 
     $qa_reCAPTCHA_enable_question		= get_option('qa_reCAPTCHA_enable_question');
     $qa_reCAPTCHA_site_key		        = get_option('qa_reCAPTCHA_site_key');
@@ -326,9 +353,9 @@ function qa_question_submit_form_recaptcha(){
 
 /* Display nonce  */
 
-add_action('qa_question_submit_form', 'qa_question_submit_form_nonce' );
+add_action('question_answer_submit_question', 'question_answer_submit_question_nonce' );
 
-function qa_question_submit_form_nonce(){
+function question_answer_submit_question_nonce(){
 
 
 
@@ -347,9 +374,9 @@ function qa_question_submit_form_nonce(){
 
 /* Display submit button */
 
-add_action('qa_question_submit_form', 'qa_question_submit_form_submit', 90);
+add_action('question_answer_submit_question', 'question_answer_submit_question_submit', 90);
 
-function qa_question_submit_form_submit(){
+function question_answer_submit_question_submit(){
 
     ?>
     <div class="qa-form-field-wrap">
@@ -459,8 +486,11 @@ function qa_question_submit_data($post_data){
 
     if(isset($post_data['qa_create_account'])){
 
-        $username = isset($post_data['qa_username']) ? sanitize_user($post_data['qa_username']) : "";
-        $password = wp_generate_password(8);
+        $username = !empty($post_data['qa_username']) ? sanitize_user($post_data['qa_username']) : "";
+        $qa_password = !empty($post_data['qa_password']) ? sanitize_user($post_data['qa_password']) : wp_generate_password(8);
+
+
+        $password = $qa_password;
         $email = isset($post_data['qa_contact_email']) ? sanitize_email($post_data['qa_contact_email']) : "";
 
         if(!empty($username) && !empty($email)){
@@ -496,7 +526,7 @@ function qa_question_submit_data($post_data){
         $allowed_html = array();
 
         $post_title = isset($post_data['post_title']) ? $post_data['post_title'] :'';
-        $post_content = isset($post_data['post_content']) ? wp_kses($post_data['post_content'], $allowed_html) : "";
+        $post_content = isset($post_data['post_content']) ? wp_kses_post($post_data['post_content']) : "";
 
         $post_status = isset($post_data['post_status']) ? $post_data['post_status'] :'';
 
@@ -505,7 +535,7 @@ function qa_question_submit_data($post_data){
             array(
                 'post_title'    => $post_title,
                 'post_content'  => $post_content,
-                'post_status'   => !empty($post_status) ? 'private' : $qa_submitted_post_status,
+                'post_status'   => !empty($post_status) ? 'pending' : $qa_submitted_post_status,
                 'post_type'   	=> 'question',
                 'post_author'   => $user_id,
             )
@@ -539,7 +569,7 @@ function qa_question_submit_data($post_data){
 
 /* Update taxonomy data */
 
-add_action('qa_question_submitted', 'qa_question_submitted', 90, 2);
+add_action('qa_question_submitted', 'qa_question_submitted', 10, 2);
 
 function qa_question_submitted($question_ID, $post_data){
 
@@ -548,14 +578,17 @@ function qa_question_submitted($question_ID, $post_data){
     $question_tags = isset($post_data['question_tags']) ? sanitize_text_field($post_data['question_tags']) : "";
     $question_cat = isset($post_data['question_cat']) ? sanitize_text_field($post_data['question_cat']) : "";
     $question_polls = isset($post_data['polls']) ? ($post_data['polls']) : array();
-    $qa_contact_email = isset($post_data['qa_contact_email']) ? sanitize_text_field($post_data['qa_contact_email']) : "";
+    $qa_contact_email = isset($post_data['qa_contact_email']) ? sanitize_email($post_data['qa_contact_email']) : "";
 
 
     wp_set_post_terms( $question_ID, $question_tags, 'question_tags', true );
     wp_set_post_terms( $question_ID, $question_cat, 'question_cat' );
 
     update_post_meta($question_ID,'qa_contact_email', $qa_contact_email);
+
+    if(!empty($user_id))
     update_post_meta($question_ID,'q_subscriber',array($user_id));
+
     update_post_meta($question_ID,'polls', $question_polls);
 
 }

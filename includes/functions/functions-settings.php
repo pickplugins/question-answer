@@ -113,6 +113,129 @@ if(!function_exists('qa_settings_tabs_content_general')) {
 }
 
 
+add_action('qa_settings_tabs_content_archive', 'qa_settings_tabs_content_archive');
+
+if(!function_exists('qa_settings_tabs_content_archive')) {
+    function qa_settings_tabs_content_archive($tab){
+
+        $settings_tabs_field = new settings_tabs_field();
+
+        $question_answer_settings = get_option('question_answer_settings');
+        $archive_notice = isset($question_answer_settings['archive_notice']) ? $question_answer_settings['archive_notice'] : '';
+
+
+
+        ?>
+        <div class="section">
+            <div class="section-title"><?php echo __('Archive settings', 'question-answer'); ?></div>
+            <p class="description section-description"><?php echo __('Choose some setting for archive pages.', 'question-answer'); ?></p>
+
+            <?php
+
+            $args = array(
+                'id'		=> 'archive_notice',
+                'parent'		=> 'question_answer_settings',
+                'title'		=> __('archive notice','question-answer'),
+                'details'	=> __('Set custom text for archive notice','question-answer'),
+                'type'		=> 'text',
+                'value'		=> $archive_notice,
+                'default'		=> '',
+                'placeholder'		=> '',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+            ?>
+        </div>
+        <?php
+    }
+}
+
+
+add_action('qa_settings_tabs_content_single_question', 'qa_settings_tabs_content_single_question');
+
+if(!function_exists('qa_settings_tabs_content_single_question')) {
+    function qa_settings_tabs_content_single_question($tab){
+
+        $settings_tabs_field = new settings_tabs_field();
+
+        $question_answer_settings = get_option('question_answer_settings');
+        $single_question_notice = isset($question_answer_settings['single_question_notice']) ? $question_answer_settings['single_question_notice'] : '';
+
+
+
+        ?>
+        <div class="section">
+            <div class="section-title"><?php echo __('Archive settings', 'question-answer'); ?></div>
+            <p class="description section-description"><?php echo __('Choose some setting for archive pages.', 'question-answer'); ?></p>
+
+            <?php
+
+            $args = array(
+                'id'		=> 'single_question_notice',
+                'parent'		=> 'question_answer_settings',
+                'title'		=> __('Single question notice','question-answer'),
+                'details'	=> __('Set custom text for single question notice','question-answer'),
+                'type'		=> 'text',
+                'value'		=> $single_question_notice,
+                'default'		=> '',
+                'placeholder'		=> '',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+            ?>
+        </div>
+        <?php
+    }
+}
+
+
+
+add_action('qa_settings_tabs_content_question_submission', 'qa_settings_tabs_content_question_submission');
+
+if(!function_exists('qa_settings_tabs_content_question_submission')) {
+    function qa_settings_tabs_content_question_submission($tab){
+
+        $settings_tabs_field = new settings_tabs_field();
+
+        $question_answer_settings = get_option('question_answer_settings');
+        $question_submission_notice = isset($question_answer_settings['question_submission_notice']) ? $question_answer_settings['question_submission_notice'] : '';
+
+
+
+        ?>
+        <div class="section">
+            <div class="section-title"><?php echo __('Question submission settings', 'question-answer'); ?></div>
+            <p class="description section-description"><?php echo __('Choose some setting for question submission page.', 'question-answer'); ?></p>
+
+            <?php
+
+            $args = array(
+                'id'		=> 'question_submission_notice',
+                'parent'		=> 'question_answer_settings',
+                'title'		=> __('Question submission notice','question-answer'),
+                'details'	=> __('Set custom text for question submission notice','question-answer'),
+                'type'		=> 'text',
+                'value'		=> $question_submission_notice,
+                'default'		=> '',
+                'placeholder'		=> '',
+            );
+
+            $settings_tabs_field->generate_field($args);
+
+
+            ?>
+        </div>
+        <?php
+    }
+}
+
+
+
+
 
 add_action('qa_settings_tabs_content_answers', 'qa_settings_tabs_content_answers');
 
@@ -558,6 +681,8 @@ if(!function_exists('qa_settings_tabs_content_dashboard')) {
         $qa_allow_question_comment = get_option('qa_allow_question_comment');
         $qa_enable_poll = get_option('qa_enable_poll');
 
+        $question_answer_settings = get_option('question_answer_settings');
+        $dashboard_notice = isset($question_answer_settings['dashboard_notice']) ? $question_answer_settings['dashboard_notice'] : '';
 
 
 
@@ -569,6 +694,19 @@ if(!function_exists('qa_settings_tabs_content_dashboard')) {
 
             <?php
 
+
+            $args = array(
+                'id'		=> 'dashboard_notice',
+                'parent'		=> 'question_answer_settings',
+                'title'		=> __('Dashboard notice','question-answer'),
+                'details'	=> __('Set custom text for dashboard notice','question-answer'),
+                'type'		=> 'text',
+                'value'		=> $dashboard_notice,
+                'default'		=> '',
+                'placeholder'		=> '',
+            );
+
+            $settings_tabs_field->generate_field($args);
 
 
             $args = array(
@@ -854,139 +992,6 @@ if(!function_exists('qa_settings_tabs_right_panel_archive')) {
     }
 }
 
-add_action('qa_settings_save', 'qa_settings_save');
-
-if(!function_exists('qa_settings_save')) {
-    function qa_settings_save($tab){
-
-
-        $qa_question_item_per_page = isset($_POST['qa_question_item_per_page']) ?  sanitize_text_field($_POST['qa_question_item_per_page']) : '';
-        update_option('qa_question_item_per_page', $qa_question_item_per_page);
-
-        $reCAPTCHA_site_key = isset($_POST['reCAPTCHA_site_key']) ?  sanitize_text_field($_POST['reCAPTCHA_site_key']) : '';
-        update_option('reCAPTCHA_site_key', $reCAPTCHA_site_key);
-
-        $qa_options_filter_badwords = isset($_POST['qa_options_filter_badwords']) ?  sanitize_text_field($_POST['qa_options_filter_badwords']) : '';
-        update_option('qa_options_filter_badwords', $qa_options_filter_badwords);
-
-        $qa_options_badwords = isset($_POST['qa_options_badwords']) ?  sanitize_text_field($_POST['qa_options_badwords']) : '';
-        update_option('qa_options_badwords', $qa_options_badwords);
-
-        $qa_options_badwords_replacer= isset($_POST['qa_options_badwords_replacer']) ?  sanitize_text_field($_POST['qa_options_badwords_replacer']) : '';
-        update_option('qa_options_badwords_replacer', $qa_options_badwords_replacer);
-
-        $qa_options_quick_notes = isset($_POST['qa_options_quick_notes']) ?  stripslashes_deep($_POST['qa_options_quick_notes']) : '';
-        update_option('qa_options_quick_notes', $qa_options_quick_notes);
-
-        $qa_who_can_see_quick_notes = isset($_POST['qa_who_can_see_quick_notes']) ?  stripslashes_deep($_POST['qa_who_can_see_quick_notes']) : '';
-        update_option('qa_who_can_see_quick_notes', $qa_who_can_see_quick_notes);
-
-        $qa_answer_item_per_page = isset($_POST['qa_answer_item_per_page']) ?  sanitize_text_field($_POST['qa_answer_item_per_page']) : '';
-        update_option('qa_answer_item_per_page', $qa_answer_item_per_page);
-
-        $qa_account_required_post_answer = isset($_POST['qa_account_required_post_answer']) ?  sanitize_text_field($_POST['qa_account_required_post_answer']) : '';
-        update_option('qa_account_required_post_answer', $qa_account_required_post_answer);
-
-        $qa_submitted_answer_status = isset($_POST['qa_submitted_answer_status']) ?  sanitize_text_field($_POST['qa_submitted_answer_status']) : '';
-        update_option('qa_submitted_answer_status', $qa_submitted_answer_status);
-
-        $qa_who_can_answer = isset($_POST['qa_who_can_answer']) ?  stripslashes_deep($_POST['qa_who_can_answer']) : '';
-        update_option('qa_who_can_answer', $qa_who_can_answer);
-
-        $qa_who_can_comment_answer = isset($_POST['qa_who_can_comment_answer']) ?  stripslashes_deep($_POST['qa_who_can_comment_answer']) : '';
-        update_option('qa_who_can_comment_answer', $qa_who_can_comment_answer);
-
-        $qa_can_edit_answer = isset($_POST['qa_can_edit_answer']) ?  sanitize_text_field($_POST['qa_can_edit_answer']) : '';
-        update_option('qa_can_edit_answer', $qa_can_edit_answer);
-
-        $qa_answer_editor_type = isset($_POST['qa_answer_editor_type']) ?  sanitize_text_field($_POST['qa_answer_editor_type']) : '';
-        update_option('qa_answer_editor_type', $qa_answer_editor_type);
-
-        $qa_answer_editor_media_buttons = isset($_POST['qa_answer_editor_media_buttons']) ?  sanitize_text_field($_POST['qa_answer_editor_media_buttons']) : '';
-        update_option('qa_answer_editor_media_buttons', $qa_answer_editor_media_buttons);
-
-        $qa_answer_reply_order = isset($_POST['qa_answer_reply_order']) ?  sanitize_text_field($_POST['qa_answer_reply_order']) : '';
-        update_option('qa_answer_reply_order', $qa_answer_reply_order);
-
-        $qa_page_question_post = isset($_POST['qa_page_question_post']) ?  sanitize_text_field($_POST['qa_page_question_post']) : '';
-        update_option('qa_page_question_post', $qa_page_question_post);
-
-        $qa_page_question_post_redirect = isset($_POST['qa_page_question_post_redirect']) ?  sanitize_text_field($_POST['qa_page_question_post_redirect']) : '';
-        update_option('qa_page_question_post_redirect', $qa_page_question_post_redirect);
-
-        $qa_page_question_archive = isset($_POST['qa_page_question_archive']) ?  sanitize_text_field($_POST['qa_page_question_archive']) : '';
-        update_option('qa_page_question_archive', $qa_page_question_archive);
-
-        $qa_page_user_profile = isset($_POST['qa_page_user_profile']) ?  sanitize_text_field($_POST['qa_page_user_profile']) : '';
-        update_option('qa_page_user_profile', $qa_page_user_profile);
-
-        $qa_page_myaccount = isset($_POST['qa_page_myaccount']) ?  sanitize_text_field($_POST['qa_page_myaccount']) : '';
-        update_option('qa_page_myaccount', $qa_page_myaccount);
-
-        $qa_account_required_post_question = isset($_POST['qa_account_required_post_question']) ?  sanitize_text_field($_POST['qa_account_required_post_question']) : '';
-        update_option('qa_account_required_post_question', $qa_account_required_post_question);
-
-        $qa_submitted_question_status = isset($_POST['qa_submitted_question_status']) ?  sanitize_text_field($_POST['qa_submitted_question_status']) : '';
-        update_option('qa_submitted_question_status', $qa_submitted_question_status);
-
-        $qa_allow_question_comment = isset($_POST['qa_allow_question_comment']) ?  sanitize_text_field($_POST['qa_allow_question_comment']) : '';
-        update_option('qa_allow_question_comment', $qa_allow_question_comment);
-
-        $qa_enable_poll = isset($_POST['qa_enable_poll']) ?  sanitize_text_field($_POST['qa_enable_poll']) : '';
-        update_option('qa_enable_poll', $qa_enable_poll);
-
-        $qa_myaccount_show_login_form = isset($_POST['qa_myaccount_show_login_form']) ?  sanitize_text_field($_POST['qa_myaccount_show_login_form']) : '';
-        update_option('qa_myaccount_show_login_form', $qa_myaccount_show_login_form);
-
-        $qa_myaccount_login_redirect_page = isset($_POST['qa_myaccount_login_redirect_page']) ?  sanitize_text_field($_POST['qa_myaccount_login_redirect_page']) : '';
-        update_option('qa_myaccount_login_redirect_page', $qa_myaccount_login_redirect_page);
-
-        $qa_myaccount_show_register_form = isset($_POST['qa_myaccount_show_register_form']) ?  sanitize_text_field($_POST['qa_myaccount_show_register_form']) : '';
-        update_option('qa_myaccount_show_register_form', $qa_myaccount_show_register_form);
-
-        $qa_color_archive_answer_count = isset($_POST['qa_color_archive_answer_count']) ?  sanitize_text_field($_POST['qa_color_archive_answer_count']) : '';
-        update_option('qa_color_archive_answer_count', $qa_color_archive_answer_count);
-
-        $qa_color_archive_view_count = isset($_POST['qa_color_archive_view_count']) ?  sanitize_text_field($_POST['qa_color_archive_view_count']) : '';
-        update_option('qa_color_archive_view_count', $qa_color_archive_view_count);
-
-        $qa_color_single_user_role = isset($_POST['qa_color_single_user_role']) ?  sanitize_text_field($_POST['qa_color_single_user_role']) : '';
-        update_option('qa_color_single_user_role', $qa_color_single_user_role);
-
-        $qa_color_single_user_role_background = isset($_POST['qa_color_single_user_role_background']) ?  sanitize_text_field($_POST['qa_color_single_user_role_background']) : '';
-        update_option('qa_color_single_user_role_background', $qa_color_single_user_role_background);
-
-        $qa_color_add_comment_background = isset($_POST['qa_color_add_comment_background']) ?  sanitize_text_field($_POST['qa_color_add_comment_background']) : '';
-        update_option('qa_color_add_comment_background', $qa_color_add_comment_background);
-
-        $qa_ask_button_bg_color = isset($_POST['qa_ask_button_bg_color']) ?  sanitize_text_field($_POST['qa_ask_button_bg_color']) : '';
-        update_option('qa_ask_button_bg_color', $qa_ask_button_bg_color);
-
-        $qa_color_best_answer_background = isset($_POST['qa_color_best_answer_background']) ?  sanitize_text_field($_POST['qa_color_best_answer_background']) : '';
-        update_option('qa_color_best_answer_background', $qa_color_best_answer_background);
-
-        $qa_ask_button_text_color = isset($_POST['qa_ask_button_text_color']) ?  sanitize_text_field($_POST['qa_ask_button_text_color']) : '';
-        update_option('qa_ask_button_text_color', $qa_ask_button_text_color);
-
-        $qa_vote_button_bg_color = isset($_POST['qa_vote_button_bg_color']) ?  sanitize_text_field($_POST['qa_vote_button_bg_color']) : '';
-        update_option('qa_vote_button_bg_color', $qa_vote_button_bg_color);
-
-        $qa_flag_button_bg_color = isset($_POST['qa_flag_button_bg_color']) ?  sanitize_text_field($_POST['qa_flag_button_bg_color']) : '';
-        update_option('qa_flag_button_bg_color', $qa_flag_button_bg_color);
-
-
-        $qa_logo_url = isset($_POST['qa_logo_url']) ?  sanitize_text_field($_POST['qa_logo_url']) : '';
-        update_option('qa_logo_url', $qa_logo_url);
-
-        $qa_from_email = isset($_POST['qa_from_email']) ?  sanitize_text_field($_POST['qa_from_email']) : '';
-        update_option('qa_from_email', $qa_from_email);
-
-        $qa_email_templates_data = isset($_POST['qa_email_templates_data']) ?  stripslashes_deep($_POST['qa_email_templates_data']) : '';
-        update_option('qa_email_templates_data', $qa_email_templates_data);
-
-    }
-}
-
 
 add_action('qa_settings_tabs_content_emails', 'qa_settings_tabs_content_emails');
 
@@ -1226,3 +1231,141 @@ if(!function_exists('qa_settings_tabs_content_emails')) {
     }
 }
 
+
+add_action('qa_settings_save', 'qa_settings_save');
+
+if(!function_exists('qa_settings_save')) {
+    function qa_settings_save($tab){
+
+
+        $qa_question_item_per_page = isset($_POST['qa_question_item_per_page']) ?  sanitize_text_field($_POST['qa_question_item_per_page']) : '';
+        update_option('qa_question_item_per_page', $qa_question_item_per_page);
+
+        $reCAPTCHA_site_key = isset($_POST['reCAPTCHA_site_key']) ?  sanitize_text_field($_POST['reCAPTCHA_site_key']) : '';
+        update_option('reCAPTCHA_site_key', $reCAPTCHA_site_key);
+
+        $qa_options_filter_badwords = isset($_POST['qa_options_filter_badwords']) ?  sanitize_text_field($_POST['qa_options_filter_badwords']) : '';
+        update_option('qa_options_filter_badwords', $qa_options_filter_badwords);
+
+        $qa_options_badwords = isset($_POST['qa_options_badwords']) ?  sanitize_text_field($_POST['qa_options_badwords']) : '';
+        update_option('qa_options_badwords', $qa_options_badwords);
+
+        $qa_options_badwords_replacer= isset($_POST['qa_options_badwords_replacer']) ?  sanitize_text_field($_POST['qa_options_badwords_replacer']) : '';
+        update_option('qa_options_badwords_replacer', $qa_options_badwords_replacer);
+
+        $qa_options_quick_notes = isset($_POST['qa_options_quick_notes']) ?  stripslashes_deep($_POST['qa_options_quick_notes']) : '';
+        update_option('qa_options_quick_notes', $qa_options_quick_notes);
+
+        $qa_who_can_see_quick_notes = isset($_POST['qa_who_can_see_quick_notes']) ?  stripslashes_deep($_POST['qa_who_can_see_quick_notes']) : '';
+        update_option('qa_who_can_see_quick_notes', $qa_who_can_see_quick_notes);
+
+        $qa_answer_item_per_page = isset($_POST['qa_answer_item_per_page']) ?  sanitize_text_field($_POST['qa_answer_item_per_page']) : '';
+        update_option('qa_answer_item_per_page', $qa_answer_item_per_page);
+
+        $qa_account_required_post_answer = isset($_POST['qa_account_required_post_answer']) ?  sanitize_text_field($_POST['qa_account_required_post_answer']) : '';
+        update_option('qa_account_required_post_answer', $qa_account_required_post_answer);
+
+        $qa_submitted_answer_status = isset($_POST['qa_submitted_answer_status']) ?  sanitize_text_field($_POST['qa_submitted_answer_status']) : '';
+        update_option('qa_submitted_answer_status', $qa_submitted_answer_status);
+
+        $qa_who_can_answer = isset($_POST['qa_who_can_answer']) ?  stripslashes_deep($_POST['qa_who_can_answer']) : '';
+        update_option('qa_who_can_answer', $qa_who_can_answer);
+
+        $qa_who_can_comment_answer = isset($_POST['qa_who_can_comment_answer']) ?  stripslashes_deep($_POST['qa_who_can_comment_answer']) : '';
+        update_option('qa_who_can_comment_answer', $qa_who_can_comment_answer);
+
+        $qa_can_edit_answer = isset($_POST['qa_can_edit_answer']) ?  sanitize_text_field($_POST['qa_can_edit_answer']) : '';
+        update_option('qa_can_edit_answer', $qa_can_edit_answer);
+
+        $qa_answer_editor_type = isset($_POST['qa_answer_editor_type']) ?  sanitize_text_field($_POST['qa_answer_editor_type']) : '';
+        update_option('qa_answer_editor_type', $qa_answer_editor_type);
+
+        $qa_answer_editor_media_buttons = isset($_POST['qa_answer_editor_media_buttons']) ?  sanitize_text_field($_POST['qa_answer_editor_media_buttons']) : '';
+        update_option('qa_answer_editor_media_buttons', $qa_answer_editor_media_buttons);
+
+        $qa_answer_reply_order = isset($_POST['qa_answer_reply_order']) ?  sanitize_text_field($_POST['qa_answer_reply_order']) : '';
+        update_option('qa_answer_reply_order', $qa_answer_reply_order);
+
+        $qa_page_question_post = isset($_POST['qa_page_question_post']) ?  sanitize_text_field($_POST['qa_page_question_post']) : '';
+        update_option('qa_page_question_post', $qa_page_question_post);
+
+        $qa_page_question_post_redirect = isset($_POST['qa_page_question_post_redirect']) ?  sanitize_text_field($_POST['qa_page_question_post_redirect']) : '';
+        update_option('qa_page_question_post_redirect', $qa_page_question_post_redirect);
+
+        $qa_page_question_archive = isset($_POST['qa_page_question_archive']) ?  sanitize_text_field($_POST['qa_page_question_archive']) : '';
+        update_option('qa_page_question_archive', $qa_page_question_archive);
+
+        $qa_page_user_profile = isset($_POST['qa_page_user_profile']) ?  sanitize_text_field($_POST['qa_page_user_profile']) : '';
+        update_option('qa_page_user_profile', $qa_page_user_profile);
+
+        $qa_page_myaccount = isset($_POST['qa_page_myaccount']) ?  sanitize_text_field($_POST['qa_page_myaccount']) : '';
+        update_option('qa_page_myaccount', $qa_page_myaccount);
+
+        $qa_account_required_post_question = isset($_POST['qa_account_required_post_question']) ?  sanitize_text_field($_POST['qa_account_required_post_question']) : '';
+        update_option('qa_account_required_post_question', $qa_account_required_post_question);
+
+        $qa_submitted_question_status = isset($_POST['qa_submitted_question_status']) ?  sanitize_text_field($_POST['qa_submitted_question_status']) : '';
+        update_option('qa_submitted_question_status', $qa_submitted_question_status);
+
+        $qa_allow_question_comment = isset($_POST['qa_allow_question_comment']) ?  sanitize_text_field($_POST['qa_allow_question_comment']) : '';
+        update_option('qa_allow_question_comment', $qa_allow_question_comment);
+
+        $qa_enable_poll = isset($_POST['qa_enable_poll']) ?  sanitize_text_field($_POST['qa_enable_poll']) : '';
+        update_option('qa_enable_poll', $qa_enable_poll);
+
+        $qa_myaccount_show_login_form = isset($_POST['qa_myaccount_show_login_form']) ?  sanitize_text_field($_POST['qa_myaccount_show_login_form']) : '';
+        update_option('qa_myaccount_show_login_form', $qa_myaccount_show_login_form);
+
+        $qa_myaccount_login_redirect_page = isset($_POST['qa_myaccount_login_redirect_page']) ?  sanitize_text_field($_POST['qa_myaccount_login_redirect_page']) : '';
+        update_option('qa_myaccount_login_redirect_page', $qa_myaccount_login_redirect_page);
+
+        $qa_myaccount_show_register_form = isset($_POST['qa_myaccount_show_register_form']) ?  sanitize_text_field($_POST['qa_myaccount_show_register_form']) : '';
+        update_option('qa_myaccount_show_register_form', $qa_myaccount_show_register_form);
+
+        $qa_color_archive_answer_count = isset($_POST['qa_color_archive_answer_count']) ?  sanitize_text_field($_POST['qa_color_archive_answer_count']) : '';
+        update_option('qa_color_archive_answer_count', $qa_color_archive_answer_count);
+
+        $qa_color_archive_view_count = isset($_POST['qa_color_archive_view_count']) ?  sanitize_text_field($_POST['qa_color_archive_view_count']) : '';
+        update_option('qa_color_archive_view_count', $qa_color_archive_view_count);
+
+        $qa_color_single_user_role = isset($_POST['qa_color_single_user_role']) ?  sanitize_text_field($_POST['qa_color_single_user_role']) : '';
+        update_option('qa_color_single_user_role', $qa_color_single_user_role);
+
+        $qa_color_single_user_role_background = isset($_POST['qa_color_single_user_role_background']) ?  sanitize_text_field($_POST['qa_color_single_user_role_background']) : '';
+        update_option('qa_color_single_user_role_background', $qa_color_single_user_role_background);
+
+        $qa_color_add_comment_background = isset($_POST['qa_color_add_comment_background']) ?  sanitize_text_field($_POST['qa_color_add_comment_background']) : '';
+        update_option('qa_color_add_comment_background', $qa_color_add_comment_background);
+
+        $qa_ask_button_bg_color = isset($_POST['qa_ask_button_bg_color']) ?  sanitize_text_field($_POST['qa_ask_button_bg_color']) : '';
+        update_option('qa_ask_button_bg_color', $qa_ask_button_bg_color);
+
+        $qa_color_best_answer_background = isset($_POST['qa_color_best_answer_background']) ?  sanitize_text_field($_POST['qa_color_best_answer_background']) : '';
+        update_option('qa_color_best_answer_background', $qa_color_best_answer_background);
+
+        $qa_ask_button_text_color = isset($_POST['qa_ask_button_text_color']) ?  sanitize_text_field($_POST['qa_ask_button_text_color']) : '';
+        update_option('qa_ask_button_text_color', $qa_ask_button_text_color);
+
+        $qa_vote_button_bg_color = isset($_POST['qa_vote_button_bg_color']) ?  sanitize_text_field($_POST['qa_vote_button_bg_color']) : '';
+        update_option('qa_vote_button_bg_color', $qa_vote_button_bg_color);
+
+        $qa_flag_button_bg_color = isset($_POST['qa_flag_button_bg_color']) ?  sanitize_text_field($_POST['qa_flag_button_bg_color']) : '';
+        update_option('qa_flag_button_bg_color', $qa_flag_button_bg_color);
+
+
+        $qa_logo_url = isset($_POST['qa_logo_url']) ?  sanitize_text_field($_POST['qa_logo_url']) : '';
+        update_option('qa_logo_url', $qa_logo_url);
+
+        $qa_from_email = isset($_POST['qa_from_email']) ?  sanitize_text_field($_POST['qa_from_email']) : '';
+        update_option('qa_from_email', $qa_from_email);
+
+        $qa_email_templates_data = isset($_POST['qa_email_templates_data']) ?  stripslashes_deep($_POST['qa_email_templates_data']) : '';
+        update_option('qa_email_templates_data', $qa_email_templates_data);
+
+        $question_answer_settings= isset($_POST['question_answer_settings']) ?  stripslashes_deep($_POST['question_answer_settings']) : '';
+        update_option('question_answer_settings', $question_answer_settings);
+
+
+
+    }
+}

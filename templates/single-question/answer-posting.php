@@ -1,8 +1,5 @@
 <?php
-/*
-* @Author 		PickPlugins
-* Copyright: 	2015 PickPlugins.com
-*/
+
 
 if ( ! defined('ABSPATH')) exit;  // if direct access 
 
@@ -98,6 +95,8 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
                     </label></p>
 
                 <div class="answer_posting_notice"></div>
+
+
 
                 <?php wp_nonce_field( 'nonce_answer_post' ); ?>
                 <input type="hidden" name="question_id" value="<?php echo get_the_ID(); ?>" />

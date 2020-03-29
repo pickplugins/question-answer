@@ -1,18 +1,18 @@
 @charset "utf-8";
 /* CSS Document */
 
-.qa-dashboard {
+.dashboard {
 
 }
 
 
-.qa-dashboard .navs {
+.dashboard .navs {
     width: 34%;
     display: inline-block;
     vertical-align: top;
 }
 
-.qa-dashboard .navs-content {
+.dashboard .navs-content {
     width: 65%;
     display: inline-block;
 }
@@ -112,12 +112,12 @@
 
 
 @media only screen and (max-width: 768px ) {
-    .qa-dashboard .navs {
+    .dashboard .navs {
         width: 100%;
         display: block;
     }
 
-    .qa-dashboard .navs-content {
+    .dashboard .navs-content {
         width: 100%;
         display: block;
     }

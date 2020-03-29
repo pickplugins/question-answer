@@ -3,7 +3,7 @@
 Plugin Name: Question Answer
 Plugin URI: https://www.pickplugins.com/item/question-answer/?ref=dashboard
 Description: Create Awesome Question and Answer Website in a Minute
-Version: 1.2.40
+Version: 1.2.42
 Text Domain: question-answer
 Domain Path: /languages
 Author: PickPlugins
@@ -148,6 +148,8 @@ class QuestionAnswer{
 
         require_once( QA_PLUGIN_DIR . 'includes/functions/functions-settings.php');
         require_once( QA_PLUGIN_DIR . 'includes/functions/functions-welcome.php');
+
+        require_once( QA_PLUGIN_DIR . 'templates/dashboard/dashboard-hook.php');
 
 
 

@@ -1,8 +1,5 @@
 <?php
-/*
-* @Author 		PickPlugins
-* Copyright: 	2015 PickPlugins.com
-*/
+
 
 if ( ! defined('ABSPATH')) exit;  // if direct access 
 
@@ -33,18 +30,42 @@ echo '<div class="meta-list clearfix">';
 	//var_dump(get_the_date());
 	
     //echo qa_post_duration(get_the_ID());
-	
-	
-	
-/*
- Title: Answer Count HTML
- Filter: qa_filter_single_question_meta_answer_count
-*/	
-	
 
-   
-   
-   
+
+
+
+/*
+ Title: Featured HTML
+ Filter: qa_filter_single_question_meta_featured_html
+*/
+
+
+
+$qa_featured_questions 	= get_option( 'qa_featured_questions', array() );
+$featured_class 		= in_array( get_the_ID(), $qa_featured_questions ) ? 'qa-featured-yes' : 'qa-featured-no';
+$featured_icon 			= '<i class="fa fa-star" aria-hidden="true"></i>';
+
+//var_dump($qa_featured_questions);
+
+if(current_user_can('administrator') ) {
+?>
+<div class="qa-meta-item qa-featured <?php echo $featured_class; ?>" post_id="<?php echo  get_the_ID(); ?>">
+    <span class="featured"><i class="fa fa-star" aria-hidden="true"></i> Featured</span>
+    <span class="not-featured"><i class="fa fa-star" aria-hidden="true"></i> Not featured</span>
+    <span class="make-featured"><i class="fa fa-star" aria-hidden="true"></i> Make featured</span>
+    <span class="cancel-featured"><i class="fa fa-times" aria-hidden="true"></i> Cancel featured</span>
+
+</div>
+<?php
+}
+
+
+echo apply_filters( 'qa_filter_single_question_meta_featured_html', sprintf( '', $featured_class, get_the_ID(), $featured_icon ) );
+
+
+
+
+
 /*
  Title: Is Solved HTML
  Filter: qa_filter_single_question_meta_is_solved_html
@@ -147,32 +168,6 @@ echo '<div class="meta-list clearfix">';
 
 
 
-	/*
-	 Title: Featured HTML
-	 Filter: qa_filter_single_question_meta_featured_html
-	*/
-	
-	if(current_user_can('administrator') ){
-		
-	$qa_featured_questions 	= get_option( 'qa_featured_questions', array() );
-	$featured_class 		= in_array( get_the_ID(), $qa_featured_questions ) ? 'qa-featured-yes' : 'qa-featured-no';
-	$featured_icon 			= '<i class="fa fa-star" aria-hidden="true"></i>';
-
-	?>
-        <div class="qa-meta-item qa-featured <?php echo $featured_class; ?>" post_id="<?php echo  get_the_ID(); ?>">
-            <span class="featured"><i class="fa fa-star" aria-hidden="true"></i> Featured</span>
-            <span class="not-featured"><i class="fa fa-star" aria-hidden="true"></i> Not featured</span>
-            <span class="make-featured"><i class="fa fa-star" aria-hidden="true"></i> Make featured</span>
-            <span class="cancel-featured"><i class="fa fa-times" aria-hidden="true"></i> Cancel featured</span>
-        </div>
-<?php
-
-
-
-	echo apply_filters( 'qa_filter_single_question_meta_featured_html', sprintf( '', $featured_class, get_the_ID(), $featured_icon ) );
-		
-		
-		}
 	
 
 

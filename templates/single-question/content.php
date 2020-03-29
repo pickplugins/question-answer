@@ -1,8 +1,5 @@
 <?php
-/*
-* @Author 		PickPlugins
-* Copyright: 	2015 PickPlugins.com
-*/
+
 
 if ( ! defined('ABSPATH')) exit;  // if direct access 
 
@@ -126,17 +123,17 @@ $qa_css .= ".qa-single-vote .qa-thumb-up, .qa-single-vote .qa-thumb-reply, .qa-s
 
 
             <div data-id="<?php echo get_the_ID(); ?>" class="qa-single-vote qa-single-vote-<?php echo get_the_ID(); ?>">
-		<span class="qa-thumb-up ap-tip vote-up <?php echo $votted_up; ?>" post_id="<?php echo get_the_ID(); ?>">
-        	<?php echo apply_filters('qa_filter_answer_vote_up_html','<i class="fa s_22 fa-thumbs-up"></i>'); ?>
-        </span>
+                <span class="qa-thumb-up ap-tip vote-up <?php echo $votted_up; ?>" post_id="<?php echo get_the_ID(); ?>">
+                    <?php echo apply_filters('qa_filter_answer_vote_up_html','<i class="fa s_22 fa-thumbs-up"></i>'); ?>
+                </span>
                 <span class="net-vote-count net-vote-count-<?php echo get_the_ID(); ?>">
-			<?php echo apply_filters('qa_filter_answer_vote_count_html', $review_count); ?>
-            <?php //echo $review_count; ?>
-        </span>
+                    <?php echo apply_filters('qa_filter_answer_vote_count_html', $review_count); ?>
+                    <?php //echo $review_count; ?>
+                </span>
 
                 <span class="qa-thumb-down ap-tip vote-down <?php echo $votted_down; ?>" post_id="<?php echo get_the_ID(); ?>">
-        	<?php echo apply_filters('qa_filter_answer_vote_up_html','<i class="fa s_22 fa-thumbs-down"></i>'); ?>
-        </span>
+                    <?php echo apply_filters('qa_filter_answer_vote_up_html','<i class="fa s_22 fa-thumbs-down"></i>'); ?>
+                </span>
             </div>
         </div>
 
@@ -160,7 +157,7 @@ $qa_css .= ".qa-single-vote .qa-thumb-up, .qa-single-vote .qa-thumb-reply, .qa-s
 
 
 		$wp_query_answer = new WP_Query(
-			array (
+			array(
 				'post_type' 	=> 'answer',
 				'post_status' 	=> 'publish',
 				'meta_query' => array(
@@ -431,8 +428,8 @@ $qa_css .= ".qa-single-vote .qa-thumb-up, .qa-single-vote .qa-thumb-reply, .qa-s
 
 		
 	
-	</div> <!-- .content-body -->
-</div><!-- .question-content -->
+	</div>
+</div>
 
 <?php do_action('qa_action_single_question_content_after'); ?>
 

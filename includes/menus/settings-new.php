@@ -13,6 +13,22 @@ $qa_settings_tab[] = array(
     'active' => true,
 );
 
+
+$qa_settings_tab[] = array(
+    'id' => 'archive',
+    'title' => sprintf(__('%s Archive','question-answer'),'<i class="fas fa-tachometer-alt"></i>'),
+    'priority' => 2,
+    'active' => false,
+);
+
+$qa_settings_tab[] = array(
+    'id' => 'single_question',
+    'title' => sprintf(__('%s Single question','question-answer'),'<i class="fas fa-tachometer-alt"></i>'),
+    'priority' => 2,
+    'active' => false,
+);
+
+
 $qa_settings_tab[] = array(
     'id' => 'dashboard',
     'title' => sprintf(__('%s Dashboard','question-answer'),'<i class="fas fa-tachometer-alt"></i>'),
@@ -35,6 +51,14 @@ $qa_settings_tab[] = array(
     'id' => 'answers',
     'title' => sprintf(__('%s Answers','question-answer'),'<i class="fas fa-pencil-alt"></i>'),
     'priority' => 4,
+    'active' => false,
+);
+
+
+$qa_settings_tab[] = array(
+    'id' => 'question_submission',
+    'title' => sprintf(__('%s Question submission','question-answer'),'<i class="far fa-question-circle"></i>'),
+    'priority' => 3,
     'active' => false,
 );
 

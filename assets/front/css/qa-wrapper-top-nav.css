@@ -4,6 +4,16 @@
 
 .qa-wrapper{}
 
+.qa-notice{
+    background: #5f6caf26;
+    color: #333;
+    padding: 8px 10px;
+    font-size: 14px;
+    border-left: 4px solid #5f6caf;
+    margin-bottom: 20px;
+}
+
+
 /*Nav Top*/
 
 .qa-wrapper .top-nav{
@@ -28,6 +38,7 @@
     border-right: 1px solid rgba(0, 0, 0, 0.07);
     position: relative;
     color: #fff;
+    cursor: pointer;
 }
 .qa-wrapper .nav-left .item.active{
     background: #4e588e;
@@ -45,11 +56,30 @@
     color: #fff;
 }
 
+.nav-left .child{
+    position: absolute;
+    top: 34px;
+    left: 0;
+    background: #5f6caf;
+    padding: 12px;
+    width: 250px;
+    font-size: 12px;
+    box-shadow: 0 4px 9px 2px rgba(0, 0, 0, 0.1);
+    display: none;
+    z-index: 100;
+}
+
+
+.qa-wrapper .nav-left .item:hover .child{
+    display: block;
+
+}
 
 .qa-wrapper .nav-left .item.search{
     padding-left: 20px;
     padding-right: 20px;
     cursor: pointer;
+    line-height: 24px;
 }
 
 
@@ -139,8 +169,13 @@
     float: right;
     vertical-align: text-bottom;
 }
-.qa-wrapper .nav-right .item{display: inline-block;
-    margin-left: 5px;}
+.qa-wrapper .nav-right .item{
+    display: inline-block;
+    /* margin-left: 5px; */
+    float: right;
+    /* border-radius: 3px; */
+    border: 1px solid rgba(0, 0, 0, 0.07);
+}
 
 
 
@@ -149,6 +184,7 @@
     padding: 4px 10px;
     color: #fff;
     cursor: pointer;
+    line-height: 24px;
 }
 
 .qa-wrapper .notifications .count{
@@ -195,7 +231,7 @@
     margin: 0;
     border-right: 1px solid #ddd;
     padding: 0 8px;
-    font-size: 15px;
+    font-size: 13px;
 }
 .qa-wrapper .nav-right .notification-list-top span:last-child{
     border-right: 1px solid rgba(0,0,0,0);

@@ -104,47 +104,20 @@ function qa_ajax_answer_posting(){
 	$form_data_arr 		= isset( $_POST['form_data'] ) ? $_POST['form_data'] : array();
 
 	//var_dump($form_data_arr);
+    $form_data_new = array();
+
 
 	foreach( $form_data_arr as $data ) {
+        $form_data_new[$data['name']] = $data['value'];
 
-		if( $data['name'] == 'qa_answer_editor' ) :
-
-			${$data['name']} = wp_kses( $data['value'], array(
-				'a'             => array(
-					'href'  => array(),
-					'title' => array()
-				),
-				'br'            => array(),
-				'em'            => array(),
-				'strong'        => array(),
-				'code'          => array(
-					'class' => array()
-				),
-				'pre'          => array(
-					'class' => array()
-				),
-
-				'blockquote'    => array(),
-				'quote'         => array(),
-				'span'          => array(
-					'style' 	=> array()
-				),
-				'img'           => array(
-					'src'    	=> array(),
-					'alt'    	=> array(),
-					'width'  	=> array(),
-					'height' 	=> array(),
-					'style'  	=> array()
-				),
-				'ul'            => array(),
-				'li'            => array(),
-				'ol'            => array(),
-			) );
-
-		else :
-			${$data['name']} = isset( $data['value'] ) ? sanitize_text_field( $data['value'] ) : '';
-		endif;
 	}
+
+    $is_private = isset($form_data_new['is_private']) ? sanitize_text_field($form_data_new['is_private']) : '';
+    $qa_answer_editor = isset($form_data_new['qa_answer_editor']) ? wp_kses_post($form_data_new['qa_answer_editor']) : '';
+    $_wpnonce = isset($form_data_new['_wpnonce']) ? sanitize_text_field($form_data_new['_wpnonce']) : '';
+    $question_id = isset($form_data_new['question_id']) ? sanitize_text_field($form_data_new['question_id']) : '';
+
+
 
     $qa_account_required_post_answer = get_option('qa_account_required_post_answer', 'no');
 
@@ -170,18 +143,18 @@ function qa_ajax_answer_posting(){
 		die();
 	}
 
-	$new_answer_post = array(
+	$answer_post_data = array(
 		'post_type'		=> 'answer',
 		'post_title'    => __('#Replay', 'question-answer').' - '.qa_shorten_string($qa_answer_editor) .' by '. $current_user->user_login ,
 		'post_status'   => $answer_status,
 		'post_content'  => $qa_answer_editor,
 	);
-	$new_answer_post_ID = wp_insert_post( $new_answer_post, true );
+	$answer_id = wp_insert_post( $answer_post_data, true );
 
-	do_action('qa_answer_submitted', $new_answer_post_ID, $form_data_arr);
 
-	update_post_meta( $new_answer_post_ID, 'qa_answer_question_id', $question_id );
-	update_post_meta( $new_answer_post_ID, 'qa_answer_is_private', $is_private );
+
+	update_post_meta( $answer_id, 'qa_answer_question_id', $question_id );
+	update_post_meta( $answer_id, 'qa_answer_is_private', $is_private );
 
 	// update question post time
     //update_post_meta( $question_id, 'last_update_time', date('Y-m-d H:i:s') );
@@ -193,11 +166,12 @@ function qa_ajax_answer_posting(){
 
     $current_user_id = get_current_user_id();
     update_post_meta($question_id, 'last_activity_user_id', $current_user_id);
+    update_post_meta($question_id, 'last_activity_time', date('Y-m-d H:i:s'));
 
 
     wp_update_post( $post_q_date_update );
 
-	if( ! $new_answer_post_ID ) {
+	if( ! $answer_id ) {
 
 		$response['html'] .= sprintf( "<p class='qa_notice qa_notice_error'>%s</p>", __( 'Something went wrong!', 'question-answer' ) );
 		echo json_encode( $response );
@@ -230,14 +204,14 @@ function qa_ajax_answer_posting(){
 	update_post_meta( $question_id, 'q_subscriber', $q_subscriber );
 
 
-	$answer_submit_success_message = apply_filters( "qa_filter_answer_submit_success_message", "<i class='fas fa-check'></i> ".__("Answer submission successful", 'question-answer'), $new_answer_post_ID );
+	$answer_submit_success_message = apply_filters( "qa_filter_answer_submit_success_message", "<i class='fas fa-check'></i> ".__("Answer submission successful", 'question-answer'), $answer_id );
 
 	$response['html'] .= sprintf( "<p class='qa_notice qa_notice_success'>%s</p>", $answer_submit_success_message );
 	$response['html'] .= sprintf( "<p class='qa_notice qa_notice_success'>%s : %s</p>", __( 'Status', 'question-answer' ), $answer_status );
 
-	$response['answer_id'] = $new_answer_post_ID;
+	$response['answer_id'] = $answer_id;
 
-	//do_action( 'qa_action_notification_save', $question_id, $new_answer_post_ID, '', $userid, 'new_answer' );
+	//do_action( 'qa_action_notification_save', $question_id, $answer_id, '', $userid, 'new_answer' );
 
 
 
@@ -248,7 +222,7 @@ function qa_ajax_answer_posting(){
 
 	$notification_data['user_id'] = get_current_user_id();
 	$notification_data['q_id'] = $question_id;
-	$notification_data['a_id'] = $new_answer_post_ID;
+	$notification_data['a_id'] = $answer_id;
 	$notification_data['c_id'] = '';
 	$notification_data['subscriber_id'] = $question_author;
 	$notification_data['action'] = 'new_answer';
@@ -256,6 +230,7 @@ function qa_ajax_answer_posting(){
 	do_action('qa_action_notification_save', $notification_data);
 
 	do_action( 'qa_email_action_question_submit', $question_id );
+    do_action('qa_answer_submitted', $answer_id, $form_data_arr);
 
 	echo json_encode( $response );
 	die();
@@ -335,14 +310,14 @@ function qa_ajax_answer_update(){
 		die();
 	}
 
-	$new_answer_post = array(
+	$answer_post_data = array(
 		'ID'           => $answer_id,
 		//'post_status'   => $answer_status,
 		'post_content'  => $qa_answer_editor,
 	);
 
 
-	$new_answer_post_ID = wp_update_post( $new_answer_post );
+	$answer_id = wp_update_post( $answer_post_data );
 
 	$edit_reason_old = get_post_meta($answer_id, 'edit_reason', true);
 	if(empty($edit_reason_old)) $edit_reason_old = array();
@@ -351,11 +326,11 @@ function qa_ajax_answer_update(){
 	$edit_reason = array_merge($edit_reason_old, array($time=>$edit_reason));
 
 
-	update_post_meta( $new_answer_post_ID, 'edit_reason', $edit_reason );
-	update_post_meta( $new_answer_post_ID, 'qa_answer_is_private', $is_private );
+	update_post_meta( $answer_id, 'edit_reason', $edit_reason );
+	update_post_meta( $answer_id, 'qa_answer_is_private', $is_private );
 
 
-	if( ! $new_answer_post_ID ) {
+	if( ! $answer_id ) {
 
 		$response['html'] .= sprintf( "<p class='qa_notice qa_notice_error'>%s</p>", __( 'Something went wrong! 2', 'question-answer' ) );
 		echo json_encode( $response );
@@ -363,7 +338,7 @@ function qa_ajax_answer_update(){
 	}
 
 
-	$answer_submit_success_message = apply_filters( "qa_filter_answer_submit_success_message", "<i class='fas fa-check'></i> ".__("Answer update successful", 'question-answer'), $new_answer_post_ID );
+	$answer_submit_success_message = apply_filters( "qa_filter_answer_submit_success_message", "<i class='fas fa-check'></i> ".__("Answer update successful", 'question-answer'), $answer_id );
 
 	$response['html'] .= sprintf( "<p class='qa_notice qa_notice_success'>%s</p>", $answer_submit_success_message );
 	$response['html'] .= sprintf( "<p class='qa_notice qa_notice_success'>%s : %s</p>", __( 'Status', 'question-answer' ), $answer_status );
@@ -372,12 +347,12 @@ function qa_ajax_answer_update(){
 	$response['url'] = get_permalink($question_id);
 
 
-	//do_action( 'qa_action_notification_save', $answer_id, $new_answer_post_ID, '', $userid, 'update_answer' );
+	//do_action( 'qa_action_notification_save', $answer_id, $answer_id, '', $userid, 'update_answer' );
 
 
 	$notification_data['user_id'] = get_current_user_id();
 	$notification_data['q_id'] = $answer_id;
-	$notification_data['a_id'] = $new_answer_post_ID;
+	$notification_data['a_id'] = $answer_id;
 	$notification_data['c_id'] = '';
 	$notification_data['action'] = 'update_answer';
 
@@ -1862,28 +1837,37 @@ function qa_ajax_best_answer() {
 
 		$post_id = (int)sanitize_text_field($_POST['post_id']);
 
+
+
 		$response = array();
 
-		if( !empty( $post_id ) ) {
+        if(current_user_can('manage_options')){
+            if( !empty( $post_id ) ) {
 
-			$qa_featured_questions = get_option( 'qa_featured_questions', array() );
+                $qa_featured_questions = get_option( 'qa_featured_questions', array() );
 
-			if ( ($key = array_search( $post_id , $qa_featured_questions)) !== false ) {
+                if ( ($key = array_search( $post_id , $qa_featured_questions)) !== false ) {
 
-				unset($qa_featured_questions[$key]);
-				$response['featured_class'] = 'qa-featured-no';
-				$response['toast'] = '<i class="fas fa-times"></i> '.__( 'Removed from featured', 'question-answer' );
+                    unset($qa_featured_questions[$key]);
+                    $response['featured_class'] = 'qa-featured-no';
+                    $response['toast'] = '<i class="fas fa-times"></i> '.__( 'Removed from featured', 'question-answer' );
 
-			} else {
+                } else {
 
-				array_push( $qa_featured_questions, $post_id );
-				$response['featured_class'] = 'qa-featured-yes';
-				$response['toast'] = '<i class="fas fa-check"></i> '.__( 'Successfully featured', 'question-answer' );
+                    array_push( $qa_featured_questions, $post_id );
+                    $response['featured_class'] = 'qa-featured-yes';
+                    $response['toast'] = '<i class="fas fa-check"></i> '.__( 'Successfully featured', 'question-answer' );
 
-			}
+                }
 
-			update_option( 'qa_featured_questions', $qa_featured_questions );
-		}
+                update_option( 'qa_featured_questions', $qa_featured_questions );
+            }
+        }else{
+            $response['toast'] = '<i class="fas fa-times"></i> '.__( 'Sorry, you do not have permission.', 'question-answer' );
+        }
+
+
+
 
 		echo json_encode($response);
 		die();

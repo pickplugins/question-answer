@@ -1,8 +1,5 @@
 <?php
-/*
-* @Author 		PickPlugins
-* Copyright: 	2015 PickPlugins.com
-*/
+
 
 if ( ! defined('ABSPATH')) exit;  // if direct access
 
@@ -33,7 +30,8 @@ $order 	= isset( $_GET['order'] ) ? sanitize_text_field( $_GET['order'] ) : '';
 
 
 
-
+$qa_page_myaccount = get_option('qa_page_myaccount');
+$dashboard_page_url = get_permalink($qa_page_myaccount);
 
 	?>
 
@@ -42,11 +40,13 @@ $order 	= isset( $_GET['order'] ) ? sanitize_text_field( $_GET['order'] ) : '';
 
 
         <?php
-        $current_filter = isset($_GET['filter']) ? $_GET['filter'] : 'recent';
+        $current_filter = isset($_GET['filter']) ? $_GET['filter'] : 'dashboard';
         $qa_page_question_archive = get_option('qa_page_question_archive');
         $qa_page_question_archive_url = get_permalink($qa_page_question_archive);
 
         ?>
+        <div class="item <?php echo ($current_filter == 'dashboard') ? 'active' : ''; ?>"><a href="<?php echo $dashboard_page_url; ?>"><i class="fas fa-bars"></i></a></div>
+
         <div class="item <?php echo ($current_filter == 'recent') ? 'active' : ''; ?>"><a href="<?php echo $qa_page_question_archive_url; ?>?filter=recent"><i class="fas fa-history"></i> <?php echo __('Recent','question-answer'); ?></a></div>
         <div class="item <?php echo ($current_filter == 'top_viewed') ? 'active' : ''; ?>"><a href="<?php echo $qa_page_question_archive_url; ?>?filter=top_viewed"><i class="fas fa-binoculars"></i> <?php echo __('Top Viewed','question-answer'); ?></a></div>
         <div class="item <?php echo ($current_filter == 'featured') ? 'active' : ''; ?>"><a href="<?php echo $qa_page_question_archive_url; ?>?filter=featured"><i class="far fa-star"></i> <?php echo __('Featured','question-answer'); ?></a></div>
@@ -136,7 +136,14 @@ $order 	= isset( $_GET['order'] ) ? sanitize_text_field( $_GET['order'] ) : '';
 
     <div class="nav-right">
 
+        <?php
 
+        $qa_page_question_post = get_option('qa_page_question_post');
+        $qa_page_question_post_url = get_permalink($qa_page_question_post);
+
+        ?>
+
+        <div class="item ask-question"><a href="<?php echo $qa_page_question_post_url; ?>"><i class="fas fa-question-circle"></i> <?php echo __('Ask Question','question-answer'); ?></a></div>
 
         <?php
         if( is_user_logged_in() ):
@@ -169,6 +176,7 @@ $order 	= isset( $_GET['order'] ) ? sanitize_text_field( $_GET['order'] ) : '';
 
 
 
+
         <div class="item notifications">
 
             <i class="fas fa-bell"></i>
@@ -177,7 +185,7 @@ $order 	= isset( $_GET['order'] ) ? sanitize_text_field( $_GET['order'] ) : '';
             <div class="notification-wrapper">
                 <div class="notification-list-top">
 
-                    <span class="mark-all-read"><?php echo __('Mark all as read',  'question-answer'); ?></span>
+                    <span class="mark-all-read"><?php echo sprintf(__('%s Mark all as read',  'question-answer'), '<i class="far fa-check-circle"></i>'); ?></span>
 
                 </div>
                 <div class="notification-list">
@@ -599,14 +607,6 @@ $order 	= isset( $_GET['order'] ) ? sanitize_text_field( $_GET['order'] ) : '';
         endif;
         ?>
 
-        <?php
-
-        $qa_page_question_post = get_option('qa_page_question_post');
-        $qa_page_question_post_url = get_permalink($qa_page_question_post);
-
-        ?>
-
-        <div class="item ask-question"><a href="<?php echo $qa_page_question_post_url; ?>"><?php echo __('Ask Question','question-answer'); ?></a></div>
     </div>
     <div class="clear"></div>
 

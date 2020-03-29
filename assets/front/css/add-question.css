@@ -4,16 +4,16 @@
 .qa_add_question{}
 
 
-.qa-q-submit-form{}
-.qa-q-submit-form .errors{
+.submit-question{}
+.submit-question .errors{
   margin-bottom: 30px;
 }
-.qa-q-submit-form .errors .error {
+.submit-question .errors .error {
   color: #f0611a;
   padding: 3px 1px;
 }
 
-.qa-q-submit-form .errors .success {
+.submit-question .errors .success {
   color: #54c671;
   font-size: 12px;
   padding: 3px 1px;
@@ -27,19 +27,19 @@
 
 
 
-.qa-q-submit-form .qa-suggestions{}
+.submit-question .qa-suggestions{}
 
-.qa-q-submit-form  .qa-suggestions .suggestion-title {
+.submit-question  .qa-suggestions .suggestion-title {
   font-weight: bold;
   display: none;
 }
 
-.qa-q-submit-form .qa-suggestions .loading {
+.submit-question .qa-suggestions .loading {
   display: none;
 }
 
-.qa-q-submit-form .qa-suggestions li{}
-.qa-q-submit-form .qa-suggestions li a {
+.submit-question .qa-suggestions li{}
+.submit-question .qa-suggestions li a {
   display: block;
   font-size: 13px;
   margin: 3px 0;
@@ -49,25 +49,25 @@
 
 
 
-.qa-q-submit-form .qa-form-field-wrap{}
+.submit-question .qa-form-field-wrap{}
 
-.qa-q-submit-form .qa-form-field-wrap input[type="text"], .qa-q-submit-form .qa-form-field-wrap input[type="email"],.qa-q-submit-form .qa-form-field-wrap textarea, .qa-q-submit-form .qa-form-field-wrap select{
+.submit-question .qa-form-field-wrap input[type="text"], .submit-question .qa-form-field-wrap input[type="email"],.submit-question .qa-form-field-wrap textarea, .submit-question .qa-form-field-wrap select{
   width: 90%;
 }
 
-.qa-q-submit-form .qa-form-field-wrap select, .qa-q-submit-form .qa-form-field-wrap .wp-editor-wrap, .qa-q-submit-form .qa-form-field-wrap input[type="submit"]{
+.submit-question .qa-form-field-wrap select, .submit-question .qa-form-field-wrap .wp-editor-wrap, .submit-question .qa-form-field-wrap input[type="submit"]{
   width: 93%;
 }
 
-.qa-q-submit-form .qa-form-field-wrap .field-title{
+.submit-question .qa-form-field-wrap .field-title{
   width: 250px;
   float: left;
 }
 
-.qa-q-submit-form .qa-form-field-wrap .field-input{
+.submit-question .qa-form-field-wrap .field-input{
   margin-left: 250px;
 }
-.qa-q-submit-form .qa-form-field-wrap .field-details{
+.submit-question .qa-form-field-wrap .field-details{
   font-style: italic;
   font-size: 13px;
   margin-top: 10px;
@@ -116,14 +116,14 @@
 
 
 @media only screen and (max-width: 992px ) {
-  .qa-q-submit-form .qa-form-field-wrap .field-title{
+  .submit-question .qa-form-field-wrap .field-title{
     width: 100%;
     float: none;
     margin-bottom: 20px;
     font-weight: bold;
   }
 
-  .qa-q-submit-form .qa-form-field-wrap .field-input {
+  .submit-question .qa-form-field-wrap .field-input {
     margin-left: 0px;
   }
 

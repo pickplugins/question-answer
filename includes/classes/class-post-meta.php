@@ -11,8 +11,8 @@ class class_qa_post_meta_question{
 	
 	public function __construct(){
 
-		add_action('add_meta_boxes', array($this, 'meta_boxes_question'));
-		add_action('save_post', array($this, 'meta_boxes_question_save'));
+		//add_action('add_meta_boxes', array($this, 'meta_boxes_question'));
+		//add_action('save_post', array($this, 'meta_boxes_question_save'));
 	}
 	
 	public function meta_boxes_question($post_type) {

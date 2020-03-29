@@ -1,8 +1,5 @@
 <?php
-/*
-* @Author 		PickPlugins
-* Copyright: 	2015 PickPlugins.com
-*/
+
 
 if ( ! defined('ABSPATH')) exit;  // if direct access
 
@@ -133,7 +130,14 @@ $order 	= isset( $_GET['order'] ) ? sanitize_text_field( $_GET['order'] ) : '';
 
     <div class="nav-right">
 
+        <?php
 
+        $qa_page_question_post = get_option('qa_page_question_post');
+        $qa_page_question_post_url = get_permalink($qa_page_question_post);
+
+        ?>
+
+        <div class="item ask-question"><a href="<?php echo $qa_page_question_post_url; ?>"><?php echo __('Ask Question','question-answer'); ?></a></div>
 
         <?php
         if( is_user_logged_in() ):
@@ -163,7 +167,7 @@ $order 	= isset( $_GET['order'] ) ? sanitize_text_field( $_GET['order'] ) : '';
 
             <div class="notification-wrapper">
                 <div class="notification-list-top">
-                    <span class="mark-all-read"><?php echo __('Mark all as read',  'question-answer'); ?></span>
+                    <span class="mark-all-read"><?php echo sprintf(__('%s Mark all as read',  'question-answer'), '<i class="far fa-check-circle"></i>'); ?></span>
 
                 </div>
                 <div class="notification-list">
@@ -589,14 +593,7 @@ $order 	= isset( $_GET['order'] ) ? sanitize_text_field( $_GET['order'] ) : '';
         ?>
 
 
-            <?php
 
-            $qa_page_question_post = get_option('qa_page_question_post');
-            $qa_page_question_post_url = get_permalink($qa_page_question_post);
-
-            ?>
-
-        <div class="item ask-question"><a href="<?php echo $qa_page_question_post_url; ?>"><?php echo __('Ask Question','question-answer'); ?></a></div>
     </div>
     <div class="clear"></div>
 

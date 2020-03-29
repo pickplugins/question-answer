@@ -1,8 +1,5 @@
 <?php
-/*
-* @Author 		PickPlugins
-* Copyright: 	2015 PickPlugins.com
-*/
+
 
 if ( ! defined('ABSPATH')) exit;  // if direct access 
 
@@ -19,33 +16,27 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
     $qa_page_myaccount_url              = !empty($qa_page_myaccount) ? get_permalink($qa_page_myaccount) : wp_login_url($_SERVER['REQUEST_URI']);
 
 
-    //do_action('qa_action_breadcrumb'); ?>
+?>
 
 
 
-<div class="qa-q-submit-form">
+<div class="submit-question">
 
     <?php
-
     if(!empty($_POST)){
-
         do_action('qa_question_submit_data', $_POST);
-
     }
-
     ?>
 
-	
-    <?php do_action('qa_question_submit_form_before'); ?>
+    <?php do_action('question_answer_submit_question_before'); ?>
 
     <form enctype="multipart/form-data" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
-
         <?php
-		do_action('qa_question_submit_form');
+		do_action('question_answer_submit_question');
 		?>
-
     </form>
-        
-	<?php do_action('qa_question_submit_form_after'); ?>
+    <link rel="stylesheet" href="<?php echo QA_PLUGIN_URL.'assets/front/css/qa-wrapper-top-nav.css'; ?>">
+
+    <?php do_action('question_answer_submit_question_after'); ?>
         
 </div>
