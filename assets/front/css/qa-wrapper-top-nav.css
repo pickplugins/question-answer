@@ -285,12 +285,15 @@
 }
 .qa-wrapper .nav-right .notification-list .item .meta .notify-mark{
     display: inline-block;
-    padding: 3px 7px;
+    /* padding: 3px 7px; */
     background: #5f6caf none repeat scroll 0 0;
     cursor: pointer;
     margin-left: 10px;
     color: #fff;
     border-radius: 50px;
+    width: 25px;
+    height: 25px;
+    text-align: center;
 }
 
 .qa-wrapper .nav-right .notification-list .item:last-child{border-bottom: none;}
