@@ -88,7 +88,6 @@ function question_answer_submit_question_is_private(){
             <div class="field-input">
                 <label><input type="checkbox" value="1" name="post_status" <?php echo $checked; ?>> <?php esc_html_e('Make private','question-answer'); ?></label>
                 <p class="field-details"><?php esc_html_e('Check to create private question.','question-answer'); ?></p>
-
             </div>
         </div>
     <?php
@@ -535,7 +534,7 @@ function qa_question_submit_data($post_data){
             array(
                 'post_title'    => $post_title,
                 'post_content'  => $post_content,
-                'post_status'   => !empty($post_status) ? 'pending' : $qa_submitted_post_status,
+                'post_status'   => !empty($post_status) ? 'private' : $qa_submitted_post_status,
                 'post_type'   	=> 'question',
                 'post_author'   => $user_id,
             )

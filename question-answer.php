@@ -3,7 +3,7 @@
 Plugin Name: Question Answer
 Plugin URI: https://www.pickplugins.com/item/question-answer/?ref=dashboard
 Description: Create Awesome Question and Answer Website in a Minute
-Version: 1.2.42
+Version: 1.2.43
 Text Domain: question-answer
 Domain Path: /languages
 Author: PickPlugins

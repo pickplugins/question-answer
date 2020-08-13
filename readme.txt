@@ -4,7 +4,7 @@
 	Tags:  Question Answer, Question, Answer
 	Requires at least: 4.1
 	Tested up to: 5.3
-	Stable tag: 1.2.42
+	Stable tag: 1.2.43
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -139,6 +139,10 @@ Please go "Settings > Permalink Settings" and save again to reset permalink.
 
 
 == Changelog ==
+
+
+= 1.2.43 =
+* 2020-04-26 fix - submitted private question status issue fixed.
 
 
 = 1.2.42 =
