@@ -17,7 +17,7 @@ Built Question Answer site for your WordPress.
 ### Question Answer by [https://www.pickplugins.com](https://www.pickplugins.com/?ref=wordpress.org)
 
 * [Question Answer - Bundle](https://www.pickplugins.com/item/question-answer/?ref=wordpress.org)
-* [Live Demo](http://www.pickplugins.com/demo/question-answer/?ref=wordpress.org)
+* [Live Demo](https://www.pickplugins.com/demo/question-answer/?ref=wordpress.org)
 * [Documentation](https://www.pickplugins.com/documentation/question-answer/?ref=wordpress.org)
 
 
@@ -107,7 +107,7 @@ Built Question Answer site for your WordPress.
 
 # Translation
 
-Plugin is translation ready , please find the 'en.po' for default translation file under 'languages' folder and add your own translation. you can also contribute in translation, please contact us http://www.pickplugins.com/contact/
+Plugin is translation ready , please find the 'en.po' for default translation file under 'languages' folder and add your own translation. you can also contribute in translation, please contact us https://www.pickplugins.com/contact/
 
 == Frequently Asked Questions ==
 

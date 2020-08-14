@@ -227,7 +227,7 @@ class QuestionAnswer{
 		$this->define('QA_PLUGIN_URL', plugins_url('/', __FILE__)  );
 		$this->define('QA_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 		$this->define('QA_PLUGIN_NAME', __('Question Answer', 'question-answer') );
-		$this->define('QA_PLUGIN_SUPPORT', 'http://www.pickplugins.com/questions/'  );
+		$this->define('QA_PLUGIN_SUPPORT', 'https://www.pickplugins.com/questions/'  );
 
 	}
 
