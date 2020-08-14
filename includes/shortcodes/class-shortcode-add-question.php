@@ -32,6 +32,7 @@ class class_qa_shortcode_add_question{
 
         }
 
+        wp_enqueue_style('qa_style');
 
 
         include( QA_PLUGIN_DIR . 'templates/add-question/add-question-hook.php');

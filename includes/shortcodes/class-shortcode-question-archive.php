@@ -35,9 +35,13 @@ class class_qa_shortcode_question_archive{
 
         include( QA_PLUGIN_DIR . 'templates/question-archive/question-archive-hook.php');
 
-			
-		ob_start();
-		
+        wp_enqueue_style('font-awesome-5');
+        wp_enqueue_style('qa-notifications');
+        wp_enqueue_style('qa_style');
+
+
+        ob_start();
+
 		include( QA_PLUGIN_DIR . 'templates/question-archive/question-archive.php');
 
 		return ob_get_clean();

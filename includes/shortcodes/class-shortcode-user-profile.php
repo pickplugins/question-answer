@@ -19,6 +19,8 @@ class class_qa_shortcode_user_profile{
 					
 		), $atts);
 
+        wp_enqueue_style('qa-user-profile');
+
 		ob_start();
 		include( QA_PLUGIN_DIR . 'templates/user-profile/user-profile.php');
 		return ob_get_clean();

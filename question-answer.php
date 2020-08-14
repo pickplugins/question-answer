@@ -258,12 +258,12 @@ class QuestionAnswer{
 		wp_enqueue_script('question_answer_js', plugins_url( '/assets/front/js/scripts.js' , __FILE__ ) , array( 'jquery' ));
         wp_localize_script( 'question_answer_js', 'qa_ajax', array( 'qa_ajaxurl' => admin_url( 'admin-ajax.php')));
 
-        wp_enqueue_style('jquery-ui', QA_PLUGIN_URL.'assets/front/css/jquery-ui.css');
-		wp_enqueue_style('qa_style', QA_PLUGIN_URL.'assets/front/css/style.css');
-		wp_enqueue_style('qa_dashboard.css', QA_PLUGIN_URL.'assets/front/css/dashboard.css');
-		wp_enqueue_style('notifications.css', QA_PLUGIN_URL.'assets/front/css/notifications.css');
-		wp_enqueue_style('hint.css', QA_PLUGIN_URL.'assets/front/css/hint.min.css');
-		wp_enqueue_style('qa-user-profile.css', QA_PLUGIN_URL.'assets/front/css/user-profile.css');
+        wp_register_style('jquery-ui', QA_PLUGIN_URL.'assets/front/css/jquery-ui.css');
+        wp_register_style('qa_style', QA_PLUGIN_URL.'assets/front/css/style.css');
+        wp_register_style('qa_dashboard', QA_PLUGIN_URL.'assets/front/css/dashboard.css');
+        wp_register_style('qa-notifications', QA_PLUGIN_URL.'assets/front/css/notifications.css');
+        //wp_register_style('hint', QA_PLUGIN_URL.'assets/front/css/hint.min.css');
+        wp_register_style('qa-user-profile', QA_PLUGIN_URL.'assets/front/css/user-profile.css');
 
 
 
@@ -275,8 +275,8 @@ class QuestionAnswer{
 		}
 
 		//global
-		wp_enqueue_style('font-awesome-5');
-		wp_enqueue_style('qa_global_style', QA_PLUGIN_URL.'assets/global/css/style.css');
+		//wp_enqueue_style('font-awesome-5');
+        wp_register_style('qa_global_style', QA_PLUGIN_URL.'assets/global/css/style.css');
 
 
 

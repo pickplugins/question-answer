@@ -1595,6 +1595,7 @@ function qa_single_question_content($content) {
 	global $post;
 
 	if ($post->post_type == 'question') {
+        wp_enqueue_style('qa_style');
 
 		ob_start();
 		include( QA_PLUGIN_DIR . 'templates/single-question/single-question.php' );

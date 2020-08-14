@@ -21,6 +21,7 @@ class class_qa_shortcode_myaccount{
 		), $atts);
 
 
+        wp_enqueue_style('qa_dashboard');
 
 
 		ob_start();
