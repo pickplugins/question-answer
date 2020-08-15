@@ -445,6 +445,12 @@
     padding: 10px;
     background: #5f6caf26;
 }
+#qa_sort_answer_form{}
+#qa_sort_answer_form select{
+    display: inline-block;
+}
+
+
 
 .qa_answer_filter {
     display: inline-block;
