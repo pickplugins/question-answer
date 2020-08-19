@@ -153,7 +153,20 @@ class class_qa_functions{
 			'solved'		=> __('Solved', 'question-answer'),
 		);
 	}
-		
+
+
+    public function filter_by() {
+        return array(
+            'recent'    => __('Recent', 'question-answer'),
+            'top_viewed'    => __('View count', 'question-answer'),
+            'featured'			=> __('Featured', 'question-answer'),
+            'solved'		=> __('Solved', 'question-answer'),
+            'unsolved'		=> __('unsolved', 'question-answer'),
+
+        );
+    }
+
+
 	public function qa_get_pages() {
 		$array_pages[''] = __('None','question-answer');
 		

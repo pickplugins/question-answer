@@ -11,6 +11,7 @@ class class_qa_shortcode_question_archive{
 	
     public function __construct(){
 		add_shortcode( 'question_archive', array( $this, 'question_archive' ) );
+
    	}	
 		
 	public function question_archive($atts, $content = null ) {
@@ -33,16 +34,76 @@ class class_qa_shortcode_question_archive{
 		$qa_post_per_page 	= empty( $atts['qa_post_per_page'] ) ? '' : $atts['qa_post_per_page'];
 
 
-        include( QA_PLUGIN_DIR . 'templates/question-archive/question-archive-hook.php');
+
+
+        $question_answer_settings = get_option('question_answer_settings');
+
+        $font_aw_version = isset($question_answer_settings['general']['font_aw_version']) ? $question_answer_settings['general']['font_aw_version'] : 'v_5';
+
+
+        if($font_aw_version == 'v_5'){
+            $separator_icon = '<i class="fas fa-angle-double-right"></i>';
+            $home_icon = '<i class="fas fa-home"></i>';
+            $trash_icon = '<i class="fas fa-trash"></i>';
+            $pencil_icon = '<i class="far fa-edit"></i>';
+            $globe_icon = '<i class="fas fa-globe-asia"></i>';
+            $lock_icon = '<i class="fas fa-lock"></i>';
+            $check_icon = '<i class="fas fa-check"></i>';
+            $eye_icon = '<i class="fas fa-eye"></i>';
+            $clone_icon = '<i class="far fa-clone"></i>';
+
+
+            wp_enqueue_style('font-awesome-5');
+        }elseif ($font_aw_version == 'v_4'){
+
+            $separator_icon = '<i class="fa fa-angle-double-right"></i>';
+            $home_icon = '<i class="fa fa-home"></i>';
+            $trash_icon = '<i class="fa fa-trash"></i>';
+            $pencil_icon = '<i class="fa fa-pencil-square-o"></i>';
+            $globe_icon = '<i class="fa fa-globe"></i>';
+            $lock_icon = '<i class="fa fa-lock"></i>';
+            $check_icon = '<i class="fa fa-check"></i>';
+            $eye_icon = '<i class="fa fa-eye"></i>';
+            $clone_icon = '<i class="fa fa-clone" ></i>
+';
+
+            wp_enqueue_style('font-awesome-4');
+        }
+
+        $atts['icons'] = array(
+            'separator_icon' => $separator_icon,
+            'home_icon' => $home_icon,
+            'trash_icon' => $trash_icon,
+            'pencil_icon' => $pencil_icon,
+            'globe_icon' => $globe_icon,
+            'lock_icon' => $lock_icon,
+            'check_icon' => $check_icon,
+            'eye_icon' => $eye_icon,
+            'clone_icon' => $clone_icon,
+
+        );
+
+        $atts = apply_filters('question_archive_atts', $atts);
+
 
         wp_enqueue_style('font-awesome-5');
         wp_enqueue_style('qa-notifications');
         wp_enqueue_style('qa_style');
+        wp_enqueue_style('question-archive');
+        wp_enqueue_style('qa-wrapper');
+        wp_enqueue_style('qa-wrapper-top-nav');
 
+        wp_enqueue_script('question-archive');
 
         ob_start();
+        ?>
+        <div class="questions-archive">
+            <?php
+            do_action('question_archive', $atts);
+            ?>
+        </div>
+        <?php
 
-		include( QA_PLUGIN_DIR . 'templates/question-archive/question-archive.php');
 
 		return ob_get_clean();
 	}
