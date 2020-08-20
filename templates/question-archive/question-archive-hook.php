@@ -17,11 +17,12 @@ function question_archive_search($atts){
 
 
     ?>
-    <form class="qa-search-form" action="" method="get">
+    <form id="qa-search-form" class="qa-search-form" action="" method="get">
 
         <div class="main-input">
             <div class="field-wrap">
-                <input type="search" value="" placeholder="" name="qa_keyword">
+                <span class="loading"><i class="fas fa-spinner fa-spin"></i></span>
+                <input id="qa_keyword" type="search" value="" placeholder="Search..." name="qa_keyword">
                 <input type="submit" value="Submit" placeholder="" name="submit">
                 <span class="advance-toggle"><i class="fab fa-searchengin"></i> Advance</span>
             </div>
@@ -33,7 +34,7 @@ function question_archive_search($atts){
             <div class="field-wrap">
                 <div class="field-label">Filter by</div>
                 <select id="filter_by" name="filter_by"> <?php
-                    $filter_by_list = $class_qa_functions->filter_by();
+                    $filter_by_list = $class_qa_functions->filter_by_args();
                     foreach( $filter_by_list as $key => $value ) {
                         ?><option <?php selected( $key, $filter_by ); ?> value="<?php echo $key; ?>"><?php echo $value; ?></option><?php
                     } ?>
@@ -42,7 +43,7 @@ function question_archive_search($atts){
 
             <div class="field-wrap">
                 <div class="field-label">Status</div>
-                <select id="filter_by" name="filter_by"> <?php
+                <select id="question_status" name="question_status"> <?php
                     $status_list = $class_qa_functions->qa_question_status();
                     foreach( $status_list as $key => $value ) {
                         ?><option <?php selected( $key, $status ); ?> value="<?php echo $key; ?>"><?php echo $value; ?></option><?php
@@ -85,8 +86,9 @@ function question_archive_search($atts){
 
                 <select id="order_by" name="order_by">
                     <?php
-                    $sorter = $class_qa_functions->qa_question_archive_filter_options();
-                    foreach( $sorter as $key => $value ) {
+                    $order_by_args = $class_qa_functions->order_by_args();
+
+                    foreach( $order_by_args as $key => $value ) {
                         ?><option <?php selected( $key, $order_by ); ?> value="<?php echo $key; ?>"><?php echo $value; ?></option><?php
                     } ?>
                 </select>
@@ -121,6 +123,10 @@ function question_archive_search($atts){
     <style type="text/css">
         .qa-search-form{
             padding: 25px 0;
+        }
+
+        .loading{
+            display: none;
         }
 
         .qa-search-form select{
@@ -182,7 +188,7 @@ function question_archive_list($atts){
     elseif ( get_query_var('page') ) { $paged = get_query_var('page'); }
     else { $paged = 1; }
 
-    $qa_post_per_page = 10;
+    $qa_post_per_page = get_option('qa_question_item_per_page', 10);
 
     $query_args = array (
         'post_type' => 'question',
@@ -205,13 +211,20 @@ function question_archive_list($atts){
     $qa_archive_query = new WP_Query( $query_args);
 
 
-    ?>
-    <div class="question-list">
-        <?php
+
 
 
     if ( $qa_archive_query->have_posts() ) :
+
+        ?>
+
+        <div class="question-list">
+        <?php
+
         do_action( 'question_archive_loop_before', $qa_archive_query );
+
+
+
 
         while ( $qa_archive_query->have_posts() ) : $qa_archive_query->the_post();
 
@@ -229,6 +242,9 @@ function question_archive_list($atts){
             <?php
 
         endwhile;
+        ?>
+        </div>
+        <?php
         do_action( 'question_archive_loop_after', $qa_archive_query );
 
         wp_reset_query();
@@ -237,11 +253,100 @@ function question_archive_list($atts){
 
     endif;
 
-        ?>
-    </div>
-    <?php
+
 
 }
+
+
+
+
+
+/**
+ * @param $query_args
+ * @return mixed
+ */
+function question_archive_query_args($query_args){
+
+    $filter_by = isset($_GET['filter_by']) ? sanitize_text_field($_GET['filter_by']) : '';
+    $qa_keyword = isset($_GET['qa_keyword']) ? sanitize_text_field($_GET['qa_keyword']) : '';
+    $order_by = isset($_GET['order_by']) ? sanitize_text_field($_GET['order_by']) : '';
+    $order = isset($_GET['order']) ? sanitize_text_field($_GET['order']) : '';
+    $category = isset($_GET['category']) ? sanitize_text_field($_GET['category']) : '';
+    $question_status = isset($_GET['question_status']) ? sanitize_text_field($_GET['question_status']) : '';
+
+
+    if(!empty($filter_by) && $filter_by == 'featured'){
+
+        $query_args = array();
+    }elseif(!empty($filter_by) && $filter_by == 'recent'){
+
+        $query_args['orderby'] = 'date';
+        $query_args['order'] = 'DESC';
+
+    }elseif(!empty($filter_by) && $filter_by == 'solved'){
+
+        $query_args['meta_query'][] = array(
+            'key'     => 'qa_question_status',
+            'value'   => 'solved',
+            'compare' => '=',
+        );
+    }elseif(!empty($filter_by) && $filter_by == 'unsolved'){
+
+        $query_args['meta_query'][] = array(
+            'key'     => 'qa_question_status',
+            'value'   => 'solved',
+            'compare' => '!=',
+        );
+    }elseif(!empty($filter_by) && $filter_by == 'top_viewed'){
+
+
+        $query_args['orderby'] = 'meta_value_num';
+        $query_args['meta_key'] = 'qa_view_count';
+        $query_args['order'] = 'DESC';
+
+
+    }
+
+    if(!empty($qa_keyword)){
+
+        $query_args['s'] = $qa_keyword;
+
+
+    }
+
+
+
+
+
+    return $query_args;
+
+
+
+}
+
+
+add_filter('question_archive_query_args', 'question_archive_query_args');
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 add_action('question_archive_loop', 'question_archive_loop_vote', 10, 2);
 
@@ -470,5 +575,14 @@ function question_archive_loop_after($qa_archive_query){
 
 
 
+add_action('question_archive_no_post', 'question_archive_no_post', 10);
 
+function question_archive_no_post($qa_archive_query){
+
+
+    ?>
+    <div class="no-post"><?php echo "No post found"; ?></div>
+    <?php
+
+}
 

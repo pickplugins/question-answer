@@ -22,6 +22,8 @@ class class_qa_shortcode_myaccount{
 
 
         wp_enqueue_style('qa_dashboard');
+        wp_enqueue_style('qa_global_style');
+        wp_enqueue_style('qa_style');
 
 
 		ob_start();

@@ -107,7 +107,7 @@ if( !empty( $_GET['filter_by'] ) || !empty( $filter_by ) ) {
     <div class="form-meta">
         <select id="order_by" name="order_by">
             <?php
-            $sorter = $class_qa_functions->qa_question_archive_filter_options();
+            $sorter = $class_qa_functions->order_by_args();
             foreach( $sorter as $key => $value ) {
                 ?><option <?php selected( $key, $order_by ); ?> value="<?php echo $key; ?>"><?php echo $value; ?></option><?php
             } ?>

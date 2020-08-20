@@ -102,16 +102,21 @@ class class_qa_functions{
 	
 
 	
-	public function qa_question_archive_filter_options() {
+	public function order_by_args() {
 		
 		$sorter = array(
-			'' => __( 'Default Sorting', 'question-answer' ),
-			'title' => __( 'Sort by Title', 'question-answer' ),
-			'comment_count' => __( 'Sort by Comment Count', 'question-answer' ),
-			'date_older' => __( 'Sort by Older Questions', 'question-answer' ),
+			'' => __( 'Select orderby', 'question-answer' ),
+            'date' => __( 'Date', 'question-answer' ),
+			'title' => __( 'Title', 'question-answer' ),
+            'rand' => __( 'Random', 'question-answer' ),
+			'comment_count' => __( 'Comment Count', 'question-answer' ),
+            'answer_count' => __( 'Answer Count', 'question-answer' ),
+            'view_count' => __( 'View Count', 'question-answer' ),
+            'vote_count' => __( 'Vote Count', 'question-answer' ),
+
 		);
 		
-		return apply_filters( 'qa_question_archive_filter_options', $sorter );
+		return apply_filters( 'order_by_args', $sorter );
 	}
 	
 	
@@ -155,14 +160,13 @@ class class_qa_functions{
 	}
 
 
-    public function filter_by() {
+    public function filter_by_args() {
         return array(
-            'recent'    => __('Recent', 'question-answer'),
-            'top_viewed'    => __('View count', 'question-answer'),
+            ''			=> __('Select filter by', 'question-answer'),
+
             'featured'			=> __('Featured', 'question-answer'),
             'solved'		=> __('Solved', 'question-answer'),
             'unsolved'		=> __('unsolved', 'question-answer'),
-
         );
     }
 

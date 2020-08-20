@@ -26,7 +26,13 @@ class class_qa_dashboard{
 				'id' => 'flat',
 			), $atts);
 
-		ob_start();
+        wp_enqueue_style('qa_dashboard');
+        wp_enqueue_style('qa_global_style');
+        wp_enqueue_style('qa_style');
+        wp_enqueue_style('qa-notifications');
+        wp_enqueue_style('font-awesome-5');
+
+        ob_start();
 
 		?>
         <div class="question-answer">

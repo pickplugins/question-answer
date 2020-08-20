@@ -152,6 +152,7 @@ class QuestionAnswer{
         require_once( QA_PLUGIN_DIR . 'templates/dashboard/dashboard-hook.php');
 
         require_once( QA_PLUGIN_DIR . 'templates/question-archive/question-archive-hook.php');
+        require_once( QA_PLUGIN_DIR . 'includes/functions-ajax.php');
 
 
 	}
