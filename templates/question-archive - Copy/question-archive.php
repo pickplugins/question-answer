@@ -15,9 +15,6 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 	elseif ( get_query_var('page') ) { $paged = get_query_var('page'); }
 	else { $paged = 1; }
 
-
-
-
     $qa_featured_questions = get_option( 'qa_featured_questions', array('') );
 
 	//var_dump($qa_featured_questions);

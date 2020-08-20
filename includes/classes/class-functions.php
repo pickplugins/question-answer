@@ -156,6 +156,8 @@ class class_qa_functions{
 			'processing'    => __('Processing', 'question-answer'),
 			'hold'			=> __('Hold', 'question-answer'),
 			'solved'		=> __('Solved', 'question-answer'),
+            'closed'		=> __('Closed', 'question-answer'),
+
 		);
 	}
 
@@ -166,7 +168,7 @@ class class_qa_functions{
 
             'featured'			=> __('Featured', 'question-answer'),
             'solved'		=> __('Solved', 'question-answer'),
-            'unsolved'		=> __('unsolved', 'question-answer'),
+            'unsolved'		=> __('Unsolved', 'question-answer'),
         );
     }
 

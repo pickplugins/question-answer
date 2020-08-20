@@ -10,7 +10,7 @@ function question_archive_search($atts){
     $class_qa_functions = new class_qa_functions();
 
     $filter_by = isset( $_GET['filter_by'] ) ? sanitize_text_field($_GET['filter_by']) : '';
-    $category = isset($_GET['category']) ? sanitize_text_field($_GET['category']) : '';
+    $qa_category = isset($_GET['qa_category']) ? sanitize_text_field($_GET['qa_category']) : '';
     $order_by	= isset( $_GET['order_by'] ) ? sanitize_text_field( $_GET['order_by'] ) : '';
     $order 	= isset( $_GET['order'] ) ? sanitize_text_field( $_GET['order'] ) : '';
     $status 	= isset( $_GET['status'] ) ? sanitize_text_field( $_GET['status'] ) : '';
@@ -53,7 +53,7 @@ function question_archive_search($atts){
 
             <div class="field-wrap">
                 <div class="field-label">Categories</div>
-                <select id="category" name="category">
+                <select id="qa_category" name="qa_category">
                     <option value=""><?php echo __('Select a category', 'question-answer'); ?></option> <?php
 
                     foreach( qa_get_categories() as $cat_id => $cat_info ) { ksort($cat_info);
@@ -69,12 +69,15 @@ function question_archive_search($atts){
 
                             //var_dump($category);
 
+                            $slug = isset($this_category->slug) ? $this_category->slug : '';
+                            $count = isset($this_category->count) ? $this_category->count : '';
+
                             if( $key == 0 )  {
-                                ?><option <?php selected( $this_category->slug, $category ); ?> value="<?php echo $this_category->slug; ?>"><?php echo $value; ?></option><?php
+                                ?><option <?php selected( $slug, $qa_category ); ?> value="<?php echo $slug; ?>"><?php echo $value; ?>(<?php echo $count; ?>)</option><?php
                             } else {
                                 $this_category = get_category( $key );
 
-                                ?><option <?php selected( $this_category->slug, $category ); ?> value="<?php echo $this_category->slug; ?>">  - <?php echo $value; ?></option> <?php
+                                ?><option <?php selected( $slug, $qa_category ); ?> value="<?php echo $slug; ?>">  - <?php echo $value; ?>(<?php echo $count; ?>)</option> <?php
                             }
                         }
                     } ?>
@@ -105,6 +108,26 @@ function question_archive_search($atts){
 
                 </select>
             </div>
+
+            <div class="field-wrap">
+                <div class="field-label">Per page</div>
+
+                <select id="per_page" name="per_page">
+                    <option value="10">10</option>
+                    <option value="20">20</option>
+                    <option value="30">30</option>
+                    <option value="40">40</option>
+                    <option value="50">50</option>
+                    <option value="60">60</option>
+                    <option value="70">70</option>
+                    <option value="80">80</option>
+                    <option value="90">90</option>
+                    <option value="100">100</option>
+
+
+                </select>
+            </div>
+
 
 
         </div>
@@ -190,90 +213,16 @@ function question_archive_list($atts){
 
     $qa_post_per_page = get_option('qa_question_item_per_page', 10);
 
-    $query_args = array (
-        'post_type' => 'question',
-        'post_status' => array( 'publish', 'private' ),
-        //'author_name' => $user_slug,
-        //'s' => $keywords,
-        'order' => empty( $order ) ? 'DESC' : $order,
-        'orderby' => empty( $order_by ) ? 'modified' : $order_by,
-        //'tax_query' => $tax_query,
-        //'meta_query' => $meta_query,
-        'posts_per_page' => $qa_post_per_page,
-        'paged' => $paged,
-    );
-
-
-
-    $query_args = apply_filters('question_archive_query_args', $query_args);
-    //var_dump($query_args);
-
-    $qa_archive_query = new WP_Query( $query_args);
-
-
-
-
-
-    if ( $qa_archive_query->have_posts() ) :
-
-        ?>
-
-        <div class="question-list">
-        <?php
-
-        do_action( 'question_archive_loop_before', $qa_archive_query );
-
-
-
-
-        while ( $qa_archive_query->have_posts() ) : $qa_archive_query->the_post();
-
-            $post_id = get_the_ID();
-            $qa_featured_questions 	= get_post_meta($post_id, 'qa_featured_questions', true);
-            $is_featured = ($qa_featured_questions == 'yes') ? 'featured': '';
-            ?>
-            <div class="single-question <?php echo $is_featured; ?>">
-
-                <?php
-                do_action( 'question_archive_loop', $post_id,  $qa_archive_query );
-
-                ?>
-            </div>
-            <?php
-
-        endwhile;
-        ?>
-        </div>
-        <?php
-        do_action( 'question_archive_loop_after', $qa_archive_query );
-
-        wp_reset_query();
-    else:
-        do_action( 'question_archive_no_post', $qa_archive_query );
-
-    endif;
-
-
-
-}
-
-
-
-
-
-/**
- * @param $query_args
- * @return mixed
- */
-function question_archive_query_args($query_args){
 
     $filter_by = isset($_GET['filter_by']) ? sanitize_text_field($_GET['filter_by']) : '';
     $qa_keyword = isset($_GET['qa_keyword']) ? sanitize_text_field($_GET['qa_keyword']) : '';
-    $order_by = isset($_GET['order_by']) ? sanitize_text_field($_GET['order_by']) : '';
-    $order = isset($_GET['order']) ? sanitize_text_field($_GET['order']) : '';
-    $category = isset($_GET['category']) ? sanitize_text_field($_GET['category']) : '';
+    $order_by = isset($_GET['order_by']) ? sanitize_text_field($_GET['order_by']) : 'modified';
+    $order = isset($_GET['order']) ? sanitize_text_field($_GET['order']) : 'DESC';
+    $qa_category = isset($_GET['qa_category']) ? sanitize_text_field($_GET['qa_category']) : '';
     $question_status = isset($_GET['question_status']) ? sanitize_text_field($_GET['question_status']) : '';
 
+    $tax_query = array();
+    $meta_query = array();
 
     if(!empty($filter_by) && $filter_by == 'featured'){
 
@@ -285,47 +234,128 @@ function question_archive_query_args($query_args){
 
     }elseif(!empty($filter_by) && $filter_by == 'solved'){
 
-        $query_args['meta_query'][] = array(
+        $meta_query[] = array(
             'key'     => 'qa_question_status',
             'value'   => 'solved',
             'compare' => '=',
         );
     }elseif(!empty($filter_by) && $filter_by == 'unsolved'){
 
-        $query_args['meta_query'][] = array(
+        $meta_query[] = array(
             'key'     => 'qa_question_status',
             'value'   => 'solved',
             'compare' => '!=',
         );
-    }elseif(!empty($filter_by) && $filter_by == 'top_viewed'){
-
-
-        $query_args['orderby'] = 'meta_value_num';
-        $query_args['meta_key'] = 'qa_view_count';
-        $query_args['order'] = 'DESC';
-
-
-    }
-
-    if(!empty($qa_keyword)){
-
-        $query_args['s'] = $qa_keyword;
-
-
     }
 
 
 
+    if(!empty($qa_category)):
+        $tax_query[] = array(
+            array(
+                'taxonomy' => 'question_cat',
+                'field' => 'slug',
+                'terms' => $qa_category,
+            )
+        );
+    endif;
+
+    if(!empty($question_status)):
+        $meta_query[] = array(
+            'key'     => 'qa_question_status',
+            'value'   => $question_status,
+            'compare' => '=',
+        );
+    endif;
 
 
-    return $query_args;
+
+
+
+
+
+
+
+
+
+
+    $query_args['post_type'] = 'question';
+    $query_args['post_status'] = array( 'publish', 'private' );
+    $query_args['order'] = $order;
+    $query_args['orderby'] = $order_by;
+
+
+    if(!empty($qa_keyword))
+    $query_args['s'] = $qa_keyword;
+
+    if(!empty($tax_query))
+    $query_args['tax_query'] = $tax_query;
+
+    if(!empty($meta_query))
+    $query_args['meta_query'] = $meta_query;
+
+    $query_args['posts_per_page'] = $qa_post_per_page;
+    $query_args['paged'] = $paged;
+
+
+
+    $query_args = apply_filters('question_archive_query_args', $query_args);
+    //var_dump($query_args);
+
+    //echo '<pre>'.var_export($query_args, true).'</pre>';
+
+    $qa_wp_query = new WP_Query( $query_args);
+
+
+    //echo '<pre>'.var_export($qa_wp_query->found_posts, true).'</pre>';
+
+
+
+    if ( $qa_wp_query->have_posts() ) :
+
+        ?>
+
+        <div class="question-list">
+            <?php
+
+            do_action( 'question_archive_loop_before', $qa_wp_query );
+
+
+
+
+            while ( $qa_wp_query->have_posts() ) : $qa_wp_query->the_post();
+
+                $post_id = get_the_ID();
+                $qa_featured_questions 	= get_post_meta($post_id, 'qa_featured_questions', true);
+                $is_featured = ($qa_featured_questions == 'yes') ? 'featured': '';
+                ?>
+                <div class="single-question <?php echo $is_featured; ?>">
+
+                    <?php
+                    do_action( 'question_archive_loop', $post_id,  $qa_wp_query );
+
+                    ?>
+                </div>
+                <?php
+
+            endwhile;
+            ?>
+        </div>
+        <?php
+        do_action( 'question_archive_loop_after', $qa_wp_query );
+        wp_reset_postdata();
+        wp_reset_query();
+    else:
+        do_action( 'question_archive_no_post', $qa_wp_query );
+
+    endif;
 
 
 
 }
 
 
-add_filter('question_archive_query_args', 'question_archive_query_args');
+
 
 
 
@@ -350,7 +380,7 @@ add_filter('question_archive_query_args', 'question_archive_query_args');
 
 add_action('question_archive_loop', 'question_archive_loop_vote', 10, 2);
 
-function question_archive_loop_vote($post_id,  $qa_archive_query){
+function question_archive_loop_vote($post_id,  $qa_wp_query){
 
 global $qa_css;
 
@@ -381,7 +411,7 @@ if(empty($qa_view_count)){$qa_view_count = 0;}
 
 add_action('question_archive_loop', 'question_archive_loop_answer_count', 10, 2);
 
-function question_archive_loop_answer_count($post_id,  $qa_archive_query){
+function question_archive_loop_answer_count($post_id,  $qa_wp_query){
 
     $wp_answer_query = new WP_Query( array (
         'post_type' => 'answer',
@@ -414,7 +444,7 @@ function question_archive_loop_answer_count($post_id,  $qa_archive_query){
 
 add_action('question_archive_loop', 'question_archive_loop_view_count', 10, 2);
 
-function question_archive_loop_view_count($post_id,  $qa_archive_query){
+function question_archive_loop_view_count($post_id,  $qa_wp_query){
 
     $wp_answer_query = new WP_Query( array (
         'post_type' => 'answer',
@@ -450,7 +480,7 @@ function question_archive_loop_view_count($post_id,  $qa_archive_query){
 
 add_action('question_archive_loop', 'question_archive_loop_thumb', 10, 2);
 
-function question_archive_loop_thumb($post_id,  $qa_archive_query){
+function question_archive_loop_thumb($post_id,  $qa_wp_query){
     $question_post = get_post($post_id);
 
     $author_id = $question_post->post_author;
@@ -465,7 +495,7 @@ function question_archive_loop_thumb($post_id,  $qa_archive_query){
 
 add_action('question_archive_loop', 'question_archive_loop_details', 10, 2);
 
-function question_archive_loop_details($post_id,  $qa_archive_query){
+function question_archive_loop_details($post_id,  $qa_wp_query){
     $question_post = get_post($post_id);
 
     $author_id = $question_post->post_author;
@@ -511,23 +541,38 @@ function question_archive_loop_meta($post_id){
 
         <?php
         $qa_question_status = get_post_meta( $post_id, 'qa_question_status', true );
+
+
         if( $qa_question_status == 'solved' ){
-            $is_solved_class = 'solved';
-            $is_solved_icon = '<i class="fa fa-check-circle"></i>';
-            $is_solved_text = __('Solved', 'question-answer');
+            $status_text = __('Solved', 'question-answer');
+            $status_icon = '<i class="fa fa-check-circle"></i>';
+
+
+        }elseif( $qa_question_status == 'processing' ){
+            $status_text = __('Processing', 'question-answer');
+            $status_icon = '<i class="fas fa-bolt"></i>';
+
+
+        }elseif( $qa_question_status == 'hold' ){
+            $status_text = __('Hold', 'question-answer');
+            $status_icon = '<i class="far fa-hourglass"></i>';
+
         }
-        else{
-            $is_solved_class = 'not-solved';
-            $is_solved_icon = '<i class="fa fa-times"></i>';
-            $is_solved_text = __('Not Solved', 'question-answer');
-        }
+
+
+
+
+
+
 
         $display_name = get_the_author_meta('display_name');
         $display_name = !empty($display_name) ?$display_name :__('Anonymous','');
 
         ?>
 
-        <a href="<?php echo '?filter_by=solved'; ?>" class="is-solved <?php echo $is_solved_class; ?>"><?php  echo $is_solved_icon.' '.$is_solved_text; ?></a>
+        <?php if(!empty($qa_question_status)):?>
+        <span class="q-status <?php //echo $is_solved_class; ?> <?php echo $qa_question_status; ?>"><?php  echo $status_icon.' '.$status_text; ?></span>
+        <?php endif; ?>
 
         <span><i class="far fa-user-circle"></i>  <?php echo __('Asked by', 'question-answer'); ?> <a href="<?php echo '?user_slug='.get_the_author_meta('user_login'); ?>" class="author"><?php echo $display_name; ?></a></span>
 
@@ -550,7 +595,7 @@ function question_archive_loop_meta($post_id){
 
 add_action('question_archive_loop_after', 'question_archive_loop_after', 10);
 
-function question_archive_loop_after($qa_archive_query){
+function question_archive_loop_after($qa_wp_query){
 
     if ( get_query_var('paged') ) { $paged = get_query_var('paged');}
     elseif ( get_query_var('page') ) { $paged = get_query_var('page'); }
@@ -561,7 +606,7 @@ function question_archive_loop_after($qa_archive_query){
         'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
         'format' => '?paged=%#%',
         'current' => max( 1, $paged ),
-        'total' => $qa_archive_query->max_num_pages
+        'total' => $qa_wp_query->max_num_pages
     );
 
     ?>
@@ -577,7 +622,7 @@ function question_archive_loop_after($qa_archive_query){
 
 add_action('question_archive_no_post', 'question_archive_no_post', 10);
 
-function question_archive_no_post($qa_archive_query){
+function question_archive_no_post($qa_wp_query){
 
 
     ?>

@@ -118,27 +118,38 @@
 }
 
 
-.questions-archive .question-details .meta .is-solved {
+.questions-archive .question-details .meta .q-status {
   border: medium none;
   color: #fff;
   margin-right: 10px;
   padding: 0px;
 }
 	
-.questions-archive .question-details .meta .is-solved.solved {
+.questions-archive .question-details .meta .q-status.solved {
   /*background: #5dad80 none repeat scroll 0 0;*/
   border: medium none;
   color: #5dad80;
-}	
-	
-.questions-archive .question-details .meta .is-solved.not-solved {
+}
+
+.questions-archive .question-details .meta .q-status.hold {
+    /*background: #5dad80 none repeat scroll 0 0;*/
+    border: medium none;
+    color: #ff5120;
+}
+.questions-archive .question-details .meta .q-status.processing {
+    /*background: #5dad80 none repeat scroll 0 0;*/
+    border: medium none;
+    color: #4d63da;
+}
+
+.questions-archive .question-details .meta .q-status.not-solved {
   background: #fa877f none repeat scroll 0 0;
   display: none;
   border: medium none;
   color: #fff;
   
 }
-.questions-archive .question-details .meta .category, .questions-archive .question-details .meta .date, .questions-archive .question-details .meta .author , .questions-archive .question-details .meta .is-solved{
+.questions-archive .question-details .meta .category, .questions-archive .question-details .meta .date, .questions-archive .question-details .meta .author , .questions-archive .question-details .meta .q-status{
   /*border: 1px solid #ddd;*/
   color: #5f6caf;
   display: inline-block;

@@ -3,7 +3,7 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 
 
-function question_answer_ajax_search() {
+function question_answer_archive_ajax_search() {
 
     $response = array();
     //$keyword	= $_POST['keyword'];
@@ -20,25 +20,110 @@ function question_answer_ajax_search() {
 
     $qa_keyword = isset($form_data_new['qa_keyword']) ? sanitize_text_field($form_data_new['qa_keyword']) : '';
     $filter_by = isset($form_data_new['filter_by']) ? sanitize_text_field($form_data_new['filter_by']) : '';
-    $category = isset($form_data_new['category']) ? sanitize_text_field($form_data_new['category']) : '';
-    $order_by = isset($form_data_new['order_by']) ? sanitize_text_field($form_data_new['order_by']) : '';
-    $order = isset($form_data_new['order']) ? sanitize_text_field($form_data_new['order']) : '';
+    $qa_category = isset($form_data_new['qa_category']) ? sanitize_text_field($form_data_new['qa_category']) : '';
+    $order_by = isset($form_data_new['order_by']) ? sanitize_text_field($form_data_new['order_by']) : 'date';
+    $order = isset($form_data_new['order']) ? sanitize_text_field($form_data_new['order']) : 'DESC';
+    $question_status = isset($form_data_new['question_status']) ? sanitize_text_field($form_data_new['question_status']) : '';
+    $per_page = isset($form_data_new['per_page']) ? sanitize_text_field($form_data_new['per_page']) : 10;
 
 
     $posts_per_page = get_option('qa_question_item_per_page', 10);
+    $posts_per_page = !empty($per_page) ? $per_page : $posts_per_page;
+
+    $query_args = array();
+
+    $tax_query = array();
+    $meta_query = array();
+
+    if(!empty($filter_by) && $filter_by == 'featured'){
+
+        $meta_query[] = array(
+            'key'     => 'qa_featured_questions',
+            'value'   => 'yes',
+            'compare' => '=',
+        );
+
+    }elseif(!empty($filter_by) && $filter_by == 'solved'){
+
+        $meta_query[] = array(
+            'key'     => 'qa_question_status',
+            'value'   => 'solved',
+            'compare' => '=',
+        );
+    }elseif(!empty($filter_by) && $filter_by == 'unsolved'){
+
+        $meta_query[] = array(
+            'key'     => 'qa_question_status',
+            'value'   => '',
+            'compare' => 'NOT EXISTS',
+        );
+    }
+
+
+
+    if($order_by == 'view_count'){
+
+        $order_by = 'meta_value_num';
+        $query_args['meta_key'] = 'qa_view_count';
+
+    }elseif($order_by == 'answer_count'){
+
+        $order_by = 'meta_value_num';
+        $query_args['meta_key'] = 'answer_count';
+
+    }elseif($order_by == 'vote_count'){
+
+        $order_by = 'meta_value_num';
+        $query_args['meta_key'] = 'vote_count';
+
+    }
+
+
+
+    if(!empty($qa_category)):
+        $tax_query[] = array(
+            array(
+                'taxonomy' => 'question_cat',
+                'field' => 'slug',
+                'terms' => $qa_category,
+            )
+        );
+    endif;
+
+    if(!empty($question_status)):
+        $meta_query[] = array(
+            'key'     => 'qa_question_status',
+            'value'   => $question_status,
+            'compare' => '=',
+        );
+    endif;
 
 
 
 
-    $qa_archive_query = new WP_Query( array (
-        'post_type' => 'question',
-        'post_status' => 'publish',
-        's' => $qa_keyword,
-        'posts_per_page' => $posts_per_page,
-        'paged' => $page,
+
+    $query_args['post_type'] = 'question';
+    $query_args['post_status'] = array( 'publish', 'private' );
+    $query_args['order'] = $order;
+    $query_args['orderby'] = $order_by;
+
+    if(!empty($qa_keyword))
+    $query_args['s'] = $qa_keyword;
+
+    if(!empty($tax_query))
+    $query_args['tax_query'] = $tax_query;
+
+    if(!empty($meta_query))
+    $query_args['meta_query'] = $meta_query;
+
+    $query_args['posts_per_page'] = $posts_per_page;
+    $query_args['paged'] = $page;
 
 
-    ) );
+
+
+
+    $qa_archive_query = new WP_Query($query_args);
 
     ob_start();
 
@@ -86,6 +171,7 @@ function question_answer_ajax_search() {
 
     $response['html'] = ob_get_clean();
 
+    $response['posts_per_page'] = $posts_per_page;
 
 
 
@@ -98,5 +184,5 @@ function question_answer_ajax_search() {
 }
 
 
-add_action('wp_ajax_question_answer_ajax_search', 'question_answer_ajax_search');
-add_action('wp_ajax_nopriv_question_answer_ajax_search', 'question_answer_ajax_search');
+add_action('wp_ajax_question_answer_archive_ajax_search', 'question_answer_archive_ajax_search');
+add_action('wp_ajax_nopriv_question_answer_archive_ajax_search', 'question_answer_archive_ajax_search');

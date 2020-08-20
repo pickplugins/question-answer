@@ -22,18 +22,19 @@ jQuery(document).ready(function($) {
 		};
 	})();
 
-	$(document).on('change keyup submit', '#qa-search-form', function (){
+	$(document).on('change keyup', '#qa-search-form', function (){
 
 		form_data = $(this).serializeArray();
 		qa_keyword = $('#qa_keyword').val();
 
 
-		if(qa_keyword.length > 0 && qa_keyword.length <= 4) return;
+		//if(qa_keyword.length > 0 && qa_keyword.length <= 4) return;
 
+		console.log(form_data);
 
 		qa_type_delay(function(){
 
-			//console.log(qa_keyword.length);
+			console.log(form_data);
 
 			$('.loading').fadeIn();
 			$('.question-list').css('opacity', 0.5);
@@ -43,7 +44,7 @@ jQuery(document).ready(function($) {
 				context: this,
 				url:qa_ajax.qa_ajaxurl,
 				data: {
-					"action" 	: "question_answer_ajax_search",
+					"action" 	: "question_answer_archive_ajax_search",
 					"form_data" : form_data,
 				},
 				success: function( response ) {
@@ -52,8 +53,9 @@ jQuery(document).ready(function($) {
 					qa_keyword = data['qa_keyword'];
 					html = data['html'];
 					pagination = data['pagination'];
+					posts_per_page = data['posts_per_page'];
 
-					//console.log(html);
+					console.log(posts_per_page);
 
 					$('.question-list').html(html);
 					$('.qa-paginate').html(pagination);
@@ -91,7 +93,7 @@ jQuery(document).ready(function($) {
 		console.log(parseInt(page));
 
 
-		if(qa_keyword.length > 0 && qa_keyword.length <= 4) return;
+		//if(qa_keyword.length > 0 && qa_keyword.length <= 4) return;
 
 
 		qa_type_delay(function(){
@@ -106,7 +108,7 @@ jQuery(document).ready(function($) {
 				context: this,
 				url:qa_ajax.qa_ajaxurl,
 				data: {
-					"action" 	: "question_answer_ajax_search",
+					"action" 	: "question_answer_archive_ajax_search",
 					"form_data" : form_data,
 					"page" : page,
 
