@@ -156,8 +156,6 @@ class class_qa_functions{
 			'processing'    => __('Processing', 'question-answer'),
 			'hold'			=> __('Hold', 'question-answer'),
 			'solved'		=> __('Solved', 'question-answer'),
-            'closed'		=> __('Closed', 'question-answer'),
-
 		);
 	}
 
@@ -175,7 +173,8 @@ class class_qa_functions{
 
 	public function qa_get_pages() {
 		$array_pages[''] = __('None','question-answer');
-		
+		$array_pages['question'] = __('- - Question page - -','question-answer');
+
 		foreach( get_pages() as $page )
 		if ( $page->post_title ) $array_pages[$page->ID] = $page->post_title;
 		

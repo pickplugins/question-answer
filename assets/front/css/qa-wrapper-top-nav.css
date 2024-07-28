@@ -2,9 +2,9 @@
 /* CSS Document */
 
 
-.qa-wrapper{}
+.qa-wrapper {}
 
-.qa-notice{
+.qa-notice {
     background: #5f6caf26;
     color: #333;
     padding: 8px 10px;
@@ -16,20 +16,21 @@
 
 /*Nav Top*/
 
-.qa-wrapper .top-nav{
+.qa-wrapper .top-nav {
     margin: 20px 0;
-    clear: both;
-    display: block;
+    /* clear: both; */
+    display: flex;
+    justify-content: space-between;
 }
 
 /*nav-left*/
 
-.qa-wrapper .nav-left{
+.qa-wrapper .nav-left {
     border-radius: 3px;
     float: left;
 }
 
-.qa-wrapper .nav-left .item{
+.qa-wrapper .nav-left .item {
     padding: 5px 10px;
     background: #5f6caf none repeat scroll 0 0;
     display: inline-block;
@@ -40,23 +41,24 @@
     color: #fff;
     cursor: pointer;
 }
-.qa-wrapper .nav-left .item.active{
+
+.qa-wrapper .nav-left .item.active {
     background: #4e588e;
 }
 
 
 
-.qa-wrapper .nav-left .item:last-child{
+.qa-wrapper .nav-left .item:last-child {
     border-right: none;
 }
 
-.qa-wrapper .nav-left a{
+.qa-wrapper .nav-left a {
     text-decoration: none;
     font-size: 12px;
     color: #fff;
 }
 
-.nav-left .child{
+.nav-left .child {
     position: absolute;
     top: 34px;
     left: 0;
@@ -70,12 +72,12 @@
 }
 
 
-.qa-wrapper .nav-left .item:hover .child{
+.qa-wrapper .nav-left .item:hover .child {
     display: block;
 
 }
 
-.qa-wrapper .nav-left .item.search{
+.qa-wrapper .nav-left .item.search {
     padding-left: 20px;
     padding-right: 20px;
     cursor: pointer;
@@ -83,7 +85,7 @@
 }
 
 
-.qa-wrapper .nav-left .item.search:hover .question-search{
+.qa-wrapper .nav-left .item.search:hover .question-search {
     display: block;
 
 }
@@ -93,7 +95,7 @@
 
 
 
-.qa-wrapper .question-search{
+.qa-wrapper .question-search {
     position: absolute;
     top: 34px;
     left: 0;
@@ -106,24 +108,25 @@
     z-index: 100;
 }
 
-.qa-wrapper .question-search .form-field{
+.qa-wrapper .question-search .form-field {
     margin-bottom: 20px;
     color: #333;
 }
 
-.qa-wrapper .question-search .form-field:last-child{
+.qa-wrapper .question-search .form-field:last-child {
     margin-bottom: 0px;
 }
 
 
 
-.qa-wrapper .question-search select, .qa-wrapper .question-search input[type="submit"] {
+.qa-wrapper .question-search select,
+.qa-wrapper .question-search input[type="submit"] {
     width: 100%;
 }
 
 
 
-.qa-wrapper .question-search input[type="text"]{
+.qa-wrapper .question-search input[type="text"] {
     width: 94%;
 }
 
@@ -131,7 +134,7 @@
 
 
 
-.qa-wrapper .item.qa-menu:hover .qa-menu-wrap{
+.qa-wrapper .item.qa-menu:hover .qa-menu-wrap {
     display: block;
 
 }
@@ -141,7 +144,7 @@
 
 
 
-.qa-wrapper .qa-menu-wrap{
+.qa-wrapper .qa-menu-wrap {
     position: absolute;
     top: 34px;
     left: 0;
@@ -165,11 +168,12 @@
 
 /*nav-right*/
 
-.qa-wrapper .nav-right{
+.qa-wrapper .nav-right {
     float: right;
     vertical-align: text-bottom;
 }
-.qa-wrapper .nav-right .item{
+
+.qa-wrapper .nav-right .item {
     display: inline-block;
     /* margin-left: 5px; */
     float: right;
@@ -180,14 +184,15 @@
 
 
 
-.qa-wrapper .nav-right .item.notifications{background: #5f6caf none repeat scroll 0 0;
+.qa-wrapper .nav-right .item.notifications {
+    background: #5f6caf none repeat scroll 0 0;
     padding: 4px 10px;
     color: #fff;
     cursor: pointer;
     line-height: 24px;
 }
 
-.qa-wrapper .notifications .count{
+.qa-wrapper .notifications .count {
 
     position: absolute;
     top: -10px;
@@ -200,15 +205,25 @@
     line-height: normal;
 }
 
-.qa-wrapper .nav-right .item.ask-question{background: #5f6caf none repeat scroll 0 0;
-    padding: 4px 10px;}
+.qa-wrapper .nav-right .item.ask-question {
+    background: #5f6caf none repeat scroll 0 0;
+    padding: 4px 10px;
+}
 
-.qa-wrapper .nav-right .item.ask-question a{text-decoration: none;font-size: 12px;color: #fff;}
+.qa-wrapper .nav-right .item.ask-question a {
+    text-decoration: none;
+    font-size: 12px;
+    color: #fff;
+}
 
-.qa-wrapper .nav-right .notifications{    position: relative;}
+.qa-wrapper .nav-right .notifications {
+    position: relative;
+}
 
 
-.qa-wrapper .nav-right .item.notifications:hover .notification-wrapper{display: block;}
+.qa-wrapper .nav-right .item.notifications:hover .notification-wrapper {
+    display: block;
+}
 
 .qa-wrapper .nav-right .notification-wrapper {
     position: absolute;
@@ -224,17 +239,21 @@
 
 
 
-.qa-wrapper .nav-right .notification-list-top {padding: 5px 0 5px 0;
+.qa-wrapper .nav-right .notification-list-top {
+    padding: 5px 0 5px 0;
     color: #333;
-    border-bottom: 1px solid #ddd}
+    border-bottom: 1px solid #ddd
+}
+
 .qa-wrapper .nav-right .notification-list-top span {
     margin: 0;
     border-right: 1px solid #ddd;
     padding: 0 8px;
     font-size: 13px;
 }
-.qa-wrapper .nav-right .notification-list-top span:last-child{
-    border-right: 1px solid rgba(0,0,0,0);
+
+.qa-wrapper .nav-right .notification-list-top span:last-child {
+    border-right: 1px solid rgba(0, 0, 0, 0);
 
 }
 
@@ -244,10 +263,14 @@
     padding-top: 10px;
     box-shadow: 0px -6px 7px 0px rgba(148, 148, 148, 0.2);
 }
-.qa-wrapper .nav-right .notification-list {    max-height: 300px;
+
+.qa-wrapper .nav-right .notification-list {
+    max-height: 300px;
     overflow: hidden;
-    overflow-y: scroll;}
-.qa-wrapper .nav-right .notification-list .item{
+    overflow-y: scroll;
+}
+
+.qa-wrapper .nav-right .notification-list .item {
     margin-bottom: 10px;
     border-bottom: 1px solid #ddd;
     /* padding-bottom: 10px; */
@@ -258,11 +281,12 @@
     color: #333;
 }
 
-.qa-wrapper .nav-right .notification-list .item.unread{
+.qa-wrapper .nav-right .notification-list .item.unread {
     background: #5f6caf26;
 }
 
-.qa-wrapper .nav-right .notification-list .item img{float: left;
+.qa-wrapper .nav-right .notification-list .item img {
+    float: left;
     margin-right: 15px;
     border-radius: 50px;
     padding: 0px;
@@ -270,20 +294,21 @@
     height: auto;
 }
 
-.qa-wrapper .nav-right .notification-list .item a{
+.qa-wrapper .nav-right .notification-list .item a {
     text-decoration: none;
     color: #5f6caf;
 }
 
-.qa-wrapper .nav-right .notification-list .item .meta{        text-align: right;
+.qa-wrapper .nav-right .notification-list .item .meta {
+    text-align: right;
     font-size: 10px;
-    float: right;}
-
-
-.qa-wrapper .nav-right .notification-list .item .meta .notify-time{
-
+    float: right;
 }
-.qa-wrapper .nav-right .notification-list .item .meta .notify-mark{
+
+
+.qa-wrapper .nav-right .notification-list .item .meta .notify-time {}
+
+.qa-wrapper .nav-right .notification-list .item .meta .notify-mark {
     display: inline-block;
     /* padding: 3px 7px; */
     background: #5f6caf none repeat scroll 0 0;
@@ -296,14 +321,16 @@
     text-align: center;
 }
 
-.qa-wrapper .nav-right .notification-list .item:last-child{border-bottom: none;}
+.qa-wrapper .nav-right .notification-list .item:last-child {
+    border-bottom: none;
+}
 
 
 
 
 
 
-.qa-wrapper .load-notifications{
+.qa-wrapper .load-notifications {
     background: #5f6caf none repeat scroll 0 0;
     text-align: center;
     padding: 5px 0;
@@ -311,23 +338,21 @@
     cursor: pointer;
 }
 
-.qa-wrapper .mark-all-read{
+.qa-wrapper .mark-all-read {
     cursor: pointer;
 }
 
 
 
-.qa-wrapper .load-notifications.loading{
-
-}
+.qa-wrapper .load-notifications.loading {}
 
 
-.qa-wrapper .load-notifications .spinner{
+.qa-wrapper .load-notifications .spinner {
     margin: 0 10px;
     display: none;
 }
 
-.qa-wrapper .load-notifications.loading .spinner{
+.qa-wrapper .load-notifications.loading .spinner {
     margin: 0 10px;
     display: inline;
 }

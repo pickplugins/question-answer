@@ -62,8 +62,8 @@ class class_qa_post_meta_answer{
 			if (!current_user_can('edit_post', $post_id)) return $post_id;
 		}
 		
-		$qa_answer_question_id 	= isset( $_POST['qa_answer_question_id'] ) ? stripslashes_deep( $_POST['qa_answer_question_id'] ) : '';
-		$qa_answer_is_private 	= isset( $_POST['qa_answer_is_private'] ) ? stripslashes_deep( $_POST['qa_answer_is_private'] ) : '';
+		$qa_answer_question_id 	= isset( $_POST['qa_answer_question_id'] ) ? qa_recursive_sanitize_arr( $_POST['qa_answer_question_id'] ) : '';
+		$qa_answer_is_private 	= isset( $_POST['qa_answer_is_private'] ) ? qa_recursive_sanitize_arr( $_POST['qa_answer_is_private'] ) : '';
 		
 		update_post_meta($post_id, 'qa_answer_question_id', $qa_answer_question_id);
 		update_post_meta($post_id, 'qa_answer_is_private', $qa_answer_is_private);

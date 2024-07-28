@@ -78,7 +78,7 @@ class class_qa_post_meta_question{
 			if (!current_user_can('edit_post', $post_id)) return $post_id;
 		}
 
-		$qa_question_status = stripslashes_deep( $_POST['qa_question_status'] );
+		$qa_question_status = qa_recursive_sanitize_arr( $_POST['qa_question_status'] );
 		update_post_meta( $post_id, 'qa_question_status', $qa_question_status );		
 
 		$featured_selected 	= isset( $_POST['qa_question_featured'] ) ? $_POST['qa_question_featured'] : '';

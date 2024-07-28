@@ -1,7 +1,12 @@
 <?php
 
 
-if ( ! defined('ABSPATH')) exit;  // if direct access 
+if ( ! defined('ABSPATH')) exit;  // if direct access
+
+
+
+
+
 
 	$class_qa_functions = new class_qa_functions();
 	
@@ -30,13 +35,16 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
     <?php do_action('question_answer_submit_question_before'); ?>
 
-    <form enctype="multipart/form-data" method="post" action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>">
+    <form enctype="multipart/form-data" method="post" action="<?php echo str_replace( '%7E', '~', esc_url_raw($_SERVER['REQUEST_URI'])); ?>">
         <?php
 		do_action('question_answer_submit_question');
 		?>
     </form>
-    <link rel="stylesheet" href="<?php echo QA_PLUGIN_URL.'assets/front/css/qa-wrapper-top-nav.css'; ?>">
 
     <?php do_action('question_answer_submit_question_after'); ?>
         
 </div>
+
+<?php
+
+

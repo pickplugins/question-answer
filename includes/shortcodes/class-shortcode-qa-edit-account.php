@@ -31,7 +31,7 @@ class class_qa_shortcode_qa_edit_account{
 
 
 		    $display_name = sanitize_text_field($_POST['display_name']);
-			$user_url = esc_url($_POST['user_url']);
+			$user_url = esc_url_raw($_POST['user_url']);
 			$user_description = sanitize_text_field($_POST['description']);
 
 			$profile_photo = esc_url($_POST['profile_photo']);
@@ -76,38 +76,38 @@ class class_qa_shortcode_qa_edit_account{
             <?php
             if(!empty($success_massage)):
             ?>
-            <div class=""><i class="fa fa-check-square-o" aria-hidden="true"></i> <?php echo $success_massage; ?></div>
+            <div class=""><i class="fa fa-check-square-o" aria-hidden="true"></i> <?php echo esc_html($success_massage); ?></div>
             <?php
             endif;
             ?>
 
-			<form action="<?php echo str_replace( '%7E', '~', $_SERVER['REQUEST_URI']); ?>" method="post">
+			<form action="<?php echo str_replace( '%7E', '~', esc_url_raw($_SERVER['REQUEST_URI'])); ?>" method="post">
 				<input type="hidden" name="qa_edit_account_hidden" value="Y">
 
 				<div class="item">
 					<div class="header"><?php echo __('Display name', 'question-answer'); ?></div>
-					<input type="text" name="display_name" value="<?php echo $display_name; ?>" />
+					<input type="text" name="display_name" value="<?php echo esc_attr($display_name); ?>" />
 				</div>
 
 				<div class="item">
 					<div class="header"><?php echo __('Website', 'question-answer'); ?></div>
-					<input type="text" name="user_url" value="<?php echo $user_url; ?>" />
+					<input type="text" name="user_url" value="<?php echo esc_attr($user_url); ?>" />
 				</div>
 
 				<div class="item">
 					<div class="header"><?php echo __('Biographical Info', 'question-answer'); ?></div>
-					<textarea name="description"><?php echo $user_description; ?></textarea>
+					<textarea name="description"><?php echo esc_textarea($user_description); ?></textarea>
 				</div>
 
                 <div class="item">
                     <div class="header"><?php echo __('Profile photo URL', 'question-answer'); ?></div>
-                    <input type="text" name="profile_photo" value="<?php echo $profile_photo; ?>" />
+                    <input type="text" name="profile_photo" value="<?php echo esc_url_raw($profile_photo); ?>" />
                 </div>
 
 
                 <div class="item">
                     <div class="header"><?php echo __('Profile cover photo URL', 'question-answer'); ?></div>
-                    <input type="text" name="cover_photo" value="<?php echo $cover_photo; ?>" />
+                    <input type="text" name="cover_photo" value="<?php echo esc_url_raw($cover_photo); ?>" />
                 </div>
 
 

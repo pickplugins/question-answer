@@ -14,8 +14,12 @@ function question_answer_dashboard_notice($question_id){
         <div class="qa-notice">
             <?php echo $dashboard_notice; ?>
         </div>
-        <link rel="stylesheet" href="<?php echo QA_PLUGIN_URL.'assets/front/css/qa-wrapper-top-nav.css'; ?>">
 
+        <?php
+
+        wp_enqueue_style('qa-wrapper-top-nav');
+
+        ?>
     <?php
     endif;
 

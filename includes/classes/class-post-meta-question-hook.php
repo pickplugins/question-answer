@@ -76,10 +76,10 @@ function qa_question_metabox_content_general($post_id){
                 $user = get_user_by('id', $userId);
                 $avatar_url = get_avatar_url($userId);
                 ?>
-                <div class="item" title="<?php echo $user->display_name; ?>">
+                <div class="item" title="<?php echo isset($user->display_name) ? $user->display_name : ''; ?>">
                     <span class="remove" onclick="jQuery(this).parent().remove();"><i class="fas fa-times"></i></span>
                     <img width="50" src="<?php echo $avatar_url; ?>">
-                    <span><?php echo $user->display_name; ?></span>
+                    <span><?php echo isset($user->display_name) ? $user->display_name : ''; ?></span>
                     <input type="hidden" name="qa_assign_to[]" value="<?php echo $userId; ?>">
                 </div>
                 <?php
@@ -202,11 +202,11 @@ function qa_post_meta_save_question($post_id){
 
 
 
-    $qa_assign_to = isset($_POST['qa_assign_to']) ? stripslashes_deep($_POST['qa_assign_to']) : '';
+    $qa_assign_to = isset($_POST['qa_assign_to']) ? qa_recursive_sanitize_arr($_POST['qa_assign_to']) : '';
     update_post_meta($post_id, 'qa_assign_to', $qa_assign_to);
 
 
-    $featured_selected 	= isset( $_POST['qa_featured_questions'] ) ? $_POST['qa_featured_questions'] : 'no';
+    $featured_selected 	= isset( $_POST['qa_featured_questions'] ) ? sanitize_text_field($_POST['qa_featured_questions']) : 'no';
     $featured_questions	= get_option( 'qa_featured_questions', array() );
     $featured_post_key	= array_search( $post_id , $featured_questions);
 

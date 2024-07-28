@@ -5,43 +5,57 @@
 * Copyright: 	2015 pickplugins
 */
 
-if ( ! defined('ABSPATH')) exit;  // if direct access 
+if (!defined('ABSPATH')) exit;  // if direct access 
 
 
-class class_qa_settings  {
+class class_qa_settings
+{
 
-	public function __construct(){
+	public function __construct()
+	{
 
-		add_action( 'admin_menu', array( $this, 'admin_menu' ), 12 );
-    }
-
-	public function admin_menu() {
-
-        $qa_welcome = get_option('qa_welcome');
-
-
-        add_dashboard_page( '', '', 'manage_options', 'qa-setup', '' );
-		add_submenu_page( 'edit.php?post_type=question', __( 'Settings', 'question-answer' ), __( 'Settings', 'question-answer' ), 'manage_options', 'settings', array( $this, 'settings' ) );
-
-		if($qa_welcome != 'done')
-		add_submenu_page( 'edit.php?post_type=question', __( 'Welcome', 'question-answer' ), __( 'Welcome', 'question-answer' ), 'manage_options', 'qa_welcome', array( $this, 'qa_welcome' ) );
-
-
-
-		do_action( 'qa_action_admin_menus' );
-
+		add_action('admin_menu', array($this, 'admin_menu'), 12);
 	}
 
-	public function settings(){
-		include( QA_PLUGIN_DIR. 'includes/menus/settings-new.php' );
+	public function admin_menu()
+	{
+
+		$qa_welcome = get_option('qa_welcome');
+		$question_answer_info = get_option('question_answer_info');
+		$settingsUpdate = isset($question_answer_info['settingsUpdate']) ? $question_answer_info['settingsUpdate'] : 'no';
+
+
+		add_dashboard_page('', '', 'manage_options', 'qa-setup', '');
+		add_submenu_page('edit.php?post_type=question', __('Settings', 'question-answer'), __('Settings', 'question-answer'), 'manage_options', 'settings', array($this, 'settings'));
+
+		if ($qa_welcome != 'done')
+			add_submenu_page('edit.php?post_type=question', __('Welcome', 'question-answer'), __('Welcome', 'question-answer'), 'manage_options', 'qa_welcome', array($this, 'qa_welcome'));
+
+		// if ($settingsUpdate != 'done')
+		// 	add_submenu_page('edit.php?post_type=question', __('Settings Update', 'question-answer'), __('Settings Update', 'question-answer'), 'manage_options', 'QAsettingsUpdate', array($this, '_settings_update'));
+
+
+
+		do_action('qa_action_admin_menus');
+	}
+
+	public function settings()
+	{
+		include(QA_PLUGIN_DIR . 'includes/menus/settings-new.php');
 	}
 
 
-    public function qa_welcome(){
-        include( QA_PLUGIN_DIR. 'includes/menus/welcome.php' );
-    }
+	public function qa_welcome()
+	{
+		include(QA_PLUGIN_DIR . 'includes/menus/welcome.php');
+	}
 
-} new class_qa_settings();
+	public function _settings_update()
+	{
+		include(QA_PLUGIN_DIR . 'includes/menus/settings-update.php');
+	}
+}
+new class_qa_settings();
 
 //
 //$qa_settings_general = array(
@@ -189,21 +203,3 @@ class class_qa_settings  {
 //
 //
 //
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

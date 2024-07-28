@@ -41,22 +41,22 @@ function qa_registration_form( $username, $password, $email) {
 	?>
 	
  
-    <form action="<?php echo $_SERVER['REQUEST_URI']; ?> " method="post">
+    <form action="<?php echo esc_url_raw($_SERVER['REQUEST_URI']); ?> " method="post">
 	<p>
 	<label for="username"><?php echo __('Username', 'question-answer'); ?><strong>*</strong><br>
-	<input type="text" name="username" value="<?php echo (isset($_POST['username']) ? sanitize_user($username) : '' );  ?>">
+	<input type="text" name="username" value="<?php echo (isset($_POST['username']) ? esc_attr($username) : '' );  ?>">
 	</label>
 	</p>
 	
 	<p>
 	<label for="password"><?php echo __('Password', 'question-answer'); ?><strong>*</strong><br>
-	<input type="password" name="password" value="<?php //echo (isset($_POST['password']) ? $password : '' ); ?>">
+	<input type="password" name="password" value="">
 	</label>
 	</p>
 	
 	<p>
 	<label for="email"><?php echo __('Email', 'question-answer') ?><strong>*</strong><br>
-	<input type="text" name="email" value="<?php echo (isset($_POST['email']) ? sanitize_email($email) : '' ); ?>">
+	<input type="text" name="email" value="<?php echo (isset($_POST['email']) ? esc_attr($email) : '' ); ?>">
 	</label>
 	</p>	
 	
@@ -76,7 +76,7 @@ function qa_registration_validation( $username, $password, $email )  {
     global $reg_errors;
     $reg_errors = new WP_Error;
 
-	$nonce = $_POST['_wpnonce'];
+	$nonce = sanitize_text_field($_POST['_wpnonce']);
 
 	if(!wp_verify_nonce( $nonce, 'qa_register' )){
 		

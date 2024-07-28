@@ -70,7 +70,7 @@ if(!function_exists('qa_welcome_tabs_content_general')) {
                 'type'		=> 'select',
                 //'multiple'		=> true,
                 'value'		=> $qa_submitted_question_status,
-                'default'		=> 'yes',
+                'default'		=> 'publish',
                 'args'		=> array( 'pending'=>__('Pending','question-answer'), 'publish'=>__('Publish','question-answer'),  'draft'=>__('Draft','question-answer'),  'private'=>__('Private','question-answer'), ),
             );
 
@@ -205,7 +205,7 @@ add_action('qa_welcome_tabs_content_done', 'qa_welcome_tabs_content_done');
 if(!function_exists('qa_welcome_tabs_content_done')) {
     function qa_welcome_tabs_content_done($tab){
 
-        $hidden = isset($_POST['qa_hidden']) ? $_POST['qa_hidden'] : '';
+        $hidden = isset($_POST['qa_hidden']) ? sanitize_text_field($_POST['qa_hidden']) : '';
 
         //var_dump($hidden);
 

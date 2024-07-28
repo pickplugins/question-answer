@@ -236,6 +236,31 @@
   margin-bottom: 30px;
 }
 
+
+
+.qa-closed{
+    background: #FF9800 none repeat scroll 0 0;
+    border-radius: 3px;
+    color: #fff;
+    padding: 2px 10px;
+    display: inline-block;
+    cursor: pointer;
+    font-size: 12px;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 .qa-meta-item.qa-featured {
     display: inline-block;
     cursor: pointer;
@@ -247,6 +272,7 @@
     background: #5f6caf none repeat scroll 0 0;
 
 }
+
 
 .qa-featured.qa-featured-no .featured{
     display: none;

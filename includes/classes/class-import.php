@@ -141,7 +141,6 @@ class class_qa_import{
 			update_post_meta($job_ID, 'is_imported' , $is_imported);
 			update_post_meta($job_ID, 'import_source' , $import_source);		
 			update_post_meta($job_ID, 'import_source_id' , $import_source_id);					
-			//$class_job_bm_error_log = new class_job_bm_error_log();
 			
 			return $job_ID;
 

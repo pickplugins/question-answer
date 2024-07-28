@@ -2,17 +2,16 @@
 /* CSS Document */
 
 
-@import url("single-question.css");
+/*@import url("single-question.css");*/
 /*@import url("question-archive.css");*/
-@import url("add-question.css");
+/*@import url("add-question.css");*/
 @import url("myaccount-profile.css");
 @import url("myaccount-question-list.css");
-@import url("breadcrumb.css");
 @import url("style-responsive.css");
 @import url("widgets.css");
 
 
-.content a { text-decoration:none; }
+/*.content a { text-decoration:none; }*/
 
 
 /* Single Question */

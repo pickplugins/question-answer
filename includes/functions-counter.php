@@ -220,3 +220,38 @@ function qa_author_total_following($author_id){
 
 	return $total_follower;
 }
+
+
+function qa_querstion_answer_count($atts, $content = null ){
+
+
+        $atts = shortcode_atts(
+            array(
+                'id' => "",
+            ),
+            $atts
+        );
+
+
+        $questionId = isset($atts['id']) ? $atts['id'] :get_the_ID();
+
+
+
+                $wp_query_answer = new WP_Query(
+                    array(
+                        'post_type'     => 'answer',
+                        'post_status'     => 'publish',
+                        'meta_query' => array(
+                            array(
+                                'key'     => 'qa_answer_question_id',
+                                'value'   => $questionId,
+                                'compare' => '=',
+                            ),
+                        ),
+                    )
+                );
+
+	return number_format_i18n($wp_query_answer->found_posts);
+}
+
+add_shortcode('qa_querstion_answer_count', 'qa_querstion_answer_count');

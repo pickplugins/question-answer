@@ -3,8 +3,8 @@
 	Donate link: https://www.pickplugins.com/item/question-answer/?ref=wordpress.org
 	Tags:  Question Answer, Question, Answer
 	Requires at least: 4.1
-	Tested up to: 5.3
-	Stable tag: 1.2.43
+	Tested up to: 6.6
+	Stable tag: 1.2.70
 	License: GPLv2 or later
 	License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -107,7 +107,7 @@ Built Question Answer site for your WordPress.
 
 # Translation
 
-Plugin is translation ready , please find the 'en.po' for default translation file under 'languages' folder and add your own translation. you can also contribute in translation, please contact us https://www.pickplugins.com/contact/
+Plugin is translation ready , please find the 'en.po' for default translation file under 'languages' folder and add your own translation. you can also contribute in translation, please contact us https://pickplugins.com/forum/
 
 == Frequently Asked Questions ==
 
@@ -139,6 +139,108 @@ Please go "Settings > Permalink Settings" and save again to reset permalink.
 
 
 == Changelog ==
+
+= 1.2.70 =
+* 2023-07-03 fix - question search by keyword issue fixed.
+* 2023-07-03 fix - comment submission with link issue fixed.
+
+
+= 1.2.69 =
+* 2023-06-20 fix -  Anonymous quesiton user name issue fixed.
+* 2023-06-20 fix -  admin actions for single question security update.
+* 2023-06-20 fix -  unnecessary error log issue fixed.
+
+
+
+= 1.2.68 =
+* 2022-12-19 fix -  Email templates saving issue fixed.
+
+= 1.2.67 =
+* 2022-10-30 fix -  Private question access issue fixed
+
+
+= 1.2.65 =
+* 2022-10-29 fix -  Question submission private issue fixed.
+
+= 1.2.64 =
+* 2022-10-29 fix -  Question submission private issue fixed.
+
+
+= 1.2.62 =
+* 2022-10-10 fix -  reCAPTCHA issue on question submission issue fixed.
+
+
+= 1.2.62 =
+* 2022-09-22 fix -  question submission post status issue fixed.
+
+
+= 1.2.61 =
+* 2022-09-10 add -  question submission post status issue fixed.
+* 2022-09-10 add -  question submission content format issue fixed.
+
+
+= 1.2.60 =
+* 2022-08-28 add -  access private question by user role,
+* 2022-08-28 add -  access private answers by user role,
+
+
+
+= 1.2.58 =
+* 2022-08-17 add -  function for total answer count for question.
+* 2022-08-17 add -  shortcode for total answer count for question.
+
+
+= 1.2.57 =
+* 2022-06-16 fix -  Settings page broken style issue fixed.
+* 2022-06-16 fix -  Question mark as closed on posting.
+
+
+= 1.2.56 =
+* 2022-06-11 fix - Answer content HTML format issue fixed.
+
+
+= 1.2.55 =
+* 2022-06-04 fix - display best answer on all question
+
+= 1.2.54 =
+* 2022-06-01 add - Show best answer on top
+
+
+
+= 1.2.53 =
+* 2022-05-19 fix - function 'question_answer_single_question_scripts' not found or invalid function issue fixed.
+
+= 1.2.52 =
+* 2022-05-10 fix - ajax issue fixed.
+
+
+= 1.2.51 =
+* 2022-05-10 fix - remove unnecessary scripts file loading.
+
+
+= 1.2.50 =
+* 2022-04-23 fix - question submit form issue fixed for slash issue
+
+= 1.2.49 =
+* 2021-06-23 update - some links marked as nofollow
+
+= 1.2.48 =
+* 2021-04-22 fix - html format issue fixed.
+
+= 1.2.47 =
+* 2021-04-16 fix - minor security issue updated
+* 2021-04-16 fix - css file loading issue fixed.
+
+= 1.2.46 =
+* 2021-04-13 fix - security issue updated
+
+= 1.2.45 =
+* 2021-01-11 add - User can't comment on closed question answers.
+* 2021-01-11 add - Closed marker on question archive and single question page.
+
+
+= 1.2.44 =
+* 2021-01-10 update - question archive advance search option added.
 
 
 = 1.2.43 =

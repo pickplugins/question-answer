@@ -45,7 +45,7 @@ function qa_user_profile_navs($author_id){
 	//var_dump($profile_navs);
 
 
-	$tab = isset($_GET['tab']) ? $_GET['tab'] : '';
+	$tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : '';
 
 
     ?>
@@ -173,7 +173,7 @@ add_filter('qa_user_profile_nav_questions','qa_user_profile_nav_questions');
 
 function qa_user_profile_nav_questions(){
 
-	$author_id = isset($_GET['id']) ? $_GET['id'] : '';
+	$author_id = isset($_GET['id']) ? sanitize_text_field($_GET['id']) : '';
 
 
 	ob_start();
@@ -231,7 +231,7 @@ add_filter('qa_user_profile_nav_answers','qa_user_profile_nav_answers');
 
 function qa_user_profile_nav_answers(){
 
-	$author_id = isset($_GET['id']) ? $_GET['id'] : '';
+	$author_id = isset($_GET['id']) ? sanitize_text_field($_GET['id']) : '';
 
 
 	ob_start();
@@ -280,7 +280,7 @@ add_filter('qa_user_profile_nav_comments','qa_user_profile_nav_comments');
 
 function qa_user_profile_nav_comments(){
 
-	$author_id = isset($_GET['id']) ? $_GET['id'] : '';
+	$author_id = isset($_GET['id']) ? sanitize_text_field($_GET['id']) : '';
 
 
 	ob_start();
@@ -334,7 +334,7 @@ function qa_user_profile_main($author_id){
 	$profile_navs = $class_qa_user_profile->profile_navs();
 
 
-	$tab = isset($_GET['tab']) ? $_GET['tab'] : '';
+	$tab = isset($_GET['tab']) ? sanitize_text_field($_GET['tab']) : '';
 
 	?>
 

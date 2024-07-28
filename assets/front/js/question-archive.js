@@ -1,154 +1,184 @@
-jQuery(document).ready(function($) {
+(function ($) {
+	$(document).on("ready", function () {
 
 
-	$(document).on('click', '.advance-toggle', function (){
+		$(document).on('click', '.advance-toggle', function () {
 
-		if($(this).hasClass('active')){
-			$(this).removeClass('active');
-			$('.advance-input').css('display','none');
+			if ($(this).hasClass('active')) {
+				$(this).removeClass('active');
+				$('.advance-input').css('display', 'none');
 
-		}else{
-			$(this).addClass('active');
-			$('.advance-input').css('display','grid');
-		}
+			} else {
+				$(this).addClass('active');
+				$('.advance-input').css('display', 'grid');
+			}
 
-	})
+		})
 
-	var qa_type_delay = (function(){
-		var timer = 0;
-		return function(callback, ms){
-			clearTimeout (timer);
-			timer = setTimeout(callback, ms);
-		};
-	})();
+		var qa_type_delay = (function () {
+			var timer = 0;
+			return function (callback, ms) {
+				clearTimeout(timer);
+				timer = setTimeout(callback, ms);
+			};
+		})();
 
-	$(document).on('change keyup', '#qa-search-form', function (){
+		$(document).on('change keyup submit', '#qa-search-form', function (ev) {
 
-		form_data = $(this).serializeArray();
-		qa_keyword = $('#qa_keyword').val();
+			ev.preventDefault();
 
+			form_data = $(this).serializeArray();
+			qa_keyword = $('#qa_keyword').val();
 
-		//if(qa_keyword.length > 0 && qa_keyword.length <= 4) return;
 
-		console.log(form_data);
+			//if(qa_keyword.length > 0 && qa_keyword.length <= 4) return;
 
-		qa_type_delay(function(){
+			//console.log(form_data);
 
-			console.log(form_data);
+			qa_type_delay(function () {
 
-			$('.loading').fadeIn();
-			$('.question-list').css('opacity', 0.5);
+				//console.log(form_data);
 
-			$.ajax({
-				type: 'POST',
-				context: this,
-				url:qa_ajax.qa_ajaxurl,
-				data: {
-					"action" 	: "question_answer_archive_ajax_search",
-					"form_data" : form_data,
-				},
-				success: function( response ) {
+				$('.loading').fadeIn();
+				$('.question-list').css('opacity', 0.5);
 
-					var data = JSON.parse( response );
-					qa_keyword = data['qa_keyword'];
-					html = data['html'];
-					pagination = data['pagination'];
-					posts_per_page = data['posts_per_page'];
+				$.ajax({
+					type: 'POST',
+					context: this,
+					url: qa_ajax.qa_ajaxurl,
+					data: {
+						"action": "question_answer_archive_ajax_search",
+						"form_data": form_data,
+					},
+					success: function (response) {
 
-					console.log(posts_per_page);
+						var data = JSON.parse(response);
+						qa_keyword = data['qa_keyword'];
+						html = data['html'];
+						pagination = data['pagination'];
+						posts_per_page = data['posts_per_page'];
 
-					$('.question-list').html(html);
-					$('.qa-paginate').html(pagination);
+						console.log(data);
 
-					//if( question_permalink.length > 0 ) window.location.href = question_permalink;
 
-					$('.loading').fadeOut();
-					$('.question-list').css('opacity', 1);
-				}
-			});
+						$('.question-list').html(html);
+						$('.qa-paginate').html(pagination);
 
+						//if( question_permalink.length > 0 ) window.location.href = question_permalink;
 
-		}, 1000 );
+						$('.loading').fadeOut();
+						$('.question-list').css('opacity', 1);
+					}
+				});
 
 
+			}, 1000);
 
 
 
 
 
-	})
 
 
+		})
 
 
-	$(document).on('click', '.qa-paginate a', function (e){
+		$('.questions-archive #qaKeyword').autocomplete({
 
-		e.preventDefault();
+			//search:keyword,
+			classes: {
+				"ui-autocomplete": "highlight"
+			},
 
-		form_data = $('#qa-search-form').serializeArray();
-		qa_keyword = $('#qa_keyword').val();
+			source: function (keyword, response) {
+				//console.log(keyword);
 
-		page = $(this).text();
+				$.ajax({
+					type: 'POST',
+					context: this,
+					url: qa_ajax.qa_ajaxurl,
+					data: {
+						"action": "qa_ajax_get_keyword_suggestion",
+						"keyword": keyword,
+					},
+					success: function (data) {
 
-		console.log(parseInt(page));
+						data = JSON.parse(data);
+						response(data);
 
+					}
+				});
 
-		//if(qa_keyword.length > 0 && qa_keyword.length <= 4) return;
+			}
+		});
 
+		$(document).on('click', '.qa-paginate a', function (e) {
 
-		qa_type_delay(function(){
+			e.preventDefault();
 
-			//console.log(qa_keyword.length);
+			form_data = $('#qa-search-form').serializeArray();
+			qa_keyword = $('#qa_keyword').val();
 
-			$('.loading').fadeIn();
-			$('.question-list').css('opacity', 0.5);
+			var page = $(this).text();
 
-			$.ajax({
-				type: 'POST',
-				context: this,
-				url:qa_ajax.qa_ajaxurl,
-				data: {
-					"action" 	: "question_answer_archive_ajax_search",
-					"form_data" : form_data,
-					"page" : page,
 
-				},
-				success: function( response ) {
+			//if(qa_keyword.length > 0 && qa_keyword.length <= 4) return;
 
-					var data = JSON.parse( response );
-					qa_keyword = data['qa_keyword'];
-					html = data['html'];
-					pagination = data['pagination'];
 
-					console.log(pagination);
+			qa_type_delay(function () {
 
-					$('.question-list').html(html);
-					$('.qa-paginate').html(pagination);
+				////console.log(qa_keyword.length);
 
-					//if( question_permalink.length > 0 ) window.location.href = question_permalink;
+				$('.loading').fadeIn();
+				$('.question-list').css('opacity', 0.5);
 
-					$('.loading').fadeOut();
-					$('.question-list').css('opacity', 1);
-				}
-			});
+				$.ajax({
+					type: 'POST',
+					context: this,
+					url: qa_ajax.qa_ajaxurl,
+					data: {
+						"action": "question_answer_archive_ajax_search",
+						"form_data": form_data,
+						"page": page,
 
+					},
+					success: function (response) {
 
-		}, 1000 );
+						var data = JSON.parse(response);
+						qa_keyword = data['qa_keyword'];
+						html = data['html'];
+						pagination = data['pagination'];
 
+						//console.log(pagination);
 
+						$('.question-list').html(html);
+						$('.qa-paginate').html(pagination);
 
+						//if( question_permalink.length > 0 ) window.location.href = question_permalink;
 
+						$('.loading').fadeOut();
+						$('.question-list').css('opacity', 1);
+					}
+				});
 
 
+			}, 1000);
 
-	})
 
 
 
 
 
 
+		})
 
 
 
-});
+
+
+
+
+
+
+	});
+})(jQuery);

@@ -117,6 +117,12 @@
     margin-right: 15px;
 }
 
+.questions-archive .question-details .meta .qa-closed {
+    border: medium none;
+    margin-right: 10px;
+    padding: 0px;
+}
+
 
 .questions-archive .question-details .meta .q-status {
   border: medium none;

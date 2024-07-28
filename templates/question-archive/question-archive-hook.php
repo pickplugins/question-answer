@@ -1,28 +1,30 @@
 <?php
-if ( ! defined('ABSPATH')) exit;  // if direct access
+if (!defined('ABSPATH')) exit;  // if direct access
 
 
 
 add_action('question_archive', 'question_archive_search');
 
-function question_archive_search($atts){
+function question_archive_search($atts)
+{
 
     $class_qa_functions = new class_qa_functions();
 
-    $filter_by = isset( $_GET['filter_by'] ) ? sanitize_text_field($_GET['filter_by']) : '';
+    $filter_by = isset($_GET['filter_by']) ? sanitize_text_field($_GET['filter_by']) : '';
     $qa_category = isset($_GET['qa_category']) ? sanitize_text_field($_GET['qa_category']) : '';
-    $order_by	= isset( $_GET['order_by'] ) ? sanitize_text_field( $_GET['order_by'] ) : '';
-    $order 	= isset( $_GET['order'] ) ? sanitize_text_field( $_GET['order'] ) : '';
-    $status 	= isset( $_GET['status'] ) ? sanitize_text_field( $_GET['status'] ) : '';
+    $order_by    = isset($_GET['order_by']) ? sanitize_text_field($_GET['order_by']) : '';
+    $order     = isset($_GET['order']) ? sanitize_text_field($_GET['order']) : '';
+    $status     = isset($_GET['status']) ? sanitize_text_field($_GET['status']) : '';
+    $qa_keyword     = isset($_GET['qa_keyword']) ? sanitize_text_field($_GET['qa_keyword']) : '';
 
 
-    ?>
+?>
     <form id="qa-search-form" class="qa-search-form" action="" method="get">
 
         <div class="main-input">
             <div class="field-wrap">
                 <span class="loading"><i class="fas fa-spinner fa-spin"></i></span>
-                <input id="qa_keyword" type="search" value="" placeholder="Search..." name="qa_keyword">
+                <input id="qa_keyword" type="search" value="<?php echo esc_html($qa_keyword); ?>" placeholder="Search..." name="qa_keyword">
                 <input type="submit" value="Submit" placeholder="" name="submit">
                 <span class="advance-toggle"><i class="fab fa-searchengin"></i> Advance</span>
             </div>
@@ -34,20 +36,20 @@ function question_archive_search($atts){
             <div class="field-wrap">
                 <div class="field-label">Filter by</div>
                 <select id="filter_by" name="filter_by"> <?php
-                    $filter_by_list = $class_qa_functions->filter_by_args();
-                    foreach( $filter_by_list as $key => $value ) {
-                        ?><option <?php selected( $key, $filter_by ); ?> value="<?php echo $key; ?>"><?php echo $value; ?></option><?php
-                    } ?>
+                                                            $filter_by_list = $class_qa_functions->filter_by_args();
+                                                            foreach ($filter_by_list as $key => $value) {
+                                                            ?><option <?php selected($key, $filter_by); ?> value="<?php echo esc_attr($key); ?>"><?php echo esc_html($value); ?></option><?php
+                                                                                                                                                                                        } ?>
                 </select>
             </div>
 
             <div class="field-wrap">
                 <div class="field-label">Status</div>
                 <select id="question_status" name="question_status"> <?php
-                    $status_list = $class_qa_functions->qa_question_status();
-                    foreach( $status_list as $key => $value ) {
-                        ?><option <?php selected( $key, $status ); ?> value="<?php echo $key; ?>"><?php echo $value; ?></option><?php
-                    } ?>
+                                                                        $status_list = $class_qa_functions->qa_question_status();
+                                                                        foreach ($status_list as $key => $value) {
+                                                                        ?><option <?php selected($key, $status); ?> value="<?php echo esc_attr($key); ?>"><?php echo esc_html($value); ?></option><?php
+                                                                                                                                                                                                } ?>
                 </select>
             </div>
 
@@ -56,31 +58,32 @@ function question_archive_search($atts){
                 <select id="qa_category" name="qa_category">
                     <option value=""><?php echo __('Select a category', 'question-answer'); ?></option> <?php
 
-                    foreach( qa_get_categories() as $cat_id => $cat_info ) { ksort($cat_info);
+                                                                                                        foreach (qa_get_categories() as $cat_id => $cat_info) {
+                                                                                                            ksort($cat_info);
 
 
 
-                        $this_category = get_term( $cat_id );
+                                                                                                            $this_category = get_term($cat_id);
 
-                        //var_dump($this_category);
+                                                                                                            //var_dump($this_category);
 
-                        //if(!empty($this_category))
-                        foreach( $cat_info as $key => $value ) {
+                                                                                                            //if(!empty($this_category))
+                                                                                                            foreach ($cat_info as $key => $value) {
 
-                            //var_dump($category);
+                                                                                                                //var_dump($category);
 
-                            $slug = isset($this_category->slug) ? $this_category->slug : '';
-                            $count = isset($this_category->count) ? $this_category->count : '';
+                                                                                                                $slug = isset($this_category->slug) ? $this_category->slug : '';
+                                                                                                                $count = isset($this_category->count) ? $this_category->count : '';
 
-                            if( $key == 0 )  {
-                                ?><option <?php selected( $slug, $qa_category ); ?> value="<?php echo $slug; ?>"><?php echo $value; ?>(<?php echo $count; ?>)</option><?php
-                            } else {
-                                $this_category = get_category( $key );
+                                                                                                                if ($key == 0) {
+                                                                                                        ?><option <?php selected($slug, $qa_category); ?> value="<?php echo esc_attr($slug); ?>"><?php echo esc_html($value); ?>(<?php echo esc_html($count); ?>)</option><?php
+                                                                                                                                                                                                                                                                        } else {
+                                                                                                                                                                                                                                                                            $this_category = get_category($key);
 
-                                ?><option <?php selected( $slug, $qa_category ); ?> value="<?php echo $slug; ?>">  - <?php echo $value; ?>(<?php echo $count; ?>)</option> <?php
-                            }
-                        }
-                    } ?>
+                                                                                                                                                                                                                                                                            ?><option <?php selected($slug, $qa_category); ?> value="<?php echo esc_attr($slug); ?>"> - <?php echo esc_html($value); ?>(<?php echo esc_html($count); ?>)</option> <?php
+                                                                                                                                                                                                                                                                                                                                                                                                                                                }
+                                                                                                                                                                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                                                                                                                                                                        } ?>
                 </select>
             </div>
 
@@ -91,9 +94,9 @@ function question_archive_search($atts){
                     <?php
                     $order_by_args = $class_qa_functions->order_by_args();
 
-                    foreach( $order_by_args as $key => $value ) {
-                        ?><option <?php selected( $key, $order_by ); ?> value="<?php echo $key; ?>"><?php echo $value; ?></option><?php
-                    } ?>
+                    foreach ($order_by_args as $key => $value) {
+                    ?><option <?php selected($key, $order_by); ?> value="<?php echo esc_attr($key); ?>"><?php echo esc_html($value); ?></option><?php
+                                                                                                                                            } ?>
                 </select>
             </div>
 
@@ -144,23 +147,23 @@ function question_archive_search($atts){
     </form>
 
     <style type="text/css">
-        .qa-search-form{
+        .qa-search-form {
             padding: 25px 0;
         }
 
-        .loading{
+        .loading {
             display: none;
         }
 
-        .qa-search-form select{
+        .qa-search-form select {
             width: 95%;
         }
 
-        .qa-search-form .field-wrap{
+        .qa-search-form .field-wrap {
             padding: 0 0px 20px 15px;
         }
 
-        .qa-search-form .advance-input{
+        .qa-search-form .advance-input {
             display: none;
             grid-template-columns: auto auto auto;
             margin: 35px 0;
@@ -169,27 +172,27 @@ function question_archive_search($atts){
 
         }
 
-        .qa-search-form .main-input{
+        .qa-search-form .main-input {
 
             text-align: center;
         }
-        .qa-search-form .main-input input[type="search"]{
-            padding: 10px 10px;
+
+        .qa-search-form .main-input input[type="search"] {
             width: 300px;
+            vertical-align: top;
         }
 
-        .qa-search-form .main-input input[type="submit"]{
-            padding: 10px 30px;
+        .qa-search-form .main-input input[type="submit"] {
             margin-right: 15px;
         }
 
-        .advance-toggle{
+        .advance-toggle {
             cursor: pointer;
         }
-        .advance-toggle.active{
+
+        .advance-toggle.active {
             font-weight: bold;
         }
-
     </style>
 
 
@@ -205,11 +208,16 @@ function question_archive_search($atts){
 
 add_action('question_archive', 'question_archive_list');
 
-function question_archive_list($atts){
+function question_archive_list($atts)
+{
 
-    if ( get_query_var('paged') ) { $paged = get_query_var('paged');}
-    elseif ( get_query_var('page') ) { $paged = get_query_var('page'); }
-    else { $paged = 1; }
+    if (get_query_var('paged')) {
+        $paged = get_query_var('paged');
+    } elseif (get_query_var('page')) {
+        $paged = get_query_var('page');
+    } else {
+        $paged = 1;
+    }
 
     $qa_post_per_page = get_option('qa_question_item_per_page', 10);
 
@@ -224,22 +232,21 @@ function question_archive_list($atts){
     $tax_query = array();
     $meta_query = array();
 
-    if(!empty($filter_by) && $filter_by == 'featured'){
+    if (!empty($filter_by) && $filter_by == 'featured') {
 
         $query_args = array();
-    }elseif(!empty($filter_by) && $filter_by == 'recent'){
+    } elseif (!empty($filter_by) && $filter_by == 'recent') {
 
         $query_args['orderby'] = 'date';
         $query_args['order'] = 'DESC';
-
-    }elseif(!empty($filter_by) && $filter_by == 'solved'){
+    } elseif (!empty($filter_by) && $filter_by == 'solved') {
 
         $meta_query[] = array(
             'key'     => 'qa_question_status',
             'value'   => 'solved',
             'compare' => '=',
         );
-    }elseif(!empty($filter_by) && $filter_by == 'unsolved'){
+    } elseif (!empty($filter_by) && $filter_by == 'unsolved') {
 
         $meta_query[] = array(
             'key'     => 'qa_question_status',
@@ -250,7 +257,7 @@ function question_archive_list($atts){
 
 
 
-    if(!empty($qa_category)):
+    if (!empty($qa_category)) :
         $tax_query[] = array(
             array(
                 'taxonomy' => 'question_cat',
@@ -260,7 +267,7 @@ function question_archive_list($atts){
         );
     endif;
 
-    if(!empty($question_status)):
+    if (!empty($question_status)) :
         $meta_query[] = array(
             'key'     => 'qa_question_status',
             'value'   => $question_status,
@@ -280,19 +287,19 @@ function question_archive_list($atts){
 
 
     $query_args['post_type'] = 'question';
-    $query_args['post_status'] = array( 'publish', 'private' );
+    $query_args['post_status'] = array('publish', 'private');
     $query_args['order'] = $order;
     $query_args['orderby'] = $order_by;
 
 
-    if(!empty($qa_keyword))
-    $query_args['s'] = $qa_keyword;
+    if (!empty($qa_keyword))
+        $query_args['s'] = $qa_keyword;
 
-    if(!empty($tax_query))
-    $query_args['tax_query'] = $tax_query;
+    if (!empty($tax_query))
+        $query_args['tax_query'] = $tax_query;
 
-    if(!empty($meta_query))
-    $query_args['meta_query'] = $meta_query;
+    if (!empty($meta_query))
+        $query_args['meta_query'] = $meta_query;
 
     $query_args['posts_per_page'] = $qa_post_per_page;
     $query_args['paged'] = $paged;
@@ -304,60 +311,76 @@ function question_archive_list($atts){
 
     //echo '<pre>'.var_export($query_args, true).'</pre>';
 
-    $qa_wp_query = new WP_Query( $query_args);
+    $qa_wp_query = new WP_Query($query_args);
 
 
     //echo '<pre>'.var_export($qa_wp_query->found_posts, true).'</pre>';
 
 
 
-    if ( $qa_wp_query->have_posts() ) :
+    if ($qa_wp_query->have_posts()) :
 
-        ?>
+    ?>
 
         <div class="question-list">
             <?php
 
-            do_action( 'question_archive_loop_before', $qa_wp_query );
+            do_action('question_archive_loop_before', $qa_wp_query);
 
 
 
 
-            while ( $qa_wp_query->have_posts() ) : $qa_wp_query->the_post();
+            while ($qa_wp_query->have_posts()) : $qa_wp_query->the_post();
 
                 $post_id = get_the_ID();
-                $qa_featured_questions 	= get_post_meta($post_id, 'qa_featured_questions', true);
-                $is_featured = ($qa_featured_questions == 'yes') ? 'featured': '';
-                ?>
+                $qa_featured_questions     = get_post_meta($post_id, 'qa_featured_questions', true);
+                $is_featured = ($qa_featured_questions == 'yes') ? 'featured' : '';
+            ?>
                 <div class="single-question <?php echo $is_featured; ?>">
 
                     <?php
-                    do_action( 'question_archive_loop', $post_id,  $qa_wp_query );
+                    do_action('question_archive_loop', $post_id,  $qa_wp_query);
 
                     ?>
                 </div>
-                <?php
+            <?php
 
             endwhile;
             ?>
         </div>
-        <?php
-        do_action( 'question_archive_loop_after', $qa_wp_query );
+    <?php
+        do_action('question_archive_loop_after', $qa_wp_query);
         wp_reset_postdata();
         wp_reset_query();
-    else:
-        do_action( 'question_archive_no_post', $qa_wp_query );
+    else :
+        do_action('question_archive_no_post', $qa_wp_query);
 
     endif;
-
-
-
 }
 
 
 
 
 
+
+add_action('question_archive', 'question_archive_scripts');
+
+function question_archive_scripts($atts)
+{
+
+    wp_enqueue_script('jquery');
+    wp_enqueue_script('jquery-ui-core');
+    wp_enqueue_script('jquery-ui-autocomplete');
+
+    //wp_enqueue_script('question_answer_js');
+
+
+    wp_enqueue_script('question-archive');
+    wp_localize_script('question-archive', 'qa_ajax', array('qa_ajaxurl' => admin_url('admin-ajax.php')));
+
+
+    wp_enqueue_style('jquery-ui');
+}
 
 
 
@@ -380,27 +403,30 @@ function question_archive_list($atts){
 
 add_action('question_archive_loop', 'question_archive_loop_vote', 10, 2);
 
-function question_archive_loop_vote($post_id,  $qa_wp_query){
+function question_archive_loop_vote($post_id,  $qa_wp_query)
+{
 
-global $qa_css;
+    global $qa_css;
 
-$qa_color_archive_view_count = get_option( 'qa_color_archive_view_count' );
-if( empty( $qa_color_archive_view_count ) ) $qa_color_archive_view_count = '';
-
-
-$qa_css .= ".questions-archive .view-count{ color: $qa_color_archive_view_count; }";
+    $qa_color_archive_view_count = get_option('qa_color_archive_view_count');
+    if (empty($qa_color_archive_view_count)) $qa_color_archive_view_count = '';
 
 
+    $qa_css .= ".questions-archive .view-count{ color: $qa_color_archive_view_count; }";
 
-$qa_answer_review		= get_post_meta( $post_id, 'qa_answer_review', true );
-$review_count 	= empty( $qa_answer_review['reviews'] ) ? 0 : (int)$qa_answer_review['reviews'];
 
-if(empty($qa_view_count)){$qa_view_count = 0;}
 
-?>
-<div class="question-side-box">
-    <span class="vote-count"><?php echo apply_filters('qa_filter_answer_vote_count_html', $review_count); ?></span><span class="vote-text"><?php echo __('Vote', 'question-answer'); ?></span>
-</div>
+    $qa_answer_review        = get_post_meta($post_id, 'qa_answer_review', true);
+    $review_count     = empty($qa_answer_review['reviews']) ? 0 : (int)$qa_answer_review['reviews'];
+
+    if (empty($qa_view_count)) {
+        $qa_view_count = 0;
+    }
+
+    ?>
+    <div class="question-side-box">
+        <span class="vote-count"><?php echo apply_filters('qa_filter_answer_vote_count_html', $review_count); ?></span><span class="vote-text"><?php echo __('Vote', 'question-answer'); ?></span>
+    </div>
 <?php
 
 
@@ -411,111 +437,120 @@ if(empty($qa_view_count)){$qa_view_count = 0;}
 
 add_action('question_archive_loop', 'question_archive_loop_answer_count', 10, 2);
 
-function question_archive_loop_answer_count($post_id,  $qa_wp_query){
+function question_archive_loop_answer_count($post_id,  $qa_wp_query)
+{
 
-    $wp_answer_query = new WP_Query( array (
+    $wp_answer_query = new WP_Query(array(
         'post_type' => 'answer',
         'post_status' => 'publish',
         'meta_query' => array(
             array(
-                'key' 		=> 'qa_answer_question_id',
-                'value' 	=> $post_id,
-                'compare'	=> '=',
+                'key'         => 'qa_answer_question_id',
+                'value'     => $post_id,
+                'compare'    => '=',
             ),
         ),
-    ) );
+    ));
 
     global $qa_css;
 
-    $qa_color_archive_answer_count = get_option( 'qa_color_archive_answer_count' );
-    if( empty( $qa_color_archive_answer_count ) ) $qa_color_archive_answer_count = '';
+    $qa_color_archive_answer_count = get_option('qa_color_archive_answer_count');
+    if (empty($qa_color_archive_answer_count)) $qa_color_archive_answer_count = '';
 
 
     $qa_css .= ".questions-archive .answer-count{ color: $qa_color_archive_answer_count; }";
 
-    ?>
+?>
     <div class="question-side-box">
         <span class="answer-count"><?php echo $wp_answer_query->found_posts; ?></span><span class="answer-text"><?php echo __('Answer', 'question-answer'); ?></span>
     </div>
 
 
-    <?php
+<?php
 }
 
 add_action('question_archive_loop', 'question_archive_loop_view_count', 10, 2);
 
-function question_archive_loop_view_count($post_id,  $qa_wp_query){
+function question_archive_loop_view_count($post_id,  $qa_wp_query)
+{
 
-    $wp_answer_query = new WP_Query( array (
+    $wp_answer_query = new WP_Query(array(
         'post_type' => 'answer',
         'post_status' => 'publish',
         'meta_query' => array(
             array(
-                'key' 		=> 'qa_answer_question_id',
-                'value' 	=> $post_id,
-                'compare'	=> '=',
+                'key'         => 'qa_answer_question_id',
+                'value'     => $post_id,
+                'compare'    => '=',
             ),
         ),
-    ) );
+    ));
 
     global $qa_css;
 
-    $qa_color_archive_view_count = get_option( 'qa_color_archive_view_count' );
-    if( empty( $qa_color_archive_view_count ) ) $qa_color_archive_view_count = '';
+    $qa_color_archive_view_count = get_option('qa_color_archive_view_count');
+    if (empty($qa_color_archive_view_count)) $qa_color_archive_view_count = '';
 
 
     $qa_css .= ".questions-archive .view-count{ color: $qa_color_archive_view_count; }";
 
     $qa_view_count = get_post_meta($post_id, 'qa_view_count', true);
 
-    if(empty($qa_view_count)){$qa_view_count = 0;}
+    if (empty($qa_view_count)) {
+        $qa_view_count = 0;
+    }
 
-    ?>
+?>
     <div class="question-side-box">
         <span class="view-count"><?php echo $qa_view_count; ?></span><span class="answer-text"><?php echo __('View', 'question-answer'); ?></span>
     </div>
 
-    <?php
+<?php
 }
 
 add_action('question_archive_loop', 'question_archive_loop_thumb', 10, 2);
 
-function question_archive_loop_thumb($post_id,  $qa_wp_query){
+function question_archive_loop_thumb($post_id,  $qa_wp_query)
+{
     $question_post = get_post($post_id);
 
     $author_id = $question_post->post_author;
-    ?>
+?>
     <div class="thumb">
-        <?php echo get_avatar( $author_id, "45" ); ?>
+        <?php echo get_avatar($author_id, "45"); ?>
     </div>
-    <?php
+<?php
 }
 
 
 
 add_action('question_archive_loop', 'question_archive_loop_details', 10, 2);
 
-function question_archive_loop_details($post_id,  $qa_wp_query){
+function question_archive_loop_details($post_id,  $qa_wp_query)
+{
     $question_post = get_post($post_id);
 
     $author_id = $question_post->post_author;
-    ?>
+    $post_status = get_post_status($post_id);
+
+?>
 
     <div class="question-details">
-        <div class="title"><a href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a></div>
+        <div class="title"><a <?php echo ($post_status == 'private') ? 'rel="noindex nofollow"' : ''; ?> href="<?php echo get_permalink(); ?>"><?php echo get_the_title(); ?></a></div>
         <?php
-        do_action( 'question_archive_loop_meta', $post_id );
+        do_action('question_archive_loop_meta', $post_id);
         ?>
 
     </div>
-    <?php
+<?php
 }
 
 
 
 add_action('question_archive_loop_meta', 'question_archive_loop_meta', 10);
 
-function question_archive_loop_meta($post_id){
+function question_archive_loop_meta($post_id)
+{
 
     $q_subscriber = get_post_meta($post_id, 'q_subscriber', true);
     $q_subscriber = !empty($q_subscriber) ? $q_subscriber : array();
@@ -526,66 +561,76 @@ function question_archive_loop_meta($post_id){
 
     $q_subscriber_count = count($q_subscriber);
 
-    if(!empty($last_activity_user_id)){
+    if (!empty($last_activity_user_id)) {
         $last_subscriber_data = get_user_by('ID', $last_activity_user_id);
-        $last_subscriber_name = isset($last_subscriber_data->display_name) ? $last_subscriber_data->display_name : __('Anonymous','question-answer');
+        $last_subscriber_name = isset($last_subscriber_data->display_name) ? $last_subscriber_data->display_name : __('Anonymous', 'question-answer');
     }
 
 
 
 
-    ?>
+?>
 
     <div class="meta">
 
 
         <?php
-        $qa_question_status = get_post_meta( $post_id, 'qa_question_status', true );
+        $qa_question_status = get_post_meta($post_id, 'qa_question_status', true);
 
 
-        if( $qa_question_status == 'solved' ){
+        if ($qa_question_status == 'solved') {
             $status_text = __('Solved', 'question-answer');
             $status_icon = '<i class="fa fa-check-circle"></i>';
-
-
-        }elseif( $qa_question_status == 'processing' ){
+        } elseif ($qa_question_status == 'processing') {
             $status_text = __('Processing', 'question-answer');
             $status_icon = '<i class="fas fa-bolt"></i>';
-
-
-        }elseif( $qa_question_status == 'hold' ){
+        } elseif ($qa_question_status == 'hold') {
             $status_text = __('Hold', 'question-answer');
             $status_icon = '<i class="far fa-hourglass"></i>';
-
         }
 
 
 
-
+        $qa_contact_name = get_post_meta($post_id, 'qa_contact_name', true);
+        $qa_contact_name = !empty($qa_contact_name) ? $qa_contact_name : __('Anonymous', 'question-answer');
 
 
 
         $display_name = get_the_author_meta('display_name');
-        $display_name = !empty($display_name) ?$display_name :__('Anonymous','');
+
+        $display_name = !empty($display_name) ? $display_name : $qa_contact_name;
+
+
+
+        $mark_as_close = get_post_meta($post_id, 'mark_as_close', true);
+
+
 
         ?>
 
-        <?php if(!empty($qa_question_status)):?>
-        <span class="q-status <?php //echo $is_solved_class; ?> <?php echo $qa_question_status; ?>"><?php  echo $status_icon.' '.$status_text; ?></span>
+        <?php if ($mark_as_close == 'yes') : ?>
+            <span class="qa-closed"><i class="fa fa-lock"></i> <?php echo __('Closed', 'question-answer'); ?></span>
         <?php endif; ?>
 
-        <span><i class="far fa-user-circle"></i>  <?php echo __('Asked by', 'question-answer'); ?> <a href="<?php echo '?user_slug='.get_the_author_meta('user_login'); ?>" class="author"><?php echo $display_name; ?></a></span>
+        <?php if (!empty($qa_question_status)) : ?>
+            <span class="q-status <?php //echo $is_solved_class; 
+                                    ?> <?php echo $qa_question_status; ?>"><?php echo $status_icon . ' ' . $status_text; ?></span>
+        <?php endif; ?>
 
-        <?php if( !empty($category) ) { ?>
-            <a href="<?php echo '?category='.$category[0]->slug; ?>" class="category"><i class="fa fa-folder-open"></i> <?php echo $category[0]->name; ?></a>
+
+
+        <span><i class="far fa-user-circle"></i> <?php echo __('Asked by', 'question-answer'); ?> <a rel="nofollow" href="<?php echo '?user_slug=' . get_the_author_meta('user_login'); ?>" class="author"><?php echo $display_name; ?></a></span>
+
+        <?php if (!empty($category)) { ?>
+            <a rel="nofollow" href="<?php echo '?category=' . $category[0]->slug; ?>" class="category"><i class="fa fa-folder-open"></i> <?php echo $category[0]->name; ?></a>
         <?php } ?>
-        <a href="<?php echo '?date='.get_the_date('d-m-Y'); ?>" class="date"><i class="far fa-clock"></i> <?php echo get_the_date('M d, Y'); ?></a>
+        <a rel="nofollow" href="<?php echo '?date=' . get_the_date('d-m-Y'); ?>" class="date"><i class="far fa-clock"></i> <?php echo get_the_date('M d, Y'); ?></a>
 
-        <?php if(!empty($last_subscriber_name)): ?>
-            <span class="meta answered-by"><?php echo sprintf(__('%s Last replied by %s', 'question-answer'),'<i class="fas fa-reply"></i>', $last_subscriber_name); ?></span>
+        <?php if (!empty($last_subscriber_name)) : ?>
+            <span class="meta answered-by"><?php echo sprintf(__('%s Last replied by %s', 'question-answer'), '<i class="fas fa-reply"></i>', $last_subscriber_name); ?></span>
         <?php endif; ?>
     </div>
-    <?php
+<?php
 }
 
 
@@ -595,24 +640,30 @@ function question_archive_loop_meta($post_id){
 
 add_action('question_archive_loop_after', 'question_archive_loop_after', 10);
 
-function question_archive_loop_after($qa_wp_query){
+function question_archive_loop_after($qa_wp_query)
+{
 
-    if ( get_query_var('paged') ) { $paged = get_query_var('paged');}
-    elseif ( get_query_var('page') ) { $paged = get_query_var('page'); }
-    else { $paged = 1; }
+    if (get_query_var('paged')) {
+        $paged = get_query_var('paged');
+    } elseif (get_query_var('page')) {
+        $paged = get_query_var('page');
+    } else {
+        $paged = 1;
+    }
 
     $big = 999999999;
     $paginate = array(
-        'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+        'base' => str_replace($big, '%#%', esc_url(get_pagenum_link($big))),
         'format' => '?paged=%#%',
-        'current' => max( 1, $paged ),
-        'total' => $qa_wp_query->max_num_pages
+        'current' => max(1, $paged),
+        'total' => $qa_wp_query->max_num_pages,
+
     );
 
-    ?>
+?>
     <div class="qa-paginate"> <?php echo paginate_links($paginate); ?> </div>
 
-    <?php
+<?php
 
 }
 
@@ -622,12 +673,12 @@ function question_archive_loop_after($qa_wp_query){
 
 add_action('question_archive_no_post', 'question_archive_no_post', 10);
 
-function question_archive_no_post($qa_wp_query){
+function question_archive_no_post($qa_wp_query)
+{
 
 
-    ?>
-    <div class="no-post"><?php echo "No post found"; ?></div>
-    <?php
+?>
+    <div class="no-post"><?php echo "No question found."; ?></div>
+<?php
 
 }
-

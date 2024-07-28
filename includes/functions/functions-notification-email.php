@@ -341,7 +341,6 @@ if ( ! function_exists( 'qa_question_submitted_send_email' ) ) {
         //$qa_contact_email = isset($post_data['qa_contact_email']) ? sanitize_email($post_data['qa_contact_email']) : "";
 
 
-        //error_log("qa_contact_email: ".$qa_contact_email);
 
         global $current_user;
 
@@ -363,10 +362,7 @@ if ( ! function_exists( 'qa_question_submitted_send_email' ) ) {
             $user_name = !empty($current_user->display_name) ? $current_user->display_name : __('Anonymous','question-answer');
             $user_email = isset($current_user->user_email ) ? $current_user->user_email  : $qa_contact_email;
 
-            //error_log("user_email: ".$user_email);
-
-            //error_log("question_ID: ".$question_ID);
-
+      
 
 
             $vars = array(
@@ -399,7 +395,6 @@ if ( ! function_exists( 'qa_question_submitted_send_email' ) ) {
 
             $status = $class_qa_emails->qa_send_email($email_data);
 
-            //error_log("admin_email: ".$admin_email);
 
             // Send mail to question author
             $email_data['email_to'] = $user_email;
@@ -412,7 +407,6 @@ if ( ! function_exists( 'qa_question_submitted_send_email' ) ) {
 
             $status = $class_qa_emails->qa_send_email($email_data);
 
-            //error_log("user_email: ".$user_email);
 
 
 
@@ -601,9 +595,7 @@ if ( ! function_exists( 'qa_email_action_answer_published_function' ) ) {
         $question_data = get_post( $question_id );
         $question_author = isset($question_data->post_author) ? $question_data->post_author : '';
 
-        error_log("answer_id: ".$answer_id);
-        error_log("question_id: ".$question_id);
-
+  
         $question_url = get_permalink($question_id);
         $answer_url = get_permalink($question_id);
 
@@ -648,7 +640,6 @@ if ( ! function_exists( 'qa_email_action_answer_published_function' ) ) {
             if(empty($question_author)){
 
                 $qa_contact_email = get_post_meta($question_id,'qa_contact_email', true);
-                //error_log("qa_contact_email: ".$qa_contact_email);
 
 
                 $email_data['email_to'] = $qa_contact_email;
@@ -719,9 +710,7 @@ if ( ! function_exists( 'qa_answer_submitted_email' ) ) {
         $answer_url = get_permalink($question_id);
         $answer_data = get_post( $answer_id );
 
-        //error_log("answer_id: ".$answer_id);
-        //error_log("question_id: ".$question_id);
-
+    
         $question_url = get_permalink($question_id);
         $answer_url = get_permalink($question_id);
 
@@ -776,7 +765,6 @@ if ( ! function_exists( 'qa_answer_submitted_email' ) ) {
             if(empty($question_author)){
 
                 $qa_contact_email = get_post_meta($question_id,'qa_contact_email', true);
-                error_log("qa_contact_email: ".$qa_contact_email);
 
 
                 $email_data['email_to'] = $qa_contact_email;
@@ -835,7 +823,6 @@ if ( ! function_exists( 'qa_email_action_answer_votedown_function' ) ) {
         $post_data = get_post( $post_id );
         $post_type = isset($post_data->post_type) ? $post_data->post_type : '';
 
-        //error_log("post_type: ".$post_type);
         global $current_user;
 
 
@@ -852,7 +839,6 @@ if ( ! function_exists( 'qa_email_action_answer_votedown_function' ) ) {
             $answer_url = get_permalink($post_id);
 
 
-            error_log("answer_id: ".$post_id);
 
 
             $email_data = array();
@@ -896,7 +882,6 @@ if ( ! function_exists( 'qa_email_action_answer_votedown_function' ) ) {
                 $answer_author = $answer_data->post_author;
                 $answer_author_data = get_user_by('ID', $answer_author);
                 $answer_author_email = $answer_author_data->user_email;
-                //error_log("answer_author_email: ".$answer_author_email);
 
                 $email_data['email_to'] = $answer_author_email;
                 $email_data['email_bcc'] = $email_bcc;
@@ -907,14 +892,12 @@ if ( ! function_exists( 'qa_email_action_answer_votedown_function' ) ) {
                 $email_data['attachments'] = array();
 
                 $status = $class_qa_emails->qa_send_email($email_data);
-                //error_log("status: ".$status);
 
             endif;
         elseif ($post_type == 'question'):
 
                 $question_id = $post_id;
 
-                //error_log("question_id: ".$question_id);
 
 
                 $question_data 	= get_post( $question_id );
@@ -929,7 +912,6 @@ if ( ! function_exists( 'qa_email_action_answer_votedown_function' ) ) {
 
                 $enable = isset($qa_email_templates_data['question_votedown']['enable']) ? $qa_email_templates_data['question_votedown']['enable'] : 'no';
 
-                error_log("enable: ".$enable);
 
                 if ($enable == 'yes'):
 
@@ -963,7 +945,6 @@ if ( ! function_exists( 'qa_email_action_answer_votedown_function' ) ) {
                     $question_author_data = get_user_by('ID', $question_author);
                     $question_author_email = $question_author_data->user_email;
 
-                    //error_log("question_author_email: ".$question_author_email);
 
                     $email_data['email_to'] = $question_author_email;
                     $email_data['email_bcc'] = $email_bcc;
@@ -975,7 +956,6 @@ if ( ! function_exists( 'qa_email_action_answer_votedown_function' ) ) {
 
                     $status = $class_qa_emails->qa_send_email($email_data);
 
-                    //error_log("status: ".$status);
 
 
                 endif;
@@ -1006,7 +986,6 @@ if ( ! function_exists( 'qa_action_answer_vote_up_email' ) ) {
         $post_data = get_post( $post_id );
         $post_type = isset($post_data->post_type) ? $post_data->post_type : '';
 
-        //error_log("post_type: ".$post_type);
         global $current_user;
 
 
@@ -1023,7 +1002,6 @@ if ( ! function_exists( 'qa_action_answer_vote_up_email' ) ) {
             $answer_url = get_permalink($post_id);
 
 
-            error_log("answer_id: ".$post_id);
 
 
             $email_data = array();
@@ -1067,7 +1045,6 @@ if ( ! function_exists( 'qa_action_answer_vote_up_email' ) ) {
                 $answer_author = $answer_data->post_author;
                 $answer_author_data = get_user_by('ID', $answer_author);
                 $answer_author_email = $answer_author_data->user_email;
-                //error_log("answer_author_email: ".$answer_author_email);
 
                 $email_data['email_to'] = $answer_author_email;
                 $email_data['email_bcc'] = $email_bcc;
@@ -1078,14 +1055,12 @@ if ( ! function_exists( 'qa_action_answer_vote_up_email' ) ) {
                 $email_data['attachments'] = array();
 
                 $status = $class_qa_emails->qa_send_email($email_data);
-                //error_log("status: ".$status);
 
             endif;
         elseif ($post_type == 'question'):
 
             $question_id = $post_id;
 
-            //error_log("question_id: ".$question_id);
 
 
             $question_data 	= get_post( $question_id );
@@ -1100,7 +1075,6 @@ if ( ! function_exists( 'qa_action_answer_vote_up_email' ) ) {
 
             $enable = isset($qa_email_templates_data['question_voteup']['enable']) ? $qa_email_templates_data['question_votedown']['enable'] : 'no';
 
-            error_log("enable: ".$enable);
 
             if ($enable == 'yes'):
 
@@ -1134,7 +1108,6 @@ if ( ! function_exists( 'qa_action_answer_vote_up_email' ) ) {
                 $question_author_data = get_user_by('ID', $question_author);
                 $question_author_email = $question_author_data->user_email;
 
-                //error_log("question_author_email: ".$question_author_email);
 
                 $email_data['email_to'] = $question_author_email;
                 $email_data['email_bcc'] = $email_bcc;
@@ -1146,7 +1119,6 @@ if ( ! function_exists( 'qa_action_answer_vote_up_email' ) ) {
 
                 $status = $class_qa_emails->qa_send_email($email_data);
 
-                error_log("status: ".$status);
 
 
             endif;
@@ -1175,7 +1147,6 @@ if ( ! function_exists( 'question_answer_assign_to_mail' ) ) {
         $post_data = get_post( $post_id );
         $post_type = isset($post_data->post_type) ? $post_data->post_type : '';
 
-        //error_log("post_type: ".$post_type);
         global $current_user;
 
         $question_id = get_post_meta( $post_id, 'qa_answer_question_id', true );
@@ -1184,7 +1155,6 @@ if ( ! function_exists( 'question_answer_assign_to_mail' ) ) {
         $question_title = get_the_title($question_id);
         $question_url = get_permalink($question_id);
 
-        error_log("post_id: ". $post_id);
 
 
         $email_data = array();
@@ -1221,7 +1191,6 @@ if ( ! function_exists( 'question_answer_assign_to_mail' ) ) {
 
             $assign_to_data = get_user_by('ID', $user_id);
             $assign_to_email = $assign_to_data->user_email;
-            //error_log("answer_author_email: ".$assign_to_email);
 
             $email_data['email_to'] = $assign_to_email;
             $email_data['email_bcc'] = $email_bcc;
@@ -1232,7 +1201,6 @@ if ( ! function_exists( 'question_answer_assign_to_mail' ) ) {
             $email_data['attachments'] = array();
 
             $status = $class_qa_emails->qa_send_email($email_data);
-            error_log("status: ".$status);
 
         endif;
 

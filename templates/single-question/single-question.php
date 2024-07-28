@@ -6,6 +6,9 @@ if ( ! defined('ABSPATH')) exit;  // if direct access
 
 global $current_user;
 
+wp_enqueue_style('single-question');
+
+
 
 ?>
 <div class="qa-wrapper">
@@ -13,8 +16,9 @@ global $current_user;
 
     $question_id = get_the_id();
     $a_subscriber = get_post_meta($question_id, 'q_subscriber', true);
+    $qa_visiblity = get_post_meta($question_id, 'qa_visiblity', true);
 
-    //var_dump($a_subscriber);
+
 
 	do_action('question_answer_single_question_before');
 
@@ -48,5 +52,8 @@ global $current_user;
 	<?php do_action('question_answer_single_question_after'); ?>
 
 </div>
-<link rel="stylesheet" href="<?php echo QA_PLUGIN_URL.'assets/front/css/qa-wrapper.css'; ?>">
-<link rel="stylesheet" href="<?php echo QA_PLUGIN_URL.'assets/front/css/qa-wrapper-top-nav.css'; ?>">
+<?php
+
+wp_enqueue_style('qa-wrapper');
+wp_enqueue_style('qa-wrapper-top-nav');
+
