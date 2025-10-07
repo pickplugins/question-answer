@@ -1740,7 +1740,7 @@ class settings_tabs_field{
 
         ob_start();
         ?>
-        <input colorPicker="" name="<?php echo esc_attr($field_name); ?>" id="<?php echo esc_attr($css_id); ?>" placeholder="<?php echo esc_attr(esc_attr($placeholder)); ?>" value="<?php echo esc_attr($value); ?>" />
+        <input colorPicker="" name="<?php echo esc_attr($field_name); ?>" id="<?php echo esc_attr($css_id); ?>" placeholder="<?php echo esc_attr($placeholder); ?>" value="<?php echo esc_attr($value); ?>" />
         <?php
 
         $input_html = ob_get_clean();
@@ -1827,6 +1827,7 @@ class settings_tabs_field{
 
 
     }
+
 
 
 
